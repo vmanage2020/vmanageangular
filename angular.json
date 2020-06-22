@@ -140,8 +140,5 @@
       }
     }
   },
-  "defaultProject": "angular",
-  "cli": {
-    "analytics": false
-  }
+  "defaultProject": "angular"
 }
