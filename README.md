@@ -2,6 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
  
+ swamy test
 ## Getting Started
 
 Go to command line and install the dependencies using command `npm install`. This will install all required dependencies.
