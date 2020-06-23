@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { DashboardsModule } from './dashboards/dashboards.module';
+import{ StudentModule} from './School/student/student.module';
 import { AppsModule } from './apps/apps.module';
 import { EmailModule } from './email/email.module';
 import { ExtrasModule } from './extras/extras.module';
@@ -20,12 +21,14 @@ import { ErrorModule } from './error/error.module';
 
 import { PagesRoutingModule } from './pages-routing.module';
 
+
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
     NgbDropdownModule,
     DashboardsModule,
+    StudentModule,
     AppsModule,
     EmailModule,
     ExtrasModule,
