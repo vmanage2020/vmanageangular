@@ -1,0 +1,72 @@
+{
+	"info": {
+		"_postman_id": "1923ea6a-ebca-4dea-8c95-4109096fb339",
+		"name": "SCHOOL-VMANAGE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "LOCAL LOGIN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"info@sysuniverse.com\",\r\n  \"password\": \"demo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/UmaSankar/vmanageci-4/public/api/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"UmaSankar",
+						"vmanageci-4",
+						"public",
+						"api",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LIVE LOGIN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"info@sysuniverse.com\",\r\n  \"password\": \"demo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://sms.akst.in/public/api/signin",
+					"protocol": "http",
+					"host": [
+						"sms",
+						"akst",
+						"in"
+					],
+					"path": [
+						"public",
+						"api",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
