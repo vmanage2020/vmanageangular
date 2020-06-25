@@ -26,16 +26,22 @@
                   <div class="col-lg-6">
                     <div class="form-group">
                       <label>School Name *</label>
-                      <select id="col_code_fk" name="col_code_fk" class="form-control required" tabindex="1">
-                        <option value="1">Vidyalakshmi school</option>
+                      <select  id="col_code_fk" name="sName" class="form-control " tabindex="1" formControlName="sName"  [ngClass]="{'is-invalid': submit && form.sName.errors}">
+                        <option value="Vidyalakshmi school">Vidyalakshmi school</option>
                       </select>
+                      <div *ngIf="submit && form.sName.errors" class="invalid-feedback">
+                        <span *ngIf="form.sName.errors.required">Please Enter first Name.</span>
+                    </div>
                     </div>
                   </div>
+                <!-- <div class="col-lg-6">
+                    <pre><code>{{validationform.value | json}}</code></pre>
+                    </div>-->
                   <div class="col-lg-6">
                     <div class="form-group">
                       <label>Application No *</label>
-                      <input id="stu_prf_app_No" name="stu_prf_app_No" type="text" class="form-control required"
-                        tabindex="2" value="5ef1d8778dd65" disabled>
+                      <input  id="stu_prf_app_No" name="appno" type="text" class="form-control required"
+                        tabindex="2" value="5ef1d8778dd65"   disabled formControlName="appno">
                     </div>
                   </div>
                   <div class="col-lg-6">
@@ -43,14 +49,14 @@
                     <div class="form-group">
                       <label>Date Applied *</label>
                       <input id="stu_prf_app_date" name="stu_prf_app_date" type="text" class="form-control required"
-                        tabindex="3" value="23-06-2020" disabled>
+                        tabindex="3" value="23-06-2020" disabled formControlName="dateapp">
                     </div>
 
                   </div>
                   <div class="col-lg-6">
                     <div class="form-group">
                       <label >Student First Name *</label>
-                      <input formControlName ="firstName" type="text" class="form-control" placeholder="Student First Name" formControlName="firstName"
+                      <input  type="text" class="form-control" placeholder="Student First Name" formControlName="firstName"
                                 [ngClass]="{'is-invalid': submit && form.firstName.errors}">
                             <div *ngIf="submit && form.firstName.errors" class="invalid-feedback">
                                 <span *ngIf="form.firstName.errors.required">Please Enter first Name.</span>
@@ -61,7 +67,7 @@
                   <div class="col-lg-6">
                     <div class="form-group">
                       <label >Student Middle Name *</label>
-                      <input formControlName ="middleName" type="text" class="form-control" placeholder="Student middle Name" formControlName="middleName"
+                      <input  type="text" class="form-control" placeholder="Student middle Name" formControlName="middleName"
                                 [ngClass]="{'is-invalid': submit && form.middleName.errors}">
                             <div *ngIf="submit && form.middleName.errors" class="invalid-feedback">
                                 <span *ngIf="form.middleName.errors.required">Please Enter Middle Name.</span>
@@ -69,26 +75,28 @@
 
                     </div>
                   </div>
-                 <!-- <div class="col-lg-6">
-                    <pre><code>{{validationform.value | json}}</code></pre>
-                    </div>-->
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Student Last Name </label>
-                      <input id="stu_stud_lname" name="stu_stud_lname" type="text" class="form-control " tabindex="6"
-                        required>
+                
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label >Student Last Name</label>
+                        <input  type="text" class="form-control" placeholder="Student Last  Name" formControlName="lastName"
+                                  [ngClass]="{'is-invalid': submit && form.lastName.errors}">
+                              <div *ngIf="submit && form.lastName.errors" class="invalid-feedback">
+                                  <span *ngIf="form.lastName.errors.required">Please Enter Last Name.</span>
+                              </div>
+                      </div>
                     </div>
-                  </div>
+
                   <div class="col-lg-6">
                     <div class="form-group">
                       <label>Entry Mode *</label>
 
                       <div style="height: 34px;">
-                        <input id="stu_adm_mode" name="stu_adm_mode" type="radio" value="1"
-                          class="form-controlX required" style="float:left;" tabindex="7">
+                        <input id="stu_adm_mode" name="stu_adm_mode" type="radio" value="Regular"
+                          class="form-controlX required" style="float:left;" tabindex="7" >
                         <span style="float:left;">&nbsp;Regular &nbsp;&nbsp;</span>
-                        <input id="stu_adm_mode" name="stu_adm_mode" type="radio" value="2" checked
-                          class="form-controlX required" style="float:left;" tabindex="8">
+                        <input id="stu_adm_mode" name="stu_adm_mode" type="radio" value="Transfer" 
+                          class="form-controlX required" style="float:left;" tabindex="8" >
                         <span style="float:left;">&nbsp;Transfer&nbsp;&nbsp;</span>
                       </div>
                     </div>
@@ -96,8 +104,8 @@
                   <div class="col-lg-6">
                     <div class="form-group">
                       <label>Batch/Academic year *</label>
-                      <select id="stu_prf_current_Year" name="stu_prf_current_Year" class="form-control required"
-                        tabindex="9">
+                      <select id="stu_prf_current_Year" name="Batchyear" class="form-control required"
+                        tabindex="9" formControlName="Batchyear">
                         <option value="2020">2020</option>
                       </select>
                     </div>
@@ -105,11 +113,11 @@
                   <div class="col-lg-6">
                     <div class="form-group">
                       <label>Board Name *</label>
-                      <select id="stu_prf_degree_code" name="stu_prf_degree_code" class="form-control required"
-                        tabindex="10">
+                      <select id="stu_prf_degree_code" name="boardname" class="form-control required"
+                        tabindex="10" formControlName="boardname">
                         <option value="">--SELECT--</option>
-                        <option value="1">MATRIC</option>
-                        <option value="2">CBSE</option>
+                        <option value="MATRIC">MATRIC</option>
+                        <option value="CBSE">CBSE</option>
                       </select>
                     </div>
                   </div>
@@ -768,8 +776,10 @@
               </div>
             </div>
             <br>
-            <div class="card" formArrayName="certificateInfo" *ngFor="let certinfo of validationform.get('certificateInfo').controls; let i=index;">
-              <div class="card-body" [formGroupName]="i">
+    <!--<div class="card" formArrayName="certificateInfo" *ngFor="let certinfo of validationform.get('certificateInfo').controls; let i=index;">-->
+      <div class="card" >
+             <!--  <div class="card-body" [formGroupName]="i">-->
+              <div class="card-body">
                 <h2>Certificate Information</h2>
                 <div class="row">
                   <div class="col-lg-6">
@@ -813,9 +823,11 @@
               </div>
             </div>
             <button (click)="cinfo()" type="submit" class="btn btn-info" tabindex="54">Add  </button>
+            <br>
+            <br>
 
             <button type="submit" class="btn btn-info" tabindex="54"> Save and Continue </button>
-
+               
           </form>
 
 
