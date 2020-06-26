@@ -34,118 +34,25 @@
                 </tr>
               </thead>
               <tbody>
+                
+                
+                <tr class="gradeX" *ngFor="let user of SListitems[1].users, index as i">
+                  <td >{{i + 1}}</td>
+                  <td>{{user.stu_prf_app_date}}</td>
+                  <td>{{user.stu_stud_lname}}</td>
+                  <td>{{user.stu_prf_sex}}</td>
+                  <td>{{user.stu_prf_mar_status}}</td>
+                  <td class="center">
+                    <a routerLink="/studentview" class="action-icon"> <i class="mdi mdi-eye"></i></a>
+                    <a routerLink="/studentedit" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                    <a routerLink="/studentedit" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                  </td>
+                </tr>
 
-                <tr class="gradeX">
-                  <td>1</td>
-                  <td>2014-02-04</td>
-                  <td>Nitin Prabhakar</td>
-                  <td>None</td>
-                  <td class="center">0</td>
-
-                  <td class="center">
-                    <a routerLink="/studentview" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                    <a routerLink="/studentedit" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                    <a routerLink="/studentedit" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                  </td>
-                </tr>
-                <tr class="gradeX">
-                  <td>2</td>
-                  <td>2014-02-04</td>
-                  <td>Nitin Prabhakar</td>
-                  <td>None</td>
-                  <td class="center">0</td>
-                  <td class="center">
-                    <a routerLink="/studentview" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                    <a routerLink="/studentedit" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                    <a routerLink="/studentedit" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                  </td>
-                </tr>
-                <tr class="gradeX">
-                  <td>3</td>
-                  <td>2014-02-04</td>
-                  <td>Nitin Prabhakar</td>
-                  <td>None</td>
-                  <td class="center">0</td>
-                  <td class="center">
-                    <a routerLink="/studentview" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                    <a routerLink="/studentedit" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                    <a routerLink="/studentedit" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                  </td>
-                </tr>
-                <tr class="gradeX">
-                  <td>4</td>
-                  <td>2014-02-04</td>
-                  <td>Nitin Prabhakar</td>
-                  <td>None</td>
-                  <td class="center">0</td>
-                  <td class="center">
-                    <a routerLink="/studentview" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                    <a routerLink="/studentedit" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                    <a routerLink="/studentedit" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                  </td>
-                </tr>
-                <tr class="gradeX">
-                  <td>5</td>
-                  <td>2014-02-04</td>
-                  <td>Nitin Prabhakar</td>
-                  <td>None</td>
-                  <td class="center">0</td>
-                  <td class="center">
-                    <a routerLink="/studentview" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                    <a routerLink="/studentedit" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                    <a routerLink="/studentedit" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                  </td>
-                </tr>
-                <tr class="gradeX">
-                  <td>6</td>
-                  <td>2014-02-04</td>
-                  <td>Nitin Prabhakar</td>
-                  <td>None</td>
-                  <td class="center">0</td>
-                  <td class="center">
-                    <a routerLink="/studentview" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                    <a routerLink="/studentedit" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                    <a routerLink="/studentedit" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                  </td>
-                </tr>
-                <tr class="gradeX">
-                  <td>7</td>
-                  <td>2014-02-04</td>
-                  <td>Nitin Prabhakar</td>
-                  <td>None</td>
-                  <td class="center">0</td>
-                  <td class="center">
-                    <a routerLink="/studentview" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                    <a routerLink="/studentedit" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                    <a routerLink="/studentedit" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                  </td>
-                </tr>
-                <tr class="gradeX">
-                  <td>8</td>
-                  <td>2014-02-04</td>
-                  <td>Nitin Prabhakar</td>
-                  <td>None</td>
-                  <td class="center">0</td>
-                  <td class="center">
-                    <a routerLink="/studentview" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                    <a routerLink="/studentedit" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                    <a routerLink="/studentedit" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                  </td>
-                </tr>
-                <tr class="gradeX">
-                  <td>9</td>
-                  <td>2014-02-04</td>
-                  <td>Nitin Prabhakar</td>
-                  <td>None</td>
-                  <td class="center">0</td>
-                  <td class="center">
-                    <a routerLink="/studentview" class="action-icon"> <i class="mdi mdi-eye"></i></a>
-                    <a routerLink="/studentedit" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                    <a routerLink="/studentedit" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                  </td>
-                </tr>
+               
               </tbody>
             </table>
+            
           </div>
 
         </div>

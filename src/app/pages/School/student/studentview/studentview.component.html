@@ -22,178 +22,20 @@
             <div class="card">
               <div class="card-body">
                 <div class="row ">
-                  <div class="col-lg-6">
+
+                  <div class="col-lg-6" *ngFor="let userview of SViewitems[1].user | keyvalue, index as i">
                     <div class="row ">
                       <div class="col-lg-6">
-                        <label>School Name</label>
+                        <label>{{userview.key}}</label>
                         </div>
                         <div class="col-lg-6">
-                          <label>Vidyalakshmi school</label>
+                          <label>{{userview.value}}</label>
                         </div>
                     </div>
                   </div>
 
-                  <div class="col-lg-6">
-                    <div class="row ">
-                      <div class="col-lg-6">
-                        <label>Application No </label>
-                        </div>
-                        <div class="col-lg-6">
-                          <label>5ef1d8778dd65</label>
-                        </div>
-                    </div>
-                  </div>
-
-                  <div class="col-lg-6">
-                    <div class="row ">
-                      <div class="col-lg-6">
-                        <label>Date Applied</label>
-                        </div>
-                        <div class="col-lg-6">
-                          <label>23-06-2020</label>
-                        </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="row ">
-                      <div class="col-lg-6">
-                        <label>Student First Name</label>
-                        </div>
-                        <div class="col-lg-6">
-                          <label>Vidyalakshmi</label>
-                        </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="row ">
-                      <div class="col-lg-6">
-                        <label>Student Middle Name</label>
-                        </div>
-                        <div class="col-lg-6">
-                          <label>school</label>
-                        </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="row ">
-                      <div class="col-lg-6">
-                        <label>Student Last Name</label>
-                        </div>
-                        <div class="col-lg-6">
-                          <label>school</label>
-                        </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="row ">
-                      <div class="col-lg-6">
-                        <label>Entry Mode</label>
-                        </div>
-                        <div class="col-lg-6">
-                          <label>Regular   </label>
-                        </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="row ">
-                      <div class="col-lg-6">
-                        <label>Batch/Academic year</label>
-                        </div>
-                        <div class="col-lg-6">
-                          <label>2020   </label>
-                        </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="row ">
-                      <div class="col-lg-6">
-                        <label>Board Name</label>
-                        </div>
-                        <div class="col-lg-6">
-                          <label>MATRIC</label>
-                        </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="row ">
-                      <div class="col-lg-6">
-                        <label>Medium Name</label>
-                        </div>
-                        <div class="col-lg-6">
-                          <label>ENGLISH</label>
-                        </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="row ">
-                      <div class="col-lg-6">
-                        <label>Standard </label>
-                        </div>
-                        <div class="col-lg-6">
-                          <label>VI</label>
-                        </div>
-                    </div>
-                  </div>
-                   <div class="col-lg-6">
-                    <div class="row ">
-                      <div class="col-lg-6">
-                        <label>Group Name </label>
-                        </div>
-                        <div class="col-lg-6">
-                          <label>General</label>
-                        </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="row ">
-                      <div class="col-lg-6">
-                        <label>Second Language</label>
-                        </div>
-                        <div class="col-lg-6">
-                          <label>Tamil</label>
-                        </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="row ">
-                      <div class="col-lg-6">
-                        <label>Reading ability</label>
-                        </div>
-                        <div class="col-lg-6">
-                          <label>Yes</label>
-                        </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="row ">
-                      <div class="col-lg-6">
-                        <label>Mother Tongue</label>
-                        </div>
-                        <div class="col-lg-6">
-                          <label>Tamil</label>
-                        </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="row ">
-                      <div class="col-lg-6">
-                        <label>Date of Birth</label>
-                        </div>
-                        <div class="col-lg-6">
-                          <label>22-02-2020</label>
-                        </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="row ">
-                      <div class="col-lg-6">
-                        <label>Age </label>
-                        </div>
-                        <div class="col-lg-6">
-                          <label>22</label>
-                        </div>
-                    </div>
-                  </div>
+                 
+ 
 
                 </div>
               </div>
