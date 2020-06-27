@@ -13,6 +13,7 @@ export class StudentComponent implements OnInit {
   breadCrumbItems: Array<{}>;
   validationform: FormGroup; // bootstrap validation form
  // certificateInfo:FormArray;
+ public duplicateCertifcateColumns: FormArray;
 
   // Form submition
   submit: boolean;
@@ -59,30 +60,52 @@ export class StudentComponent implements OnInit {
     this.breadCrumbItems = [{ label: 'UBold', path: '/' }, { label: 'Forms', path: '/' }, { label: 'Form Validation', path: '/', active: true }];
  
     this.validationform = this.formBuilder.group({
-     sName: ['', [Validators.required]],
-     appno: ['5ef1d8778dd65', [Validators.pattern('[a-zA-Z0-9]+')]],
-      dateapp: ['23-06-2020', [Validators.pattern('[a-zA-Z0-9]+')]],
-      firstName: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      middleName: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      lastName: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
+     sName                          : ['', [Validators.required]],
+     appno                          : ['5ef1d8778dd65', [Validators.pattern('[a-zA-Z0-9]+')]],
+      dateapp                       : ['23-06-2020', [Validators.pattern('[a-zA-Z0-9]+')]],
+      firstName                     : ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
+      middleName                    : ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
+      lastName                      : ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
      // entrym: ['Regular', [Validators.required]],
-      Batchyear: ['', [Validators.required]],
-      boardname: ['', [Validators.required]],
-      certificateName:['', [Validators.required]],
-      certificateDate:['', [Validators.required]],
-      certificateNo:['', [Validators.required]],
-      certificateAttach:['', [Validators.required]]
+      Batchyear                     : ['', [Validators.required]],
+      boardname                     : ['', [Validators.required]],
+      certificateColumns            : this.formBuilder.array([]),
+      //certificateName:['', [Validators.required]],
+      //certificateDate:['', [Validators.required]],
+      //certificateNo:['', [Validators.required]],
+      //certificateAttach:['', [Validators.required]]
      
      
     });
 
+    this.duplicateCertifcateColumns = this.validationform.get('certificateColumns') as FormArray;
     this.submit = false;
     this.formsubmit = false;
-
+    this.addCertificateColumn();
   }
   get form() {
     return this.validationform.controls;
   }
+
+  createCertificateColumnForm(): FormGroup {
+    return this.formBuilder.group({
+      certificateName             : [null],
+      certificateDate             : [null],
+      certificateNo               : [null],
+      certificateAttach           : [null]
+    })
+  }
+
+  addCertificateColumn()
+  {
+    this.duplicateCertifcateColumns.push(this.createCertificateColumnForm());
+  }
+
+  removeCertificateColumn(index)
+  {
+    this.duplicateCertifcateColumns.removeAt(index);
+  }
+
 
   /**
    * Bootsrap validation form submit method
