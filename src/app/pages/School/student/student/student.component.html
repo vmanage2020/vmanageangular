@@ -1,842 +1,969 @@
 <div class="row wrapper border-bottom white-bg page-heading">
-  <div class="col-lg-10">
-    <h2>Students Form</h2>
+    <div class="col-lg-10">
+        <h2>Students Form</h2>
 
-  </div>
-  <div class="col-lg-2">
+    </div>
+    <div class="col-lg-2">
 
-  </div>
+    </div>
 </div>
 <div class="wrapper wrapper-content animated fadeInRight">
 
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="ibox">
-        <div class="ibox-title">
-          <h5> Student Informations </h5>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5> Student Informations </h5>
 
-        </div>
-        <div class="ibox-content ">
-          <form class="needs-validation" (ngSubmit)="validSubmit()" [formGroup]="validationform">
-            <br>
-            <div class="card form-row">
-              <div class="card-body">
-                <h2>Account Information</h2>
-                <div class="row ">
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>School Name *</label>
-                      <select  id="col_code_fk" name="sName" class="form-control " tabindex="1" formControlName="sName"  [ngClass]="{'is-invalid': submit && form.sName.errors}">
-                        <option value="Vidyalakshmi school">Vidyalakshmi school</option>
-                      </select>
-                      <div *ngIf="submit && form.sName.errors" class="invalid-feedback">
-                        <span *ngIf="form.sName.errors.required">Please Enter first Name.</span>
-                    </div>
-                    </div>
-                  </div>
-               <!-- <div class="col-lg-6">
-                    <pre><code>{{validationform.value | json}}</code></pre>
-                    </div>-->
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Application No *</label>
-                      <input  id="stu_prf_app_No" name="appno" type="text" class="form-control required"
-                        tabindex="2" value="5ef1d8778dd65"   disabled formControlName="appno">
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
+                </div>
+                <div class="ibox-content ">
+                    <form class="needs-validation" (ngSubmit)="validSubmit()" [formGroup]="validationform">
+                        <br>
+                        <div class="card form-row">
+                            <div class="card-body">
+                                <h2>Account Information</h2>
+                                <div class="row ">
 
-                    <div class="form-group">
-                      <label>Date Applied *</label>
-                      <input id="stu_prf_app_date" name="stu_prf_app_date" type="text" class="form-control required"
-                        tabindex="3" value="23-06-2020" disabled formControlName="dateapp">
-                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>School Name *</label>
+                                            <select formControlName="col_code_fk" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && f.col_code_fk }">
+                                                <option value="select" selected>-SELECT-</option>
+                                                <option [value]="i+1"
+                                                    *ngFor="let col_code_fk of dropdownArray[0], index as i">
+                                                    {{col_code_fk}}
+                                                </option>
 
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label >Student First Name *</label>
-                      <input  type="text" class="form-control" placeholder="Student First Name" formControlName="firstName"
-                                [ngClass]="{'is-invalid': submit && form.firstName.errors}">
-                            <div *ngIf="submit && form.firstName.errors" class="invalid-feedback">
-                                <span *ngIf="form.firstName.errors.required">Please Enter first Name.</span>
+                                            </select>
+                                            <div *ngIf="submitted && f.col_code_fk.errors" class="invalid-feedback">
+                                                <div *ngIf="f.col_code_fk.errors.required">Title is required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Application No *</label>
+                                            <input type="text" formControlName="stu_prf_app_No"
+                                                value="{{dropdownArray[1]}}" class="form-control" disabled />
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-lg-6">
+
+                                        <div class="form-group">
+                                            <label>Date Applied *</label>
+                                            <input type="text" formControlName="stu_prf_app_date"
+                                                value="{{dropdownArray[2]}}" class="form-control" disabled />
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Student First Name *</label>
+                                            <input type="text" formControlName="stu_prf_stud_name"
+                                                value="Student First Name" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && f.stu_prf_stud_name.errors }" />
+                                            <div *ngIf="submitted && f.stu_prf_stud_name.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="f.stu_prf_stud_name.errors.required">First Name is required
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Student Middle Name *</label>
+                                            <input type="text" formControlName="stu_stud_mname"
+                                                value="Student Middle Name" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && f.stu_stud_mname.errors }" />
+                                            <div *ngIf="submitted && f.stu_stud_mname.errors" class="invalid-feedback">
+                                                <div *ngIf="f.stu_stud_mname.errors.required">middle Name is required
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Student Last Name</label>
+                                            <input type="text" formControlName="stu_stud_lname"
+                                                value="Student Last Name" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && f.stu_stud_lname.errors }" />
+                                            <div *ngIf="submitted && f.stu_stud_lname.errors" class="invalid-feedback">
+                                                <div *ngIf="f.stu_stud_lname.errors.required">Last Name is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Entry Mode *</label>
+                                            <div style="height: 34px;">
+                                                <input type="radio" value="1" style="float:left;" tabindex="7">
+                                                <span style="float:left;">&nbsp;Regular &nbsp;&nbsp;</span>
+                                                <input type="radio" value="2" style="float:left;" tabindex="8">
+                                                <span style="float:left;">&nbsp;Transfer&nbsp;&nbsp;</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Batch/Academic year *</label>
+                                            <select formControlName="bayear" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && f.bayear.errors }">
+                                                <option [value]="bayear"
+                                                    *ngFor="let bayear of dropdownArray[3], index as i">{{bayear}}
+                                                </option>
+
+                                            </select>
+                                            <div *ngIf="submitted && f.bayear.errors" class="invalid-feedback">
+                                                <div *ngIf="f.bayear.errors.required">Batch / Academic year is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Board Name *</label>
+                                            <select formControlName="boardname" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && f.boardname.errors }">
+                                                <option [value]="boardname"
+                                                    *ngFor="let boardname of dropdownArray[4], index as i">{{boardname}}
+                                                </option>
+
+                                            </select>
+                                            <div *ngIf="submitted && f.boardname.errors" class="invalid-feedback">
+                                                <div *ngIf="f.boardname.errors.required">Board Name is required
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Medium Name *</label>
+                                            <select formControlName="medname" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && f.medname.errors }">
+                                                <option [value]="medname"
+                                                    *ngFor="let medname of dropdownArray[5], index as i">{{medname}}
+                                                </option>
+
+                                            </select>
+                                            <div *ngIf="submitted && f.medname.errors" class="invalid-feedback">
+                                                <div *ngIf="f.medname.errors.required">Medium Name is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-lg-6">
+
+                                        <div class="form-group">
+                                            <label>Standard *</label>
+                                            <select formControlName="stand" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && f.stand.errors }">
+                                                <option [value]="stand"
+                                                    *ngFor="let stand of dropdownArray[6], index as i">{{stand}}
+                                                </option>
+
+                                            </select>
+                                            <div *ngIf="submitted && f.stand.errors" class="invalid-feedback">
+                                                <div *ngIf="f.stand.errors.required">Standard is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Group Name *</label>
+                                            <select formControlName="groupn" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && f.groupn.errors }">
+                                                <option [value]="groupn"
+                                                    *ngFor="let groupn of dropdownArray[7], index as i">{{groupn}}
+                                                </option>
+
+                                            </select>
+                                            <div *ngIf="submitted && f.groupn.errors" class="invalid-feedback">
+                                                <div *ngIf="f.groupn.errors.required">Group Name is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Second Language *</label>
+                                            <select formControlName="secondlang" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && f.secondlang.errors }">
+                                                <option [value]="secondlang"
+                                                    *ngFor="let secondlang of dropdownArray[8], index as i">
+                                                    {{secondlang}}
+                                                </option>
+
+                                            </select>
+                                            <div *ngIf="submitted && f.secondlang.errors" class="invalid-feedback">
+                                                <div *ngIf="f.secondlang.errors.required">Second Language is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Reading Ability *</label>
+                                            <div style="height: 34px;">
+                                                <input type="radio" value="1" style="float:left;" tabindex="7">
+                                                <span style="float:left;">&nbsp;yes &nbsp;&nbsp;</span>
+                                                <input type="radio" value="2" style="float:left;" tabindex="8">
+                                                <span style="float:left;">&nbsp;NO &nbsp;&nbsp;</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Mother Tongue *</label>
+                                            <select formControlName="motherton" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && f.motherton.errors }">
+                                                <option [value]="motherton"
+                                                    *ngFor="let motherton of dropdownArray[9], index as i">{{motherton}}
+                                                </option>
+
+                                            </select>
+                                            <div *ngIf="submitted && f.motherton.errors" class="invalid-feedback">
+                                                <div *ngIf="f.motherton.errors.required">Second Language is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group" id="data_1">
+                                            <label class="font-normal">Date of Birth *</label>
+                                            <div class="input-group date">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                <input id="stu_prf_dob" name="stu_prf_dob" type="text" value=""
+                                                    class="form-control required" tabindex="19" autocomplete="off">
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Age *</label>
+                                            <input id="stu_prf_age" name="stu_prf_age" type="text"
+                                                class="form-control required" disabled tabindex="19">
+                                        </div>
+
+                                    </div>
+
+                                </div>
                             </div>
+                        </div>
+                        <br>
 
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label >Student Middle Name *</label>
-                      <input  type="text" class="form-control" placeholder="Student middle Name" formControlName="middleName"
-                                [ngClass]="{'is-invalid': submit && form.middleName.errors}">
-                            <div *ngIf="submit && form.middleName.errors" class="invalid-feedback">
-                                <span *ngIf="form.middleName.errors.required">Please Enter Middle Name.</span>
+                        <div class="card">
+                            <div class="card-body">
+                                <h2>Previous School Information</h2>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Previous School Board Name *</label>
+                                            <select id="stu_prev_medium_ins_fk" name="stu_prev_medium_ins_fk"
+                                            class="form-control required" tabindex="18">
+                                            <option value="">--SELECT--</option>
+                                            <option value="1">Tamil</option>
+                                            <option value="2">English</option>
+                                        </select>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Medium Of Previous Study *</label>
+                                            <select id="stu_prev_medium_ins_fk" name="stu_prev_medium_ins_fk"
+                                                class="form-control required" tabindex="18">
+                                                <option value="">--SELECT--</option>
+                                                <option value="1">Tamil</option>
+                                                <option value="2">English</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Previous School Name </label>
+                                            <input id="stu_adm_prev_colname" name="stu_adm_prev_colname"
+                                                class="form-control " tabindex="18">
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Previous Standard </label>
+                                            <select id="stu_adm_prev_class" name="stu_adm_prev_class"
+                                                class="form-control " tabindex="18">
+                                                <option value="">--SELECT--</option>
+                                                <option value="1">Pre.K.G</option>
+                                                <option value="2">L.K.G</option>
+                                                <option value="3">U.K.G</option>
+                                                <option value="4">I</option>
+                                                <option value="5">II</option>
+                                                <option value="6">III</option>
+                                                <option value="7">IV</option>
+                                                <option value="8">V</option>
+                                                <option value="9">VI</option>
+                                                <option value="10">VII</option>
+                                                <option value="11">VIII</option>
+                                                <option value="12">IX</option>
+                                                <option value="13">X</option>
+                                                <option value="14">XI</option>
+                                                <option value="15">XII</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+                        <br>
+                        <div class="card">
+                            <div class="card-body">
+                                <h2>Parent Information</h2>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Father/Guardian First Name *</label>
+                                            <input id="stu_prf_fathers_name" name="stu_prf_fathers_name" type="text"
+                                                class="form-control required" tabindex="21">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Father/Guardian Last Name</label>
+                                            <input id="stu_prf_guardian_name" name="stu_prf_guardian_name" type="text"
+                                                class="form-control " tabindex="22">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Father/Guardian Aadhar Number</label>
+                                            <input id="stu_prf_guardian_aadhar" name="stu_prf_guardian_aadhar"
+                                                type="text" class="form-control " tabindex="22">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Father Qualification</label>
+                                            <input id="stu_prf_fathers_qual" name="stu_prf_fathers_qual" type="text"
+                                                class="form-control " tabindex="23">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Father Occupation</label>
+                                            <input id="stu_prf_fathers_occup" name="stu_prf_fathers_occup" type="text"
+                                                class="form-control " tabindex="24">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Father Annual Income *</label>
+                                            <input id="stu_prf_fathers_anninc" name="stu_prf_fathers_anninc" type="text"
+                                                class="form-control required" tabindex="25">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Mother Name *</label>
+                                            <input id="stu_prf_mothers_name" name="stu_prf_mothers_name" type="text"
+                                                class="form-control required" tabindex="26">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Mother Occupation</label>
+                                            <input id="stu_prf_mothers_occup" name="stu_prf_mothers_occup" type="text"
+                                                class="form-control " tabindex="27">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Mother Annual Income</label>
+                                            <input id="stu_prf_mothers_anninc" name="stu_prf_mothers_anninc" type="text"
+                                                class="form-control " tabindex="28">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Parent Email ID </label>
+                                            <input id="stu_prf_parent_email" name="stu_prf_parent_email" type="text"
+                                                class="form-control email" tabindex="29">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Parent Mobile No</label>
+                                            <input id="stu_prf_mobile_no" name="stu_prf_mobile_no" type="text"
+                                                class="form-control " tabindex="30">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Place of Living *</label>
+                                            <input id="stu_prf_plc_of_livng" name="stu_prf_plc_of_livng" type="text"
+                                                class="form-control required" tabindex="31">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6" style="display:none;">
+                                        <div class="form-group">
+                                            <label>Member of Service Organization</label>
+                                            <input id="stu_prf_mem_of_serv_org" name="stu_prf_mem_of_serv_org"
+                                                type="text" class="form-control " tabindex="32">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Parents Old Student</label>
+                                            <div style="height: 34px;">
+                                                <input id="stu_prf_parents_old_stu" name="stu_prf_parents_old_stu"
+                                                    type="radio" value="1" class="form-controlX required"
+                                                    style="float:left;" tabindex="33">
+                                                <span style="float:left;">&nbsp;Yes &nbsp;&nbsp;</span>
+                                                <input id="stu_prf_parents_old_stu" name="stu_prf_parents_old_stu"
+                                                    type="radio" value="0" checked class="form-controlX required"
+                                                    style="float:left;" tabindex="34">
+                                                <span style="float:left;">&nbsp;No&nbsp;&nbsp;</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Family Size *</label>
+                                            <input id="stu_prf_family_size" name="stu_prf_family_size" type="text"
+                                                class="form-control required" tabindex="35">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card">
+                            <div class="card-body">
+                                <h2>Student Information</h2>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Gender *</label>
+                                            <div style="height: 34px;">
+                                                <input id="stu_prf_sex" name="stu_prf_sex" type="radio" value="1"
+                                                    class="form-controlX required" style="float:left;" tabindex="36">
+                                                <span style="float:left;">&nbsp;Male &nbsp;&nbsp;</span>
+                                                <input id="stu_prf_sex" name="stu_prf_sex" type="radio" value="2"
+                                                    checked class="form-controlX required" style="float:left;"
+                                                    tabindex="37">
+                                                <span style="float:left;">&nbsp;Female&nbsp;&nbsp;</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Place of Birth</label>
+                                            <input id="stu_prf_plc_of_birth" name="stu_prf_plc_of_birth" type="text"
+                                                class="form-control " tabindex="38">
+                                        </div>
+                                    </div>
 
-                    </div>
-                  </div>
-                
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Blood Group</label>
+                                            <select id="stu_prf_bldgrp_fk" name="stu_prf_bldgrp_fk"
+                                                class="form-control " tabindex="39">
+                                                <option value="">-- SELECT --</option>
+                                                <option value="1">A1 Positive</option>
+                                                <option value="2">A Positive</option>
+                                                <option value="3">B positive</option>
+                                                <option value="5">O Negative</option>
+                                                <option value="4">O Positive</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Religion</label>
+                                            <select id="stu_prf_religion_fk" name="stu_prf_religion_fk"
+                                                class="form-control " tabindex="40">
+                                                <option value="">-- SELECT --</option>
+                                                <option value="1">Hinduism (Hindu)</option>
+                                                <option value="2">Christianity (Christian)</option>
+                                                <option value="3">Islam (Muslim)</option>
+                                                <option value="4">Jainism</option>
+                                                <option value="5">Buddhism</option>
+                                                <option value="6">Sikhism</option>
+                                                <option value="7">Others</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6" style="display:none;">
+                                        <div class="form-group">
+                                            <label>Class/Caste</label>
+                                            <select id="stu_prf_caste_fk" name="stu_prf_caste_fk" class="form-control "
+                                                tabindex="41">
+                                                <option value="">-- SELECT --</option>
+                                                <option value="1">Nadar</option>
+                                                <option value="2">Mudhaliyar</option>
+                                                <option value="3">Vanniyar</option>
+                                                <option value="4">Vishwakarma</option>
+                                                <option value="5">Gounder</option>
+                                                <option value="6">Kongu Vellalar</option>
+                                                <option value="7">Chettier</option>
+                                                <option value="8">pattani</option>
+                                                <option value="9">CSC</option>
+                                                <option value="10">CSI</option>
+                                                <option value="11">BC</option>
+                                                <option value="12">General </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Community</label>
+                                            <select id="stu_prf_community_fk" name="stu_prf_community_fk"
+                                                class="form-control " tabindex="42">
+                                                <option value="">-- SELECT --</option>
+                                                <option value="1">Backward Community</option>
+                                                <option value="2">Scheduled Caste</option>
+                                                <option value="3">Scheduled Tribe</option>
+                                                <option value="4">Forward Caste</option>
+                                                <option value="5">Most Backward Caste</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Student Email ID *</label>
+                                            <input id="stu_prf_stu_email" name="stu_prf_stu_email" type="text"
+                                                class="form-control required email" tabindex="43">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Student Aadhar Number</label>
+                                            <input id="stu_prf_stu_aadhar" name="stu_prf_stu_aadhar" type="text"
+                                                class="form-control " tabindex="43">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>EMIS Number </label>
+                                            <input id="stu_prf_stu_emis" name="stu_prf_stu_emis" type="text"
+                                                class="form-control " tabindex="43">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Student Bank Details </label>
+                                            <input id="stu_prf_stu_bank" name="stu_prf_stu_bank" type="text"
+                                                class="form-control " tabindex="43">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card">
+                            <div class="card-body">
+                                <h2>Other Information</h2>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Physically challenged *</label>
+                                            <div style="height: 34px;">
+                                                <input id="stu_prf_parents_handicap" name="stu_prf_parents_handicap"
+                                                    type="radio" value="1" class="form-controlX required"
+                                                    style="float:left;" tabindex="45">
+                                                <span style="float:left;">&nbsp;Yes &nbsp;&nbsp;</span>
+                                                <input id="stu_prf_parents_handicap" name="stu_prf_parents_handicap"
+                                                    type="radio" value="2" checked class="form-controlX required"
+                                                    style="float:left;" tabindex="46">
+                                                <span style="float:left;">&nbsp;No &nbsp;&nbsp;</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Visual Defect</label>
+                                            <div style="height: 34px;">
+                                                <input id="stu_prf_visualhandy" name="stu_prf_visualhandy" type="radio"
+                                                    value="1" class="form-controlX required" style="float:left;"
+                                                    tabindex="47">
+                                                <span style="float:left;">&nbsp;Yes &nbsp;&nbsp;</span>
+                                                <input id="stu_prf_visualhandy" name="stu_prf_visualhandy" type="radio"
+                                                    value="2" checked class="form-controlX required" style="float:left;"
+                                                    tabindex="48">
+                                                <span style="float:left;">&nbsp;No &nbsp;&nbsp;</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Any Medical Issues </label>
+                                            <input id="stu_prf_medical" name="stu_prf_medical" type="text"
+                                                class="form-control " tabindex="49">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Co-Curriculum Activity</label>
+                                            <input id="stu_prf_co_curr" name="stu_prf_co_curr" type="text"
+                                                class="form-control " tabindex="49">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Language known</label>
+                                            <select id="stu_prf_mother_tongue_fk" name="stu_prf_mother_tongue_fk"
+                                                class="form-control " tabindex="50">
+                                                <option value="">-- SELECT --</option>
+                                                <option value="1">English</option>
+                                                <option value="2">Tamil</option>
+                                                <option value="3">Telugu</option>
+                                                <option value="4">Hindi</option>
+                                                <option value="5">Malayalam</option>
+                                                <option value="6">Kannadam</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Citizen</label>
+                                            <select id="stu_prf_citizen_fk" name="stu_prf_citizen_fk"
+                                                class="form-control " tabindex="51">
+                                                <option value="">-- SELECT --</option>
+                                                <option value="1">India</option>
+                                                <option value="2">Foreign</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Remarks</label>
+                                            <input id="stu_prf_remarks" name="stu_prf_remarks" type="text"
+                                                class="form-control " tabindex="52">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Student Image</label>
+                                            <input id="stu_adm_stu_image" name="stu_adm_stu_image" type="file"
+                                                class="form-control " tabindex="53">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Bus Facility Requirement *</label>
+                                            <div style="height: 34px;">
+                                                <input id="stu_prf_bus" name="stu_prf_bus" type="radio" value="1"
+                                                    class="form-controlX required" style="float:left;" tabindex="45">
+                                                <span style="float:left;">&nbsp;Yes &nbsp;&nbsp;</span>
+                                                <input id="stu_prf_bus" name="stu_prf_bus" type="radio" value="2"
+                                                    checked class="form-controlX required" style="float:left;"
+                                                    tabindex="46">
+                                                <span style="float:left;">&nbsp;No &nbsp;&nbsp;</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card">
+                            <div class="card-body">
+                                <h2>Permanent Address</h2>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Address *</label>
+                                            <input id="con_per_add" name="con_per_add" type="text"
+                                                class="form-control required" tabindex="1">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>State *</label>
+                                            <input id="con_per_state" name="con_per_state" type="text"
+                                                class="form-control required" tabindex="2">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Country </label>
+                                            <input id="con_per_cntry" name="con_per_cntry" type="text"
+                                                class="form-control " tabindex="3">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Pincode </label>
+                                            <input id="con_per_pincode" name="con_per_pincode" type="text"
+                                                class="form-control " tabindex="4">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Phone Number *</label>
+                                            <input id="con_per_phone" name="con_per_phone" type="text"
+                                                class="form-control required" tabindex="5">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Nearest Railway Station </label>
+                                            <input id="con_rail_stn" name="con_rail_stn" type="text"
+                                                class="form-control " tabindex="6">
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-lg-12">
+                                        <input type="checkbox" name="present" onclick="permanent(this.form)"
+                                            tabindex="7">
+                                        If the check box selected contact address is same as permanent address
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card">
+                            <div class="card-body">
+                                <h2>Contact Address</h2>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Address *</label>
+                                            <input id="con_cont_add" name="con_cont_add" type="text"
+                                                class="form-control required" tabindex="8">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>State *</label>
+                                            <input id="con_cont_state" name="con_cont_state" type="text"
+                                                class="form-control required" tabindex="9">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Country </label>
+                                            <input id="con_cont_cntry" name="con_cont_cntry" type="text"
+                                                class="form-control " tabindex="10">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Pincode </label>
+                                            <input id="con_cont_pincode" name="con_cont_pincode" type="text"
+                                                class="form-control " tabindex="11">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Phone Number *</label>
+                                            <input id="con_cont_phone" name="con_cont_phone" type="text"
+                                                class="form-control required" tabindex="12">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <!--<div class="card" formArrayName="certificateInfo" *ngFor="let certinfo of validationform.get('certificateInfo').controls; let i=index;">-->
+
+
+
+                        <div class="card">
+                            <div class="card-body">
+                                <h2>Certificate Information</h2>
+
+
+
+                                <div class="card-body" formArrayName="certificateColumns">
+                                    <div class="row col-12 m-0 p-0">
+                                        <div
+                                            *ngFor="let contact of duplicateCertifcateColumns.controls; let i = index;">
+                                            <div [formGroupName]="i" class="row">
+
+
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Certificate Name *</label>
+                                                        <select formControlName="certificateName" id="cert_code_fk"
+                                                            name="certificateName" class="form-control required"
+                                                            tabindex="1">
+                                                            <option value="">-- Select --</option>
+                                                            <option value="1">TRANSFER CERTIFICATE ( TC )</option>
+                                                            <option value="2">BIRTH CERTIFICATE</option>
+                                                            <option value="3">COMMUNITY CERTIFICATE</option>
+                                                            <option value="4">MARKSHEET</option>
+                                                            <option value="5">ADHAR CARD</option>
+                                                            <option value="6">RATION CARD</option>
+                                                            <option value="7">PAN CARD</option>
+                                                            <option value="8">PHOTOs</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Date *</label>
+                                                        <input formControlName="certificateDate" id="crt_cert_date"
+                                                            name="certificateDate" type="date"
+                                                            class="form-control required" tabindex="2">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Certificate No </label>
+                                                        <input formControlName="certificateNo" id="crt_cert_no"
+                                                            name="certificateNo" type="text" class="form-control "
+                                                            tabindex="3">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Attachment *</label>
+                                                        <input formControlName="certificateAttach" id="crt_attach"
+                                                            name="certificateAttach" type="file"
+                                                            class="form-control required" tabindex="4">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-12 text-right">
+                                                    <button type="button" (click)="addCertificateColumn()"
+                                                        class="btn btn-info"><i class="fe fe-plus mr-1"></i>Add
+                                                        Certificate Column</button>
+                                                    <button *ngIf="i!=0" class="btn btn-info" type="button"
+                                                        (click)="removeCertificateColumn(i)"> <i
+                                                            class="fe fe-trash mr-1"></i>Remove </button>
+                                                </div>
+
+                                            </div>
+                                            <hr>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+
+                        <!-- <div class="card" >
+               
+                <div class="card-body">
+                  <h2>Certificate Information</h2>
+                  <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label >Student Last Name</label>
-                        <input  type="text" class="form-control" placeholder="Student Last  Name" formControlName="lastName"
-                                  [ngClass]="{'is-invalid': submit && form.lastName.errors}">
-                              <div *ngIf="submit && form.lastName.errors" class="invalid-feedback">
-                                  <span *ngIf="form.lastName.errors.required">Please Enter Last Name.</span>
-                              </div>
+                        <label>Certificate Name *</label>
+                        <select formControlName = "certificateName" id="cert_code_fk" name="certificateName" class="form-control required" tabindex="1">
+                          <option value="">-- Select --</option>
+                          <option value="1">TRANSFER CERTIFICATE ( TC )</option>
+                          <option value="2">BIRTH CERTIFICATE</option>
+                          <option value="3">COMMUNITY CERTIFICATE</option>
+                          <option value="4">MARKSHEET</option>
+                          <option value="5">ADHAR CARD</option>
+                          <option value="6">RATION CARD</option>
+                          <option value="7">PAN CARD</option>
+                          <option value="8">PHOTOs</option>
+                        </select>
                       </div>
                     </div>
-
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Entry Mode *</label>
-
-                      <div style="height: 34px;">
-                        <input id="stu_adm_mode" name="stu_adm_mode" type="radio" value="Regular"
-                          class="form-controlX required" style="float:left;" tabindex="7" >
-                        <span style="float:left;">&nbsp;Regular &nbsp;&nbsp;</span>
-                        <input id="stu_adm_mode" name="stu_adm_mode" type="radio" value="Transfer" 
-                          class="form-controlX required" style="float:left;" tabindex="8" >
-                        <span style="float:left;">&nbsp;Transfer&nbsp;&nbsp;</span>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label>Date *</label>
+                        <input formControlName = "certificateDate"  id="crt_cert_date" name="certificateDate" type="date" class="form-control required"
+                          tabindex="2">
                       </div>
                     </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Batch/Academic year *</label>
-                      <select id="stu_prf_current_Year" name="Batchyear" class="form-control required"
-                        tabindex="9" formControlName="Batchyear">
-                        <option value="2020">2020</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Board Name *</label>
-                      <select id="stu_prf_degree_code" name="boardname" class="form-control required"
-                        tabindex="10" formControlName="boardname">
-                        <option value="">--SELECT--</option>
-                        <option value="MATRIC">MATRIC</option>
-                        <option value="CBSE">CBSE</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Medium Name *</label>
-                      <select id="stu_prf_branch_Code" name="stu_prf_branch_Code" class="form-control required"
-                        tabindex="11">
-                        <option value="">--SELECT--</option>
-                        <option value="1">Tamil</option>
-                        <option value="2">English</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-
-                    <div class="form-group">
-                      <label>Standard *</label>
-                      <select id="stu_prf_current_Semester" name="stu_prf_current_Semester"
-                        class="form-control required" tabindex="12" onchange="check_std(this.value)">
-                        <option value="">--SELECT--</option>
-                        <option value="1">Pre.K.G</option>
-                        <option value="2">L.K.G</option>
-                        <option value="3">U.K.G</option>
-                        <option value="4">I</option>
-                        <option value="5">II</option>
-                        <option value="6">III</option>
-                        <option value="7">IV</option>
-                        <option value="8">V</option>
-                        <option value="9">VI</option>
-                        <option value="10">VII</option>
-                        <option value="11">VIII</option>
-                        <option value="12">IX</option>
-                        <option value="13">X</option>
-                        <option value="14">XI</option>
-                        <option value="15">XII</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Group Name *</label>
-                      <select id="stu_prf_current_batch" name="stu_prf_current_batch" class="form-control required"
-                        disabled tabindex="13">
-                        <option value="">--SELECT--</option>
-                        <option value="1" selected>General</option>
-                        <option value="2">Maths</option>
-                        <option value="3">Computer</option>
-                        <option value="4">Sceince</option>
-                        <option value="5">Account</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Second Language *</label>
-                      <select id="stu_prf_sec_lang" name="stu_prf_sec_lang" class="form-control required" tabindex="14">
-                        <option value="">--SELECT--</option>
-                        <option value="1">Tamil</option>
-                        <option value="2">English</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-lg-6" style="display:none;">
-                    <div class="form-group">
-                      <label>Lab </label>
-                      <select id="stu_prf_lab_batch" name="stu_prf_lab_batch" class="form-control " tabindex="15">
-                        <option value="">--SELECT--</option>
-                        <option value="1">Computer Lab</option>
-                        <option value="2">Physics Lab</option>
-                        <option value="3">Chemestry Lab</option>
-                        <option value="4">Biology Lab</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-lg-6" style="display:none;">
-                    <div class="form-group">
-                      <label>Seat Type *</label>
-                      <select id="stu_prf_seat_type_fk" name="stu_prf_seat_type_fk" class="form-control required"
-                        tabindex="16">
-                        <option value="">--SELECT--</option>
-                        <option value="1" selected>Management</option>
-                        <option value="2">Government</option>
-                        <option value="3">Private</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-lg-6" style="display:none;">
-                    <div class="form-group">
-                      <label>Quota </label>
-                      <select id="stu_prf_quota" name="stu_prf_quota" class="form-control " tabindex="17">
-                        <option value="">--SELECT--</option>
-                        <option value="1">Reservation</option>
-                        <option value="2">Military</option>
-                        <option value="3" selected>General</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Reading ability *</label>
-
-                      <div style="height: 34px;">
-                        <input id="stu_read_mode" name="stu_read_mode" type="radio" value="1"
-                          class="form-controlX required" style="float:left;" tabindex="7">
-                        <span style="float:left;">&nbsp;Yes &nbsp;&nbsp;</span>
-                        <input id="stu_read_mode" name="stu_read_mode" type="radio" value="2" checked
-                          class="form-controlX required" style="float:left;" tabindex="8">
-                        <span style="float:left;">&nbsp;No&nbsp;&nbsp;</span>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label>Certificate No </label>
+                        <input formControlName = "certificateNo" id="crt_cert_no" name="certificateNo" type="text" class="form-control " tabindex="3">
                       </div>
                     </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Mother Tongue *</label>
-                      <select id="stu_mother_medium_ins_fk" name="stu_mother_medium_ins_fk"
-                        class="form-control required" tabindex="18">
-                        <option value="">--SELECT--</option>
-                        <option value="1">English</option>
-                        <option value="2">Tamil</option>
-                        <option value="3">Telugu</option>
-                        <option value="4">Hindi</option>
-                        <option value="5">Malayalam</option>
-                        <option value="6">Kannadam</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group" id="data_1">
-                      <label class="font-normal">Date of Birth *</label>
-                      <div class="input-group date">
-                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                        <input id="stu_prf_dob" name="stu_prf_dob" type="text" value="" class="form-control required"
-                          tabindex="19" autocomplete="off" onchange="calculate_age(this.value)">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Age *</label>
-                      <input id="stu_prf_age" name="stu_prf_age" type="text" class="form-control required" disabled
-                        tabindex="19">
-                    </div>
-
-                  </div>
-                  <div class="col-lg-6" style="display:none;">
-                    <div class="form-group">
-                      <label>Fee Discount Category *</label>
-                      <select id="stu_adm_fee" name="stu_adm_fee" class="form-control required" tabindex="20">
-                        <option value="">-- SELECT --</option>
-                        <option value="1" selected>Application</option>
-                        <option value="2">Admission</option>
-                        <option value="3">Discount</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <br>
-
-            <div class="card">
-              <div class="card-body">
-                <h2>Previous School Information</h2>
-                <div class="row">
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Previous School Board Name *</label>
-                      <select id="stu_prev_degree_code" name="stu_prev_degree_code" class="form-control required"
-                        tabindex="10">
-                        <option value="">--SELECT--</option>
-                        <option value="1">MATRIC</option>
-                        <option value="2">CBSE</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Medium Of Previous Study *</label>
-                      <select id="stu_prev_medium_ins_fk" name="stu_prev_medium_ins_fk" class="form-control required"
-                        tabindex="18">
-                        <option value="">--SELECT--</option>
-                        <option value="1">Tamil</option>
-                        <option value="2">English</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Previous School Name </label>
-                      <input id="stu_adm_prev_colname" name="stu_adm_prev_colname" class="form-control " tabindex="18">
-
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Previous Standard </label>
-                      <select id="stu_adm_prev_class" name="stu_adm_prev_class" class="form-control " tabindex="18">
-                        <option value="">--SELECT--</option>
-                        <option value="1">Pre.K.G</option>
-                        <option value="2">L.K.G</option>
-                        <option value="3">U.K.G</option>
-                        <option value="4">I</option>
-                        <option value="5">II</option>
-                        <option value="6">III</option>
-                        <option value="7">IV</option>
-                        <option value="8">V</option>
-                        <option value="9">VI</option>
-                        <option value="10">VII</option>
-                        <option value="11">VIII</option>
-                        <option value="12">IX</option>
-                        <option value="13">X</option>
-                        <option value="14">XI</option>
-                        <option value="15">XII</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <br>
-            <div class="card">
-              <div class="card-body">
-                <h2>Parent Information</h2>
-                <div class="row">
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Father/Guardian First Name *</label>
-                      <input id="stu_prf_fathers_name" name="stu_prf_fathers_name" type="text"
-                        class="form-control required" tabindex="21">
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Father/Guardian Last Name</label>
-                      <input id="stu_prf_guardian_name" name="stu_prf_guardian_name" type="text" class="form-control "
-                        tabindex="22">
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Father/Guardian Aadhar Number</label>
-                      <input id="stu_prf_guardian_aadhar" name="stu_prf_guardian_aadhar" type="text"
-                        class="form-control " tabindex="22">
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Father Qualification</label>
-                      <input id="stu_prf_fathers_qual" name="stu_prf_fathers_qual" type="text" class="form-control "
-                        tabindex="23">
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Father Occupation</label>
-                      <input id="stu_prf_fathers_occup" name="stu_prf_fathers_occup" type="text" class="form-control "
-                        tabindex="24">
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Father Annual Income *</label>
-                      <input id="stu_prf_fathers_anninc" name="stu_prf_fathers_anninc" type="text"
-                        class="form-control required" tabindex="25">
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Mother Name *</label>
-                      <input id="stu_prf_mothers_name" name="stu_prf_mothers_name" type="text"
-                        class="form-control required" tabindex="26">
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Mother Occupation</label>
-                      <input id="stu_prf_mothers_occup" name="stu_prf_mothers_occup" type="text" class="form-control "
-                        tabindex="27">
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Mother Annual Income</label>
-                      <input id="stu_prf_mothers_anninc" name="stu_prf_mothers_anninc" type="text" class="form-control "
-                        tabindex="28">
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Parent Email ID </label>
-                      <input id="stu_prf_parent_email" name="stu_prf_parent_email" type="text"
-                        class="form-control email" tabindex="29">
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Parent Mobile No</label>
-                      <input id="stu_prf_mobile_no" name="stu_prf_mobile_no" type="text" class="form-control "
-                        tabindex="30">
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Place of Living *</label>
-                      <input id="stu_prf_plc_of_livng" name="stu_prf_plc_of_livng" type="text"
-                        class="form-control required" tabindex="31">
-                    </div>
-                  </div>
-                  <div class="col-lg-6" style="display:none;">
-                    <div class="form-group">
-                      <label>Member of Service Organization</label>
-                      <input id="stu_prf_mem_of_serv_org" name="stu_prf_mem_of_serv_org" type="text"
-                        class="form-control " tabindex="32">
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Parents Old Student</label>
-                      <div style="height: 34px;">
-                        <input id="stu_prf_parents_old_stu" name="stu_prf_parents_old_stu" type="radio" value="1"
-                          class="form-controlX required" style="float:left;" tabindex="33">
-                        <span style="float:left;">&nbsp;Yes &nbsp;&nbsp;</span>
-                        <input id="stu_prf_parents_old_stu" name="stu_prf_parents_old_stu" type="radio" value="0"
-                          checked class="form-controlX required" style="float:left;" tabindex="34">
-                        <span style="float:left;">&nbsp;No&nbsp;&nbsp;</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Family Size *</label>
-                      <input id="stu_prf_family_size" name="stu_prf_family_size" type="text"
-                        class="form-control required" tabindex="35">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <br>
-            <div class="card">
-              <div class="card-body">
-                <h2>Student Information</h2>
-                <div class="row">
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Gender *</label>
-                      <div style="height: 34px;">
-                        <input id="stu_prf_sex" name="stu_prf_sex" type="radio" value="1" class="form-controlX required"
-                          style="float:left;" tabindex="36">
-                        <span style="float:left;">&nbsp;Male &nbsp;&nbsp;</span>
-                        <input id="stu_prf_sex" name="stu_prf_sex" type="radio" value="2" checked
-                          class="form-controlX required" style="float:left;" tabindex="37">
-                        <span style="float:left;">&nbsp;Female&nbsp;&nbsp;</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Place of Birth</label>
-                      <input id="stu_prf_plc_of_birth" name="stu_prf_plc_of_birth" type="text" class="form-control "
-                        tabindex="38">
-                    </div>
-                  </div>
-
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Blood Group</label>
-                      <select id="stu_prf_bldgrp_fk" name="stu_prf_bldgrp_fk" class="form-control " tabindex="39">
-                        <option value="">-- SELECT --</option>
-                        <option value="1">A1 Positive</option>
-                        <option value="2">A Positive</option>
-                        <option value="3">B positive</option>
-                        <option value="5">O Negative</option>
-                        <option value="4">O Positive</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Religion</label>
-                      <select id="stu_prf_religion_fk" name="stu_prf_religion_fk" class="form-control " tabindex="40">
-                        <option value="">-- SELECT --</option>
-                        <option value="1">Hinduism (Hindu)</option>
-                        <option value="2">Christianity (Christian)</option>
-                        <option value="3">Islam (Muslim)</option>
-                        <option value="4">Jainism</option>
-                        <option value="5">Buddhism</option>
-                        <option value="6">Sikhism</option>
-                        <option value="7">Others</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-lg-6" style="display:none;">
-                    <div class="form-group">
-                      <label>Class/Caste</label>
-                      <select id="stu_prf_caste_fk" name="stu_prf_caste_fk" class="form-control " tabindex="41">
-                        <option value="">-- SELECT --</option>
-                        <option value="1">Nadar</option>
-                        <option value="2">Mudhaliyar</option>
-                        <option value="3">Vanniyar</option>
-                        <option value="4">Vishwakarma</option>
-                        <option value="5">Gounder</option>
-                        <option value="6">Kongu Vellalar</option>
-                        <option value="7">Chettier</option>
-                        <option value="8">pattani</option>
-                        <option value="9">CSC</option>
-                        <option value="10">CSI</option>
-                        <option value="11">BC</option>
-                        <option value="12">General </option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Community</label>
-                      <select id="stu_prf_community_fk" name="stu_prf_community_fk" class="form-control " tabindex="42">
-                        <option value="">-- SELECT --</option>
-                        <option value="1">Backward Community</option>
-                        <option value="2">Scheduled Caste</option>
-                        <option value="3">Scheduled Tribe</option>
-                        <option value="4">Forward Caste</option>
-                        <option value="5">Most Backward Caste</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Student Email ID *</label>
-                      <input id="stu_prf_stu_email" name="stu_prf_stu_email" type="text"
-                        class="form-control required email" tabindex="43">
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Student Aadhar Number</label>
-                      <input id="stu_prf_stu_aadhar" name="stu_prf_stu_aadhar" type="text" class="form-control "
-                        tabindex="43">
-                    </div>
-                  </div>
-
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>EMIS Number </label>
-                      <input id="stu_prf_stu_emis" name="stu_prf_stu_emis" type="text" class="form-control "
-                        tabindex="43">
-                    </div>
-                  </div>
-
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Student Bank Details </label>
-                      <input id="stu_prf_stu_bank" name="stu_prf_stu_bank" type="text" class="form-control "
-                        tabindex="43">
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-            <br>
-            <div class="card">
-              <div class="card-body">
-                <h2>Other Information</h2>
-                <div class="row">
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Physically challenged *</label>
-                      <div style="height: 34px;">
-                        <input id="stu_prf_parents_handicap" name="stu_prf_parents_handicap" type="radio" value="1"
-                          class="form-controlX required" style="float:left;" tabindex="45">
-                        <span style="float:left;">&nbsp;Yes &nbsp;&nbsp;</span>
-                        <input id="stu_prf_parents_handicap" name="stu_prf_parents_handicap" type="radio" value="2"
-                          checked class="form-controlX required" style="float:left;" tabindex="46">
-                        <span style="float:left;">&nbsp;No &nbsp;&nbsp;</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Visual Defect</label>
-                      <div style="height: 34px;">
-                        <input id="stu_prf_visualhandy" name="stu_prf_visualhandy" type="radio" value="1"
-                          class="form-controlX required" style="float:left;" tabindex="47">
-                        <span style="float:left;">&nbsp;Yes &nbsp;&nbsp;</span>
-                        <input id="stu_prf_visualhandy" name="stu_prf_visualhandy" type="radio" value="2" checked
-                          class="form-controlX required" style="float:left;" tabindex="48">
-                        <span style="float:left;">&nbsp;No &nbsp;&nbsp;</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Any Medical Issues </label>
-                      <input id="stu_prf_medical" name="stu_prf_medical" type="text" class="form-control "
-                        tabindex="49">
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Co-Curriculum Activity</label>
-                      <input id="stu_prf_co_curr" name="stu_prf_co_curr" type="text" class="form-control "
-                        tabindex="49">
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Language known</label>
-                      <select id="stu_prf_mother_tongue_fk" name="stu_prf_mother_tongue_fk" class="form-control "
-                        tabindex="50">
-                        <option value="">-- SELECT --</option>
-                        <option value="1">English</option>
-                        <option value="2">Tamil</option>
-                        <option value="3">Telugu</option>
-                        <option value="4">Hindi</option>
-                        <option value="5">Malayalam</option>
-                        <option value="6">Kannadam</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Citizen</label>
-                      <select id="stu_prf_citizen_fk" name="stu_prf_citizen_fk" class="form-control " tabindex="51">
-                        <option value="">-- SELECT --</option>
-                        <option value="1">India</option>
-                        <option value="2">Foreign</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Remarks</label>
-                      <input id="stu_prf_remarks" name="stu_prf_remarks" type="text" class="form-control "
-                        tabindex="52">
-                    </div>
-                  </div>
-
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Student Image</label>
-                      <input id="stu_adm_stu_image" name="stu_adm_stu_image" type="file" class="form-control "
-                        tabindex="53">
-                    </div>
-                  </div>
-
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Bus Facility Requirement *</label>
-                      <div style="height: 34px;">
-                        <input id="stu_prf_bus" name="stu_prf_bus" type="radio" value="1" class="form-controlX required"
-                          style="float:left;" tabindex="45">
-                        <span style="float:left;">&nbsp;Yes &nbsp;&nbsp;</span>
-                        <input id="stu_prf_bus" name="stu_prf_bus" type="radio" value="2" checked
-                          class="form-controlX required" style="float:left;" tabindex="46">
-                        <span style="float:left;">&nbsp;No &nbsp;&nbsp;</span>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label>Attachment *</label>
+                        <input formControlName = "certificateAttach" id="crt_attach" name="certificateAttach" type="file" class="form-control required" tabindex="4">
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <br>
-            <div class="card">
-              <div class="card-body">
-                <h2>Permanent Address</h2>
-                <div class="row">
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Address *</label>
-                      <input id="con_per_add" name="con_per_add" type="text" class="form-control required" tabindex="1">
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>State *</label>
-                      <input id="con_per_state" name="con_per_state" type="text" class="form-control required"
-                        tabindex="2">
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Country </label>
-                      <input id="con_per_cntry" name="con_per_cntry" type="text" class="form-control " tabindex="3">
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Pincode </label>
-                      <input id="con_per_pincode" name="con_per_pincode" type="text" class="form-control " tabindex="4">
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Phone Number *</label>
-                      <input id="con_per_phone" name="con_per_phone" type="text" class="form-control required"
-                        tabindex="5">
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Nearest Railway Station </label>
-                      <input id="con_rail_stn" name="con_rail_stn" type="text" class="form-control " tabindex="6">
-                    </div>
-                  </div>
-                  <br />
-                  <div class="col-lg-12">
-                    <input type="checkbox" name="present" onclick="permanent(this.form)" tabindex="7">
-                    If the check box selected contact address is same as permanent address
-                  </div>
-                </div>
-              </div>
-            </div>
-            <br>
-            <div class="card">
-              <div class="card-body">
-                <h2>Contact Address</h2>
-                <div class="row">
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Address *</label>
-                      <input id="con_cont_add" name="con_cont_add" type="text" class="form-control required"
-                        tabindex="8">
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>State *</label>
-                      <input id="con_cont_state" name="con_cont_state" type="text" class="form-control required"
-                        tabindex="9">
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Country </label>
-                      <input id="con_cont_cntry" name="con_cont_cntry" type="text" class="form-control " tabindex="10">
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Pincode </label>
-                      <input id="con_cont_pincode" name="con_cont_pincode" type="text" class="form-control "
-                        tabindex="11">
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Phone Number *</label>
-                      <input id="con_cont_phone" name="con_cont_phone" type="text" class="form-control required"
-                        tabindex="12">
-                    </div>
-                  </div>
+              <button (click)="cinfo()" type="submit" class="btn btn-info" tabindex="54">Add  </button>
+              <br>
+              <br> -->
+
+                        <button type="submit" class="btn btn-info" tabindex="54"> Save and Continue </button>
+
+                    </form>
+
+
 
                 </div>
-              </div>
+
+
+
             </div>
-            <br>
-    <!--<div class="card" formArrayName="certificateInfo" *ngFor="let certinfo of validationform.get('certificateInfo').controls; let i=index;">-->
-      <div class="card" >
-             <!--  <div class="card-body" [formGroupName]="i">-->
-              <div class="card-body">
-                <h2>Certificate Information</h2>
-                <div class="row">
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Certificate Name *</label>
-                      <select formControlName = "certificateName" id="cert_code_fk" name="certificateName" class="form-control required" tabindex="1">
-                        <option value="">-- Select --</option>
-                        <option value="1">TRANSFER CERTIFICATE ( TC )</option>
-                        <option value="2">BIRTH CERTIFICATE</option>
-                        <option value="3">COMMUNITY CERTIFICATE</option>
-                        <option value="4">MARKSHEET</option>
-                        <option value="5">ADHAR CARD</option>
-                        <option value="6">RATION CARD</option>
-                        <option value="7">PAN CARD</option>
-                        <option value="8">PHOTOs</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Date *</label>
-                      <input formControlName = "certificateDate"  id="crt_cert_date" name="certificateDate" type="date" class="form-control required"
-                        tabindex="2">
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Certificate No </label>
-                      <input formControlName = "certificateNo" id="crt_cert_no" name="certificateNo" type="text" class="form-control " tabindex="3">
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <label>Attachment *</label>
-                      <input formControlName = "certificateAttach" id="crt_attach" name="certificateAttach" type="file" class="form-control required" tabindex="4">
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-            <button (click)="cinfo()" type="submit" class="btn btn-info" tabindex="54">Add  </button>
-            <br>
-            <br>
-
-            <button type="submit" class="btn btn-info" tabindex="54"> Save and Continue </button>
-               
-          </form>
-
-
 
         </div>
-
-
-        
-      </div>
-
     </div>
-  </div>

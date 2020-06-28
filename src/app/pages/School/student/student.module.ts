@@ -7,6 +7,7 @@ import { StuentlistComponent } from './stuentlist/stuentlist.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { StudentviewComponent } from './studentview/studentview.component';
 import { StudenteditComponent } from './studentedit/studentedit.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [StudentComponent, StuentlistComponent, StudentviewComponent, StudenteditComponent],
@@ -14,7 +15,8 @@ import { StudenteditComponent } from './studentedit/studentedit.component';
     CommonModule,
     StudentRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ]
 })
 export class StudentModule { }
