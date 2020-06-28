@@ -22,11 +22,12 @@ export class StudentComponent implements OnInit {
   typesubmit: boolean;
   rangesubmit: boolean;
   horizontalsubmit: boolean;
+
   dropdownArray = [
     [ "Vidyalakshmi school", "Vidyalakshmi school2", "Vidyalakshmi school3", "schoolVidyalakshmi school4", "Vidyalakshmi school5"],
     ["5dfdfldsfl24d55"],
     ["27-06-2020"],
-    [ "2020", "2021", "2022", "2023", "2024"],
+    [ "2020", "2021", "2019", "2023", "2024"],
     [ "metric ", "cbse", "state", "icse", "others"],
     [ "English", "Tamil", "Sanskrit", "Hindi", "Telugu"],
     [ "X", "XI", "XII", "XIII", "XIV"],
