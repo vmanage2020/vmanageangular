@@ -11,7 +11,7 @@ export class StudentviewComponent implements OnInit {
 
   
  mygrou=[1,2,3,4,5];
-  SViewitems=[];
+  SViewitems:any=[];
   resourceID:any;
   url:any;
   objectKeys = Object.keys;
@@ -33,6 +33,9 @@ export class StudentviewComponent implements OnInit {
 
        if(dt['user']){
          console.log(dt['user']);
+
+         this.SViewitems=dt['user'];
+         console.log(this.SViewitems.stu_prf_stud_name);
        }
     })
    }
