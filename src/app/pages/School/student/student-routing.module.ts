@@ -16,11 +16,11 @@ const routes: Routes = [
     component: StuentlistComponent
   },
   {
-   path: 'studentview',
+   path: 'studentview/:id',
    component: StudentviewComponent
  },
  {
-  path: 'studentedit',
+  path: 'studentedit/:id',
   component: StudenteditComponent
 }
 ];
