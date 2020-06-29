@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class StudentviewComponent implements OnInit {
 
   
- mygrou=[1,2,3,4,5];
+  mygrou=[1,2,3,4,5];
   SViewitems:any=[];
   newarray:any=[]
   resourceID:any;
