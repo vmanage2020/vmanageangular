@@ -60,6 +60,31 @@ ctrllabel:any=[
 
 ]
 
+
+dropdownArray = [
+  [ "Vidyalakshmi school", "Vidyalakshmi school2", "Vidyalakshmi school3", "schoolVidyalakshmi school4", "Vidyalakshmi school5"],
+  ["5dfdfldsfl24d55"],
+  ["27-06-2020"],
+  [ "2020", "2021", "2019", "2023", "2024"],
+  [ "metric ", "cbse", "state", "icse", "others"],
+  [ "English", "Tamil", "Sanskrit", "Hindi", "Telugu"],
+  [ "X", "XI", "XII", "XIII", "XIV"],
+  [ "General", "General", "General", "General", "General"],
+  ["English", "Tamil", "Sanskrit", "Hindi", "Telugu"],
+  [ "English", "Tamil", "Sanskrit", "Hindi", "Telugu"],
+  [ "metric ", "cbse", "state", "icse", "others10"],
+  [ "English", "Tamil", "Sanskrit", "Hindi", "Telugu11"],
+  [ "X", "XI", "XII", "XIII", "XIV12"],
+  [ "A1positive", "A positive", "OPositive", "AB+", "AB-13"],
+  [ "HINDU", "MUSLIM", "CHRISTIAN", "SIKKIM", "OTHERS14"],
+  [ "BC", "MBC", "SC", "ST", "OTHERS15"],
+  [ "English", "Tamil", "Sanskrit", "Hindi", "Telugu16"],
+  [ "INDIAN", "FOREIGNERS",  "OTHERS17"],
+  [ "TRANSFER CERTIFICATE", "BIRTH CERTIFICATE",  "COMMUNITY CERTIFICATE", "MARKSHEET18"],
+ 
+  
+]
+
   constructor(private http:HttpClient,private route: ActivatedRoute) {
     this.resourceID = this.route.snapshot.paramMap.get('id');
 
