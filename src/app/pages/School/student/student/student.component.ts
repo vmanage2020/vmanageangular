@@ -67,7 +67,8 @@ export class StudentComponent implements OnInit {
   ngOnInit() {
 
 
-    
+    //var randomStr = (Math.random().toString(36).substring(2, 8) + Math.random().toString(36).substring(2, 8)).toUpperCase();
+   // console.log('----randomStr----', randomStr)
 
     this.breadCrumbItems = [{ label: 'UBold', path: '/' }, { label: 'Forms', path: '/' }, { label: 'Form Validation', path: '/', active: true }];
 
