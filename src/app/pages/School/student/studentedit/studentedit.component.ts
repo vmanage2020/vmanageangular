@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormArray } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-studentedit',
@@ -54,7 +54,7 @@ export class StudenteditComponent implements OnInit {
    
     
   ]
-  constructor(public formBuilder: FormBuilder, private http:HttpClient,private route: ActivatedRoute) {
+  constructor(public formBuilder: FormBuilder, private http:HttpClient,private route: ActivatedRoute, private router: Router) {
     
     this.resourceID = this.route.snapshot.paramMap.get('id');
     this.url='http://sms.akst.in/public/api/student/'+this.resourceID;
@@ -367,6 +367,7 @@ export class StudenteditComponent implements OnInit {
     let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/student/update/'+this.resourceID;
    this.http.post<any>(url, postData  ).subscribe(data => {
      console.log(data);
+     this.router.navigate(['/school/studentlist']);
    })
 
   }
