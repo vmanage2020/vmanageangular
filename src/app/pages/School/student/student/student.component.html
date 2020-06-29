@@ -285,8 +285,12 @@
                                             <label class="font-normal">Date of Birth *</label>
                                             <div class="input-group date">
                                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                <input id="stu_prf_dob" name="stu_prf_dob" type="text" value=""
-                                                    class="form-control required" tabindex="19" autocomplete="off">
+
+                                                <input ngbDatepicker class="form-control" autoClose="false" placeholder="yyyy-mm-dd"
+                                                #stu_prf_dob="ngbDatepicker" id="stu_prf_dob">
+
+                                               <!--  <input id="stu_prf_dob" name="stu_prf_dob" type="text" value=""
+                                                    class="form-control required" tabindex="19" autocomplete="off"> -->
                                             </div>
 
                                         </div>
