@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormArray } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-student',
@@ -47,7 +47,7 @@ export class StudentComponent implements OnInit {
    
     
   ]
-  constructor(public formBuilder: FormBuilder, private http:HttpClient) {
+  constructor(public formBuilder: FormBuilder, private http:HttpClient,private route: ActivatedRoute, private router: Router) {
     
   }
 
@@ -183,9 +183,9 @@ export class StudentComponent implements OnInit {
   validSubmit() {
     this.submit = true;
    
-    //if (this.validationform.invalid) {
-    //  return;
-   // }
+    if (this.validationform.invalid) {
+      return;
+   }
     // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.validationform.value));
     /*
  console.log( JSON.stringify(this.validationform.value));
@@ -347,6 +347,7 @@ export class StudentComponent implements OnInit {
     let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/student'
    this.http.post<any>(url, postData  ).subscribe(data => {
      console.log(data);
+     this.router.navigate(['/school/studentlist']);
    })
 
   }

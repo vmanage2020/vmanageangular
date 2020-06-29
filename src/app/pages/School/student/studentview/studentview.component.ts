@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class StudentviewComponent implements OnInit {
 
   
- mygrou=[1,2,3,4,5];
+  mygrou=[1,2,3,4,5];
   SViewitems:any=[];
   resourceID:any;
   url:any;
@@ -31,10 +31,10 @@ export class StudentviewComponent implements OnInit {
      //console.log( this.SViewitems);
      const dt = data;
 
-       if(dt['user']){
-         console.log(dt['user']);
+       if(dt['student']){
+         console.log(dt['student']);
 
-         this.SViewitems=dt['user'];
+         this.SViewitems=dt['student'];
          console.log(this.SViewitems.stu_prf_stud_name);
        }
     })
