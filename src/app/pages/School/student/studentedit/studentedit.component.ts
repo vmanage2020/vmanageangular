@@ -64,6 +64,7 @@ export class StudenteditComponent implements OnInit {
        if(dt['student']){
          console.log(dt['student']);
          this.SViewitems=dt['student'];
+         this.SViewitems.stu_read_mode=1;
          console.log(this.SViewitems.stu_prf_stud_name);
        }
     })
@@ -363,7 +364,7 @@ export class StudenteditComponent implements OnInit {
      console.log( postData);
      console.log( JSON.stringify(postData));
      
-    let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/student'
+    let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/student/update/'+this.resourceID;
    this.http.post<any>(url, postData  ).subscribe(data => {
      console.log(data);
    })

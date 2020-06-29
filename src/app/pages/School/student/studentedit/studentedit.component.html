@@ -702,7 +702,7 @@
                                       <div class="form-group">
                                           <label>Blood Group</label>
                                           <select formControlName="stu_prf_bldgrp_fk" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.stu_prf_bldgrp_fk.errors }">
+                                              [(ngModel)]="SViewitems.stu_prf_bldgrp_fk" [ngClass]="{ 'is-invalid': submitted && f.stu_prf_bldgrp_fk.errors }">
                                               <option [value]="stu_prf_bldgrp_fk"
                                                   *ngFor="let stu_prf_bldgrp_fk of dropdownArray[13], index as i">
                                                   {{stu_prf_bldgrp_fk}}
@@ -721,9 +721,8 @@
                                       <div class="form-group">
                                           <label>Religion</label>
                                           <select formControlName="stu_prf_religion_fk" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.stu_prf_religion_fk.errors }">
-                                              <option [value]="stu_prf_religion_fk"
-                                                  *ngFor="let stu_prf_religion_fk of dropdownArray[14], index as i">
+                                              [(ngModel)]="SViewitems.stu_prf_religion_fk" [ngClass]="{ 'is-invalid': submitted && f.stu_prf_religion_fk.errors }">
+                                              <option *ngFor="let stu_prf_religion_fk of dropdownArray[14], index as i" [ngValue]="i+1">
                                                   {{stu_prf_religion_fk}}
                                               </option>
 
@@ -742,9 +741,8 @@
                                       <div class="form-group">
                                           <label>Class/Caste</label>
                                           <select formControlName="stu_prf_caste_fk" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.stu_prf_caste_fk.errors }">
-                                              <option [value]="stu_prf_caste_fk"
-                                                  *ngFor="let stu_prf_caste_fk of dropdownArray[9], index as i">
+                                              [(ngModel)]="SViewitems.stu_prf_caste_fk" [ngClass]="{ 'is-invalid': submitted && f.stu_prf_caste_fk.errors }">
+                                              <option *ngFor="let stu_prf_caste_fk of dropdownArray[9], index as i" [ngValue]="i+1">
                                                   {{stu_prf_caste_fk}}
                                               </option>
 
@@ -763,9 +761,8 @@
                                       <div class="form-group">
                                           <label>Community</label>
                                           <select formControlName="stu_prf_community_fk" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.stu_prf_community_fk.errors }">
-                                              <option [value]="stu_prf_community_fk"
-                                                  *ngFor="let stu_prf_community_fk of dropdownArray[15], index as i">
+                                              [(ngModel)]="SViewitems.stu_prf_community_fk" [ngClass]="{ 'is-invalid': submitted && f.stu_prf_community_fk.errors }">
+                                              <option *ngFor="let stu_prf_community_fk of dropdownArray[15], index as i" [ngValue]="i+1">
                                                   {{stu_prf_community_fk}}
                                               </option>
 

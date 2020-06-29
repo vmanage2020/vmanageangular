@@ -183,9 +183,9 @@ export class StudentComponent implements OnInit {
   validSubmit() {
     this.submit = true;
    
-    if (this.validationform.invalid) {
-      return;
-   }
+    //if (this.validationform.invalid) {
+    //  return;
+   //}
     // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.validationform.value));
     /*
  console.log( JSON.stringify(this.validationform.value));
