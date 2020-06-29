@@ -1,10 +1,9 @@
 <div class="row wrapper border-bottom white-bg page-heading">
   <div class="col-lg-10">
     <h2>Students Edit Form</h2>
-
+    <p>{{appRandomNumber}}</p>
   </div>
   <div class="col-lg-2">
-
   </div>
 </div>
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -14,6 +13,7 @@
           <div class="ibox">
               <div class="ibox-title">
                   <h5> Student Informations </h5>
+                  
               </div>
               <div class="ibox-content ">
                   <form class="needs-validation" (ngSubmit)="validSubmit()" [formGroup]="validationform">
