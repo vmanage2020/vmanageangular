@@ -22,6 +22,7 @@ coverage/
 dist/
 public/
 node_modules/
+node_modules-BK/
 $RECYCLE.BIN/
 
 .DS_Store
