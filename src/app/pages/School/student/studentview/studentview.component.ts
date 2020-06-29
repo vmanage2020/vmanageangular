@@ -80,7 +80,7 @@ ctrllabel:any=[
 
          this.SViewitems=dt['student'];
          
-         console.log(this.SViewitems.stu_prf_dob);
+         console.log(this.SViewitems.student_documents.length);
        }
     })
     //console.log(this.ctrlmainhead[0])
