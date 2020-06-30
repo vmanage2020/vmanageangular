@@ -7,7 +7,7 @@
 
   </div>
 </div>
-<div class="wrapper wrapper-content animated fadeInRight">
+<div id="view" class="wrapper wrapper-content animated fadeInRight">
 
   <div class="row">
     <div class="col-lg-12">
@@ -24,18 +24,53 @@
                 <div class="row" >
                     <div class="col-sm-6" *ngFor="let csh of ctrlsubhead[i];let j = index;">
                        <div class="form-group" >
-                          <label>{{csh}}</label>
-                          <input type="text" value= " {{ SViewitems[ctrllabel[i][j]] }}" class="form-control" disabled />
-                        
-                        </div>
+                          <label>{{csh}} : </label>
+                       
+                         <div id="dataview" *ngIf="checkdownarr[i][j]==j; else loggedOut">
+                          <input type="text" value= " {{ dropdownArray[i][j][SViewitems[ctrllabel[i][j]] ]}}" class="form-control" disabled />
+                          </div>
+                          <ng-template #loggedOut>
+                            <div id="dataview">
+                              <input type="text" value= " {{ SViewitems[ctrllabel[i][j]] }}" class="form-control" disabled /> 
+                            </div>                            
+                          </ng-template>
+                     </div>
                     </div>
                 </div>
             </div>
         </div>
 
 
+        <div class="card" *ngIf="SViewDoc">
+          <div class="card-body">
+              <h2>{{certhead}}</h2>
+              <div class="row" *ngFor="let ceh of SViewDoc; let k = index;">
+                  <div class="col-sm-6" *ngFor="let cesh of cersubhead;let l = index;">
+                     <div class="form-group" >
+                        <label>{{cesh}} : </label>
+                        <div id="dataview" *ngIf="cerdownarr[l]==l; else logged">
+                          <input type="text" value= " {{ cerdroparr[k][SViewDoc[k][cerlabel[k][l]] ]}}" class="form-control" disabled />
+                          </div>
+                          <ng-template #logged>
+                            <div id="dataview">
+                              <input type="text" value= "{{SViewDoc[k][cerlabel[k][l]]}}" class="form-control" disabled />
+                            </div>                            
+                          </ng-template>
+                       
+                   </div>
+                  </div>
+                  <hr/>
+              </div>
+          </div>
+      </div>
+        
 
-<!-- <input type="text" *ngFor="let clabel of ctrllabel; let i = index;" value="{{dropdownArray[1]}}" class="form-control" disabled />-->
+
+
+<!-- <input type="text" *ngFor="let clabel of ctrllabel; let i = index;" value="{{dropdownArray[1]}}" class="form-control" disabled />
+<input type="text" value= " {{ SViewitems[ctrllabel[i][j]] }}" class="form-control" disabled />
+<input type="text" value= " {{ dropdownArray[i][SViewitems[ctrllabel[i][j]] ]}}" class="form-control" disabled />
+-->
 
 
 

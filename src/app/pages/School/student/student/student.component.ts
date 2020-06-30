@@ -10,6 +10,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 
 export class StudentComponent implements OnInit {
+
+  appRandomNumber:any;
   //userForm:FormGroup;
   breadCrumbItems: Array<{}>;
   validationform: FormGroup; // bootstrap validation form
@@ -23,6 +25,8 @@ export class StudentComponent implements OnInit {
   typesubmit: boolean;
   rangesubmit: boolean;
   horizontalsubmit: boolean;
+
+  
   
   dropdownArray = [
     [ "Vidyalakshmi school", "Vidyalakshmi school2", "Vidyalakshmi school3", "schoolVidyalakshmi school4", "Vidyalakshmi school5"],
@@ -63,6 +67,10 @@ export class StudentComponent implements OnInit {
      }))
    }*/
   ngOnInit() {
+    this.appRandomNumber = this.makeRandom();
+
+    
+
     this.breadCrumbItems = [{ label: 'UBold', path: '/' }, { label: 'Forms', path: '/' }, { label: 'Form Validation', path: '/', active: true }];
 
     this.validationform = this.formBuilder.group({
@@ -350,6 +358,17 @@ export class StudentComponent implements OnInit {
      this.router.navigate(['/school/studentlist']);
    })
 
+  }
+
+  makeRandom()  {
+    let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+    const lengthOfCode = 10;  
+    let text = "";
+
+    for (let i = 0; i < lengthOfCode; i++) {
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+      return text;
   }
 
 }
