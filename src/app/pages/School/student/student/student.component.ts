@@ -93,6 +93,7 @@ export class StudentComponent implements OnInit {
       stu_prev_medium_ins_fk: ['', [Validators.required]],
       stu_adm_prev_colname: ['', [Validators.required]],
       stu_adm_prev_class: ['', [Validators.required]],
+      stu_prf_age: [''],
       stu_prf_fathers_name: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
       stu_prf_guardian_name: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
       stu_prf_guardian_aadhar: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
@@ -194,6 +195,36 @@ export class StudentComponent implements OnInit {
       })
     }
     
+  }
+
+  parseDate(eventDate:any)
+  {
+    //console.log('----event----', eventDate)
+    if( eventDate != '')
+    {
+      var dobage = this.ageCalculation( eventDate );
+      
+      if( dobage != null)
+      {
+        console.log('-----dobage-----', dobage)
+        this.validationform.patchValue({
+          stu_prf_age: dobage
+        });
+      }
+      
+    }
+  }
+
+  ageCalculation(dateString)
+  {
+    var today = new Date();
+    var birthDate = new Date(dateString);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age;
   }
 
   get form() {

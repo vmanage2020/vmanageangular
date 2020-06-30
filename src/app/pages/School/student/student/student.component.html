@@ -285,7 +285,7 @@
                                             <label class="font-normal">Date of Birth *</label>
                                             <div class="input-group date">
                                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                <input id="stu_prf_dob" name="stu_prf_dob" type="text" value=""
+                                                <input id="stu_prf_dob" name="stu_prf_dob" type="date"  (input)="parseDate($event.target.value)"   value=""
                                                     class="form-control required" tabindex="19" autocomplete="off">
                                             </div>
 
@@ -298,8 +298,8 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Age *</label>
-                                            <input id="stu_prf_age" name="stu_prf_age" type="text"
-                                                class="form-control required" disabled tabindex="19">
+                                            <input id="stu_prf_age" formControlName="stu_prf_age"  name="stu_prf_age" type="text"
+                                                class="form-control required"  disabled tabindex="19">
                                         </div>
 
                                     </div>
