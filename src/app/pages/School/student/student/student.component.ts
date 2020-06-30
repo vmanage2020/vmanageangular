@@ -3,7 +3,6 @@ import { FormBuilder, Validators, FormGroup, FormArray } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
@@ -70,8 +69,7 @@ export class StudentComponent implements OnInit {
   ngOnInit() {
     this.appRandomNumber = this.makeRandom();
 
-    //var randomStr = (Math.random().toString(36).substring(2, 8) + Math.random().toString(36).substring(2, 8)).toUpperCase();
-   // console.log('----randomStr----', randomStr)
+    
 
     this.breadCrumbItems = [{ label: 'UBold', path: '/' }, { label: 'Forms', path: '/' }, { label: 'Form Validation', path: '/', active: true }];
 

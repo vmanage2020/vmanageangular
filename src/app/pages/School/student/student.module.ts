@@ -10,7 +10,6 @@ import { StudenteditComponent } from './studentedit/studentedit.component';
 import {HttpClientModule} from '@angular/common/http';
 
 import { DataTablesModule } from 'angular-datatables';
-import { NgbDate, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [StudentComponent, StuentlistComponent, StudentviewComponent, StudenteditComponent],
@@ -20,7 +19,6 @@ import { NgbDate, NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     ReactiveFormsModule,
     DataTablesModule,
-    NgbModule,
     HttpClientModule
   ]
 })

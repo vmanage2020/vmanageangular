@@ -3,6 +3,9 @@ import { HttpClient } from '@angular/common/http';
 
 import { RestApiService } from '../../../../shared/rest-api.services';
 import { DataTableDirective } from 'angular-datatables';
+import { Subject } from 'rxjs';
+
+import 'rxjs/add/operator/map';
 
 declare var $;
 
@@ -25,6 +28,9 @@ export class StuentlistComponent implements OnInit {
   dtOptions: DataTables.Settings = {};  
   dataTable: any;
 
+  data: any;
+  dtTrigger: Subject<any> = new Subject();
+
   constructor(private http:HttpClient, private apiurl: RestApiService) {
 
     
@@ -38,7 +44,11 @@ export class StuentlistComponent implements OnInit {
 
    
       this.studentsList();
-
+      this.dtOptions = {
+        pagingType: 'full_numbers',
+        pageLength: 10,
+        processing: true
+      }; 
      
 
   }
@@ -57,6 +67,7 @@ export class StuentlistComponent implements OnInit {
 
         if( this.SListitems.length > 0)
         {
+          /*
           this.dtOptions = {
             pagingType: 'full_numbers',
             pageLength: 10,
@@ -71,6 +82,11 @@ export class StuentlistComponent implements OnInit {
             ],
             data: this.SListitems
           };
+          */ 
+
+        this.data = this.SListitems;
+        this.dtTrigger.next();
+
         }
        
       });
