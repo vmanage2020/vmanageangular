@@ -46,7 +46,7 @@
                                         <div class="form-group">
                                             <label>Application No *</label>
                                             <input type="text" formControlName="stu_prf_app_No"
-                                                value="{{appRandomNumber}}" class="form-control" disabled />
+                                                value="{{dropdownArray[1]}}" class="form-control" disabled />
 
                                         </div>
                                     </div>
@@ -287,7 +287,7 @@
                                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 
                                                 <input ngbDatepicker class="form-control" autoClose="false" placeholder="yyyy-mm-dd"
-                                                #stu_prf_dob="ngbDatepicker" id="stu_prf_dob">
+                                                #date="ngbDatepicker" id="stu_prf_dob">
 
                                                <!--  <input id="stu_prf_dob" name="stu_prf_dob" type="text" value=""
                                                     class="form-control required" tabindex="19" autocomplete="off"> -->
