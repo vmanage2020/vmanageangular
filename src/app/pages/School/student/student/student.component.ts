@@ -163,6 +163,39 @@ export class StudentComponent implements OnInit {
     this.formsubmit = false;
     this.addCertificateColumn();
   }
+
+  FieldsChange(event:any)
+  {
+    if(event.target.checked == true)
+    {
+      var con_per_add     = ((this.validationform.value.con_per_add !=null) ? this.validationform.value.con_per_add : '');
+      var con_per_state   = ((this.validationform.value.con_per_state != null) ? this.validationform.value.con_per_state : '');
+      var con_per_cntry   = ((this.validationform.value.con_per_cntry != null) ? this.validationform.value.con_per_cntry : '');
+      var con_per_pincode = ((this.validationform.value.con_per_pincode !=null) ? this.validationform.value.con_per_pincode : '');
+      var con_per_phone   = ((this.validationform.value.con_per_phone !=null) ? this.validationform.value.con_per_phone : '');
+      var con_rail_stn    = ((this.validationform.value.con_rail_stn !=null) ? this.validationform.value.con_rail_stn : '');
+      
+      this.validationform.patchValue({
+        con_cont_add:     con_per_add,
+        con_cont_state:   con_per_state,
+        con_cont_cntry:   con_per_cntry,
+        con_cont_pincode: con_per_pincode,
+        con_cont_phone:   con_per_phone
+      })
+      console.log('-----validationform-----', this.validationform.value) 
+    }else if(event.target.checked == false)
+    {
+      this.validationform.patchValue({
+        con_cont_add:     '',
+        con_cont_state:   '',
+        con_cont_cntry:   '',
+        con_cont_pincode: '',
+        con_cont_phone:   ''
+      })
+    }
+    
+  }
+
   get form() {
     return this.validationform.controls;
   }
