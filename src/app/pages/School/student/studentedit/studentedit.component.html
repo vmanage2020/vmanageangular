@@ -1,10 +1,9 @@
 <div class="row wrapper border-bottom white-bg page-heading">
   <div class="col-lg-10">
-    <h2>Students View Form</h2>
-
+    <h2>Students Edit Form</h2>
+    <p>{{appRandomNumber}}</p>
   </div>
   <div class="col-lg-2">
-
   </div>
 </div>
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -14,7 +13,7 @@
           <div class="ibox">
               <div class="ibox-title">
                   <h5> Student Informations </h5>
-                  <p>{{SViewitems.stu_prf_stud_name}}</p>
+                  
               </div>
               <div class="ibox-content ">
                   <form class="needs-validation" (ngSubmit)="validSubmit()" [formGroup]="validationform">
@@ -313,9 +312,8 @@
                                       <div class="form-group">
                                           <label>Previous School Board Name *</label>
                                           <select formControlName="stu_prev_degree_code" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.stu_prev_degree_code.errors }">
-                                              <option [value]="stu_prev_degree_code"
-                                                  *ngFor="let stu_prev_degree_code of dropdownArray[10], index as i">
+                                              [ngModel]="SViewitems.stu_prev_degree_code" [ngClass]="{ 'is-invalid': submitted && f.stu_prev_degree_code.errors }">
+                                              <option *ngFor="let stu_prev_degree_code of dropdownArray[10], index as i" [ngValue]="i+1">
                                                   {{stu_prev_degree_code}}
                                               </option>
 
@@ -335,9 +333,8 @@
                                       <div class="form-group">
                                           <label>Medium Of Previous Study *</label>
                                           <select formControlName="stu_prev_medium_ins_fk" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.stu_prev_medium_ins_fk.errors }">
-                                              <option [value]="stu_prev_medium_ins_fk"
-                                                  *ngFor="let stu_prev_medium_ins_fk of dropdownArray[11], index as i">
+                                              [ngModel]="SViewitems.stu_prev_medium_ins_fk" [ngClass]="{ 'is-invalid': submitted && f.stu_prev_medium_ins_fk.errors }">
+                                              <option *ngFor="let stu_prev_medium_ins_fk of dropdownArray[11], index as i" [ngValue]="i+1">
                                                   {{stu_prev_medium_ins_fk}}
                                               </option>
 
@@ -357,7 +354,7 @@
                                       <div class="form-group">
                                           <label>Previous School Name </label>
                                           <input type="text" formControlName="stu_adm_prev_colname"
-                                              value="Previous School Name" class="form-control"
+                                              [ngModel]="SViewitems.stu_adm_prev_colname" class="form-control"
                                               [ngClass]="{ 'is-invalid': submitted && f.stu_adm_prev_colname.errors }" />
                                           <div *ngIf="submitted && f.stu_adm_prev_colname.errors"
                                               class="invalid-feedback">
@@ -374,9 +371,8 @@
                                       <div class="form-group">
                                           <label>Previous Standard </label>
                                           <select formControlName="stu_adm_prev_class" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.stu_adm_prev_class.errors }">
-                                              <option [value]="stu_adm_prev_class"
-                                                  *ngFor="let stu_adm_prev_class of dropdownArray[12], index as i">
+                                              [ngModel]="SViewitems.stu_adm_prev_class" [ngClass]="{ 'is-invalid': submitted && f.stu_adm_prev_class.errors }">
+                                              <option *ngFor="let stu_adm_prev_class of dropdownArray[12], index as i" [ngValue]="i+1">
                                                   {{stu_adm_prev_class}}
                                               </option>
 
@@ -401,7 +397,7 @@
                                       <div class="form-group">
                                           <label>Father/Guardian First Name *</label>
                                           <input type="text" formControlName="stu_prf_fathers_name"
-                                              value=">Father/Guardian First Name" class="form-control"
+                                              [ngModel]="SViewitems.stu_prf_fathers_name" class="form-control"
                                               [ngClass]="{ 'is-invalid': submitted && f.stu_prf_fathers_name.errors }" />
                                           <div *ngIf="submitted && f.stu_prf_fathers_name.errors"
                                               class="invalid-feedback">
@@ -418,7 +414,7 @@
                                       <div class="form-group">
                                           <label>Father/Guardian Last Name</label>
                                           <input type="text" formControlName="stu_prf_guardian_name"
-                                              value="Father/Guardian Last Name" class="form-control"
+                                              [ngModel]="SViewitems.stu_prf_guardian_name" class="form-control"
                                               [ngClass]="{ 'is-invalid': submitted && stu_prf_guardian_name }" />
                                           <div *ngIf="submitted && f.stu_prf_guardian_name.errors"
                                               class="invalid-feedback">
@@ -435,7 +431,7 @@
                                       <div class="form-group">
                                           <label>Father/Guardian Aadhar Number</label>
                                           <input type="number" formControlName="stu_prf_guardian_aadhar"
-                                              value="Father/Guardian Aadhar Number" class="form-control"
+                                              [ngModel]="SViewitems.stu_prf_guardian_aadhar" class="form-control"
                                               [ngClass]="{ 'is-invalid': submitted && f.stu_prf_guardian_aadhar.errors }" />
                                           <div *ngIf="submitted && f.stu_prf_guardian_aadhar.errors"
                                               class="invalid-feedback">
@@ -454,7 +450,7 @@
                                       <div class="form-group">
                                           <label>Father Qualification</label>
                                           <input type="text" formControlName="stu_prf_fathers_qual"
-                                              value="Father Qualification" class="form-control"
+                                              [ngModel]="SViewitems.stu_prf_fathers_qual" class="form-control"
                                               [ngClass]="{ 'is-invalid': submitted && f.stu_prf_fathers_qual.errors }" />
                                           <div *ngIf="submitted && f.stu_prf_fathers_qual.errors"
                                               class="invalid-feedback">
@@ -471,7 +467,7 @@
                                       <div class="form-group">
                                           <label>Father Occupation</label>
                                           <input type="text" formControlName="stu_prf_fathers_occup"
-                                              value="Father Occupation" class="form-control"
+                                              [ngModel]="SViewitems.stu_prf_fathers_occup" class="form-control"
                                               [ngClass]="{ 'is-invalid': submitted && f.stu_prf_fathers_occup.errors }" />
                                           <div *ngIf="submitted && f.stu_prf_fathers_occup.errors"
                                               class="invalid-feedback">
@@ -487,7 +483,7 @@
                                       <div class="form-group">
                                           <label>Father Annual Income *</label>
                                           <input type="number" formControlName="stu_prf_fathers_anninc"
-                                              value="Father Annual Income" class="form-control"
+                                              [ngModel]="SViewitems.stu_prf_fathers_anninc" class="form-control"
                                               [ngClass]="{ 'is-invalid': submitted && f.stu_prf_fathers_anninc.errors }" />
                                           <div *ngIf="submitted && f.stu_prf_fathers_anninc.errors"
                                               class="invalid-feedback">
@@ -506,7 +502,7 @@
                                       <div class="form-group">
                                           <label>Mother Name</label>
                                           <input type="text" formControlName="stu_prf_mothers_name"
-                                              value="Mother Name" class="form-control"
+                                              [ngModel]="SViewitems.stu_prf_mothers_name" class="form-control"
                                               [ngClass]="{ 'is-invalid': submitted && f.stu_prf_mothers_name.errors }" />
                                           <div *ngIf="submitted && f.stu_prf_mothers_name.errors"
                                               class="invalid-feedback">
@@ -521,7 +517,7 @@
                                       <div class="form-group">
                                           <label>Mother Occupation</label>
                                           <input type="text" formControlName="stu_prf_mothers_occup"
-                                              value="Father Occupation" class="form-control"
+                                              [ngModel]="SViewitems.stu_prf_mothers_occup" class="form-control"
                                               [ngClass]="{ 'is-invalid': submitted && f.stu_prf_mothers_occup.errors }" />
                                           <div *ngIf="submitted && f.stu_prf_mothers_occup.errors"
                                               class="invalid-feedback">
@@ -538,7 +534,7 @@
                                       <div class="form-group">
                                           <label>Mother Annual Income</label>
                                           <input type="text" formControlName="stu_prf_mothers_anninc"
-                                              value="Mother Annual Income" class="form-control"
+                                              [ngModel]="SViewitems.stu_prf_mothers_anninc" class="form-control"
                                               [ngClass]="{ 'is-invalid': submitted && f.stu_prf_mothers_anninc.errors }" />
                                           <div *ngIf="submitted && f.stu_prf_mothers_anninc.errors"
                                               class="invalid-feedback">
@@ -556,7 +552,7 @@
                                       <div class="form-group">
                                           <label>Parent Email ID </label>
                                           <input type="text" formControlName="stu_prf_parent_email"
-                                              value="Parent Email ID" class="form-control"
+                                              [ngModel]="SViewitems.stu_prf_parent_email" class="form-control"
                                               [ngClass]="{ 'is-invalid': submitted && f.stu_prf_parent_email.errors }" />
                                           <div *ngIf="submitted && f.stu_prf_parent_email.errors"
                                               class="invalid-feedback">
@@ -574,7 +570,7 @@
                                       <div class="form-group">
                                           <label>Parent Mobile No</label>
                                           <input type="number" formControlName="stu_prf_mobile_no"
-                                              value="Parent Mobile No" class="form-control"
+                                              [ngModel]="SViewitems.stu_prf_mobile_no" class="form-control"
                                               [ngClass]="{ 'is-invalid': submitted && f.stu_prf_mobile_no.errors }" />
                                           <div *ngIf="submitted && f.stu_prf_mobile_no.errors"
                                               class="invalid-feedback">
@@ -591,7 +587,7 @@
                                       <div class="form-group">
                                           <label>Place of Living *</label>
                                           <input type="text" formControlName="stu_prf_plc_of_livng"
-                                              value="Place of Living" class="form-control"
+                                              [ngModel]="SViewitems.stu_prf_plc_of_livng" class="form-control"
                                               [ngClass]="{ 'is-invalid': submitted && f.stu_prf_plc_of_livng.errors }" />
                                           <div *ngIf="submitted && f.stu_prf_plc_of_livng.errors"
                                               class="invalid-feedback">
@@ -608,7 +604,7 @@
                                       <div class="form-group">
                                           <label>Member of Service Organization</label>
                                           <input type="text" formControlName="stu_prf_mem_of_serv_org"
-                                              value="Member of Service Organization" class="form-control"
+                                              [ngModel]="SViewitems.stu_prf_mem_of_serv_org" class="form-control"
                                               [ngClass]="{ 'is-invalid': submitted && f.stu_prf_mem_of_serv_org.errors }" />
                                           <div *ngIf="submitted && f.stu_prf_mem_of_serv_org.errors"
                                               class="invalid-feedback">
@@ -643,8 +639,8 @@
                                   <div class="col-lg-6">
                                       <div class="form-group">
                                           <label>Family Size *</label>
-                                          <input type="text" formControlName="stu_prf_family_size" value="Family Size"
-                                              class="form-control"
+                                          <input type="text" formControlName="stu_prf_family_size" 
+                                              [ngModel]="SViewitems.stu_prf_family_size" class="form-control"
                                               [ngClass]="{ 'is-invalid': submitted && f.stu_prf_family_size.errors }" />
                                           <div *ngIf="submitted && f.stu_prf_family_size.errors"
                                               class="invalid-feedback">
@@ -700,11 +696,10 @@
 
                                   <div class="col-lg-6">
                                       <div class="form-group">
-                                          <label>Blood Group</label>
+                                          <label>Blood Group{{SViewitems.stu_prf_bldgrp_fk}}</label>
                                           <select formControlName="stu_prf_bldgrp_fk" class="form-control"
                                               [(ngModel)]="SViewitems.stu_prf_bldgrp_fk" [ngClass]="{ 'is-invalid': submitted && f.stu_prf_bldgrp_fk.errors }">
-                                              <option [value]="stu_prf_bldgrp_fk"
-                                                  *ngFor="let stu_prf_bldgrp_fk of dropdownArray[13], index as i">
+                                              <option *ngFor="let stu_prf_bldgrp_fk of dropdownArray[13], index as i" [ngValue]="i+1">
                                                   {{stu_prf_bldgrp_fk}}
                                               </option>
 
@@ -976,7 +971,7 @@
                                   <div class="col-lg-6">
                                       <div class="form-group">
                                           <label>Bus Facility Requirement *</label>
-                                          <div style="height: 34px;">{{SViewitems.stu_prf_bus}}
+                                          <div style="height: 34px;">
                                               <input id="stu_prf_bus" formControlName="stu_prf_bus" name="stu_prf_bus" type="radio" 
                                               [(ngModel)]="SViewitems.stu_prf_bus" [value]="1"
                                               class="form-controlX required" style="float:left;" tabindex="45">

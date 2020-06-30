@@ -9,6 +9,8 @@ import { StudentviewComponent } from './studentview/studentview.component';
 import { StudenteditComponent } from './studentedit/studentedit.component';
 import {HttpClientModule} from '@angular/common/http';
 
+import { DataTablesModule } from 'angular-datatables';
+
 @NgModule({
   declarations: [StudentComponent, StuentlistComponent, StudentviewComponent, StudenteditComponent],
   imports: [
@@ -16,6 +18,7 @@ import {HttpClientModule} from '@angular/common/http';
     StudentRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    DataTablesModule,
     HttpClientModule
   ]
 })

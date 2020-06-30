@@ -10,6 +10,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class StudenteditComponent implements OnInit {
 
+  appRandomNumber:any;
+
   mygrou=[1,2,3,4,5];
   SViewitems:any=[];
   resourceID:any;
@@ -83,6 +85,7 @@ export class StudenteditComponent implements OnInit {
      }))
    }*/
   ngOnInit() {
+    this.appRandomNumber = this.makeRandom();
     this.breadCrumbItems = [{ label: 'UBold', path: '/' }, { label: 'Forms', path: '/' }, { label: 'Form Validation', path: '/', active: true }];
 
     this.validationform = this.formBuilder.group({
@@ -371,5 +374,18 @@ export class StudenteditComponent implements OnInit {
    })
 
   }
+
+
+  makeRandom()  {
+    let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+    const lengthOfCode = 10;  
+    let text = "";
+
+    for (let i = 0; i < lengthOfCode; i++) {
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+      return text;
+  }
+  
 
 }
