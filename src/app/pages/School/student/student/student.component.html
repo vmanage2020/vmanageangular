@@ -45,7 +45,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Application No *</label>
-                                            <input type="text" formControlName="stu_prf_app_No"
+                                            <input type="text" autocomplete="off" formControlName="stu_prf_app_No"
                                                 value="{{appRandomNumber}}" class="form-control" disabled />
 
                                         </div>
@@ -56,7 +56,7 @@
 
                                         <div class="form-group">
                                             <label>Date Applied *</label>
-                                            <input type="text" formControlName="stu_prf_app_date"
+                                            <input type="text" autocomplete="off" formControlName="stu_prf_app_date"
                                                 value="{{dropdownArray[2]}}" class="form-control" disabled />
                                         </div>
 
@@ -66,7 +66,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Student First Name *</label>
-                                            <input type="text" formControlName="stu_prf_stud_name"
+                                            <input type="text" autocomplete="off" formControlName="stu_prf_stud_name"
                                                 value="Student First Name" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f.stu_prf_stud_name.errors }" />
                                             <div *ngIf="submitted && f.stu_prf_stud_name.errors"
@@ -83,7 +83,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Student Middle Name *</label>
-                                            <input type="text" formControlName="stu_stud_mname"
+                                            <input type="text" autocomplete="off" formControlName="stu_stud_mname"
                                                 value="Student Middle Name" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f.stu_stud_mname.errors }" />
                                             <div *ngIf="submitted && f.stu_stud_mname.errors" class="invalid-feedback">
@@ -99,7 +99,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Student Last Name</label>
-                                            <input type="text" formControlName="stu_stud_lname"
+                                            <input type="text" autocomplete="off" formControlName="stu_stud_lname"
                                                 value="Student Last Name" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f.stu_stud_lname.errors }" />
                                             <div *ngIf="submitted && f.stu_stud_lname.errors" class="invalid-feedback">
@@ -298,7 +298,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Age *</label>
-                                            <input id="stu_prf_age" formControlName="stu_prf_age"  name="stu_prf_age" type="text"
+                                            <input id="stu_prf_age" autocomplete="off" formControlName="stu_prf_age"  name="stu_prf_age" type="text"
                                                 class="form-control required"  disabled tabindex="19">
                                         </div>
 
@@ -360,7 +360,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Previous School Name </label>
-                                            <input type="text" formControlName="stu_adm_prev_colname"
+                                            <input type="text" autocomplete="off" formControlName="stu_adm_prev_colname"
                                                 value="Previous School Name" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f.stu_adm_prev_colname.errors }" />
                                             <div *ngIf="submitted && f.stu_adm_prev_colname.errors"
@@ -404,7 +404,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Father/Guardian First Name *</label>
-                                            <input type="text" formControlName="stu_prf_fathers_name"
+                                            <input type="text" autocomplete="off" formControlName="stu_prf_fathers_name"
                                                 value=">Father/Guardian First Name" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f.stu_prf_fathers_name.errors }" />
                                             <div *ngIf="submitted && f.stu_prf_fathers_name.errors"
@@ -421,7 +421,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Father/Guardian Last Name</label>
-                                            <input type="text" formControlName="stu_prf_guardian_name"
+                                            <input type="text" autocomplete="off" formControlName="stu_prf_guardian_name"
                                                 value="Father/Guardian Last Name" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && stu_prf_guardian_name }" />
                                             <div *ngIf="submitted && f.stu_prf_guardian_name.errors"
@@ -457,7 +457,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Father Qualification</label>
-                                            <input type="text" formControlName="stu_prf_fathers_qual"
+                                            <input type="text" autocomplete="off" formControlName="stu_prf_fathers_qual"
                                                 value="Father Qualification" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f.stu_prf_fathers_qual.errors }" />
                                             <div *ngIf="submitted && f.stu_prf_fathers_qual.errors"
@@ -474,7 +474,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Father Occupation</label>
-                                            <input type="text" formControlName="stu_prf_fathers_occup"
+                                            <input type="text" autocomplete="off" formControlName="stu_prf_fathers_occup"
                                                 value="Father Occupation" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f.stu_prf_fathers_occup.errors }" />
                                             <div *ngIf="submitted && f.stu_prf_fathers_occup.errors"
@@ -490,7 +490,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Father Annual Income *</label>
-                                            <input type="number" formControlName="stu_prf_fathers_anninc"
+                                            <input type="number" autocomplete="off" formControlName="stu_prf_fathers_anninc"
                                                 value="Father Annual Income" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f.stu_prf_fathers_anninc.errors }" />
                                             <div *ngIf="submitted && f.stu_prf_fathers_anninc.errors"
@@ -509,7 +509,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Mother Name</label>
-                                            <input type="text" formControlName="stu_prf_mothers_name"
+                                            <input type="text" autocomplete="off" formControlName="stu_prf_mothers_name"
                                                 value="Mother Name" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f.stu_prf_mothers_name.errors }" />
                                             <div *ngIf="submitted && f.stu_prf_mothers_name.errors"
@@ -524,7 +524,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Mother Occupation</label>
-                                            <input type="text" formControlName="stu_prf_mothers_occup"
+                                            <input type="text" autocomplete="off" formControlName="stu_prf_mothers_occup"
                                                 value="Father Occupation" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f.stu_prf_mothers_occup.errors }" />
                                             <div *ngIf="submitted && f.stu_prf_mothers_occup.errors"
@@ -541,7 +541,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Mother Annual Income</label>
-                                            <input type="text" formControlName="stu_prf_mothers_anninc"
+                                            <input type="text" autocomplete="off" formControlName="stu_prf_mothers_anninc"
                                                 value="Mother Annual Income" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f.stu_prf_mothers_anninc.errors }" />
                                             <div *ngIf="submitted && f.stu_prf_mothers_anninc.errors"
@@ -559,7 +559,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Parent Email ID </label>
-                                            <input type="text" formControlName="stu_prf_parent_email"
+                                            <input type="text" autocomplete="off" formControlName="stu_prf_parent_email"
                                                 value="Parent Email ID" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f.stu_prf_parent_email.errors }" />
                                             <div *ngIf="submitted && f.stu_prf_parent_email.errors"
@@ -577,7 +577,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Parent Mobile No</label>
-                                            <input type="number" formControlName="stu_prf_mobile_no"
+                                            <input type="number" autocomplete="off" formControlName="stu_prf_mobile_no"
                                                 value="Parent Mobile No" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f.stu_prf_mobile_no.errors }" />
                                             <div *ngIf="submitted && f.stu_prf_mobile_no.errors"
@@ -594,7 +594,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Place of Living *</label>
-                                            <input type="text" formControlName="stu_prf_plc_of_livng"
+                                            <input type="text" autocomplete="off" formControlName="stu_prf_plc_of_livng"
                                                 value="Place of Living" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f.stu_prf_plc_of_livng.errors }" />
                                             <div *ngIf="submitted && f.stu_prf_plc_of_livng.errors"
@@ -611,7 +611,7 @@
                                     <div class="col-lg-6" style="display:none;">
                                         <div class="form-group">
                                             <label>Member of Service Organization</label>
-                                            <input type="text" formControlName="stu_prf_mem_of_serv_org"
+                                            <input type="text" autocomplete="off" formControlName="stu_prf_mem_of_serv_org"
                                                 value="Member of Service Organization" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f.stu_prf_mem_of_serv_org.errors }" />
                                             <div *ngIf="submitted && f.stu_prf_mem_of_serv_org.errors"
@@ -647,7 +647,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Family Size *</label>
-                                            <input type="text" formControlName="stu_prf_family_size" value="Family Size"
+                                            <input type="text" autocomplete="off" formControlName="stu_prf_family_size" value="Family Size"
                                                 class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f.stu_prf_family_size.errors }" />
                                             <div *ngIf="submitted && f.stu_prf_family_size.errors"
@@ -690,7 +690,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Place of Birth</label>
-                                            <input type="text" formControlName="stu_prf_plc_of_birth"
+                                            <input type="text" autocomplete="off" formControlName="stu_prf_plc_of_birth"
                                                 value="Family Size" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f.stu_prf_plc_of_birth.errors }" />
                                             <div *ngIf="submitted && f.stu_prf_plc_of_birth.errors"
@@ -787,7 +787,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Student Email ID *</label>
-                                            <input type="text" formControlName="stu_prf_stu_email"
+                                            <input type="text" autocomplete="off" formControlName="stu_prf_stu_email"
                                                 value="Student Email ID" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f.stu_prf_stu_email.errors }" />
                                             <div *ngIf="submitted && f.stu_prf_stu_email.errors"
@@ -835,7 +835,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Student Bank Details </label>
-                                            <input type="text" formControlName="stu_prf_stu_bank"
+                                            <input type="text" autocomplete="off" formControlName="stu_prf_stu_bank"
                                                 value="Student Bank Details" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f.stu_prf_stu_bank.errors }" />
                                             <div *ngIf="submitted && f.stu_prf_stu_bank.errors"
@@ -890,7 +890,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Any Medical Issues </label>
-                                            <input type="text" formControlName="stu_prf_medical"
+                                            <input type="text" autocomplete="off" formControlName="stu_prf_medical"
                                                 value="Any Medical Issues" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f.stu_prf_medical.errors }" />
                                             <div *ngIf="submitted && f.stu_prf_medical.errors" class="invalid-feedback">
@@ -903,7 +903,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Co-Curriculum Activity</label>
-                                            <input type="text" formControlName="stu_prf_co_curr"
+                                            <input type="text" autocomplete="off" formControlName="stu_prf_co_curr"
                                                 value="Co-Curriculum Activity" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f.stu_prf_co_curr.errors }" />
                                             <div *ngIf="submitted && f.stu_prf_co_curr.errors" class="invalid-feedback">
@@ -958,7 +958,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Remarks</label>
-                                            <input type="text" formControlName="stu_prf_remarks" value="Remarks"
+                                            <input type="text" autocomplete="off" formControlName="stu_prf_remarks" value="Remarks"
                                                 class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f.stu_prf_remarks.errors }" />
                                             <div *ngIf="submitted && f.stu_prf_remarks.errors" class="invalid-feedback">
@@ -1001,7 +1001,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Address *</label>
-                                            <input type="text" formControlName="con_per_add"
+                                            <input type="text" autocomplete="off" formControlName="con_per_add"
                                                 value="Address" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f.con_per_add.errors }" />
                                             <div *ngIf="submitted && f.con_per_add.errors"
@@ -1013,7 +1013,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>State *</label>
-                                            <input type="text" formControlName="con_per_state"
+                                            <input type="text" autocomplete="off" formControlName="con_per_state"
                                                 value="State" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f.con_per_state.errors }" />
                                             <div *ngIf="submitted && f.con_per_state.errors"
@@ -1026,7 +1026,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Country </label>
-                                            <input type="text" formControlName="con_per_cntry"
+                                            <input type="text" autocomplete="off" formControlName="con_per_cntry"
                                                 value="Country" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f.con_per_cntry.errors }" />
                                             <div *ngIf="submitted && f.con_per_cntry.errors"
@@ -1039,7 +1039,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Pincode </label>
-                                            <input type="number" formControlName="con_per_pincode"
+                                            <input type="number" autocomplete="off" formControlName="con_per_pincode"
                                                 value="Pincode" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f.con_per_pincode.errors }" />
                                             <div *ngIf="submitted && f.con_per_pincode.errors"
@@ -1052,7 +1052,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Phone Number *</label>
-                                            <input type="number" formControlName="con_per_phone"
+                                            <input type="number" autocomplete="off" formControlName="con_per_phone"
                                                 value="Phone Number" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f.con_per_phone.errors }" />
                                             <div *ngIf="submitted && f.con_per_phone.errors"
@@ -1092,7 +1092,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Address *</label>
-                                            <input type="text" formControlName="con_cont_add"
+                                            <input type="text" autocomplete="off" formControlName="con_cont_add"
                                                 value="Address" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f.con_cont_add.errors }" />
                                             <div *ngIf="submitted && f.con_cont_add.errors"
@@ -1105,7 +1105,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>State *</label>
-                                            <input type="text" formControlName="con_cont_state"
+                                            <input type="text" autocomplete="off" formControlName="con_cont_state"
                                                 value="State" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f.con_cont_state.errors }" />
                                             <div *ngIf="submitted && f.con_cont_state.errors"
@@ -1118,7 +1118,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Country </label>
-                                            <input type="text" formControlName="con_cont_cntry"
+                                            <input type="text" autocomplete="off" formControlName="con_cont_cntry"
                                                 value="Country" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f.con_cont_cntry.errors }" />
                                             <div *ngIf="submitted && f.con_cont_cntry.errors"
@@ -1131,7 +1131,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Pincode </label>
-                                            <input type="number" formControlName="con_cont_pincode"
+                                            <input type="number" autocomplete="off" formControlName="con_cont_pincode"
                                                 value="Pincode" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f.con_cont_pincode.errors }" />
                                             <div *ngIf="submitted && f.con_cont_pincode.errors"
@@ -1144,7 +1144,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Phone Number *</label>
-                                            <input type="number" formControlName="con_cont_phone"
+                                            <input type="number" autocomplete="off" formControlName="con_cont_phone"
                                                 value="Phone Number" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && f.con_cont_phone.errors }" />
                                             <div *ngIf="submitted && f.con_cont_phone.errors"
@@ -1199,7 +1199,7 @@
                                                     <div class="form-group">
                                                         <label>Date *</label>
                                                         <input formControlName="certificateDate" id="crt_cert_date"
-                                                            name="certificateDate" type="date"
+                                                            name="certificateDate" autocomplete="off" type="date"
                                                             class="form-control required" tabindex="2">
                                                     </div>
                                                 </div>
@@ -1207,7 +1207,7 @@
                                                     <div class="form-group">
                                                         <label>Certificate No </label>
                                                         <input formControlName="certificateNo" id="crt_cert_no"
-                                                            name="certificateNo" type="text" class="form-control "
+                                                            name="certificateNo" autocomplete="off" type="text" class="form-control "
                                                             tabindex="3">
                                                     </div>
                                                 </div>
