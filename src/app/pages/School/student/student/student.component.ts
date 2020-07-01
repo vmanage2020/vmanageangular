@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormArray } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DatePipe } from '@angular/common'
 
 @Component({
   selector: 'app-student',
@@ -10,8 +11,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 
 export class StudentComponent implements OnInit {
+  submitted = false;
+  loading = true;
+  displayLoader: any = true;
 
   appRandomNumber:any;
+  appDate:any;
   //userForm:FormGroup;
   breadCrumbItems: Array<{}>;
   validationform: FormGroup; // bootstrap validation form
@@ -51,7 +56,7 @@ export class StudentComponent implements OnInit {
    
     
   ]
-  constructor(private formBuilder: FormBuilder, private http:HttpClient,private route: ActivatedRoute, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private http:HttpClient,private route: ActivatedRoute, private router: Router, public datepipe: DatePipe) {
     
   }
 
@@ -67,19 +72,25 @@ export class StudentComponent implements OnInit {
      }))
    }*/
   ngOnInit() {
-    this.appRandomNumber = this.makeRandom();
+    
+    this.loading = false;
+    this.displayLoader = false;
 
+    this.appRandomNumber = this.makeRandom();
+    let curdate=new Date();
+    let curdateFormat =this.datepipe.transform(curdate, 'yyyy-MM-dd');
+    this.appDate = curdateFormat;
     
 
     this.breadCrumbItems = [{ label: 'UBold', path: '/' }, { label: 'Forms', path: '/' }, { label: 'Form Validation', path: '/', active: true }];
 
     this.validationform = this.formBuilder.group({
       col_code_fk: ['', [Validators.required]],
-      stu_prf_app_No: ['5ef1d8778dd65', [Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_prf_app_date: ['23-06-2020', [Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_prf_stud_name: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_stud_mname: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_stud_lname: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
+      stu_prf_app_No: ['', [Validators.pattern('[a-zA-Z0-9]+')]],
+      stu_prf_app_date: ['', [Validators.pattern('[a-zA-Z0-9]+')]],
+      stu_prf_stud_name: ['', [Validators.required]],
+      stu_stud_mname: [''],
+      stu_stud_lname: [''],
       stu_adm_mode: ['1', [Validators.required]],
       bayear: ['', [Validators.required]],
       boardname: ['', [Validators.required]],
@@ -87,60 +98,60 @@ export class StudentComponent implements OnInit {
       stand: ['', [Validators.required]],
       groupn: ['', [Validators.required]],
       secondlang: ['', [Validators.required]],
-      stu_read_mode: ['', [Validators.required]],
+      stu_read_mode: ['1', [Validators.required]],
       motherton: ['', [Validators.required]],
       stu_prev_degree_code: ['', [Validators.required]],
       stu_prev_medium_ins_fk: ['', [Validators.required]],
-      stu_adm_prev_colname: ['', [Validators.required]],
-      stu_adm_prev_class: ['', [Validators.required]],
+      stu_adm_prev_colname: [''],
+      stu_adm_prev_class: [''],
       stu_prf_age: [''],
-      stu_prf_fathers_name: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_prf_guardian_name: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_prf_guardian_aadhar: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_prf_fathers_qual: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_prf_fathers_occup: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_prf_fathers_anninc: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_prf_mothers_name: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_prf_mothers_occup: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_prf_mothers_anninc: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_prf_parent_email: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_prf_mobile_no: ['', [Validators.required,Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_prf_plc_of_livng: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_prf_mem_of_serv_org: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_prf_parents_old_stu: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_prf_family_size: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_prf_sex: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_prf_plc_of_birth: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_prf_bldgrp_fk: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_prf_religion_fk: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_prf_caste_fk: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_prf_community_fk: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_prf_stu_email: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_prf_stu_aadhar: ['', [Validators.required,Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_prf_stu_emis: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_prf_stu_bank: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_prf_parents_handicap: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_prf_visualhandy: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_prf_remarks: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_prf_medical: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_prf_co_curr: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_prf_mother_tongue_fk: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_prf_citizen_fk: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_prf_bus: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      con_per_add: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      con_per_state: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      con_per_cntry: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      con_per_pincode: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      con_per_phone: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      con_rail_stn: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      con_cont_add: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      con_cont_state: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      con_cont_cntry: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      con_cont_pincode: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      con_cont_phone: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      certificateName: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      certificateDate: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
-      certificateNo: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
+      stu_prf_fathers_name: ['', [Validators.required]],
+      stu_prf_guardian_name: [''],
+      stu_prf_guardian_aadhar: [''],
+      stu_prf_fathers_qual: [''],
+      stu_prf_fathers_occup: [''],
+      stu_prf_fathers_anninc: ['', [Validators.required]],
+      stu_prf_mothers_name: [''],
+      stu_prf_mothers_occup: [''],
+      stu_prf_mothers_anninc: [''],
+      stu_prf_parent_email: [''],
+      stu_prf_mobile_no: [''],
+      stu_prf_plc_of_livng: ['', [Validators.required]],
+      stu_prf_mem_of_serv_org: [''],
+      stu_prf_parents_old_stu: ['2', [Validators.required]],
+      stu_prf_family_size: ['', [Validators.required]],
+      stu_prf_sex: ['1', [Validators.required]],
+      stu_prf_plc_of_birth: [''],
+      stu_prf_bldgrp_fk: [''],
+      stu_prf_religion_fk: [''],
+      stu_prf_caste_fk: [''],
+      stu_prf_community_fk: [''],
+      stu_prf_stu_email: ['', [Validators.required]],
+      stu_prf_stu_aadhar: [''],
+      stu_prf_stu_emis: [''],
+      stu_prf_stu_bank: [''],
+      stu_prf_parents_handicap: ['2', [Validators.required]],
+      stu_prf_visualhandy: ['2', [Validators.required]],
+      stu_prf_remarks: [''],
+      stu_prf_medical: [''],
+      stu_prf_co_curr: [''],
+      stu_prf_mother_tongue_fk: [''],
+      stu_prf_citizen_fk: [''],
+      stu_prf_bus: ['2', [Validators.required]],
+      con_per_add: ['', [Validators.required]],
+      con_per_state: ['', [Validators.required]],
+      con_per_cntry: [''],
+      con_per_pincode: [''],
+      con_per_phone: ['', [Validators.required]],
+      con_rail_stn: [''],
+      con_cont_add: ['', [Validators.required]],
+      con_cont_state: ['', [Validators.required]],
+      con_cont_cntry: [''],
+      con_cont_pincode: [''],
+      con_cont_phone: ['', [Validators.required]],
+      certificateName: [''],
+      certificateDate: [''],
+      certificateNo: [''],
 
 
 
@@ -197,13 +208,14 @@ export class StudentComponent implements OnInit {
     
   }
 
+  dobValue:any;
   parseDate(eventDate:any)
   {
     //console.log('----event----', eventDate)
     if( eventDate != '')
     {
       var dobage = this.ageCalculation( eventDate );
-      
+      this.dobValue = dobage;
       if( dobage != null)
       {
         console.log('-----dobage-----', dobage)
@@ -254,11 +266,16 @@ export class StudentComponent implements OnInit {
    */
   validSubmit() {
     this.submit = true;
-   
-    //if (this.validationform.invalid) {
-     // console.log(this.validationform);
-    // return;
-   }
+    this.submitted = true;
+  
+    if (this.validationform.invalid) {
+     console.log(this.validationform);
+     return;
+    }
+  
+    this.displayLoader = true;
+    this.loading = true;
+
    // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.validationform.value));
     /*
  console.log( JSON.stringify(this.validationform.value));
@@ -275,7 +292,7 @@ export class StudentComponent implements OnInit {
       "stu_prf_stud_name": this.form.stu_prf_stud_name.value,
         "stu_stud_mname": this.form.stu_stud_mname.value,
         "stu_stud_lname": this.form.stu_stud_lname.value,
-        "stu_prf_dob": "2019-06-28",
+        "stu_prf_dob": this.dobValue,
         "stu_prf_sex": this.form.stu_prf_sex.value,
         "stu_prf_mar_status": 0,
         "stu_prf_roll_No": "",
@@ -412,16 +429,23 @@ export class StudentComponent implements OnInit {
           }
           ]
               }
-
+ 
 
      console.log( postData);
      console.log( JSON.stringify(postData));
      
-    let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/student'
-   this.http.post<any>(url, postData  ).subscribe(data => {
-     console.log(data);
-     this.router.navigate(['/school/studentlist']);
-   })
+    let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/student';
+    console.log(url);
+
+   this.http.post<any>(url, postData  ).subscribe(
+      data => {
+        console.log(data);
+        this.router.navigate(['/school/studentlist']);
+      },
+      error => {
+         console.log(error);    
+      }
+   )
 
   }
 
