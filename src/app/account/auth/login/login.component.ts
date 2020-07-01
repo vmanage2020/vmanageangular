@@ -42,14 +42,14 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   getLocalData() {
-    this.http.get('http://sms.akst.in/public/users').subscribe((data) => {
+    this.http.get('https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/users').subscribe((data) => {
       console.log(data);
     });
   }
   
 
   getData() {
-    this.http.get('http://18.213.144.230:11001/api/patient/dashboard/home?patientId=AF68E293-6A7C-48FA-816B-4FA07F15F20D&providerId=AF68E293-6A7C-48FA-816B-4FA07F15F20D&subject=AF68E293-6A7C-48FA-816B-4FA07F15F20D&').subscribe((data) => {
+    this.http.get('https://cors-anywhere.herokuapp.com/http://18.213.144.230:11001/api/patient/dashboard/home?patientId=AF68E293-6A7C-48FA-816B-4FA07F15F20D&providerId=AF68E293-6A7C-48FA-816B-4FA07F15F20D&subject=AF68E293-6A7C-48FA-816B-4FA07F15F20D&').subscribe((data) => {
       console.log(data);
     });
   }

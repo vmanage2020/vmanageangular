@@ -59,7 +59,7 @@ export class StudenteditComponent implements OnInit {
   constructor(public formBuilder: FormBuilder, private http:HttpClient,private route: ActivatedRoute, private router: Router) {
     
     this.resourceID = this.route.snapshot.paramMap.get('id');
-    this.url='http://sms.akst.in/public/api/student/'+this.resourceID;
+    this.url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/student/'+this.resourceID;
     console.log(this.url);
     this.http.get<any>(this.url).toPromise().then(data => {
       const dt = data;
