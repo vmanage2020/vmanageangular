@@ -28,7 +28,7 @@
                                         <div class="form-group">
                                             <label>School Name *</label>
                                             <select formControlName="col_code_fk" class="form-control"
-                                                [ngClass]="{ 'is-invalid': submitted && f.col_code_fk }">
+                                                [ngClass]="{ 'is-invalid': submitted && f.col_code_fk.errors }">
                                                 <option value="select" selected>-SELECT-</option>
                                                 <option [value]="i+1"
                                                     *ngFor="let col_code_fk of dropdownArray[0], index as i">
@@ -1289,7 +1289,7 @@
               <br>
               <br> -->
 
-                        <button type="submit" class="btn btn-info" tabindex="54"> Save and Continue </button>
+                        <button type="submit" class="btn btn-info" > Save and Continue </button>
 
                     </form>
 

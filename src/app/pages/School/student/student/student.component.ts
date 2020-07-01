@@ -51,7 +51,7 @@ export class StudentComponent implements OnInit {
    
     
   ]
-  constructor(public formBuilder: FormBuilder, private http:HttpClient,private route: ActivatedRoute, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private http:HttpClient,private route: ActivatedRoute, private router: Router) {
     
   }
 
@@ -256,9 +256,10 @@ export class StudentComponent implements OnInit {
     this.submit = true;
    
     //if (this.validationform.invalid) {
-    //  return;
-   //}
-    // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.validationform.value));
+     // console.log(this.validationform);
+    // return;
+   }
+   // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.validationform.value));
     /*
  console.log( JSON.stringify(this.validationform.value));
      
