@@ -63,7 +63,7 @@ cerdroparr=[["TRANSFER CERTIFICATE","BIRTH CERTIFICATE","COMMUNITY CERTIFICATE",
   constructor(private http:HttpClient,private route: ActivatedRoute) {
     this.resourceID = this.route.snapshot.paramMap.get('id');
 
-  this.url='http://sms.akst.in/public/api/student/'+this.resourceID;
+  this.url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/student/'+this.resourceID;
   console.log(this.url);
     this.http.get<any>(this.url).toPromise().then(data => {
    
