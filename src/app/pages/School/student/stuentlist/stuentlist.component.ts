@@ -15,7 +15,7 @@ declare var $;
   styleUrls: ['./stuentlist.component.scss']
 })
 export class StuentlistComponent implements OnInit {
-  url='http://sms.akst.in/public/api/students';
+  url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/students';
  mygrou=[1,2,3,4,5];
 
   SListitems: any[] = [];
