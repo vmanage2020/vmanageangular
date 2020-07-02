@@ -252,6 +252,7 @@ dropdownCommunityArray: any = [
    
     
   ]
+ 
   constructor(public formBuilder: FormBuilder, private http:HttpClient,private route: ActivatedRoute, private router: Router) {
     
     this.resourceID = this.route.snapshot.paramMap.get('id');
@@ -264,6 +265,11 @@ dropdownCommunityArray: any = [
          this.SViewitems=dt['student'];
          this.SViewitems.stu_read_mode=1;
          this.SViewitems.stu_prf_age=10;
+         
+         //this.SViewitems.stu_prf_third_lang =  ["Tamil","English"];
+         this.SViewitems.stu_prf_third_lang =  this.SViewitems.stu_prf_third_lang.split(",");
+         this.SViewitems.stu_prf_co_curr =  this.SViewitems.stu_prf_co_curr.split(",");
+
          console.log(this.SViewitems.stu_prf_app_No);
        }
     })
@@ -349,7 +355,7 @@ dropdownCommunityArray: any = [
       stu_prf_religion_fk: [null],
       stu_prf_caste_fk: [null],
       stu_prf_community_fk: [null],
-      stu_prf_stu_email: ['', [Validators.required]],
+      stu_prf_stu_email: [''],
       stu_prf_stu_aadhar: [''],
       stu_prf_stu_emis: [''],
       stu_prf_stu_bank: [''],
@@ -358,6 +364,7 @@ dropdownCommunityArray: any = [
       stu_prf_remarks: [''],
       stu_prf_medical: [''],
       stu_prf_co_curr: [null],
+      stu_prf_third_lang: [null],
       stu_prf_mother_tongue_fk: [null],
       stu_prf_citizen_fk: [null],
       stu_prf_bus: ['2', [Validators.required]],
@@ -589,7 +596,7 @@ dropdownCommunityArray: any = [
         "stu_group_id_fk": 0,
         "stu_adm_std": 0,
         "stu_prf_sec_lang": this.form.stu_prf_sec_lang.value,
-        "stu_prf_third_lang": 0,
+        "stu_prf_third_lang": this.form.stu_prf_third_lang.value,
         "stu_adm_fee_coll": 0,
         "stu_adm_refno": 0,
         "stu_read_mode":this.form.stu_read_mode.value,
