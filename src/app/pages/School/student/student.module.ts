@@ -11,6 +11,8 @@ import {HttpClientModule} from '@angular/common/http';
 
 import { DataTablesModule } from 'angular-datatables';
 
+import { NgSelectModule } from '@ng-select/ng-select';
+
 @NgModule({
   declarations: [StudentComponent, StuentlistComponent, StudentviewComponent, StudenteditComponent],
   imports: [
@@ -19,7 +21,8 @@ import { DataTablesModule } from 'angular-datatables';
     FormsModule,
     ReactiveFormsModule,
     DataTablesModule,
-    HttpClientModule
+    HttpClientModule,
+    NgSelectModule
   ]
 })
 export class StudentModule { }

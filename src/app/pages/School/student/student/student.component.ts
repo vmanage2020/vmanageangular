@@ -32,33 +32,248 @@ export class StudentComponent implements OnInit {
   horizontalsubmit: boolean;
 
   
+  // Select2 Dropdown
+  selectValue: string[];
+ 
+  schoolSelect = true;
+  yearSelect = true;
+  boardSelect = true;
+  mediumSelect = true;
+  standardSelect = true;
+  groupSelect = true;
+  secondlangSelect = true;
+  motherlangSelect = true;
+  prevboardSelect = true;
+  prevmediumSelect = true;
+  prevstandardSelect = true;
+  activitySelect = true;
+  languageSelect = true;
+  citizenSelect = true;
+  bloodSelect = true;
+  religionSelect = true;
+  communitySelect = true;
+
+ dropdownSchoolArray: any = [
+    { id: 1, name: 'Vidyalakshmi Matric School' },
+    { id: 2, name: 'Vidyalakshmi CBSE School' },
+    { id: 3, name: 'Vidyalakshmi ICSE school' }
+  ];
+
+  dropdownAcademicYearArray: any = [
+    { id:"2020", name:"2020" }
+  ];
+
+  dropdownBoardArray: any = [
+    { id:1, name:"Matric " },
+    { id:2, name:"CBSE" },
+    { id:3, name:"State" },
+    { id:4, name:"ICSE" },
+    { id:5, name:"Other" }
+  ];
+
+  dropdownMediumArray: any = [
+    { id:1, name:"English" },
+    { id:2, name:"Tamil" },
+    { id:3, name:"Sanskrit" },
+    { id:4, name:"Hindi" },
+    { id:5, name:"Telugu" },
+    { id:6, name:"Kannada" },
+    { id:7, name:"Malayalam" }
+  ];
+
+  dropdownStandardArray: any = [
+    { id:1, name:"Pre-KG" },
+    { id:2, name:"LKG" },
+    { id:3, name:"UKG" },
+    { id:4, name:"I" },
+    { id:5, name:"II" },
+    { id:6, name:"III" },
+    { id:7, name:"IV" },
+    { id:8, name:"V" },
+    { id:9, name:"VI" },
+    { id:10, name:"VII" },
+    { id:11, name:"VIII" },
+    { id:12, name:"IX" },
+    { id:13, name:"X" },
+    { id:14, name:"XI" },
+    { id:15, name:"XII" }
+  ];
+
   
+  dropdownGroupArray: any = [
+    /*
+    { id:1, name:"General" },
+    { id:2, name:"Science" },
+    { id:3, name:"Maths" },
+    { id:4, name:"Social" },
+    { id:5, name:"Computer" },
+    { id:6, name:"Agri" },
+    { id:7, name:"Account" }
+    */
+  ];
+
+  dropdownSecondLanguageArray: any = [
+    { id:1, name:"English" },
+    { id:2, name:"Tamil" },
+    { id:3, name:"Sanskrit" },
+    { id:4, name:"Hindi" },
+    { id:5, name:"Telugu" },
+    { id:6, name:"Kannada" },
+    { id:7, name:"Malayalam" }
+  ];
+
+  dropdownMotherLanguageArray: any = [
+    { id:1, name:"English" },
+    { id:2, name:"Tamil" },
+    { id:3, name:"Sanskrit" },
+    { id:4, name:"Hindi" },
+    { id:5, name:"Telugu" },
+    { id:6, name:"Kannada" },
+    { id:7, name:"Malayalam" }
+  ];
+
+  dropdownPrevBoardArray: any =[
+    { id:1, name:"Matric " },
+    { id:2, name:"CBSE" },
+    { id:3, name:"State" },
+    { id:4, name:"ICSE" },
+    { id:5, name:"Other" }
+  ];
+
+  dropdownPrevMediumArray: any =[
+    { id:1, name:"English" },
+    { id:2, name:"Tamil" },
+    { id:3, name:"Sanskrit" },
+    { id:4, name:"Hindi" },
+    { id:5, name:"Telugu" },
+    { id:6, name:"Kannada" },
+    { id:7, name:"Malayalam" }
+  ];
+
+  
+  dropdownPrevStandardArray: any = [
+    { id:1, name:"Pre-KG" },
+    { id:2, name:"LKG" },
+    { id:3, name:"UKG" },
+    { id:4, name:"I" },
+    { id:5, name:"II" },
+    { id:6, name:"III" },
+    { id:7, name:"IV" },
+    { id:8, name:"V" },
+    { id:9, name:"VI" },
+    { id:10, name:"VII" },
+    { id:11, name:"VIII" },
+    { id:12, name:"IX" },
+    { id:13, name:"X" },
+    { id:14, name:"XI" },
+    { id:15, name:"XII" }
+  ];
+
+  dropdownActivityArray: any =[
+    { id:1, name:"Sport" },
+    { id:2, name:"Music" },
+    { id:3, name:"Drawing" },
+    { id:4, name:"Cricket" },
+    { id:5, name:"Game" },
+    { id:6, name:"Playing" },
+    { id:7, name:"Singing" }
+  ];
+
+  dropdownLanguageArray: any =[
+    { id:1, name:"English" },
+    { id:2, name:"Tamil" },
+    { id:3, name:"Sanskrit" },
+    { id:4, name:"Hindi" },
+    { id:5, name:"Telugu" },
+    { id:6, name:"Kannada" },
+    { id:7, name:"Malayalam" }
+  ];
+  
+ dropdownCitizenArray: any = [
+  { id: 1, name: 'INDIAN' },
+  { id: 2, name: 'FOREIGNER' },
+  { id: 3, name: 'OTHER' }
+];
+
+dropdownBloodArray: any = [
+  { id: 1, name: 'A+' },
+  { id: 2, name: 'A-' },
+  { id: 3, name: 'B+' },
+  { id: 4, name: 'B-' },
+  { id: 5, name: 'AB+' },
+  { id: 6, name: 'AB-' },
+  { id: 7, name: 'O+' },
+  { id: 8, name: 'O-' },
+  { id: 9, name: 'Other' }
+];
+
+dropdownReligionArray: any = [
+  { id: 1, name: 'Hinduism (Hindu)' },
+  { id: 2, name: 'Christianity (Christian)' },
+  { id: 3, name: 'Islam (Muslim)' },
+  { id: 4, name: 'Jainism' },
+  { id: 5, name: 'Buddhism' },
+  { id: 6, name: 'Sikhism' },
+  { id: 7, name: 'Others' },
+];
+
+dropdownCommunityArray: any = [
+  { id: 1, name: 'FC' },
+  { id: 2, name: 'BC' },
+  { id: 3, name: 'OBC' },
+  { id: 4, name: 'MBC' },
+  { id: 5, name: 'SC' },
+  { id: 6, name: 'ST' },
+  { id: 7, name: 'Other' }
+];
+
+
+
   dropdownArray = [
-    [ "Vidyalakshmi school", "Vidyalakshmi school2", "Vidyalakshmi school3", "schoolVidyalakshmi school4", "Vidyalakshmi school5"],
+    [ "Vidyalakshmi Matric School", "Vidyalakshmi CBSE School", "Vidyalakshmi ICSE school" ],
     ["5dfdfldsfl24d55"],
     ["27-06-2020"],
-    [ "2020", "2021", "2019", "2023", "2024"],
-    [ "metric ", "cbse", "state", "icse", "others"],
-    [ "English", "Tamil", "Sanskrit", "Hindi", "Telugu"],
-    [ "X", "XI", "XII", "XIII", "XIV"],
+    [ "2020"],
+    [ "Matric ", "CBSE", "State", "ICSE", "Other"],
+    [ "English", "Tamil", "Sanskrit", "Hindi", "Telugu", "Kannada", "Malayalam"],
+    [ "Pre-KG", "LKG", "UKG", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"],
     [ "General", "General", "General", "General", "General"],
-    ["English", "Tamil", "Sanskrit", "Hindi", "Telugu"],
-    [ "English", "Tamil", "Sanskrit", "Hindi", "Telugu"],
-    [ "metric ", "cbse", "state", "icse", "others10"],
-    [ "English", "Tamil", "Sanskrit", "Hindi", "Telugu11"],
-    [ "X", "XI", "XII", "XIII", "XIV12"],
+    [ "English", "Tamil", "Sanskrit", "Hindi", "Telugu", "Kannada", "Malayalam"],
+    [ "English", "Tamil", "Sanskrit", "Hindi", "Telugu", "Kannada", "Malayalam"],
+    [ "Matric ", "CBSE", "State", "ICSE", "Other"],
+    [ "English", "Tamil", "Sanskrit", "Hindi", "Telugu", "Kannada", "Malayalam"],
+    [ "Pre-KG", "LKG", "UKG", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"],
     [ "A1positive", "A positive", "OPositive", "AB+", "AB-13"],
     [ "HINDU", "MUSLIM", "CHRISTIAN", "SIKKIM", "OTHERS14"],
     [ "BC", "MBC", "SC", "ST", "OTHERS15"],
-    [ "English", "Tamil", "Sanskrit", "Hindi", "Telugu16"],
-    [ "INDIAN", "FOREIGNERS",  "OTHERS17"],
+    [ "English", "Tamil", "Sanskrit", "Hindi", "Telugu", "Kannada", "Malayalam"],
+    [ "INDIAN", "FOREIGNER", "OTHER" ],
     [ "TRANSFER CERTIFICATE", "BIRTH CERTIFICATE",  "COMMUNITY CERTIFICATE", "MARKSHEET18"],
    
     
   ]
   constructor(private formBuilder: FormBuilder, private http:HttpClient,private route: ActivatedRoute, private router: Router, public datepipe: DatePipe) {
+    this.selectValue = ['Alaska', 'Hawaii', 'California', 'Nevada', 'Oregon', 'Washington', 'Arizona', 'Colorado', 'Idaho', 'Montana', 'Nebraska', 'New Mexico', 'North Dakota', 'Utah', 'Wyoming', 'Alabama', 'Arkansas', 'Illinois', 'Iowa'];
+
     
-  }
+  this.schoolSelect = false;
+  this.yearSelect = false;
+  this.boardSelect = false;
+  this.mediumSelect = false;
+  this.standardSelect = false;
+  this.groupSelect = false; 
+  this.secondlangSelect = false;
+  this.motherlangSelect = false;
+  this.prevboardSelect = false;
+  this.prevmediumSelect = false;
+  this.prevstandardSelect = false;
+  this.activitySelect = false;
+  this.languageSelect = false;
+  this.citizenSelect = false;
+  this.bloodSelect = false;
+  this.religionSelect = false;
+  this.communitySelect = false;
+}
 
   /* cinfo()
    {
@@ -72,6 +287,8 @@ export class StudentComponent implements OnInit {
      }))
    }*/
   ngOnInit() {
+
+
     
     this.loading = false;
     this.displayLoader = false;
@@ -85,25 +302,25 @@ export class StudentComponent implements OnInit {
     this.breadCrumbItems = [{ label: 'UBold', path: '/' }, { label: 'Forms', path: '/' }, { label: 'Form Validation', path: '/', active: true }];
 
     this.validationform = this.formBuilder.group({
-      col_code_fk: ['', [Validators.required]],
+      col_code_fk: [null, [Validators.required]],
       stu_prf_app_No: ['', [Validators.pattern('[a-zA-Z0-9]+')]],
       stu_prf_app_date: ['', [Validators.pattern('[a-zA-Z0-9]+')]],
       stu_prf_stud_name: ['', [Validators.required]],
       stu_stud_mname: [''],
       stu_stud_lname: [''],
       stu_adm_mode: ['1', [Validators.required]],
-      bayear: ['', [Validators.required]],
-      boardname: ['', [Validators.required]],
-      medname: ['', [Validators.required]],
-      stand: ['', [Validators.required]],
-      groupn: ['', [Validators.required]],
-      secondlang: ['', [Validators.required]],
+      bayear: [null, [Validators.required]],
+      boardname: [null, [Validators.required]],
+      medname: [null, [Validators.required]],
+      stand: [null, [Validators.required]],
+      groupn: [null, [Validators.required]],
+      secondlang: [null, [Validators.required]],
       stu_read_mode: ['1', [Validators.required]],
-      motherton: ['', [Validators.required]],
-      stu_prev_degree_code: ['', [Validators.required]],
-      stu_prev_medium_ins_fk: ['', [Validators.required]],
+      motherton: [null, [Validators.required]],
+      stu_prev_degree_code: [null, [Validators.required]],
+      stu_prev_medium_ins_fk: [null, [Validators.required]],
       stu_adm_prev_colname: [''],
-      stu_adm_prev_class: [''],
+      stu_adm_prev_class: [null],
       stu_prf_age: [''],
       stu_prf_fathers_name: ['', [Validators.required]],
       stu_prf_guardian_name: [''],
@@ -122,10 +339,10 @@ export class StudentComponent implements OnInit {
       stu_prf_family_size: ['', [Validators.required]],
       stu_prf_sex: ['1', [Validators.required]],
       stu_prf_plc_of_birth: [''],
-      stu_prf_bldgrp_fk: [''],
-      stu_prf_religion_fk: [''],
-      stu_prf_caste_fk: [''],
-      stu_prf_community_fk: [''],
+      stu_prf_bldgrp_fk: [null],
+      stu_prf_religion_fk: [null],
+      stu_prf_caste_fk: [null],
+      stu_prf_community_fk: [null],
       stu_prf_stu_email: ['', [Validators.required]],
       stu_prf_stu_aadhar: [''],
       stu_prf_stu_emis: [''],
@@ -134,9 +351,9 @@ export class StudentComponent implements OnInit {
       stu_prf_visualhandy: ['2', [Validators.required]],
       stu_prf_remarks: [''],
       stu_prf_medical: [''],
-      stu_prf_co_curr: [''],
-      stu_prf_mother_tongue_fk: [''],
-      stu_prf_citizen_fk: [''],
+      stu_prf_co_curr: [null],
+      stu_prf_mother_tongue_fk: [null],
+      stu_prf_citizen_fk: [null],
       stu_prf_bus: ['2', [Validators.required]],
       con_per_add: ['', [Validators.required]],
       con_per_state: ['', [Validators.required]],
@@ -238,6 +455,39 @@ export class StudentComponent implements OnInit {
     }
     return age;
   }
+  
+  parseGroup(event:any)
+  {
+
+    this.groupSelect = true;
+    console.log(event);
+    let eventValue = event.id;
+    //console.log('----event----', eventDate)
+    if( eventValue == '14' || eventValue == '15' )
+    { 
+      
+      this.dropdownGroupArray = [
+        { id:1, name:"General" },
+        { id:2, name:"Science" },
+        { id:3, name:"Maths" },
+        { id:4, name:"Social" },
+        { id:5, name:"Computer" },
+        { id:6, name:"Agri" },
+        { id:7, name:"Account" }
+      ];
+      this.groupSelect = false;
+    }
+    else
+    {
+      this.dropdownGroupArray = [
+        { id:1, name:"General" }
+      ];
+      this.groupSelect = false;
+    }
+  }
+
+  
+
 
   get form() {
     return this.validationform.controls;
