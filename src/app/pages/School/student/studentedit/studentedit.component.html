@@ -301,11 +301,11 @@
                                         <div class="form-group">
                                             <label>Reading Ability *</label>
                                             <div style="height: 34px;">
-                                                <input id="stu_read_mode" name="stu_read_mode" type="radio"
+                                                <input id="stu_read_mode" name="stu_read_mode" formControlName="stu_read_mode" type="radio"
                                                     [(ngModel)]="SViewitems.stu_read_mode" [value]="1"
                                                     class="form-controlX required" style="float:left;" tabindex="7">
                                                 <span style="float:left;">&nbsp;Yes &nbsp;&nbsp;</span>
-                                                <input id="stu_read_mode" name="stu_read_mode" type="radio"
+                                                <input id="stu_read_mode" name="stu_read_mode" formControlName="stu_read_mode" type="radio"
                                                     [(ngModel)]="SViewitems.stu_read_mode" [value]="2" checked
                                                     class="form-controlX required" style="float:left;" tabindex="8">
                                                 <span style="float:left;">&nbsp;No&nbsp;&nbsp;</span>
@@ -348,7 +348,7 @@
                                             <label class="font-normal">Date of Birth *</label>
                                             <div class="input-group date">
                                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                <input id="stu_prf_dob" name="stu_prf_dob" type="date"
+                                                <input id="stu_prf_dob"  formControlName="stu_prf_dob" name="stu_prf_dob" type="date"
                                                     (input)="parseDate($event.target.value)"
                                                     [(ngModel)]="SViewitems.stu_prf_dob" class="form-control required"
                                                     tabindex="19" autocomplete="off">
@@ -363,7 +363,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Age *</label>
-                                            <input id="stu_prf_age" name="stu_prf_age" type="text"
+                                            <input id="stu_prf_age"  formControlName="stu_prf_age" name="stu_prf_age" type="text"
                                                 [(ngModel)]="SViewitems.stu_prf_age" class="form-control required"
                                                 disabled tabindex="19">
                                         </div>
@@ -724,11 +724,11 @@
                                         <div class="form-group">
                                             <label>Parents Old Student</label>
                                             <div style="height: 34px;">
-                                                <input id="stu_prf_parents_old_stu" name="stu_prf_parents_old_stu"
+                                                <input id="stu_prf_parents_old_stu" formControlName="stu_prf_parents_old_stu" name="stu_prf_parents_old_stu"
                                                     type="radio" value="1" class="form-controlX required"
                                                     style="float:left;" tabindex="33">
                                                 <span style="float:left;">&nbsp;Yes &nbsp;&nbsp;</span>
-                                                <input id="stu_prf_parents_old_stu" name="stu_prf_parents_old_stu"
+                                                <input id="stu_prf_parents_old_stu" formControlName="stu_prf_parents_old_stu" name="stu_prf_parents_old_stu"
                                                     type="radio" value="0" checked class="form-controlX required"
                                                     style="float:left;" tabindex="34">
                                                 <span style="float:left;">&nbsp;No&nbsp;&nbsp;</span>

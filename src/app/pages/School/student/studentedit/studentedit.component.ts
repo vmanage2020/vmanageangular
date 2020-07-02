@@ -374,6 +374,7 @@ dropdownCommunityArray: any = [
       cert_code_fk: [''],
       crt_cert_date: [''],
       crt_cert_no: [''],
+      stu_prf_dob: [''],
 
 
 
@@ -511,7 +512,7 @@ dropdownCommunityArray: any = [
       "stu_prf_stud_name": this.form.stu_prf_stud_name.value,
         "stu_stud_mname": this.form.stu_stud_mname.value,
         "stu_stud_lname": this.form.stu_stud_lname.value,
-        "stu_prf_dob": "2019-06-28",
+        "stu_prf_dob": this.form.stu_prf_dob.value,
         "stu_prf_sex": this.form.stu_prf_sex.value,
         "stu_prf_mar_status": 0,
         "stu_prf_roll_No": "",
