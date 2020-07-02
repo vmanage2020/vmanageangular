@@ -263,7 +263,7 @@ dropdownCommunityArray: any = [
          console.log(dt['student']);
          this.SViewitems=dt['student'];
          this.SViewitems.stu_read_mode=1;
-         console.log(this.SViewitems.stu_prf_stud_name);
+         console.log(this.SViewitems.stu_prf_app_No);
        }
     })
 
@@ -314,14 +314,14 @@ dropdownCommunityArray: any = [
       stu_stud_mname: [''],
       stu_stud_lname: [''],
       stu_adm_mode: ['1', [Validators.required]],
-      bayear: [null, [Validators.required]],
-      boardname: [null, [Validators.required]],
-      medname: [null, [Validators.required]],
-      stand: [null, [Validators.required]],
-      groupn: [null, [Validators.required]],
-      secondlang: [null, [Validators.required]],
+      stu_prf_current_Year: [null, [Validators.required]],
+      stu_prf_degree_code: [null, [Validators.required]],
+      stu_prf_branch_Code: [null, [Validators.required]],
+      stu_prf_current_Semester: [null, [Validators.required]],
+      stu_prf_current_batch: [null, [Validators.required]],
+      stu_prf_sec_lang: [null, [Validators.required]],
       stu_read_mode: ['1', [Validators.required]],
-      motherton: [null, [Validators.required]],
+      stu_mother_medium_ins_fk: [null, [Validators.required]],
       stu_prev_degree_code: [null, [Validators.required]],
       stu_prev_medium_ins_fk: [null, [Validators.required]],
       stu_adm_prev_colname: [''],
@@ -371,9 +371,9 @@ dropdownCommunityArray: any = [
       con_cont_cntry: [''],
       con_cont_pincode: [''],
       con_cont_phone: ['', [Validators.required]],
-      certificateName: [''],
-      certificateDate: [''],
-      certificateNo: [''],
+      cert_code_fk: [''],
+      crt_cert_date: [''],
+      crt_cert_no: [''],
 
 
 
@@ -492,9 +492,9 @@ dropdownCommunityArray: any = [
   validSubmit() {
     this.submit = true;
    
-    //if (this.validationform.invalid) {
-    //  return;
-   // }
+    if (this.validationform.invalid) {
+     return;
+    }
     // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.validationform.value));
     /*
  console.log( JSON.stringify(this.validationform.value));
@@ -519,14 +519,14 @@ dropdownCommunityArray: any = [
         "stu_prf_app_name": "",
         "stu_prf_app_date": "28-06-2020",
         "stu_prf_quota": 0,
-        "stu_prf_current_Year": this.form.bayear.value,
-        "stu_prf_current_batch": this.form.groupn.value,
-        "stu_prf_lab_batch": this.form.bayear.value,
-        "stu_prf_current_Semester": this.form.stand.value,
+        "stu_prf_current_Year": this.form.stu_prf_current_Year.value,
+        "stu_prf_current_batch": this.form.stu_prf_current_batch.value,
+        "stu_prf_lab_batch":"" ,
+        "stu_prf_current_Semester": this.form.stu_prf_current_Semester.value,
         "stu_prf_seat_type_fk": 0,
         "stu_prf_reg_no": "",
-        "stu_prf_degree_code": this.form.boardname.value,
-        "stu_prf_branch_Code": this.form.medname.value,
+        "stu_prf_degree_code": this.form.stu_prf_degree_code.value,
+        "stu_prf_branch_Code": this.form.stu_prf_branch_Code.value,
         "stu_prf_cardno": 0,
         "stu_prf_lib_id": 0,
         "stu_prf_jmonth": 0,
@@ -583,12 +583,12 @@ dropdownCommunityArray: any = [
         "stu_prf_promotion_status": 0,
         "stu_group_id_fk": 0,
         "stu_adm_std": 0,
-        "stu_prf_sec_lang": this.form.secondlang.value,
+        "stu_prf_sec_lang": this.form.stu_prf_sec_lang.value,
         "stu_prf_third_lang": 0,
         "stu_adm_fee_coll": 0,
         "stu_adm_refno": 0,
         "stu_read_mode":this.form.stu_read_mode.value,
-        "stu_mother_medium_ins_fk" : this.form.motherton.value,
+        "stu_mother_medium_ins_fk" : this.form.stu_mother_medium_ins_fk.value,
         "stu_prev_degree_code":this.form.stu_prev_degree_code.value,
         "stu_prev_medium_ins_fk":this.form.stu_prev_medium_ins_fk.value,
         "stu_prf_guardian_aadhar" : this.form.stu_prf_guardian_aadhar.value,
@@ -619,9 +619,9 @@ dropdownCommunityArray: any = [
           {
           "col_code_fk": 1,
           "stu_prf_code_fk": 1,
-          "cert_code_fk": this.form.certificateName.value,
-          "crt_cert_date": this.form.certificateDate.value,
-          "crt_cert_no": this.form.certificateNo.value,
+          "cert_code_fk": this.form.cert_code_fk.value,
+          "crt_cert_date": this.form.crt_cert_date.value,
+          "crt_cert_no": this.form.crt_cert_no.value,
           "crt_returned": 0,
           "crt_collected": 0,
           "crt_attach": "1591502613_C:fakepathmisic 1.jpg",
@@ -634,9 +634,9 @@ dropdownCommunityArray: any = [
           {
           "col_code_fk": 1,
           "stu_prf_code_fk": 1,
-          "cert_code_fk": this.form.certificateName.value,
-          "crt_cert_date": this.form.certificateDate.value,
-          "crt_cert_no": this.form.certificateNo.value,
+          "cert_code_fk": this.form.cert_code_fk.value,
+          "crt_cert_date": this.form.crt_cert_date.value,
+          "crt_cert_no": this.form.crt_cert_no.value,
           "crt_returned": 0,
           "crt_collected": 0,
           "crt_attach": "1591502613_C:fakepathmisic 1.jpg",
