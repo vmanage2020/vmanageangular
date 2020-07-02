@@ -1,7 +1,6 @@
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2>Students Edit Form</h2>
-        <p>{{appRandomNumber}}</p>
+        <h2>Students Edit Form</h2> 
     </div>
     <div class="col-lg-2">
     </div>
@@ -12,7 +11,7 @@
         <div class="col-lg-12">
             <div class="ibox">
                 <div class="ibox-title">
-                    <h5> Student Informations </h5>
+                  
 
                 </div>
                 <div class="ibox-content ">
@@ -53,7 +52,7 @@
                                             <label>Application No *</label>
                                             <input type="text" formControlName="stu_prf_app_No"
                                            
-                                                [(ngModel)]="SViewitems.stu_prf_app_No" class="form-control" disabled />
+                                                [(ngModel)]="SViewitems.stu_prf_app_No" class="form-control" readonly="readonly" />
 
                                         </div>
                                     </div>
@@ -64,7 +63,7 @@
                                         <div class="form-group">
                                             <label>Date Applied *</label>
                                             <input type="text" formControlName="stu_prf_app_date"
-                                                [(ngModel)]="SViewitems.stu_prf_app_date" class="form-control" disabled />
+                                                [(ngModel)]="SViewitems.stu_prf_app_date" class="form-control"  readonly="readonly" />
                                         </div>
 
                                     </div>
@@ -148,13 +147,13 @@
                                                 {{bayear}}
                                               </option>
                                           </select> -->
-                                            <ng-select [(ngModel)]="SViewitems.stu_prf_current_Year"
-                                                [items]="dropdownAcademicYearArray" bindLabel="name" bindValue="id"
-                                                placeholder="Select School" formControlName="stu_prf_current_Year"
+                                            <ng-select 
+                                            [(ngModel)]="SViewitems.stu_prf_current_Year"
+                                                [items]="dropdownAcademicYearArray" bindLabel="name" bindValue="name"
+                                                placeholder="Select Year" formControlName="stu_prf_current_Year"
                                                 [ngClass]="{ 'is-invalid': submitted && form.stu_prf_current_Year.errors!=null }">
                                             </ng-select>
-                                            <div *ngIf="submitted && form.stu_prf_current_Year.errors"
-                                                class="invalid-feedback">
+                                            <div *ngIf="submitted && form.stu_prf_current_Year.errors!=null" class="invalid-feedback">
                                                 <div *ngIf="form.stu_prf_current_Year.errors.required">Batch / Academic
                                                     year is
                                                     required
@@ -178,8 +177,7 @@
                                                 {{boardname}}
                                               </option>
                                           </select> -->
-                                            <div *ngIf="submitted && form.stu_prf_degree_code.errors"
-                                                class="invalid-feedback">
+                                            <div *ngIf="submitted && form.stu_prf_degree_code.errors!=null" class="invalid-feedback">
                                                 <div *ngIf="form.stu_prf_degree_code.errors.required">Board Name is
                                                     required
                                                 </div>
@@ -204,8 +202,7 @@
                                                 placeholder="Select School" formControlName="stu_prf_branch_Code"
                                                 [ngClass]="{ 'is-invalid': submitted && form.stu_prf_branch_Code.errors!=null }">
                                             </ng-select>
-                                            <div *ngIf="submitted && form.stu_prf_branch_Code.errors"
-                                                class="invalid-feedback">
+                                            <div *ngIf="submitted && form.stu_prf_branch_Code.errors!=null" class="invalid-feedback">
                                                 <div *ngIf="form.stu_prf_branch_Code.errors.required">Medium Name is
                                                     required
                                                 </div>
@@ -219,7 +216,8 @@
 
                                         <div class="form-group">
                                             <label>Standard *</label>
-                                            <!--                                             <select formControlName="stand" class="form-control"
+                                            <!--                                             
+                                                <select formControlName="stand" class="form-control"
                                                 [(ngModel)]="SViewitems.stu_prf_current_Semester"
                                                 [ngClass]="{ 'is-invalid': submitted && form.stand.errors }">
                                                 <option *ngFor="let stand of dropdownArray[6], index as i"
@@ -232,8 +230,7 @@
                                                 placeholder="Select School" formControlName="stu_prf_current_Semester"
                                                 [ngClass]="{ 'is-invalid': submitted && form.stu_prf_current_Semester.errors!=null }">
                                             </ng-select>
-                                            <div *ngIf="submitted && form.stu_prf_current_Semester.errors"
-                                                class="invalid-feedback">
+                                            <div *ngIf="submitted && form.stu_prf_current_Semester.errors!=null" class="invalid-feedback">
                                                 <div *ngIf="form.stu_prf_current_Semester.errors.required">Standard is
                                                     required
                                                 </div>
@@ -246,7 +243,8 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Group Name *</label>
-                                            <!--                                             <select formControlName="groupn" class="form-control"
+                                            <!--                                             
+                                                <select formControlName="groupn" class="form-control"
                                                 [(ngModel)]="SViewitems.stu_prf_current_batch"
                                                 [ngClass]="{ 'is-invalid': submitted && form.groupn.errors }">
                                                 <option *ngFor="let groupn of dropdownArray[7], index as i"
@@ -259,8 +257,7 @@
                                                 placeholder="Select School" formControlName="stu_prf_current_batch"
                                                 [ngClass]="{ 'is-invalid': submitted && form.stu_prf_current_batch.errors!=null }">
                                             </ng-select>
-                                            <div *ngIf="submitted && form.stu_prf_current_batch.errors"
-                                                class="invalid-feedback">
+                                            <div *ngIf="submitted && form.stu_prf_current_batch.errors!=null" class="invalid-feedback">
                                                 <div *ngIf="form.stu_prf_current_batch.errors.required">Group Name is
                                                     required
                                                 </div>
@@ -272,7 +269,8 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Second Language *</label>
-                                            <!--                                             <select formControlName="secondlang" class="form-control"
+                                            <!--                                             
+                                                <select formControlName="secondlang" class="form-control"
                                                 [(ngModel)]="SViewitems.stu_prf_sec_lang"
                                                 [ngClass]="{ 'is-invalid': submitted && form.secondlang.errors }">
                                                 <option *ngFor="let secondlang of dropdownArray[8], index as i"
@@ -286,8 +284,7 @@
                                                 placeholder="Select School" formControlName="stu_prf_sec_lang"
                                                 [ngClass]="{ 'is-invalid': submitted && form.stu_prf_sec_lang.errors!=null }">
                                             </ng-select>
-                                            <div *ngIf="submitted && form.stu_prf_sec_lang.errors"
-                                                class="invalid-feedback">
+                                            <div *ngIf="submitted && form.stu_prf_sec_lang.errors!=null" class="invalid-feedback">
                                                 <div *ngIf="form.stu_prf_sec_lang.errors.required">Second Language is
                                                     required
                                                 </div>
@@ -306,7 +303,7 @@
                                                     class="form-controlX required" style="float:left;" tabindex="7">
                                                 <span style="float:left;">&nbsp;Yes &nbsp;&nbsp;</span>
                                                 <input id="stu_read_mode" name="stu_read_mode" formControlName="stu_read_mode" type="radio"
-                                                    [(ngModel)]="SViewitems.stu_read_mode" [value]="2" checked
+                                                    [(ngModel)]="SViewitems.stu_read_mode" [value]="2"
                                                     class="form-controlX required" style="float:left;" tabindex="8">
                                                 <span style="float:left;">&nbsp;No&nbsp;&nbsp;</span>
                                             </div>
@@ -318,7 +315,8 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Mother Tongue *</label>
-                                            <!--                                             <select formControlName="motherton" class="form-control"
+                                            <!--
+                                                <select formControlName="motherton" class="form-control"
                                                 [(ngModel)]="SViewitems.stu_prf_mother_tongue_fk"
                                                 [ngClass]="{ 'is-invalid': submitted && form.motherton.errors }">
                                                 <option *ngFor="let motherton of dropdownArray[9], index as i"
@@ -326,15 +324,14 @@
                                                 </option>
 
                                             </select> -->
-                                            <ng-select [(ngModel)]="SViewitems.stu_mother_medium_ins_fk"
+                                            <ng-select [(ngModel)]="SViewitems.stu_prf_mother_tongue_fk"
                                                 [items]="dropdownMotherLanguageArray" bindLabel="name" bindValue="id"
-                                                placeholder="Select School" formControlName="stu_mother_medium_ins_fk"
-                                                [ngClass]="{ 'is-invalid': submitted && form.stu_mother_medium_ins_fk.errors!=null }">
+                                                placeholder="Select School" formControlName="stu_prf_mother_tongue_fk"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_mother_tongue_fk.errors!=null }">
                                             </ng-select>
-                                            <div *ngIf="submitted && form.stu_mother_medium_ins_fk.errors"
-                                                class="invalid-feedback">
-                                                <div *ngIf="form.stu_mother_medium_ins_fk.errors.required">Second
-                                                    Language is required
+                                            <div *ngIf="submitted && form.stu_prf_mother_tongue_fk.errors!=null" class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_mother_tongue_fk.errors.required">
+                                                    Mother Tongue is required
                                                 </div>
                                             </div>
                                         </div>
@@ -347,7 +344,6 @@
                                         <div class="form-group" id="data_1">
                                             <label class="font-normal">Date of Birth *</label>
                                             <div class="input-group date">
-                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                 <input id="stu_prf_dob"  formControlName="stu_prf_dob" name="stu_prf_dob" type="date"
                                                     (input)="parseDate($event.target.value)"
                                                     [(ngModel)]="SViewitems.stu_prf_dob" class="form-control required"
@@ -365,7 +361,7 @@
                                             <label>Age *</label>
                                             <input id="stu_prf_age"  formControlName="stu_prf_age" name="stu_prf_age" type="text"
                                                 [(ngModel)]="SViewitems.stu_prf_age" class="form-control required"
-                                                disabled tabindex="19">
+                                                readonly="readonly" tabindex="19">
                                         </div>
 
                                     </div>
@@ -397,8 +393,7 @@
                                                 placeholder="Select School" formControlName="stu_prev_degree_code"
                                                 [ngClass]="{ 'is-invalid': submitted && form.stu_prev_degree_code.errors!=null }">
                                             </ng-select>
-                                            <div *ngIf="submitted && form.stu_prev_degree_code.errors"
-                                                class="invalid-feedback">
+                                            <div *ngIf="submitted && form.stu_prev_degree_code.errors!=null" class="invalid-feedback">
                                                 <div *ngIf="form.stu_prev_degree_code.errors.required">Previous School
                                                     is required
                                                 </div>
@@ -426,8 +421,7 @@
                                                 placeholder="Select School" formControlName="stu_prev_medium_ins_fk"
                                                 [ngClass]="{ 'is-invalid': submitted && form.stu_prev_medium_ins_fk.errors!=null }">
                                             </ng-select>
-                                            <div *ngIf="submitted && form.stu_prev_medium_ins_fk.errors"
-                                                class="invalid-feedback">
+                                            <div *ngIf="submitted && form.stu_prev_medium_ins_fk.errors!=null" class="invalid-feedback">
                                                 <div *ngIf="form.stu_prev_medium_ins_fk.errors.required">Medium Of
                                                     Previous Study is required
                                                 </div>
@@ -472,8 +466,7 @@
                                                 placeholder="Select School" formControlName="stu_adm_prev_class"
                                                 [ngClass]="{ 'is-invalid': submitted && form.stu_adm_prev_class.errors!=null }">
                                             </ng-select>
-                                            <div *ngIf="submitted && form.stu_adm_prev_class.errors"
-                                                class="invalid-feedback">
+                                            <div *ngIf="submitted && form.stu_adm_prev_class.errors!=null" class="invalid-feedback">
                                                 <div *ngIf="form.stu_adm_prev_class.errors.required">Medium Of Previous
                                                     Study is required
                                                 </div>
@@ -725,11 +718,11 @@
                                             <label>Parents Old Student</label>
                                             <div style="height: 34px;">
                                                 <input id="stu_prf_parents_old_stu" formControlName="stu_prf_parents_old_stu" name="stu_prf_parents_old_stu"
-                                                    type="radio" value="1" class="form-controlX required"
+                                                    [(ngModel)]="SViewitems.stu_prf_parents_old_stu" type="radio" [value]="1" class="form-controlX required"
                                                     style="float:left;" tabindex="33">
                                                 <span style="float:left;">&nbsp;Yes &nbsp;&nbsp;</span>
                                                 <input id="stu_prf_parents_old_stu" formControlName="stu_prf_parents_old_stu" name="stu_prf_parents_old_stu"
-                                                    type="radio" value="0" checked class="form-controlX required"
+                                                    [(ngModel)]="SViewitems.stu_prf_parents_old_stu" type="radio" [value]="0" class="form-controlX required"
                                                     style="float:left;" tabindex="34">
                                                 <span style="float:left;">&nbsp;No&nbsp;&nbsp;</span>
                                             </div>
@@ -813,7 +806,7 @@
                                                 placeholder="Select School" formControlName="stu_prf_bldgrp_fk"
                                                 [ngClass]="{ 'is-invalid': submitted && form.stu_prf_bldgrp_fk.errors!=null }">
                                             </ng-select>
-                                            <div *ngIf="submitted && form.stu_prf_bldgrp_fk.errors"
+                                            <div *ngIf="submitted && form.stu_prf_bldgrp_fk.errors!=null"
                                                 class="invalid-feedback">
                                                 <div *ngIf="form.stu_prf_bldgrp_fk.errors.required">Blood Group is
                                                     required </div>
@@ -839,7 +832,7 @@
                                                 placeholder="Select School" formControlName="stu_prf_religion_fk"
                                                 [ngClass]="{ 'is-invalid': submitted && form.stu_prf_religion_fk.errors!=null }">
                                             </ng-select>
-                                            <div *ngIf="submitted && form.stu_prf_religion_fk.errors"
+                                            <div *ngIf="submitted && form.stu_prf_religion_fk.errors!=null"
                                                 class="invalid-feedback">
                                                 <div *ngIf="form.stu_prf_religion_fk.errors.required">Religion is
                                                     required
@@ -1032,14 +1025,27 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Co-Curriculum Activity</label>
+                                            <ng-select
+                                            [(ngModel)]="SViewitems.stu_prf_co_curr" 
+                                            [clearable]="false"
+                                            [loading]="activitySelect"
+                                            [items]="dropdownActivityArray" 
+                                            [multiple]="true"
+                                            bindLabel="name"
+                                            bindValue="name"
+                                            placeholder="Select Activities"
+                                            formControlName="stu_prf_co_curr"  
+                                            [ngClass]="{ 'is-invalid': submitted && form.stu_prf_co_curr.errors!=null }"
+                                            >
+                                            </ng-select>
+                                            <!--
                                             <input type="text" formControlName="stu_prf_co_curr"
                                                 [(ngModel)]="SViewitems.stu_prf_co_curr" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && form.stu_prf_co_curr.errors }" />
-                                            <div *ngIf="submitted && form.stu_prf_co_curr.errors"
-                                                class="invalid-feedback">
-                                                <div *ngIf="form.stu_prf_co_curr.errors.required">Co-Curriculum Activity
-                                                    is
-                                                    required
+                                               -->
+                                            <div *ngIf="submitted && form.stu_prf_co_curr.errors!=null" class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_co_curr.errors.required">
+                                                    Co-Curriculum Activity is required
                                                 </div>
                                             </div>
                                         </div>
@@ -1335,13 +1341,13 @@
                                                             </option>
 
                                                         </select> -->
-                                                        <ng-select [(ngModel)]="SViewitems.cert_code_fk"
+                                                        <ng-select
                                                             [items]="dropdownSchoolArray" bindLabel="name"
-                                                            bindValue="id" placeholder="Select School"
+                                                            bindValue="id" placeholder="Select Name"
                                                             formControlName="cert_code_fk"
                                                             [ngClass]="{ 'is-invalid': submitted && form.cert_code_fk.errors!=null }">
                                                         </ng-select>
-                                                        <div *ngIf="submitted && form.cert_code_fk.errors" class="invalid-feedback">
+                                                        <div *ngIf="submitted && form.cert_code_fk.errors!=null" class="invalid-feedback">
                                                             <div *ngIf="form.cert_code_fk.errors.required">
                                                                 Certificate Name is required
                                                             </div>

@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./studentedit.component.scss']
 })
 export class StudenteditComponent implements OnInit {
-
+  submitted = false;
   appRandomNumber:any;
 
   mygrou=[1,2,3,4,5];
@@ -263,6 +263,7 @@ dropdownCommunityArray: any = [
          console.log(dt['student']);
          this.SViewitems=dt['student'];
          this.SViewitems.stu_read_mode=1;
+         this.SViewitems.stu_prf_age=10;
          console.log(this.SViewitems.stu_prf_app_No);
        }
     })
@@ -308,8 +309,8 @@ dropdownCommunityArray: any = [
 
     this.validationform = this.formBuilder.group({
       col_code_fk: [null, [Validators.required]],
-      stu_prf_app_No: ['', [Validators.pattern('[a-zA-Z0-9]+')]],
-      stu_prf_app_date: ['', [Validators.pattern('[a-zA-Z0-9]+')]],
+      stu_prf_app_No: ['', [Validators.required]],
+      stu_prf_app_date: ['', [Validators.required]],
       stu_prf_stud_name: ['', [Validators.required]],
       stu_stud_mname: [''],
       stu_stud_lname: [''],
@@ -321,7 +322,7 @@ dropdownCommunityArray: any = [
       stu_prf_current_batch: [null, [Validators.required]],
       stu_prf_sec_lang: [null, [Validators.required]],
       stu_read_mode: ['1', [Validators.required]],
-      stu_mother_medium_ins_fk: [null, [Validators.required]],
+      stu_mother_medium_ins_fk: [null],
       stu_prev_degree_code: [null, [Validators.required]],
       stu_prev_medium_ins_fk: [null, [Validators.required]],
       stu_adm_prev_colname: [''],
@@ -340,7 +341,7 @@ dropdownCommunityArray: any = [
       stu_prf_mobile_no: [''],
       stu_prf_plc_of_livng: ['', [Validators.required]],
       stu_prf_mem_of_serv_org: [''],
-      stu_prf_parents_old_stu: ['2', [Validators.required]],
+      stu_prf_parents_old_stu: ['0', [Validators.required]],
       stu_prf_family_size: ['', [Validators.required]],
       stu_prf_sex: ['1', [Validators.required]],
       stu_prf_plc_of_birth: [''],
@@ -492,10 +493,13 @@ dropdownCommunityArray: any = [
    */
   validSubmit() {
     this.submit = true;
-   
+    this.submitted = true;
+    
     if (this.validationform.invalid) {
+      console.log(this.validationform);
      return;
     }
+    console.log( JSON.stringify(this.validationform.value));
     // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.validationform.value));
     /*
  console.log( JSON.stringify(this.validationform.value));
@@ -589,7 +593,7 @@ dropdownCommunityArray: any = [
         "stu_adm_fee_coll": 0,
         "stu_adm_refno": 0,
         "stu_read_mode":this.form.stu_read_mode.value,
-        "stu_mother_medium_ins_fk" : this.form.stu_mother_medium_ins_fk.value,
+        "stu_mother_medium_ins_fk" : this.form.stu_prf_mother_tongue_fk.value,
         "stu_prev_degree_code":this.form.stu_prev_degree_code.value,
         "stu_prev_medium_ins_fk":this.form.stu_prev_medium_ins_fk.value,
         "stu_prf_guardian_aadhar" : this.form.stu_prf_guardian_aadhar.value,
