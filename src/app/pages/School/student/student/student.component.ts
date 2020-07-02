@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormArray } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -486,24 +486,7 @@ dropdownCommunityArray: any = [
     }
   }
 
-  /*
-  @ViewChild('fileInput') fileInput: ElementRef;
-  onFileChange(event) {
-    let reader = new FileReader();
-    if(event.target.files && event.target.files.length > 0) {
-      let file = event.target.files[0];
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        this.form.get('stu_adm_stu_image').setValue({
-          filename: file.name,
-          filetype: file.type,
-          value: reader.result.split(',')[1]
-        })
-      };
-    }
-  }
-  */
-
+   
   get form() {
     return this.validationform.controls;
   }
