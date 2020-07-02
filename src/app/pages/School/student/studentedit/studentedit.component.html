@@ -1,1251 +1,1402 @@
 <div class="row wrapper border-bottom white-bg page-heading">
-  <div class="col-lg-10">
-    <h2>Students Edit Form</h2>
-    <p>{{appRandomNumber}}</p>
-  </div>
-  <div class="col-lg-2">
-  </div>
+    <div class="col-lg-10">
+        <h2>Students Edit Form</h2>
+        <p>{{appRandomNumber}}</p>
+    </div>
+    <div class="col-lg-2">
+    </div>
 </div>
 <div class="wrapper wrapper-content animated fadeInRight">
 
-  <div class="row">
-      <div class="col-lg-12">
-          <div class="ibox">
-              <div class="ibox-title">
-                  <h5> Student Informations </h5>
-                  
-              </div>
-              <div class="ibox-content ">
-                  <form class="needs-validation" (ngSubmit)="validSubmit()" [formGroup]="validationform">
-                      <br>
-                      <div class="card form-row">
-                          <div class="card-body">
-                              <h2>Account Information</h2>
-                              <div class="row ">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5> Student Informations </h5>
 
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>School Name *</label>
-                                          <ng-select 
-                                                [(ngModel)]="SViewitems.col_code_fk"     
-                                                [items]="dropdownSchoolArray" 
-                                                bindLabel="name"
-                                                bindValue="id"
-                                                placeholder="Select School"
-                                                formControlName="col_code_fk"  
-                                                [ngClass]="{ 'is-invalid': submitted && form.col_code_fk.errors!=null }"
-                                                >
+                </div>
+                <div class="ibox-content ">
+                    <form class="needs-validation" (ngSubmit)="validSubmit()" [formGroup]="validationform">
+                        <br>
+                        <div class="card form-row">
+                            <div class="card-body">
+                                <h2>Account Information</h2>
+                                <div class="row ">
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>School Name *</label>
+                                            <ng-select [(ngModel)]="SViewitems.col_code_fk"
+                                                [items]="dropdownSchoolArray" bindLabel="name" bindValue="id"
+                                                placeholder  ="Select School" formControlName="col_code_fk" 
+                                                [ngClass]="{ 'is-invalid': submitted && form.col_code_fk.errors!=null }">
                                             </ng-select>
-                                          <!--
+                                            <!--
                                           <select formControlName="col_code_fk" class="form-control"
                                               [(ngModel)]="SViewitems.col_code_fk" 
-                                              [ngClass]="{ 'is-invalid': submitted && f.col_code_fk }">
+                                              [ngClass]="{ 'is-invalid': submitted && form.col_code_fk }">
                                               <option *ngFor="let col_code_fk of dropdownArray[0], index as i" [ngValue]="i+1">
                                                   {{col_code_fk}}
                                               </option>
                                           </select>
                                           -->
-                                          <div *ngIf="submitted && form.col_code_fk.errors!=null" class="invalid-feedback">
-                                                <div *ngIf="form.col_code_fk.errors.required">School name is required</div>
+                                            <div *ngIf="submitted && form.col_code_fk.errors!=null"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.col_code_fk.errors.required">School name is required
+                                                </div>
                                             </div>
-                                      </div>
-                                  </div>
+                                        </div>
+                                    </div>
 
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Application No *</label>
-                                          <input type="text" formControlName="stu_prf_app_No" [ngModel]="SViewitems.stu_prf_app_No"
-                                              class="form-control" disabled />
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Application No *</label>
+                                            <input type="text" formControlName="stu_prf_app_No"
+                                           
+                                                [(ngModel)]="SViewitems.stu_prf_app_No" class="form-control" disabled />
 
-                                      </div>
-                                  </div>
-
-
-                                  <div class="col-lg-6">
-
-                                      <div class="form-group">
-                                          <label>Date Applied *</label>
-                                          <input type="text" formControlName="stu_prf_app_date" [ngModel]="SViewitems.stu_prf_app_date"
-                                              class="form-control" disabled />
-                                      </div>
-
-                                  </div>
+                                        </div>
+                                    </div>
 
 
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Student First Name *</label>
-                                          <input type="text" formControlName="stu_prf_stud_name"
-                                              [ngModel]="SViewitems.stu_prf_stud_name" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.stu_prf_stud_name.errors }" />
-                                              <div *ngIf="submitted && form.stu_prf_stud_name.errors"  class="invalid-feedback">
-                                                <div *ngIf="form.stu_prf_stud_name.errors.required">First Name is required </div>
-                                            </div> 
+                                    <div class="col-lg-6">
 
-                                      </div>
-                                  </div>
+                                        <div class="form-group">
+                                            <label>Date Applied *</label>
+                                            <input type="text" formControlName="stu_prf_app_date"
+                                                [(ngModel)]="SViewitems.stu_prf_app_date" class="form-control" disabled />
+                                        </div>
+
+                                    </div>
 
 
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Student First Name *</label>
+                                            <input type="text" formControlName="stu_prf_stud_name"
+                                                [(ngModel)]="SViewitems.stu_prf_stud_name" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_stud_name.errors }" />
+                                            <div *ngIf="submitted && form.stu_prf_stud_name.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_stud_name.errors.required">First Name is
+                                                    required </div>
+                                            </div>
 
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Student Middle Name *</label>
-                                          <input type="text" formControlName="stu_stud_mname"
-                                              [ngModel]="SViewitems.stu_stud_mname" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.stu_stud_mname.errors }" />
-                                          <div *ngIf="submitted && f.stu_stud_mname.errors" class="invalid-feedback">
-                                              <div *ngIf="f.stu_stud_mname.errors.required">middle Name is required
-                                              </div>
-                                          </div>
-
-                                      </div>
-                                  </div>
+                                        </div>
+                                    </div>
 
 
 
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Student Last Name</label>
-                                          <input type="text" formControlName="stu_stud_lname"
-                                              [ngModel]="SViewitems.stu_stud_lname"  class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.stu_stud_lname.errors }" />
-                                          <div *ngIf="submitted && f.stu_stud_lname.errors" class="invalid-feedback">
-                                              <div *ngIf="f.stu_stud_lname.errors.required">Last Name is required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Student Middle Name *</label>
+                                            <input type="text" formControlName="stu_stud_mname"
+                                                [(ngModel)]="SViewitems.stu_stud_mname" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_stud_mname.errors }" />
+                                            <div *ngIf="submitted && form.stu_stud_mname.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_stud_mname.errors.required">middle Name is required
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
 
 
 
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Entry Mode *</label>
-                                          <div style="height: 34px;">
-                                              <input formControlName="stu_adm_mode" id="stu_adm_mode" name="stu_adm_mode" type="radio"
-                                                  [(ngModel)]="SViewitems.stu_adm_mode" [value]="1"
-                                                  class="form-controlX required" style="float:left;" tabindex="7">
-                                              <span style="float:left;">&nbsp;Regular &nbsp;&nbsp;</span>
-                                              <input formControlName="stu_adm_mode" id="stu_adm_mode" name="stu_adm_mode" type="radio"
-                                                  [(ngModel)]="SViewitems.stu_adm_mode" [value]="2"
-                                                  class="form-controlX required" style="float:left;" tabindex="8">
-                                              <span style="float:left;">&nbsp;Transfer&nbsp;&nbsp;</span>
-                                          </div>
-                                      </div>
-                                  </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Student Last Name</label>
+                                            <input type="text" formControlName="stu_stud_lname"
+                                                [(ngModel)]="SViewitems.stu_stud_lname" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_stud_lname.errors }" />
+                                            <div *ngIf="submitted && form.stu_stud_lname.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_stud_lname.errors.required">Last Name is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
 
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Batch/Academic year *</label>
-                                          <select formControlName="bayear" class="form-control"
-                                              [ngModel]="SViewitems.stu_prf_current_Year" [ngClass]="{ 'is-invalid': submitted && f.bayear.errors }">
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Entry Mode *</label>
+                                            <div style="height: 34px;">
+                                                <input formControlName="stu_adm_mode" id="stu_adm_mode"
+                                                    name="stu_adm_mode" type="radio"
+                                                    [(ngModel)]="SViewitems.stu_adm_mode" [value]="1"
+                                                    class="form-controlX required" style="float:left;" tabindex="7">
+                                                <span style="float:left;">&nbsp;Regular &nbsp;&nbsp;</span>
+                                                <input formControlName="stu_adm_mode" id="stu_adm_mode"
+                                                    name="stu_adm_mode" type="radio"
+                                                    [(ngModel)]="SViewitems.stu_adm_mode" [value]="2"
+                                                    class="form-controlX required" style="float:left;" tabindex="8">
+                                                <span style="float:left;">&nbsp;Transfer&nbsp;&nbsp;</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Batch/Academic year *</label>
+                                            <!-- <select formControlName="bayear" class="form-control"
+                                              [(ngModel)]="SViewitems.stu_prf_current_Year" [ngClass]="{ 'is-invalid': submitted && form.bayear.errors }">
                                               <option *ngFor="let bayear of dropdownArray[3], index as i" [ngValue]="i+1">
                                                 {{bayear}}
                                               </option>
-                                          </select>
-                                          <div *ngIf="submitted && f.bayear.errors" class="invalid-feedback">
-                                              <div *ngIf="f.bayear.errors.required">Batch / Academic year is required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
+                                          </select> -->
+                                            <ng-select [(ngModel)]="SViewitems.stu_prf_current_Year"
+                                                [items]="dropdownSchoolArray" bindLabel="name" bindValue="id"
+                                                placeholder="Select School" formControlName="stu_prf_current_Year"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_current_Year.errors!=null }">
+                                            </ng-select>
+                                            <div *ngIf="submitted && form.stu_prf_current_Year.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_current_Year.errors.required">Batch / Academic
+                                                    year is
+                                                    required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
 
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Board Name *</label>
-                                          <select formControlName="boardname" class="form-control"
-                                              [ngModel]="SViewitems.stu_prf_degree_code" [ngClass]="{ 'is-invalid': submitted && f.boardname.errors }">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Board Name *</label>
+                                            <ng-select [(ngModel)]="SViewitems.stu_prf_degree_code"
+                                                [items]="dropdownSchoolArray" bindLabel="name" bindValue="id"
+                                                placeholder="Select School" formControlName="stu_prf_degree_code"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_degree_code.errors!=null }">
+                                            </ng-select>
+                                            <!--  <select formControlName="boardname" class="form-control"
+                                              [(ngModel)]="SViewitems.stu_prf_degree_code" [ngClass]="{ 'is-invalid': submitted && form.boardname.errors }">
                                               <option *ngFor="let boardname of dropdownArray[4], index as i" [ngValue]="i+1">
                                                 {{boardname}}
                                               </option>
-                                          </select>
-                                          <div *ngIf="submitted && f.boardname.errors" class="invalid-feedback">
-                                              <div *ngIf="f.boardname.errors.required">Board Name is required
-                                              </div>
-                                          </div>
+                                          </select> -->
+                                            <div *ngIf="submitted && form.stu_prf_degree_code.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_degree_code.errors.required">Board Name is
+                                                    required
+                                                </div>
+                                            </div>
 
-                                      </div>
-                                  </div>
+                                        </div>
+                                    </div>
 
 
 
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Medium Name *</label>
-                                          <select formControlName="medname" class="form-control"
-                                              [ngModel]="SViewitems.stu_prf_branch_Code" [ngClass]="{ 'is-invalid': submitted && f.medname.errors }">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Medium Name *</label>
+                                            <!--<select formControlName="medname" class="form-control"
+                                              [(ngModel)]="SViewitems.stu_prf_branch_Code" [ngClass]="{ 'is-invalid': submitted && form.medname.errors }">
                                               <option *ngFor="let medname of dropdownArray[5], index as i" [ngValue]="i+1">
                                                 {{medname}}
                                               </option>
-                                          </select>
-                                          <div *ngIf="submitted && f.medname.errors" class="invalid-feedback">
-                                              <div *ngIf="f.medname.errors.required">Medium Name is required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-
-
-                                  <div class="col-lg-6">
-
-                                      <div class="form-group">
-                                          <label>Standard *</label>
-                                          <select formControlName="stand" class="form-control"
-                                              [ngModel]="SViewitems.stu_prf_current_Semester" [ngClass]="{ 'is-invalid': submitted && f.stand.errors }">
-                                              <option *ngFor="let stand of dropdownArray[6], index as i" [ngValue]="i+1">
-                                                  {{stand}}
-                                              </option>
-                                          </select>
-                                          <div *ngIf="submitted && f.stand.errors" class="invalid-feedback">
-                                              <div *ngIf="f.stand.errors.required">Standard is required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-
-
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Group Name *</label>
-                                          <select formControlName="groupn" class="form-control"
-                                              [ngModel]="SViewitems.stu_prf_current_batch" [ngClass]="{ 'is-invalid': submitted && f.groupn.errors }">
-                                              <option *ngFor="let groupn of dropdownArray[7], index as i" [ngValue]="i+1">{{groupn}}
-                                              </option>
-
-                                          </select>
-                                          <div *ngIf="submitted && f.groupn.errors" class="invalid-feedback">
-                                              <div *ngIf="f.groupn.errors.required">Group Name is required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Second Language *</label>
-                                          <select formControlName="secondlang" class="form-control"
-                                              [ngModel]="SViewitems.stu_prf_sec_lang" [ngClass]="{ 'is-invalid': submitted && f.secondlang.errors }">
-                                              <option *ngFor="let secondlang of dropdownArray[8], index as i" [ngValue]="i+1">
-                                                  {{secondlang}}
-                                              </option>
-
-                                          </select>
-                                          <div *ngIf="submitted && f.secondlang.errors" class="invalid-feedback">
-                                              <div *ngIf="f.secondlang.errors.required">Second Language is required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-
-
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Reading Ability *</label>
-                                          <div style="height: 34px;">
-                                              <input id="stu_read_mode" name="stu_read_mode" type="radio"
-                                                  [(ngModel)]="SViewitems.stu_read_mode" [value]="1"
-                                                  class="form-controlX required" style="float:left;" tabindex="7">
-                                              <span style="float:left;">&nbsp;Yes &nbsp;&nbsp;</span>
-                                              <input id="stu_read_mode" name="stu_read_mode" type="radio"
-                                                  [(ngModel)]="SViewitems.stu_read_mode" [value]="2"
-                                                  checked class="form-controlX required" style="float:left;"
-                                                  tabindex="8">
-                                              <span style="float:left;">&nbsp;No&nbsp;&nbsp;</span>
-                                          </div>
-                                      </div>
-                                  </div>
-
-
-
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Mother Tongue *</label>
-                                          <select formControlName="motherton" class="form-control"
-                                              [ngModel]="SViewitems.stu_prf_mother_tongue_fk" [ngClass]="{ 'is-invalid': submitted && f.motherton.errors }">
-                                              <option *ngFor="let motherton of dropdownArray[9], index as i" [ngValue]="i+1">{{motherton}}
-                                              </option>
-
-                                          </select>
-                                          <div *ngIf="submitted && f.motherton.errors" class="invalid-feedback">
-                                              <div *ngIf="f.motherton.errors.required">Second Language is required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-
-
-
-                                  <div class="col-lg-6">
-                                      <div class="form-group" id="data_1">
-                                          <label class="font-normal">Date of Birth *</label>
-                                          <div class="input-group date">
-                                              <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                              <input id="stu_prf_dob" name="stu_prf_dob" type="date"  (input)="parseDate($event.target.value)" 
-                                              [ngModel]="SViewitems.stu_prf_dob" 
-                                                  class="form-control required" tabindex="19" autocomplete="off">
-                                          </div>
-
-                                      </div>
-                                  </div>
-
-
-
-
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Age *</label>
-                                          <input id="stu_prf_age" name="stu_prf_age" type="text"
-                                          [ngModel]="SViewitems.stu_prf_age" 
-                                          class="form-control required" disabled tabindex="19">
-                                      </div>
-
-                                  </div>
-
-                              </div>
-                          </div>
-                      </div>
-                      <br>
-
-                      <div class="card">
-                          <div class="card-body">
-                              <h2>Previous School Information</h2>
-                              <div class="row">
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Previous School Board Name *</label>
-                                          <select formControlName="stu_prev_degree_code" class="form-control"
-                                              [ngModel]="SViewitems.stu_prev_degree_code" [ngClass]="{ 'is-invalid': submitted && f.stu_prev_degree_code.errors }">
-                                              <option *ngFor="let stu_prev_degree_code of dropdownArray[10], index as i" [ngValue]="i+1">
-                                                  {{stu_prev_degree_code}}
-                                              </option>
-
-                                          </select>
-                                          <div *ngIf="submitted && f.stu_prev_degree_code.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.stu_prev_degree_code.errors.required">Previous School is
-                                                  required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-
-
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Medium Of Previous Study *</label>
-                                          <select formControlName="stu_prev_medium_ins_fk" class="form-control"
-                                              [ngModel]="SViewitems.stu_prev_medium_ins_fk" [ngClass]="{ 'is-invalid': submitted && f.stu_prev_medium_ins_fk.errors }">
-                                              <option *ngFor="let stu_prev_medium_ins_fk of dropdownArray[11], index as i" [ngValue]="i+1">
-                                                  {{stu_prev_medium_ins_fk}}
-                                              </option>
-
-                                          </select>
-                                          <div *ngIf="submitted && f.stu_prev_medium_ins_fk.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.stu_prev_medium_ins_fk.errors.required">Medium Of Previous
-                                                  Study is required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-
-
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Previous School Name </label>
-                                          <input type="text" formControlName="stu_adm_prev_colname"
-                                              [ngModel]="SViewitems.stu_adm_prev_colname" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.stu_adm_prev_colname.errors }" />
-                                          <div *ngIf="submitted && f.stu_adm_prev_colname.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.stu_adm_prev_colname.errors.required">Previous School Name
-                                                  is required
-                                              </div>
-                                          </div>
-
-                                      </div>
-                                  </div>
-
-                                  <br>
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Previous Standard </label>
-                                          <select formControlName="stu_adm_prev_class" class="form-control"
-                                              [ngModel]="SViewitems.stu_adm_prev_class" [ngClass]="{ 'is-invalid': submitted && f.stu_adm_prev_class.errors }">
-                                              <option *ngFor="let stu_adm_prev_class of dropdownArray[12], index as i" [ngValue]="i+1">
-                                                  {{stu_adm_prev_class}}
-                                              </option>
-
-                                          </select>
-                                          <div *ngIf="submitted && f.stu_adm_prev_class.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.stu_adm_prev_class.errors.required">Medium Of Previous
-                                                  Study is required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <br>
-                      <div class="card">
-                          <div class="card-body">
-                              <h2>Parent Information</h2>
-                              <div class="row">
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Father/Guardian First Name *</label>
-                                          <input type="text" formControlName="stu_prf_fathers_name"
-                                              [ngModel]="SViewitems.stu_prf_fathers_name" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.stu_prf_fathers_name.errors }" />
-                                          <div *ngIf="submitted && f.stu_prf_fathers_name.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.stu_prf_fathers_name.errors.required">Father/Guardian
-                                                  First Name is required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-
-
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Father/Guardian Last Name</label>
-                                          <input type="text" formControlName="stu_prf_guardian_name"
-                                              [ngModel]="SViewitems.stu_prf_guardian_name" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && stu_prf_guardian_name }" />
-                                          <div *ngIf="submitted && f.stu_prf_guardian_name.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.stu_prf_guardian_name.errors.required">Father/Guardian
-                                                  Last Name is required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-
-
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Father/Guardian Aadhar Number</label>
-                                          <input type="number" formControlName="stu_prf_guardian_aadhar"
-                                              [ngModel]="SViewitems.stu_prf_guardian_aadhar" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.stu_prf_guardian_aadhar.errors }" />
-                                          <div *ngIf="submitted && f.stu_prf_guardian_aadhar.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.stu_prf_guardian_aadhar.errors.required">Father/Guardian
-                                                  Aadhar Number is required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-
-
-
-
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Father Qualification</label>
-                                          <input type="text" formControlName="stu_prf_fathers_qual"
-                                              [ngModel]="SViewitems.stu_prf_fathers_qual" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.stu_prf_fathers_qual.errors }" />
-                                          <div *ngIf="submitted && f.stu_prf_fathers_qual.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.stu_prf_fathers_qual.errors.required">Father Qualification
-                                                  is required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-
-
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Father Occupation</label>
-                                          <input type="text" formControlName="stu_prf_fathers_occup"
-                                              [ngModel]="SViewitems.stu_prf_fathers_occup" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.stu_prf_fathers_occup.errors }" />
-                                          <div *ngIf="submitted && f.stu_prf_fathers_occup.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.stu_prf_fathers_occup.errors.required">Father Occupation
-                                                  is required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Father Annual Income *</label>
-                                          <input type="number" formControlName="stu_prf_fathers_anninc"
-                                              [ngModel]="SViewitems.stu_prf_fathers_anninc" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.stu_prf_fathers_anninc.errors }" />
-                                          <div *ngIf="submitted && f.stu_prf_fathers_anninc.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.stu_prf_fathers_anninc.errors.required">Father Annual
-                                                  Income
-                                                  is required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-
-
-
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Mother Name</label>
-                                          <input type="text" formControlName="stu_prf_mothers_name"
-                                              [ngModel]="SViewitems.stu_prf_mothers_name" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.stu_prf_mothers_name.errors }" />
-                                          <div *ngIf="submitted && f.stu_prf_mothers_name.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.stu_prf_mothers_name.errors.required">Mother Name is
-                                                  required </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Mother Occupation</label>
-                                          <input type="text" formControlName="stu_prf_mothers_occup"
-                                              [ngModel]="SViewitems.stu_prf_mothers_occup" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.stu_prf_mothers_occup.errors }" />
-                                          <div *ngIf="submitted && f.stu_prf_mothers_occup.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.stu_prf_mothers_occup.errors.required">Father Occupation
-                                                  is required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-
-
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Mother Annual Income</label>
-                                          <input type="text" formControlName="stu_prf_mothers_anninc"
-                                              [ngModel]="SViewitems.stu_prf_mothers_anninc" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.stu_prf_mothers_anninc.errors }" />
-                                          <div *ngIf="submitted && f.stu_prf_mothers_anninc.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.stu_prf_mothers_anninc.errors.required">Mother Annual
-                                                  Income is required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-
-
-
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Parent Email ID </label>
-                                          <input type="text" formControlName="stu_prf_parent_email"
-                                              [ngModel]="SViewitems.stu_prf_parent_email" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.stu_prf_parent_email.errors }" />
-                                          <div *ngIf="submitted && f.stu_prf_parent_email.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.stu_prf_parent_email.errors.required">Parent Email ID is
-                                                  required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-
-
-
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Parent Mobile No</label>
-                                          <input type="number" formControlName="stu_prf_mobile_no"
-                                              [ngModel]="SViewitems.stu_prf_mobile_no" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.stu_prf_mobile_no.errors }" />
-                                          <div *ngIf="submitted && f.stu_prf_mobile_no.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.stu_prf_mobile_no.errors.required">Parent Mobile No is
-                                                  required</div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-
-
-
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Place of Living *</label>
-                                          <input type="text" formControlName="stu_prf_plc_of_livng"
-                                              [ngModel]="SViewitems.stu_prf_plc_of_livng" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.stu_prf_plc_of_livng.errors }" />
-                                          <div *ngIf="submitted && f.stu_prf_plc_of_livng.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.stu_prf_plc_of_livng.errors.required">Place of Living is
-                                                  required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-
-
-                                  <div class="col-lg-6" style="display:none;">
-                                      <div class="form-group">
-                                          <label>Member of Service Organization</label>
-                                          <input type="text" formControlName="stu_prf_mem_of_serv_org"
-                                              [ngModel]="SViewitems.stu_prf_mem_of_serv_org" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.stu_prf_mem_of_serv_org.errors }" />
-                                          <div *ngIf="submitted && f.stu_prf_mem_of_serv_org.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.stu_prf_mem_of_serv_org.errors.required">Member of Service
-                                                  Organization is required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-
-
-
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Parents Old Student</label>
-                                          <div style="height: 34px;">
-                                              <input id="stu_prf_parents_old_stu" name="stu_prf_parents_old_stu"
-                                                  type="radio" value="1" class="form-controlX required"
-                                                  style="float:left;" tabindex="33">
-                                              <span style="float:left;">&nbsp;Yes &nbsp;&nbsp;</span>
-                                              <input id="stu_prf_parents_old_stu" name="stu_prf_parents_old_stu"
-                                                  type="radio" value="0" checked class="form-controlX required"
-                                                  style="float:left;" tabindex="34">
-                                              <span style="float:left;">&nbsp;No&nbsp;&nbsp;</span>
-                                          </div>
-                                      </div>
-                                  </div>
-
-
-
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Family Size *</label>
-                                          <input type="text" formControlName="stu_prf_family_size" 
-                                              [ngModel]="SViewitems.stu_prf_family_size" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.stu_prf_family_size.errors }" />
-                                          <div *ngIf="submitted && f.stu_prf_family_size.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.stu_prf_family_size.errors.required">Family Size is
-                                                  required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <br>
-                      <div class="card">
-                          <div class="card-body">
-                              <h2>Student Information</h2>
-                              <div class="row">
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Gender *</label>
-                                          <div style="height: 34px;">
-                                              <input formControlName="stu_prf_sex" id="stu_prf_sex" name="stu_prf_sex" type="radio" 
-                                                  [(ngModel)]="SViewitems.stu_prf_sex" [value]="1"
-                                                  class="form-controlX required" style="float:left;" tabindex="36">
-                                              <span style="float:left;">&nbsp;Male &nbsp;&nbsp;</span>
-                                              <input formControlName="stu_prf_sex" id="stu_prf_sex" name="stu_prf_sex" type="radio" 
-                                                  [(ngModel)]="SViewitems.stu_prf_sex" [value]="2"
-                                                  class="form-controlX required" style="float:left;" tabindex="37">
-                                              <span style="float:left;">&nbsp;Female&nbsp;&nbsp;</span>
-                                              <div *ngIf="submitted && f.stu_prf_family_size.errors"
-                                                  class="invalid-feedback">
-                                                  <div *ngIf="f.stu_prf_family_size.errors.required">Gender is
-                                                      required
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Place of Birth</label>
-                                          <input type="text" formControlName="stu_prf_plc_of_birth"
-                                              [(ngModel)]="SViewitems.stu_prf_plc_of_birth" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.stu_prf_plc_of_birth.errors }" />
-                                          <div *ngIf="submitted && f.stu_prf_plc_of_birth.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.stu_prf_plc_of_birth.errors.required">Family Size is
-                                                  required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Blood Group{{SViewitems.stu_prf_bldgrp_fk}}</label>
-                                          <select formControlName="stu_prf_bldgrp_fk" class="form-control"
-                                              [(ngModel)]="SViewitems.stu_prf_bldgrp_fk" [ngClass]="{ 'is-invalid': submitted && f.stu_prf_bldgrp_fk.errors }">
-                                              <option *ngFor="let stu_prf_bldgrp_fk of dropdownArray[13], index as i" [ngValue]="i+1">
-                                                  {{stu_prf_bldgrp_fk}}
-                                              </option>
-
-                                          </select>
-                                          <div *ngIf="submitted && f.stu_prf_bldgrp_fk.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.stu_prf_bldgrp_fk.errors.required">Blood Group is
-                                                  required </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Religion</label>
-                                          <select formControlName="stu_prf_religion_fk" class="form-control"
-                                              [(ngModel)]="SViewitems.stu_prf_religion_fk" [ngClass]="{ 'is-invalid': submitted && f.stu_prf_religion_fk.errors }">
-                                              <option *ngFor="let stu_prf_religion_fk of dropdownArray[14], index as i" [ngValue]="i+1">
-                                                  {{stu_prf_religion_fk}}
-                                              </option>
-
-                                          </select>
-                                          <div *ngIf="submitted && f.stu_prf_religion_fk.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.stu_prf_religion_fk.errors.required">Religion is required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-
-
-                                  <div class="col-lg-6" style="display:none;">
-                                      <div class="form-group">
-                                          <label>Class/Caste</label>
-                                          <select formControlName="stu_prf_caste_fk" class="form-control"
-                                              [(ngModel)]="SViewitems.stu_prf_caste_fk" [ngClass]="{ 'is-invalid': submitted && f.stu_prf_caste_fk.errors }">
-                                              <option *ngFor="let stu_prf_caste_fk of dropdownArray[9], index as i" [ngValue]="i+1">
-                                                  {{stu_prf_caste_fk}}
-                                              </option>
-
-                                          </select>
-                                          <div *ngIf="submitted && f.stu_prf_caste_fk.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.stu_prf_caste_fk.errors.required">Class/Caste is required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-
-
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Community</label>
-                                          <select formControlName="stu_prf_community_fk" class="form-control"
-                                              [(ngModel)]="SViewitems.stu_prf_community_fk" [ngClass]="{ 'is-invalid': submitted && f.stu_prf_community_fk.errors }">
-                                              <option *ngFor="let stu_prf_community_fk of dropdownArray[15], index as i" [ngValue]="i+1">
-                                                  {{stu_prf_community_fk}}
-                                              </option>
-
-                                          </select>
-                                          <div *ngIf="submitted && f.stu_prf_community_fk.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.stu_prf_community_fk.errors.required">Community is
-                                                  required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Student Email ID *</label>
-                                          <input type="text" formControlName="stu_prf_stu_email"
-                                              [(ngModel)]="SViewitems.stu_prf_stu_email" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.stu_prf_stu_email.errors }" />
-                                          <div *ngIf="submitted && f.stu_prf_stu_email.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.stu_prf_stu_email.errors.required">Student Email ID is
-                                                  required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-
-
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Student Aadhar Number</label>
-                                          <input type="number" formControlName="stu_prf_stu_aadhar"
-                                              [(ngModel)]="SViewitems.stu_prf_stu_aadhar" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.stu_prf_stu_aadhar.errors }" />
-                                          <div *ngIf="submitted && f.stu_prf_stu_aadhar.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.stu_prf_stu_aadhar.errors.required">Student Aadhar Number
-                                                  is
-                                                  required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>EMIS Number </label>
-                                          <input type="number" formControlName="stu_prf_stu_emis"
-                                              [(ngModel)]="SViewitems.stu_prf_stu_emis" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.stu_prf_stu_emis.errors }" />
-                                          <div *ngIf="submitted && f.stu_prf_stu_emis.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.stu_prf_stu_emis.errors.required">EMIS Number is
-                                                  required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Student Bank Details </label>
-                                          <input type="text" formControlName="stu_prf_stu_bank"
-                                              [(ngModel)]="SViewitems.stu_prf_stu_bank" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.stu_prf_stu_bank.errors }" />
-                                          <div *ngIf="submitted && f.stu_prf_stu_bank.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.stu_prf_stu_bank.errors.required">Student Bank Details is
-                                                  required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-                              </div>
-                          </div>
-                      </div>
-                      <br>
-                      <div class="card">
-                          <div class="card-body">
-                              <h2>Other Information</h2>
-                              <div class="row">
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Physically challenged *</label>
-                                          <div style="height: 34px;">
-                                              <input id="stu_prf_parents_handicap"
-                                                  formControlName="stu_prf_parents_handicap"
-                                                  name="stu_prf_parents_handicap" type="radio"
-                                                  [(ngModel)]="SViewitems.stu_prf_parents_handicap" [value]="1"
-                                                  class="form-controlX required" style="float:left;" tabindex="45">
-                                              <span style="float:left;">&nbsp;Yes &nbsp;&nbsp;</span>
-                                              <input id="stu_prf_parents_handicap"
-                                                  formControlName="stu_prf_parents_handicap"
-                                                  name="stu_prf_parents_handicap" type="radio"
-                                                  [(ngModel)]="SViewitems.stu_prf_parents_handicap" [value]="2"
-                                                  class="form-controlX required" style="float:left;" tabindex="46">
-                                              <span style="float:left;">&nbsp;No &nbsp;&nbsp;</span>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Visual Defect</label>
-                                          <div style="height: 34px;">
-                                              <input id="stu_prf_visualhandy" formControlName="stu_prf_visualhandy"
-                                                  name="stu_prf_visualhandy" type="radio"
-                                                  [(ngModel)]="SViewitems.stu_prf_visualhandy" [value]="1"
-                                                  class="form-controlX required" style="float:left;" tabindex="47">
-                                              <span style="float:left;">&nbsp;Yes &nbsp;&nbsp;</span>
-                                              <input id="stu_prf_visualhandy" formControlName="stu_prf_visualhandy"
-                                                  name="stu_prf_visualhandy" type="radio"
-                                                  [(ngModel)]="SViewitems.stu_prf_visualhandy" [value]="2"
-                                                  class="form-controlX required" style="float:left;" tabindex="48">
-                                              <span style="float:left;">&nbsp;No &nbsp;&nbsp;</span>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Any Medical Issues </label>
-                                          <input type="text" formControlName="stu_prf_medical"
-                                              [ngModel]="SViewitems.stu_prf_medical" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.stu_prf_medical.errors }" />
-                                          <div *ngIf="submitted && f.stu_prf_medical.errors" class="invalid-feedback">
-                                              <div *ngIf="f.stu_prf_medical.errors.required">Any Medical Issues is
-                                                  required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Co-Curriculum Activity</label>
-                                          <input type="text" formControlName="stu_prf_co_curr"
-                                              [ngModel]="SViewitems.stu_prf_co_curr" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.stu_prf_co_curr.errors }" />
-                                          <div *ngIf="submitted && f.stu_prf_co_curr.errors" class="invalid-feedback">
-                                              <div *ngIf="f.stu_prf_co_curr.errors.required">Co-Curriculum Activity is
-                                                  required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Language known</label>
-                                          <select formControlName="stu_prf_mother_tongue_fk" 
-                                              [ngModel]="SViewitems.stu_prf_mother_tongue_fk" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.stu_prf_mother_tongue_fk.errors }">
-                                              <option *ngFor="let stu_prf_mother_tongue_fk of dropdownArray[16], index as i" [ngValue]="i+1">
-                                                  {{stu_prf_mother_tongue_fk}}
-                                              </option>
-
-                                          </select>
-                                          <div *ngIf="submitted && f.stu_prf_mother_tongue_fk.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.stu_prf_mother_tongue_fk.errors.required">Language known required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-
-
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Citizen</label>
-                                          <select formControlName="stu_prf_citizen_fk"
-                                              [ngModel]="SViewitems.stu_prf_citizen_fk" class="form-control" 
-                                              [ngClass]="{ 'is-invalid': submitted && f.stu_prf_citizen_fk.errors }">
-                                              <option *ngFor="let stu_prf_citizen_fk of dropdownArray[17], index as i" [ngValue]="i+1">
-                                                  {{stu_prf_citizen_fk}}
-                                              </option>
-
-                                          </select>
-                                          <div *ngIf="submitted && f.stu_prf_citizen_fk.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.stu_prf_citizen_fk.errors.required">Citizen is required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-
-
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Remarks</label>
-                                          <input type="text" formControlName="stu_prf_remarks" 
-                                              [ngModel]="SViewitems.stu_prf_remarks" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.stu_prf_remarks.errors }" />
-                                          <div *ngIf="submitted && f.stu_prf_remarks.errors" class="invalid-feedback">
-                                              <div *ngIf="f.stu_prf_remarks.errors.required">Remarks is required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Student Image</label>
-                                          <input id="stu_adm_stu_image" name="stu_adm_stu_image" type="file"
-                                              class="form-control " tabindex="53">
-                                      </div>
-                                  </div>
-
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Bus Facility Requirement *</label>
-                                          <div style="height: 34px;">
-                                              <input id="stu_prf_bus" formControlName="stu_prf_bus" name="stu_prf_bus" type="radio" 
-                                              [(ngModel)]="SViewitems.stu_prf_bus" [value]="1"
-                                              class="form-controlX required" style="float:left;" tabindex="45">
-                                              <span style="float:left;">&nbsp;Yes &nbsp;&nbsp;</span>
-                                              <input id="stu_prf_bus" formControlName="stu_prf_bus" name="stu_prf_bus" type="radio" 
-                                              [(ngModel)]="SViewitems.stu_prf_bus" [value]="2"
-                                              class="form-controlX required" style="float:left;"
-                                              tabindex="46">
-                                              <span style="float:left;">&nbsp;No &nbsp;&nbsp;</span>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <br>
-                      <div class="card">
-                          <div class="card-body">
-                              <h2>Permanent Address</h2>
-                              <div class="row">
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Address *</label>
-                                          <input type="text" formControlName="con_per_add"
-                                              [ngModel]="SViewitems.con_per_add" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.con_per_add.errors }" />
-                                          <div *ngIf="submitted && f.con_per_add.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.con_per_add.errors.required">Address is required. </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>State *</label>
-                                          <input type="text" formControlName="con_per_state"
-                                              [ngModel]="SViewitems.con_per_state" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.con_per_state.errors }" />
-                                          <div *ngIf="submitted && f.con_per_state.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.con_per_state.errors.required">State is required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Country </label>
-                                          <input type="text" formControlName="con_per_cntry"
-                                              [ngModel]="SViewitems.con_per_cntry" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.con_per_cntry.errors }" />
-                                          <div *ngIf="submitted && f.con_per_cntry.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.con_per_cntry.errors.required">Country is required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Pincode </label>
-                                          <input type="number" formControlName="con_per_pincode"
-                                              [ngModel]="SViewitems.con_per_pincode" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.con_per_pincode.errors }" />
-                                          <div *ngIf="submitted && f.con_per_pincode.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.con_per_pincode.errors.required">Pincodee is required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Phone Number *</label>
-                                          <input type="number" formControlName="con_per_phone"
-                                              [ngModel]="SViewitems.con_per_phone" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.con_per_phone.errors }" />
-                                          <div *ngIf="submitted && f.con_per_phone.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.con_per_phone.errors.required">Phone Number is required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Nearest Railway Station </label>
-                                          <input type="text" formControlName="con_rail_stn"
-                                              [ngModel]="SViewitems.con_rail_stn" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.con_rail_stn.errors }" />
-                                          <div *ngIf="submitted && f.con_rail_stn.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.con_rail_stn.errors.required">Nearest Railway Station is required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <br />
-                                  <div class="col-lg-12">
-                                      <input type="checkbox" name="present" value="permanentAddressOpt" (change)="FieldsChange($event)"
-                                          tabindex="7">
-                                      If the check box selected contact address is same as permanent address
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <br>
-                      <div class="card">
-                          <div class="card-body">
-                              <h2>Contact Address</h2>
-                              <div class="row">
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Address *</label>
-                                          <input type="text" formControlName="con_cont_add"
-                                              [ngModel]="SViewitems.con_cont_add" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.con_cont_add.errors }" />
-                                          <div *ngIf="submitted && f.con_cont_add.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.con_cont_add.errors.required">Address is required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>State *</label>
-                                          <input type="text" formControlName="con_cont_state"
-                                              [ngModel]="SViewitems.con_cont_state" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.con_cont_state.errors }" />
-                                          <div *ngIf="submitted && f.con_cont_state.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.con_cont_state.errors.required">State is required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Country </label>
-                                          <input type="text" formControlName="con_cont_cntry"
-                                              [ngModel]="SViewitems.con_per_cntry" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.con_cont_cntry.errors }" />
-                                          <div *ngIf="submitted && f.con_cont_cntry.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.con_cont_cntry.errors.required">Country is required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Pincode </label>
-                                          <input type="number" formControlName="con_cont_pincode"
-                                              [ngModel]="SViewitems.con_cont_pincode" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.con_cont_pincode.errors }" />
-                                          <div *ngIf="submitted && f.con_cont_pincode.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.con_cont_pincode.errors.required">Pincode is required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="col-lg-6">
-                                      <div class="form-group">
-                                          <label>Phone Number *</label>
-                                          <input type="number" formControlName="con_cont_phone"
-                                              [ngModel]="SViewitems.con_cont_phone" class="form-control"
-                                              [ngClass]="{ 'is-invalid': submitted && f.con_cont_phone.errors }" />
-                                          <div *ngIf="submitted && f.con_cont_phone.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.con_cont_phone.errors.required">Phone Number is required
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-                              </div>
-                          </div>
-                      </div>
-                      <br>
-                      <!--<div class="card" formArrayName="certificateInfo" *ngFor="let certinfo of validationform.get('certificateInfo').controls; let i=index;">-->
-
-
-
-                      <div class="card">
-                          <div class="card-body">
-                              <h2>Certificate Information</h2>
-
-
-
-                              <div class="card-body" formArrayName="certificateColumns">
-                                  <div class="row col-12 m-0 p-0">
-                                      <div
-                                          *ngFor="let contact of duplicateCertifcateColumns.controls; let i = index;">
-                                          <div [formGroupName]="i" class="row">
-
-
-                                              <div class="col-lg-6">
-                                                  <div class="form-group">
-                                                      <label>Certificate Name *</label>
-                                                      <select formControlName="certificateName" name="certificateName" class="form-control"
-                                                      [ngClass]="{ 'is-invalid': submitted && f.certificateName.errors }" required>
-                                                      <option [value]="certificateName"
-                                                          *ngFor="let certificateName of dropdownArray[18], index as i">
-                                                          {{certificateName}}
-                                                      </option>
-      
-                                                  </select>
-                                                  <div *ngIf="submitted && f.certificateName.errors"
-                                                      class="invalid-feedback">
-                                                      <div *ngIf="f.certificateName.errors.required">Certificate Name is required
-                                                      </div>
-                                                  </div>
-                                                  </div>
-                                              </div>
-
-                                              <div class="col-lg-6">
-                                                  <div class="form-group">
-                                                      <label>Date *</label>
-                                                      <input formControlName="certificateDate" id="crt_cert_date"
-                                                          name="certificateDate" type="date"
-                                                          class="form-control required" tabindex="2">
-                                                  </div>
-                                              </div>
-                                              <div class="col-lg-6">
-                                                  <div class="form-group">
-                                                      <label>Certificate No </label>
-                                                      <input formControlName="certificateNo" id="crt_cert_no"
-                                                          name="certificateNo" type="text" class="form-control "
-                                                          tabindex="3">
-                                                  </div>
-                                              </div>
-                                              <div class="col-lg-6">
-                                                  <div class="form-group">
-                                                      <label>Attachment *</label>
-                                                      <input formControlName="certificateAttach" id="crt_attach"
-                                                          name="certificateAttach" type="file"
-                                                          class="form-control required" tabindex="4">
-                                                  </div>
-                                              </div>
-
-                                              <div class="form-group col-12 text-right">
-                                                  <button type="button" (click)="addCertificateColumn()"
-                                                      class="btn btn-info"><i class="fe fe-plus mr-1"></i>Add
-                                                      Certificate Column</button>
-                                                  <button *ngIf="i!=0" class="btn btn-info" type="button"
-                                                      (click)="removeCertificateColumn(i)"> <i
-                                                          class="fe fe-trash mr-1"></i>Remove </button>
-                                              </div>
-
-                                          </div>
-                                          <hr>
-
-                                      </div>
-                                  </div>
-                              </div>
-
-
-                          </div>
-                      </div>
-
-
-
-                      <!-- <div class="card" >
+                                          </select> -->
+                                            <ng-select [(ngModel)]="SViewitems.stu_prf_branch_Code"
+                                                [items]="dropdownSchoolArray" bindLabel="name" bindValue="id"
+                                                placeholder="Select School" formControlName="stu_prf_branch_Code"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_branch_Code.errors!=null }">
+                                            </ng-select>
+                                            <div *ngIf="submitted && form.stu_prf_branch_Code.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_branch_Code.errors.required">Medium Name is
+                                                    required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-lg-6">
+
+                                        <div class="form-group">
+                                            <label>Standard *</label>
+                                            <!--                                             <select formControlName="stand" class="form-control"
+                                                [(ngModel)]="SViewitems.stu_prf_current_Semester"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stand.errors }">
+                                                <option *ngFor="let stand of dropdownArray[6], index as i"
+                                                    [ngValue]="i+1">
+                                                    {{stand}}
+                                                </option>
+                                            </select> -->
+                                            <ng-select [(ngModel)]="SViewitems.stu_prf_current_Semester"
+                                                [items]="dropdownSchoolArray" bindLabel="name" bindValue="id"
+                                                placeholder="Select School" formControlName="stu_prf_current_Semester"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_current_Semester.errors!=null }">
+                                            </ng-select>
+                                            <div *ngIf="submitted && form.stu_prf_current_Semester.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_current_Semester.errors.required">Standard is
+                                                    required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Group Name *</label>
+                                            <!--                                             <select formControlName="groupn" class="form-control"
+                                                [(ngModel)]="SViewitems.stu_prf_current_batch"
+                                                [ngClass]="{ 'is-invalid': submitted && form.groupn.errors }">
+                                                <option *ngFor="let groupn of dropdownArray[7], index as i"
+                                                    [ngValue]="i+1">{{groupn}}
+                                                </option>
+
+                                            </select> -->
+                                            <ng-select [(ngModel)]="SViewitems.stu_prf_current_batch"
+                                                [items]="dropdownSchoolArray" bindLabel="name" bindValue="id"
+                                                placeholder="Select School" formControlName="stu_prf_current_batch"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_current_batch.errors!=null }">
+                                            </ng-select>
+                                            <div *ngIf="submitted && form.stu_prf_current_batch.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_current_batch.errors.required">Group Name is
+                                                    required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Second Language *</label>
+                                            <!--                                             <select formControlName="secondlang" class="form-control"
+                                                [(ngModel)]="SViewitems.stu_prf_sec_lang"
+                                                [ngClass]="{ 'is-invalid': submitted && form.secondlang.errors }">
+                                                <option *ngFor="let secondlang of dropdownArray[8], index as i"
+                                                    [ngValue]="i+1">
+                                                    {{secondlang}}
+                                                </option>
+
+                                            </select> -->
+                                            <ng-select [(ngModel)]="SViewitems.stu_prf_sec_lang"
+                                                [items]="dropdownSchoolArray" bindLabel="name" bindValue="id"
+                                                placeholder="Select School" formControlName="stu_prf_sec_lang"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_sec_lang.errors!=null }">
+                                            </ng-select>
+                                            <div *ngIf="submitted && form.stu_prf_sec_lang.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_sec_lang.errors.required">Second Language is
+                                                    required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Reading Ability *</label>
+                                            <div style="height: 34px;">
+                                                <input id="stu_read_mode" name="stu_read_mode" type="radio"
+                                                    [(ngModel)]="SViewitems.stu_read_mode" [value]="1"
+                                                    class="form-controlX required" style="float:left;" tabindex="7">
+                                                <span style="float:left;">&nbsp;Yes &nbsp;&nbsp;</span>
+                                                <input id="stu_read_mode" name="stu_read_mode" type="radio"
+                                                    [(ngModel)]="SViewitems.stu_read_mode" [value]="2" checked
+                                                    class="form-controlX required" style="float:left;" tabindex="8">
+                                                <span style="float:left;">&nbsp;No&nbsp;&nbsp;</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Mother Tongue *</label>
+                                            <!--                                             <select formControlName="motherton" class="form-control"
+                                                [(ngModel)]="SViewitems.stu_prf_mother_tongue_fk"
+                                                [ngClass]="{ 'is-invalid': submitted && form.motherton.errors }">
+                                                <option *ngFor="let motherton of dropdownArray[9], index as i"
+                                                    [ngValue]="i+1">{{motherton}}
+                                                </option>
+
+                                            </select> -->
+                                            <ng-select [(ngModel)]="SViewitems.stu_mother_medium_ins_fk"
+                                                [items]="dropdownSchoolArray" bindLabel="name" bindValue="id"
+                                                placeholder="Select School" formControlName="stu_mother_medium_ins_fk"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_mother_medium_ins_fk.errors!=null }">
+                                            </ng-select>
+                                            <div *ngIf="submitted && form.stu_mother_medium_ins_fk.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_mother_medium_ins_fk.errors.required">Second
+                                                    Language is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group" id="data_1">
+                                            <label class="font-normal">Date of Birth *</label>
+                                            <div class="input-group date">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                <input id="stu_prf_dob" name="stu_prf_dob" type="date"
+                                                    (input)="parseDate($event.target.value)"
+                                                    [(ngModel)]="SViewitems.stu_prf_dob" class="form-control required"
+                                                    tabindex="19" autocomplete="off">
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Age *</label>
+                                            <input id="stu_prf_age" name="stu_prf_age" type="text"
+                                                [(ngModel)]="SViewitems.stu_prf_age" class="form-control required"
+                                                disabled tabindex="19">
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+
+                        <div class="card">
+                            <div class="card-body">
+                                <h2>Previous School Information</h2>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Previous School Board Name *</label>
+                                            <!--                                             <select formControlName="stu_prev_degree_code" class="form-control"
+                                                [(ngModel)]="SViewitems.stu_prev_degree_code"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prev_degree_code.errors }">
+                                                <option
+                                                    *ngFor="let stu_prev_degree_code of dropdownArray[10], index as i"
+                                                    [ngValue]="i+1">
+                                                    {{stu_prev_degree_code}}
+                                                </option>
+
+                                            </select> -->
+                                            <ng-select [(ngModel)]="SViewitems.stu_prev_degree_code"
+                                                [items]="dropdownSchoolArray" bindLabel="name" bindValue="id"
+                                                placeholder="Select School" formControlName="stu_prev_degree_code"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prev_degree_code.errors!=null }">
+                                            </ng-select>
+                                            <div *ngIf="submitted && form.stu_prev_degree_code.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prev_degree_code.errors.required">Previous School
+                                                    is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Medium Of Previous Study *</label>
+                                            <!--                                             <select formControlName="stu_prev_medium_ins_fk" class="form-control"
+                                                [(ngModel)]="SViewitems.stu_prev_medium_ins_fk"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prev_medium_ins_fk.errors }">
+                                                <option
+                                                    *ngFor="let stu_prev_medium_ins_fk of dropdownArray[11], index as i"
+                                                    [ngValue]="i+1">
+                                                    {{stu_prev_medium_ins_fk}}
+                                                </option>
+
+                                            </select> -->
+                                            <ng-select [(ngModel)]="SViewitems.stu_prev_medium_ins_fk"
+                                                [items]="dropdownSchoolArray" bindLabel="name" bindValue="id"
+                                                placeholder="Select School" formControlName="stu_prev_medium_ins_fk"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prev_medium_ins_fk.errors!=null }">
+                                            </ng-select>
+                                            <div *ngIf="submitted && form.stu_prev_medium_ins_fk.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prev_medium_ins_fk.errors.required">Medium Of
+                                                    Previous Study is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Previous School Name </label>
+                                            <input type="text" formControlName="stu_adm_prev_colname"
+                                                [(ngModel)]="SViewitems.stu_adm_prev_colname" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_adm_prev_colname.errors }" />
+                                            <div *ngIf="submitted && form.stu_adm_prev_colname.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_adm_prev_colname.errors.required">Previous School
+                                                    Name
+                                                    is required
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <br>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Previous Standard </label>
+                                            <!--                                             <select formControlName="stu_adm_prev_class" class="form-control"
+                                                [(ngModel)]="SViewitems.stu_adm_prev_class"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_adm_prev_class.errors }">
+                                                <option *ngFor="let stu_adm_prev_class of dropdownArray[12], index as i"
+                                                    [ngValue]="i+1">
+                                                    {{stu_adm_prev_class}}
+                                                </option>
+
+                                            </select> -->
+                                            <ng-select [(ngModel)]="SViewitems.stu_adm_prev_class"
+                                                [items]="dropdownSchoolArray" bindLabel="name" bindValue="id"
+                                                placeholder="Select School" formControlName="stu_adm_prev_class"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_adm_prev_class.errors!=null }">
+                                            </ng-select>
+                                            <div *ngIf="submitted && form.stu_adm_prev_class.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_adm_prev_class.errors.required">Medium Of Previous
+                                                    Study is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card">
+                            <div class="card-body">
+                                <h2>Parent Information</h2>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Father/Guardian First Name *</label>
+                                            <input type="text" formControlName="stu_prf_fathers_name"
+                                                [(ngModel)]="SViewitems.stu_prf_fathers_name" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_fathers_name.errors }" />
+                                            <div *ngIf="submitted && form.stu_prf_fathers_name.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_fathers_name.errors.required">Father/Guardian
+                                                    First Name is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Father/Guardian Last Name</label>
+                                            <input type="text" formControlName="stu_prf_guardian_name"
+                                                [(ngModel)]="SViewitems.stu_prf_guardian_name" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && stu_prf_guardian_name }" />
+                                            <div *ngIf="submitted && form.stu_prf_guardian_name.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_guardian_name.errors.required">Father/Guardian
+                                                    Last Name is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Father/Guardian Aadhar Number</label>
+                                            <input type="number" formControlName="stu_prf_guardian_aadhar"
+                                                [(ngModel)]="SViewitems.stu_prf_guardian_aadhar" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_guardian_aadhar.errors }" />
+                                            <div *ngIf="submitted && form.stu_prf_guardian_aadhar.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_guardian_aadhar.errors.required">
+                                                    Father/Guardian
+                                                    Aadhar Number is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Father Qualification</label>
+                                            <input type="text" formControlName="stu_prf_fathers_qual"
+                                                [(ngModel)]="SViewitems.stu_prf_fathers_qual" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_fathers_qual.errors }" />
+                                            <div *ngIf="submitted && form.stu_prf_fathers_qual.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_fathers_qual.errors.required">Father
+                                                    Qualification
+                                                    is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Father Occupation</label>
+                                            <input type="text" formControlName="stu_prf_fathers_occup"
+                                                [(ngModel)]="SViewitems.stu_prf_fathers_occup" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_fathers_occup.errors }" />
+                                            <div *ngIf="submitted && form.stu_prf_fathers_occup.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_fathers_occup.errors.required">Father
+                                                    Occupation
+                                                    is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Father Annual Income *</label>
+                                            <input type="number" formControlName="stu_prf_fathers_anninc"
+                                                [(ngModel)]="SViewitems.stu_prf_fathers_anninc" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_fathers_anninc.errors }" />
+                                            <div *ngIf="submitted && form.stu_prf_fathers_anninc.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_fathers_anninc.errors.required">Father Annual
+                                                    Income
+                                                    is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Mother Name</label>
+                                            <input type="text" formControlName="stu_prf_mothers_name"
+                                                [(ngModel)]="SViewitems.stu_prf_mothers_name" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_mothers_name.errors }" />
+                                            <div *ngIf="submitted && form.stu_prf_mothers_name.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_mothers_name.errors.required">Mother Name is
+                                                    required </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Mother Occupation</label>
+                                            <input type="text" formControlName="stu_prf_mothers_occup"
+                                                [(ngModel)]="SViewitems.stu_prf_mothers_occup" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_mothers_occup.errors }" />
+                                            <div *ngIf="submitted && form.stu_prf_mothers_occup.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_mothers_occup.errors.required">Father
+                                                    Occupation
+                                                    is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Mother Annual Income</label>
+                                            <input type="text" formControlName="stu_prf_mothers_anninc"
+                                                [(ngModel)]="SViewitems.stu_prf_mothers_anninc" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_mothers_anninc.errors }" />
+                                            <div *ngIf="submitted && form.stu_prf_mothers_anninc.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_mothers_anninc.errors.required">Mother Annual
+                                                    Income is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Parent Email ID </label>
+                                            <input type="text" formControlName="stu_prf_parent_email"
+                                                [(ngModel)]="SViewitems.stu_prf_parent_email" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_parent_email.errors }" />
+                                            <div *ngIf="submitted && form.stu_prf_parent_email.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_parent_email.errors.required">Parent Email ID
+                                                    is
+                                                    required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Parent Mobile No</label>
+                                            <input type="number" formControlName="stu_prf_mobile_no"
+                                                [(ngModel)]="SViewitems.stu_prf_mobile_no" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_mobile_no.errors }" />
+                                            <div *ngIf="submitted && form.stu_prf_mobile_no.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_mobile_no.errors.required">Parent Mobile No is
+                                                    required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Place of Living *</label>
+                                            <input type="text" formControlName="stu_prf_plc_of_livng"
+                                                [(ngModel)]="SViewitems.stu_prf_plc_of_livng" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_plc_of_livng.errors }" />
+                                            <div *ngIf="submitted && form.stu_prf_plc_of_livng.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_plc_of_livng.errors.required">Place of Living
+                                                    is
+                                                    required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-lg-6" style="display:none;">
+                                        <div class="form-group">
+                                            <label>Member of Service Organization</label>
+                                            <input type="text" formControlName="stu_prf_mem_of_serv_org"
+                                                [(ngModel)]="SViewitems.stu_prf_mem_of_serv_org" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_mem_of_serv_org.errors }" />
+                                            <div *ngIf="submitted && form.stu_prf_mem_of_serv_org.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_mem_of_serv_org.errors.required">Member of
+                                                    Service
+                                                    Organization is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Parents Old Student</label>
+                                            <div style="height: 34px;">
+                                                <input id="stu_prf_parents_old_stu" name="stu_prf_parents_old_stu"
+                                                    type="radio" value="1" class="form-controlX required"
+                                                    style="float:left;" tabindex="33">
+                                                <span style="float:left;">&nbsp;Yes &nbsp;&nbsp;</span>
+                                                <input id="stu_prf_parents_old_stu" name="stu_prf_parents_old_stu"
+                                                    type="radio" value="0" checked class="form-controlX required"
+                                                    style="float:left;" tabindex="34">
+                                                <span style="float:left;">&nbsp;No&nbsp;&nbsp;</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Family Size *</label>
+                                            <input type="text" formControlName="stu_prf_family_size"
+                                                [(ngModel)]="SViewitems.stu_prf_family_size" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_family_size.errors }" />
+                                            <div *ngIf="submitted && form.stu_prf_family_size.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_family_size.errors.required">Family Size is
+                                                    required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card">
+                            <div class="card-body">
+                                <h2>Student Information</h2>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Gender *</label>
+                                            <div style="height: 34px;">
+                                                <input formControlName="stu_prf_sex" id="stu_prf_sex" name="stu_prf_sex"
+                                                    type="radio" [(ngModel)]="SViewitems.stu_prf_sex" [value]="1"
+                                                    class="form-controlX required" style="float:left;" tabindex="36">
+                                                <span style="float:left;">&nbsp;Male &nbsp;&nbsp;</span>
+                                                <input formControlName="stu_prf_sex" id="stu_prf_sex" name="stu_prf_sex"
+                                                    type="radio" [(ngModel)]="SViewitems.stu_prf_sex" [value]="2"
+                                                    class="form-controlX required" style="float:left;" tabindex="37">
+                                                <span style="float:left;">&nbsp;Female&nbsp;&nbsp;</span>
+                                                <div *ngIf="submitted && form.stu_prf_family_size.errors"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="form.stu_prf_family_size.errors.required">Gender is
+                                                        required
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Place of Birth</label>
+                                            <input type="text" formControlName="stu_prf_plc_of_birth"
+                                                [(ngModel)]="SViewitems.stu_prf_plc_of_birth" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_plc_of_birth.errors }" />
+                                            <div *ngIf="submitted && form.stu_prf_plc_of_birth.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_plc_of_birth.errors.required">Family Size is
+                                                    required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Blood Group{{SViewitems.stu_prf_bldgrp_fk}}</label>
+                                            <!--                                             <select formControlName="stu_prf_bldgrp_fk" class="form-control"
+                                                [(ngModel)]="SViewitems.stu_prf_bldgrp_fk"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_bldgrp_fk.errors }">
+                                                <option *ngFor="let stu_prf_bldgrp_fk of dropdownArray[13], index as i"
+                                                    [ngValue]="i+1">
+                                                    {{stu_prf_bldgrp_fk}}
+                                                </option>
+
+                                            </select> -->
+                                            <ng-select [(ngModel)]="SViewitems.stu_prf_bldgrp_fk"
+                                                [items]="dropdownSchoolArray" bindLabel="name" bindValue="id"
+                                                placeholder="Select School" formControlName="stu_prf_bldgrp_fk"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_bldgrp_fk.errors!=null }">
+                                            </ng-select>
+                                            <div *ngIf="submitted && form.stu_prf_bldgrp_fk.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_bldgrp_fk.errors.required">Blood Group is
+                                                    required </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Religion</label>
+                                            <!--                                             <select formControlName="stu_prf_religion_fk" class="form-control"
+                                                [(ngModel)]="SViewitems.stu_prf_religion_fk"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_religion_fk.errors }">
+                                                <option
+                                                    *ngFor="let stu_prf_religion_fk of dropdownArray[14], index as i"
+                                                    [ngValue]="i+1">
+                                                    {{stu_prf_religion_fk}}
+                                                </option>
+
+                                            </select> -->
+                                            <ng-select [(ngModel)]="SViewitems.stu_prf_religion_fk"
+                                                [items]="dropdownSchoolArray" bindLabel="name" bindValue="id"
+                                                placeholder="Select School" formControlName="stu_prf_religion_fk"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_religion_fk.errors!=null }">
+                                            </ng-select>
+                                            <div *ngIf="submitted && form.stu_prf_religion_fk.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_religion_fk.errors.required">Religion is
+                                                    required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-lg-6" style="display:none;">
+                                        <div class="form-group">
+                                            <label>Class/Caste</label>
+                                            <!--                                             <select formControlName="stu_prf_caste_fk" class="form-control"
+                                                [(ngModel)]="SViewitems.stu_prf_caste_fk"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_caste_fk.errors }">
+                                                <option *ngFor="let stu_prf_caste_fk of dropdownArray[9], index as i"
+                                                    [ngValue]="i+1">
+                                                    {{stu_prf_caste_fk}}
+                                                </option>
+
+                                            </select> -->
+                                            <ng-select [(ngModel)]="SViewitems.stu_prf_caste_fk"
+                                                [items]="dropdownSchoolArray" bindLabel="name" bindValue="id"
+                                                placeholder="Select School" formControlName="stu_prf_caste_fk"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_caste_fk.errors!=null }">
+                                            </ng-select>
+                                            <div *ngIf="submitted && form.stu_prf_caste_fk.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_caste_fk.errors.required">Class/Caste is
+                                                    required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Community</label>
+                                            <!--                                             <select formControlName="stu_prf_community_fk" class="form-control"
+                                                [(ngModel)]="SViewitems.stu_prf_community_fk"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_community_fk.errors }">
+                                                <option
+                                                    *ngFor="let stu_prf_community_fk of dropdownArray[15], index as i"
+                                                    [ngValue]="i+1">
+                                                    {{stu_prf_community_fk}}
+                                                </option>
+
+                                            </select> -->
+                                            <ng-select [(ngModel)]="SViewitems.stu_prf_community_fk"
+                                                [items]="dropdownSchoolArray" bindLabel="name" bindValue="id"
+                                                placeholder="Select School" formControlName="stu_prf_community_fk"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_community_fk.errors!=null }">
+                                            </ng-select>
+                                            <div *ngIf="submitted && form.stu_prf_community_fk.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_community_fk.errors.required">Community is
+                                                    required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Student Email ID *</label>
+                                            <input type="text" formControlName="stu_prf_stu_email"
+                                                [(ngModel)]="SViewitems.stu_prf_stu_email" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_stu_email.errors }" />
+                                            <div *ngIf="submitted && form.stu_prf_stu_email.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_stu_email.errors.required">Student Email ID is
+                                                    required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Student Aadhar Number</label>
+                                            <input type="number" formControlName="stu_prf_stu_aadhar"
+                                                [(ngModel)]="SViewitems.stu_prf_stu_aadhar" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_stu_aadhar.errors }" />
+                                            <div *ngIf="submitted && form.stu_prf_stu_aadhar.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_stu_aadhar.errors.required">Student Aadhar
+                                                    Number
+                                                    is
+                                                    required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>EMIS Number </label>
+                                            <input type="number" formControlName="stu_prf_stu_emis"
+                                                [(ngModel)]="SViewitems.stu_prf_stu_emis" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_stu_emis.errors }" />
+                                            <div *ngIf="submitted && form.stu_prf_stu_emis.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_stu_emis.errors.required">EMIS Number is
+                                                    required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Student Bank Details </label>
+                                            <input type="text" formControlName="stu_prf_stu_bank"
+                                                [(ngModel)]="SViewitems.stu_prf_stu_bank" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_stu_bank.errors }" />
+                                            <div *ngIf="submitted && form.stu_prf_stu_bank.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_stu_bank.errors.required">Student Bank Details
+                                                    is
+                                                    required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card">
+                            <div class="card-body">
+                                <h2>Other Information</h2>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Physically challenged *</label>
+                                            <div style="height: 34px;">
+                                                <input id="stu_prf_parents_handicap"
+                                                    formControlName="stu_prf_parents_handicap"
+                                                    name="stu_prf_parents_handicap" type="radio"
+                                                    [(ngModel)]="SViewitems.stu_prf_parents_handicap" [value]="1"
+                                                    class="form-controlX required" style="float:left;" tabindex="45">
+                                                <span style="float:left;">&nbsp;Yes &nbsp;&nbsp;</span>
+                                                <input id="stu_prf_parents_handicap"
+                                                    formControlName="stu_prf_parents_handicap"
+                                                    name="stu_prf_parents_handicap" type="radio"
+                                                    [(ngModel)]="SViewitems.stu_prf_parents_handicap" [value]="2"
+                                                    class="form-controlX required" style="float:left;" tabindex="46">
+                                                <span style="float:left;">&nbsp;No &nbsp;&nbsp;</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Visual Defect</label>
+                                            <div style="height: 34px;">
+                                                <input id="stu_prf_visualhandy" formControlName="stu_prf_visualhandy"
+                                                    name="stu_prf_visualhandy" type="radio"
+                                                    [(ngModel)]="SViewitems.stu_prf_visualhandy" [value]="1"
+                                                    class="form-controlX required" style="float:left;" tabindex="47">
+                                                <span style="float:left;">&nbsp;Yes &nbsp;&nbsp;</span>
+                                                <input id="stu_prf_visualhandy" formControlName="stu_prf_visualhandy"
+                                                    name="stu_prf_visualhandy" type="radio"
+                                                    [(ngModel)]="SViewitems.stu_prf_visualhandy" [value]="2"
+                                                    class="form-controlX required" style="float:left;" tabindex="48">
+                                                <span style="float:left;">&nbsp;No &nbsp;&nbsp;</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Any Medical Issues </label>
+                                            <input type="text" formControlName="stu_prf_medical"
+                                                [(ngModel)]="SViewitems.stu_prf_medical" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_medical.errors }" />
+                                            <div *ngIf="submitted && form.stu_prf_medical.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_medical.errors.required">Any Medical Issues is
+                                                    required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Co-Curriculum Activity</label>
+                                            <input type="text" formControlName="stu_prf_co_curr"
+                                                [(ngModel)]="SViewitems.stu_prf_co_curr" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_co_curr.errors }" />
+                                            <div *ngIf="submitted && form.stu_prf_co_curr.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_co_curr.errors.required">Co-Curriculum Activity
+                                                    is
+                                                    required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Language known</label>
+                                            <!--                                             <select formControlName="stu_prf_mother_tongue_fk"
+                                                [(ngModel)]="SViewitems.stu_prf_mother_tongue_fk" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_mother_tongue_fk.errors }">
+                                                <option
+                                                    *ngFor="let stu_prf_mother_tongue_fk of dropdownArray[16], index as i"
+                                                    [ngValue]="i+1">
+                                                    {{stu_prf_mother_tongue_fk}}
+                                                </option>
+
+                                            </select> -->
+                                            <ng-select [(ngModel)]="SViewitems.stu_prf_mother_tongue_fk"
+                                                [items]="dropdownSchoolArray" bindLabel="name" bindValue="id"
+                                                placeholder="Select School" formControlName="stu_prf_mother_tongue_fk"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_mother_tongue_fk.errors!=null }">
+                                            </ng-select>
+                                            <div *ngIf="submitted && form.stu_prf_mother_tongue_fk.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_mother_tongue_fk.errors.required">Language
+                                                    known is required </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Citizen</label>
+                                            <!--                                             <select formControlName="stu_prf_citizen_fk"
+                                                [(ngModel)]="SViewitems.stu_prf_citizen_fk" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_citizen_fk.errors }">
+                                                <option *ngFor="let stu_prf_citizen_fk of dropdownArray[17], index as i"
+                                                    [ngValue]="i+1">
+                                                    {{stu_prf_citizen_fk}}
+                                                </option>
+
+                                            </select> -->
+                                            <ng-select [(ngModel)]="SViewitems.stu_prf_citizen_fk"
+                                                [items]="dropdownSchoolArray" bindLabel="name" bindValue="id"
+                                                placeholder="Select School" formControlName="stu_prf_citizen_fk"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_citizen_fk.errors!=null }">
+                                            </ng-select>
+                                            <div *ngIf="submitted && form.stu_prf_citizen_fk.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_citizen_fk.errors.required">Citizen is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Remarks</label>
+                                            <input type="text" formControlName="stu_prf_remarks"
+                                                [(ngModel)]="SViewitems.stu_prf_remarks" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_remarks.errors }" />
+                                            <div *ngIf="submitted && form.stu_prf_remarks.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_remarks.errors.required">Remarks is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Student Image</label>
+                                            <input id="stu_adm_stu_image" name="stu_adm_stu_image" type="file"
+                                                class="form-control " tabindex="53">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Bus Facility Requirement *</label>
+                                            <div style="height: 34px;">
+                                                <input id="stu_prf_bus" formControlName="stu_prf_bus" name="stu_prf_bus"
+                                                    type="radio" [(ngModel)]="SViewitems.stu_prf_bus" [value]="1"
+                                                    class="form-controlX required" style="float:left;" tabindex="45">
+                                                <span style="float:left;">&nbsp;Yes &nbsp;&nbsp;</span>
+                                                <input id="stu_prf_bus" formControlName="stu_prf_bus" name="stu_prf_bus"
+                                                    type="radio" [(ngModel)]="SViewitems.stu_prf_bus" [value]="2"
+                                                    class="form-controlX required" style="float:left;" tabindex="46">
+                                                <span style="float:left;">&nbsp;No &nbsp;&nbsp;</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card">
+                            <div class="card-body">
+                                <h2>Permanent Address</h2>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Address *</label>
+                                            <input type="text" formControlName="con_per_add"
+                                                [(ngModel)]="SViewitems.con_per_add" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.con_per_add.errors }" />
+                                            <div *ngIf="submitted && form.con_per_add.errors" class="invalid-feedback">
+                                                <div *ngIf="form.con_per_add.errors.required">Address is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>State *</label>
+                                            <input type="text" formControlName="con_per_state"
+                                                [(ngModel)]="SViewitems.con_per_state" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.con_per_state.errors }" />
+                                            <div *ngIf="submitted && form.con_per_state.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.con_per_state.errors.required">State is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Country </label>
+                                            <input type="text" formControlName="con_per_cntry"
+                                                [(ngModel)]="SViewitems.con_per_cntry" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.con_per_cntry.errors }" />
+                                            <div *ngIf="submitted && form.con_per_cntry.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.con_per_cntry.errors.required">Country is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Pincode </label>
+                                            <input type="number" formControlName="con_per_pincode"
+                                                [(ngModel)]="SViewitems.con_per_pincode" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.con_per_pincode.errors }" />
+                                            <div *ngIf="submitted && form.con_per_pincode.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.con_per_pincode.errors.required">Pincodee is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Phone Number *</label>
+                                            <input type="number" formControlName="con_per_phone"
+                                                [(ngModel)]="SViewitems.con_per_phone" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.con_per_phone.errors }" />
+                                            <div *ngIf="submitted && form.con_per_phone.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.con_per_phone.errors.required">Phone Number is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Nearest Railway Station </label>
+                                            <input type="text" formControlName="con_rail_stn"
+                                                [(ngModel)]="SViewitems.con_rail_stn" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.con_rail_stn.errors }" />
+                                            <div *ngIf="submitted && form.con_rail_stn.errors" class="invalid-feedback">
+                                                <div *ngIf="form.con_rail_stn.errors.required">Nearest Railway Station
+                                                    is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="col-lg-12">
+                                        <input type="checkbox" name="present" value="permanentAddressOpt"
+                                            (change)="FieldsChange($event)" tabindex="7">
+                                        If the check box selected contact address is same as permanent address
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card">
+                            <div class="card-body">
+                                <h2>Contact Address</h2>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Address *</label>
+                                            <input type="text" formControlName="con_cont_add"
+                                                [(ngModel)]="SViewitems.con_cont_add" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.con_cont_add.errors }" />
+                                            <div *ngIf="submitted && form.con_cont_add.errors" class="invalid-feedback">
+                                                <div *ngIf="form.con_cont_add.errors.required">Address is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>State *</label>
+                                            <input type="text" formControlName="con_cont_state"
+                                                [(ngModel)]="SViewitems.con_cont_state" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.con_cont_state.errors }" />
+                                            <div *ngIf="submitted && form.con_cont_state.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.con_cont_state.errors.required">State is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Country </label>
+                                            <input type="text" formControlName="con_cont_cntry"
+                                                [(ngModel)]="SViewitems.con_per_cntry" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.con_cont_cntry.errors }" />
+                                            <div *ngIf="submitted && form.con_cont_cntry.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.con_cont_cntry.errors.required">Country is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Pincode </label>
+                                            <input type="number" formControlName="con_cont_pincode"
+                                                [(ngModel)]="SViewitems.con_cont_pincode" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.con_cont_pincode.errors }" />
+                                            <div *ngIf="submitted && form.con_cont_pincode.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.con_cont_pincode.errors.required">Pincode is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Phone Number *</label>
+                                            <input type="number" formControlName="con_cont_phone"
+                                                [(ngModel)]="SViewitems.con_cont_phone" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && form.con_cont_phone.errors }" />
+                                            <div *ngIf="submitted && form.con_cont_phone.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="form.con_cont_phone.errors.required">Phone Number is
+                                                    required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <!--<div class="card" formArrayName="certificateInfo" *ngFor="let certinfo of validationform.get('certificateInfo').controls; let i=index;">-->
+
+
+
+                        <div class="card">
+                            <div class="card-body">
+                                <h2>Certificate Information</h2>
+
+
+
+                                <div class="card-body" formArrayName="certificateColumns">
+                                    <div class="row col-12 m-0 p-0">
+                                        <div
+                                            *ngFor="let contact of duplicateCertifcateColumns.controls; let i = index;">
+                                            <div [formGroupName]="i" class="row">
+
+
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Certificate Name *</label>
+                                                        <!--                                                         <select formControlName="certificateName" name="certificateName"
+                                                            class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.certificateName.errors }"
+                                                            required>
+                                                            <option [value]="certificateName"
+                                                                *ngFor="let certificateName of dropdownArray[18], index as i">
+                                                                {{certificateName}}
+                                                            </option>
+
+                                                        </select> -->
+                                                        <ng-select [(ngModel)]="SViewitems.cert_code_fk"
+                                                            [items]="dropdownSchoolArray" bindLabel="name"
+                                                            bindValue="id" placeholder="Select School"
+                                                            formControlName="cert_code_fk"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.cert_code_fk.errors!=null }">
+                                                        </ng-select>
+                                                        <div *ngIf="submitted && form.cert_code_fk.errors" class="invalid-feedback">
+                                                            <div *ngIf="form.cert_code_fk.errors.required">
+                                                                Certificate Name is required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Date *</label>
+                                                        <input formControlName="crt_cert_date" id="crt_cert_date"
+                                                            name="crt_cert_date" type="date"
+                                                            class="form-control required" tabindex="2">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Certificate No </label>
+                                                        <input formControlName="crt_cert_no" id="crt_cert_no"
+                                                            name="crt_cert_date" type="text" class="form-control "
+                                                            tabindex="3">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Attachment *</label>
+                                                        <input formControlName="certificateAttach" id="crt_attach"
+                                                            name="certificateAttach" type="file"
+                                                            class="form-control required" tabindex="4">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-12 text-right">
+                                                    <button type="button" (click)="addCertificateColumn()"
+                                                        class="btn btn-info"><i class="fe fe-plus mr-1"></i>Add
+                                                        Certificate Column</button>
+                                                    <button *ngIf="i!=0" class="btn btn-info" type="button"
+                                                        (click)="removeCertificateColumn(i)"> <i
+                                                            class="fe fe-trash mr-1"></i>Remove </button>
+                                                </div>
+
+                                            </div>
+                                            <hr>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+
+                        <!-- <div class="card" >
              
               <div class="card-body">
                 <h2>Certificate Information</h2>
@@ -1292,17 +1443,17 @@
             <br>
             <br> -->
 
-                      <button type="submit" class="btn btn-info" tabindex="54"> Save and Continue </button>
+                        <button type="submit" class="btn btn-info" tabindex="54"> Save and Continue </button>
 
-                  </form>
-
-
-
-              </div>
+                    </form>
 
 
 
-          </div>
+                </div>
 
-      </div>
-  </div>
+
+
+            </div>
+
+        </div>
+    </div>
