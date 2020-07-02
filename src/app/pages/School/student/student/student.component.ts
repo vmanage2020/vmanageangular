@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormArray } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -486,8 +486,23 @@ dropdownCommunityArray: any = [
     }
   }
 
-  
-
+  /*
+  @ViewChild('fileInput') fileInput: ElementRef;
+  onFileChange(event) {
+    let reader = new FileReader();
+    if(event.target.files && event.target.files.length > 0) {
+      let file = event.target.files[0];
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.form.get('stu_adm_stu_image').setValue({
+          filename: file.name,
+          filetype: file.type,
+          value: reader.result.split(',')[1]
+        })
+      };
+    }
+  }
+  */
 
   get form() {
     return this.validationform.controls;
@@ -562,9 +577,9 @@ dropdownCommunityArray: any = [
         "stu_prf_sex": this.form.stu_prf_sex.value,
         "stu_prf_mar_status": 0,
         "stu_prf_roll_No": "",
-        "stu_prf_app_No": this.form.stu_prf_app_No.value,
+        "stu_prf_app_No": this.appRandomNumber,
         "stu_prf_app_name": "",
-        "stu_prf_app_date": "28-06-2020",
+        "stu_prf_app_date": this.appDate,
         "stu_prf_quota": 0,
         "stu_prf_current_Year": this.form.bayear.value,
         "stu_prf_current_batch": this.form.groupn.value,
@@ -675,7 +690,7 @@ dropdownCommunityArray: any = [
    this.http.post<any>(url, postData  ).subscribe(
       data => {
         console.log(data);
-        //this.router.navigate(['/school/studentlist']);
+        this.router.navigate(['/school/studentlist']);
       },
       error => {
          console.log(error);    
