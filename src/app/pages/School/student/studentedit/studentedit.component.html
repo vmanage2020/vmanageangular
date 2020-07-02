@@ -149,7 +149,7 @@
                                               </option>
                                           </select> -->
                                             <ng-select [(ngModel)]="SViewitems.stu_prf_current_Year"
-                                                [items]="dropdownSchoolArray" bindLabel="name" bindValue="id"
+                                                [items]="dropdownAcademicYearArray" bindLabel="name" bindValue="id"
                                                 placeholder="Select School" formControlName="stu_prf_current_Year"
                                                 [ngClass]="{ 'is-invalid': submitted && form.stu_prf_current_Year.errors!=null }">
                                             </ng-select>
@@ -168,7 +168,7 @@
                                         <div class="form-group">
                                             <label>Board Name *</label>
                                             <ng-select [(ngModel)]="SViewitems.stu_prf_degree_code"
-                                                [items]="dropdownSchoolArray" bindLabel="name" bindValue="id"
+                                                [items]="dropdownBoardArray" bindLabel="name" bindValue="id"
                                                 placeholder="Select School" formControlName="stu_prf_degree_code"
                                                 [ngClass]="{ 'is-invalid': submitted && form.stu_prf_degree_code.errors!=null }">
                                             </ng-select>
@@ -200,7 +200,7 @@
                                               </option>
                                           </select> -->
                                             <ng-select [(ngModel)]="SViewitems.stu_prf_branch_Code"
-                                                [items]="dropdownSchoolArray" bindLabel="name" bindValue="id"
+                                                [items]="dropdownMediumArray" bindLabel="name" bindValue="id"
                                                 placeholder="Select School" formControlName="stu_prf_branch_Code"
                                                 [ngClass]="{ 'is-invalid': submitted && form.stu_prf_branch_Code.errors!=null }">
                                             </ng-select>
@@ -228,7 +228,7 @@
                                                 </option>
                                             </select> -->
                                             <ng-select [(ngModel)]="SViewitems.stu_prf_current_Semester"
-                                                [items]="dropdownSchoolArray" bindLabel="name" bindValue="id"
+                                                [items]="dropdownStandardArray" bindLabel="name" bindValue="id"
                                                 placeholder="Select School" formControlName="stu_prf_current_Semester"
                                                 [ngClass]="{ 'is-invalid': submitted && form.stu_prf_current_Semester.errors!=null }">
                                             </ng-select>
@@ -255,7 +255,7 @@
 
                                             </select> -->
                                             <ng-select [(ngModel)]="SViewitems.stu_prf_current_batch"
-                                                [items]="dropdownSchoolArray" bindLabel="name" bindValue="id"
+                                                [items]="dropdownGroupArray" bindLabel="name" bindValue="id"
                                                 placeholder="Select School" formControlName="stu_prf_current_batch"
                                                 [ngClass]="{ 'is-invalid': submitted && form.stu_prf_current_batch.errors!=null }">
                                             </ng-select>
@@ -282,7 +282,7 @@
 
                                             </select> -->
                                             <ng-select [(ngModel)]="SViewitems.stu_prf_sec_lang"
-                                                [items]="dropdownSchoolArray" bindLabel="name" bindValue="id"
+                                                [items]="dropdownSecondLanguageArray" bindLabel="name" bindValue="id"
                                                 placeholder="Select School" formControlName="stu_prf_sec_lang"
                                                 [ngClass]="{ 'is-invalid': submitted && form.stu_prf_sec_lang.errors!=null }">
                                             </ng-select>
@@ -327,7 +327,7 @@
 
                                             </select> -->
                                             <ng-select [(ngModel)]="SViewitems.stu_mother_medium_ins_fk"
-                                                [items]="dropdownSchoolArray" bindLabel="name" bindValue="id"
+                                                [items]="dropdownMotherLanguageArray" bindLabel="name" bindValue="id"
                                                 placeholder="Select School" formControlName="stu_mother_medium_ins_fk"
                                                 [ngClass]="{ 'is-invalid': submitted && form.stu_mother_medium_ins_fk.errors!=null }">
                                             </ng-select>
@@ -393,7 +393,7 @@
 
                                             </select> -->
                                             <ng-select [(ngModel)]="SViewitems.stu_prev_degree_code"
-                                                [items]="dropdownSchoolArray" bindLabel="name" bindValue="id"
+                                                [items]="dropdownPrevBoardArray" bindLabel="name" bindValue="id"
                                                 placeholder="Select School" formControlName="stu_prev_degree_code"
                                                 [ngClass]="{ 'is-invalid': submitted && form.stu_prev_degree_code.errors!=null }">
                                             </ng-select>
@@ -422,7 +422,7 @@
 
                                             </select> -->
                                             <ng-select [(ngModel)]="SViewitems.stu_prev_medium_ins_fk"
-                                                [items]="dropdownSchoolArray" bindLabel="name" bindValue="id"
+                                                [items]="dropdownPrevMediumArray" bindLabel="name" bindValue="id"
                                                 placeholder="Select School" formControlName="stu_prev_medium_ins_fk"
                                                 [ngClass]="{ 'is-invalid': submitted && form.stu_prev_medium_ins_fk.errors!=null }">
                                             </ng-select>
@@ -468,7 +468,7 @@
 
                                             </select> -->
                                             <ng-select [(ngModel)]="SViewitems.stu_adm_prev_class"
-                                                [items]="dropdownSchoolArray" bindLabel="name" bindValue="id"
+                                                [items]="dropdownPrevStandardArray" bindLabel="name" bindValue="id"
                                                 placeholder="Select School" formControlName="stu_adm_prev_class"
                                                 [ngClass]="{ 'is-invalid': submitted && form.stu_adm_prev_class.errors!=null }">
                                             </ng-select>
@@ -809,7 +809,7 @@
 
                                             </select> -->
                                             <ng-select [(ngModel)]="SViewitems.stu_prf_bldgrp_fk"
-                                                [items]="dropdownSchoolArray" bindLabel="name" bindValue="id"
+                                                [items]="dropdownBloodArray" bindLabel="name" bindValue="id"
                                                 placeholder="Select School" formControlName="stu_prf_bldgrp_fk"
                                                 [ngClass]="{ 'is-invalid': submitted && form.stu_prf_bldgrp_fk.errors!=null }">
                                             </ng-select>
@@ -835,7 +835,7 @@
 
                                             </select> -->
                                             <ng-select [(ngModel)]="SViewitems.stu_prf_religion_fk"
-                                                [items]="dropdownSchoolArray" bindLabel="name" bindValue="id"
+                                                [items]="dropdownReligionArray" bindLabel="name" bindValue="id"
                                                 placeholder="Select School" formControlName="stu_prf_religion_fk"
                                                 [ngClass]="{ 'is-invalid': submitted && form.stu_prf_religion_fk.errors!=null }">
                                             </ng-select>
@@ -863,7 +863,7 @@
 
                                             </select> -->
                                             <ng-select [(ngModel)]="SViewitems.stu_prf_caste_fk"
-                                                [items]="dropdownSchoolArray" bindLabel="name" bindValue="id"
+                                                [items]="dropdownCommunityArray" bindLabel="name" bindValue="id"
                                                 placeholder="Select School" formControlName="stu_prf_caste_fk"
                                                 [ngClass]="{ 'is-invalid': submitted && form.stu_prf_caste_fk.errors!=null }">
                                             </ng-select>
@@ -892,7 +892,7 @@
 
                                             </select> -->
                                             <ng-select [(ngModel)]="SViewitems.stu_prf_community_fk"
-                                                [items]="dropdownSchoolArray" bindLabel="name" bindValue="id"
+                                                [items]="dropdownCommunityArray" bindLabel="name" bindValue="id"
                                                 placeholder="Select School" formControlName="stu_prf_community_fk"
                                                 [ngClass]="{ 'is-invalid': submitted && form.stu_prf_community_fk.errors!=null }">
                                             </ng-select>
@@ -1058,7 +1058,7 @@
 
                                             </select> -->
                                             <ng-select [(ngModel)]="SViewitems.stu_prf_mother_tongue_fk"
-                                                [items]="dropdownSchoolArray" bindLabel="name" bindValue="id"
+                                                [items]="dropdownLanguageArray" bindLabel="name" bindValue="id"
                                                 placeholder="Select School" formControlName="stu_prf_mother_tongue_fk"
                                                 [ngClass]="{ 'is-invalid': submitted && form.stu_prf_mother_tongue_fk.errors!=null }">
                                             </ng-select>
@@ -1085,7 +1085,7 @@
 
                                             </select> -->
                                             <ng-select [(ngModel)]="SViewitems.stu_prf_citizen_fk"
-                                                [items]="dropdownSchoolArray" bindLabel="name" bindValue="id"
+                                                [items]="dropdownCitizenArray" bindLabel="name" bindValue="id"
                                                 placeholder="Select School" formControlName="stu_prf_citizen_fk"
                                                 [ngClass]="{ 'is-invalid': submitted && form.stu_prf_citizen_fk.errors!=null }">
                                             </ng-select>
