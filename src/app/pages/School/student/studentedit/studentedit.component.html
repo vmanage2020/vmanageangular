@@ -26,17 +26,28 @@
                                   <div class="col-lg-6">
                                       <div class="form-group">
                                           <label>School Name *</label>
+                                          <ng-select 
+                                                [(ngModel)]="SViewitems.col_code_fk"     
+                                                [items]="dropdownSchoolArray" 
+                                                bindLabel="name"
+                                                bindValue="id"
+                                                placeholder="Select School"
+                                                formControlName="col_code_fk"  
+                                                [ngClass]="{ 'is-invalid': submitted && form.col_code_fk.errors!=null }"
+                                                >
+                                            </ng-select>
+                                          <!--
                                           <select formControlName="col_code_fk" class="form-control"
                                               [(ngModel)]="SViewitems.col_code_fk" 
                                               [ngClass]="{ 'is-invalid': submitted && f.col_code_fk }">
                                               <option *ngFor="let col_code_fk of dropdownArray[0], index as i" [ngValue]="i+1">
                                                   {{col_code_fk}}
                                               </option>
-
                                           </select>
-                                          <div *ngIf="submitted && f.col_code_fk.errors" class="invalid-feedback">
-                                              <div *ngIf="f.col_code_fk.errors.required">Title is required</div>
-                                          </div>
+                                          -->
+                                          <div *ngIf="submitted && form.col_code_fk.errors!=null" class="invalid-feedback">
+                                                <div *ngIf="form.col_code_fk.errors.required">School name is required</div>
+                                            </div>
                                       </div>
                                   </div>
 
@@ -67,11 +78,9 @@
                                           <input type="text" formControlName="stu_prf_stud_name"
                                               [ngModel]="SViewitems.stu_prf_stud_name" class="form-control"
                                               [ngClass]="{ 'is-invalid': submitted && f.stu_prf_stud_name.errors }" />
-                                          <div *ngIf="submitted && f.stu_prf_stud_name.errors"
-                                              class="invalid-feedback">
-                                              <div *ngIf="f.stu_prf_stud_name.errors.required">First Name is required
-                                              </div>
-                                          </div>
+                                              <div *ngIf="submitted && form.stu_prf_stud_name.errors"  class="invalid-feedback">
+                                                <div *ngIf="form.stu_prf_stud_name.errors.required">First Name is required </div>
+                                            </div> 
 
                                       </div>
                                   </div>

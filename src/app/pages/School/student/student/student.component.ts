@@ -537,6 +537,22 @@ dropdownCommunityArray: any = [
 
     */
 
+    let postCert = {
+      "col_code_fk": 1,
+      "stu_prf_code_fk": 1,
+      "cert_code_fk": this.form.certificateName.value,
+      "crt_cert_date": this.form.certificateDate.value,
+      "crt_cert_no": this.form.certificateNo.value,
+      "crt_returned": 0,
+      "crt_collected": 0,
+      "crt_attach": "1591502613_C:fakepathmisic 1.jpg",
+      "status": 0,
+      "create_date": "2020-06-07 00:03:33",
+      "create_by": 6,
+      "edit_date": "0000-00-00 00:00:00",
+      "edit_by": 0
+      }
+
     let postData = {
       "col_code_fk": this.form.col_code_fk.value,
       "stu_prf_stud_name": this.form.stu_prf_stud_name.value,
@@ -646,39 +662,8 @@ dropdownCommunityArray: any = [
         "con_rel_info" : "info",
         "con_mode" : "mode",
         "con_rail_stn" : this.form.con_rail_stn.value,
-        "student_documents":[
-          {
-          "col_code_fk": 1,
-          "stu_prf_code_fk": 1,
-          "cert_code_fk": this.form.certificateName.value,
-          "crt_cert_date": this.form.certificateDate.value,
-          "crt_cert_no": this.form.certificateNo.value,
-          "crt_returned": 0,
-          "crt_collected": 0,
-          "crt_attach": "1591502613_C:fakepathmisic 1.jpg",
-          "status": 0,
-          "create_date": "2020-06-07 00:03:33",
-          "create_by": 6,
-          "edit_date": "0000-00-00 00:00:00",
-          "edit_by": 0
-          },
-          {
-          "col_code_fk": 1,
-          "stu_prf_code_fk": 1,
-          "cert_code_fk": this.form.certificateName.value,
-          "crt_cert_date": this.form.certificateDate.value,
-          "crt_cert_no": this.form.certificateNo.value,
-          "crt_returned": 0,
-          "crt_collected": 0,
-          "crt_attach": "1591502613_C:fakepathmisic 1.jpg",
-          "status": 0,
-          "create_date": "2020-06-07 00:03:33",
-          "create_by": 6,
-          "edit_date": "0000-00-00 00:00:00",
-          "edit_by": 0
-          }
-          ]
-              }
+        "student_documents":[postCert]
+     }
  
 
      console.log( postData);
@@ -690,7 +675,7 @@ dropdownCommunityArray: any = [
    this.http.post<any>(url, postData  ).subscribe(
       data => {
         console.log(data);
-        this.router.navigate(['/school/studentlist']);
+        //this.router.navigate(['/school/studentlist']);
       },
       error => {
          console.log(error);    
