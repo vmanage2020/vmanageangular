@@ -34,6 +34,9 @@ export class StudentComponent implements OnInit {
   // certificateInfo:FormArray;
   public duplicateCertifcateColumns: FormArray;
 
+  uploadProfileImageForm: FormGroup;
+  imagefilename:any;
+
   // Form submition
   submit: boolean;
   formsubmit: boolean;
@@ -306,6 +309,9 @@ dropdownCommunityArray: any = [
   ngOnInit() {
 
 
+    this.uploadProfileImageForm = this.formBuilder.group({
+      stu_adm_stu_image: ['']
+    });
     
     this.loading = false;
     this.displayLoader = false;
@@ -352,7 +358,7 @@ dropdownCommunityArray: any = [
       stu_prf_mobile_no: [''],
       stu_prf_plc_of_livng: ['', [Validators.required]],
       stu_prf_mem_of_serv_org: [''],
-      stu_prf_parents_old_stu: ['2', [Validators.required]],
+      stu_prf_parents_old_stu: ['0', [Validators.required]],
       stu_prf_family_size: ['', [Validators.required]],
       stu_prf_sex: ['1', [Validators.required]],
       stu_prf_plc_of_birth: [''],
@@ -360,7 +366,7 @@ dropdownCommunityArray: any = [
       stu_prf_religion_fk: [null],
       stu_prf_caste_fk: [null],
       stu_prf_community_fk: [null],
-      stu_prf_stu_email: ['', [Validators.required]],
+      stu_prf_stu_email: [''],
       stu_prf_stu_aadhar: [''],
       stu_prf_stu_emis: [''],
       stu_prf_stu_bank: [''],
@@ -369,6 +375,7 @@ dropdownCommunityArray: any = [
       stu_prf_remarks: [''],
       stu_prf_medical: [''],
       stu_prf_co_curr: [null],
+      stu_prf_third_lang: [null],
       stu_prf_mother_tongue_fk: [null],
       stu_prf_citizen_fk: [null],
       stu_prf_bus: ['2', [Validators.required]],
@@ -485,7 +492,7 @@ dropdownCommunityArray: any = [
     if( eventDate != '')
     {
       var dobage = this.ageCalculation( eventDate );
-      this.dobValue = dobage;
+      this.dobValue = eventDate;
       if( dobage != null)
       {
         console.log('-----dobage-----', dobage)
@@ -584,6 +591,7 @@ dropdownCommunityArray: any = [
 
     var cartificateDataArray = [];
 
+    console.log("certificateColumns.length::"+certificateColumns.length);
     if( certificateColumns.length > 0)
     {
       console.log('----certificateColumns-----', certificateColumns)
@@ -700,7 +708,7 @@ dropdownCommunityArray: any = [
         "stu_adm_prev_colname": this.form.stu_adm_prev_colname.value,
         "stu_adm_app_no": "",
         "stu_adm_app_dt": "0000-00-00",
-        "stu_adm_stu_image": "",
+        "stu_adm_stu_image": this.imagefilename,
         "stu_adm_mode":  this.form.stu_adm_mode.value,
         "stu_adm_status": 6,
         "stu_detained": 0,
@@ -711,7 +719,7 @@ dropdownCommunityArray: any = [
         "stu_group_id_fk": 0,
         "stu_adm_std": 0,
         "stu_prf_sec_lang": this.form.secondlang.value,
-        "stu_prf_third_lang": 0,
+        "stu_prf_third_lang": this.form.stu_prf_third_lang.value,
         "stu_adm_fee_coll": 0,
         "stu_adm_refno": 0,
         "stu_read_mode":this.form.stu_read_mode.value,
@@ -748,6 +756,7 @@ dropdownCommunityArray: any = [
 
      console.log( postData);
      console.log( JSON.stringify(postData));
+     //return;
      
     let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/student';
     console.log(url);
@@ -778,5 +787,32 @@ dropdownCommunityArray: any = [
 
       return currentYear+''+text;
   }
+
+  
+  onFileSelect(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.uploadProfileImageForm.get('stu_adm_stu_image').setValue(file);
+      this.validSubmitUpload();
+    }
+  }
+
+  validSubmitUpload() {
+    const formData = new FormData();
+    formData.append('file', this.uploadProfileImageForm.get('stu_adm_stu_image').value);
+    let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/student/upload';
+    this.http.post<any>(url, formData).subscribe(
+    data => {
+      console.log(data);
+      this.imagefilename = data['filename'];
+      console.log(this.imagefilename);
+    },
+    error => {
+      console.log(error);
+    }
+
+    );
+  }
+
 
 }
