@@ -128,12 +128,13 @@ agevalue:any;
          this.SViewDoc=dt['studentdocument'];
         // console.log(this.SViewitems.student_documents);
         console.log(this.SViewDoc);
-        this.parseDate(this.SViewitems.stu_prf_dob)
+        this.parseDate(this.SViewitems.stu_prf_dob);
+        this.daimag="http://sms.akst.in/writable/uploads/"+this.SViewitems.stu_adm_stu_image;
        // String(this.parseDate(this.SViewitems.stu_prf_dob));
         //this.dropdownArray[0][16].push(this.parseDate(this.SViewitems.stu_prf_dob));
       // this.agevalue=String(this.parseDate(this.SViewitems.stu_prf_dob));
       //  this.dropdownArray[0][16].push(this.agevalue);
-      //console.log(this.agevalue);
+      //console.log(this.daimag);
        }
     })
     //console.log(this.ctrlmainhead[0])
@@ -143,6 +144,7 @@ agevalue:any;
     
   }
   dobValue:any;
+  daimag:any;
   parseDate(eventDate:any)
   {
     //console.log('----event----', eventDate)
