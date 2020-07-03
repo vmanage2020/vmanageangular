@@ -16,6 +16,7 @@ export class StudenteditComponent implements OnInit {
   SViewitems:any=[];
   resourceID:any;
   url:any;
+  dobValue:any;
   objectKeys = Object.keys;
 
 
@@ -267,13 +268,15 @@ dropdownCommunityArray: any = [
          console.log(dt['student']);
          this.SViewitems=dt['student'];
          this.SViewitems.stu_read_mode=1;
-         this.SViewitems.stu_prf_age=10;
+         
          
          //this.SViewitems.stu_prf_third_lang =  ["Tamil","English"];
          this.SViewitems.stu_prf_third_lang =  this.SViewitems.stu_prf_third_lang.split(",");
          this.SViewitems.stu_prf_co_curr =  this.SViewitems.stu_prf_co_curr.split(",");
          this.imagefilename = this.SViewitems.stu_adm_stu_image;
          console.log(this.SViewitems.stu_prf_app_No);
+         this.parseDate(this.SViewitems.stu_prf_dob);
+         this.SViewitems.stu_prf_age=this.dobValue;
        }
     })
 
@@ -453,7 +456,7 @@ dropdownCommunityArray: any = [
     }
     
   }
-
+  
   parseDate(eventDate:any)
   {
     //console.log('----event----', eventDate)
