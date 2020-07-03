@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output  } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormArray } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe } from '@angular/common'
+
+import { RestApiService } from '../../../../shared/rest-api.services';
+import { CommonService } from '../../../../shared/common.service'
 
 @Component({
   selector: 'app-student',
@@ -11,9 +14,17 @@ import { DatePipe } from '@angular/common'
 })
 
 export class StudentComponent implements OnInit {
+
+
+ 
+  public loader: boolean = false;
   submitted = false;
   loading = true;
   displayLoader: any = true;
+
+  selectedFile: File;
+  fileList: File[] = [];
+  listOfFiles: any[] = [];
 
   appRandomNumber:any;
   appDate:any;
@@ -252,7 +263,13 @@ dropdownCommunityArray: any = [
    
     
   ]
-  constructor(private formBuilder: FormBuilder, private http:HttpClient,private route: ActivatedRoute, private router: Router, public datepipe: DatePipe) {
+  constructor(private formBuilder: FormBuilder, 
+    private apiService: RestApiService, 
+    private http:HttpClient,
+    private route: ActivatedRoute, 
+    private router: Router, 
+    private commonService: CommonService,
+    public datepipe: DatePipe) {
     this.selectValue = ['Alaska', 'Hawaii', 'California', 'Nevada', 'Oregon', 'Washington', 'Arizona', 'Colorado', 'Idaho', 'Montana', 'Nebraska', 'New Mexico', 'North Dakota', 'Utah', 'Wyoming', 'Alabama', 'Arkansas', 'Illinois', 'Iowa'];
 
     
@@ -393,6 +410,42 @@ dropdownCommunityArray: any = [
     this.addCertificateColumn();
   }
 
+
+    onFileChanged(event, indx) {
+
+      
+       setTimeout(() => {
+
+        this.commonService.loaderShowHide(true);
+        this.loader             = true;
+
+        const formData = new FormData();      
+        formData.append('certificate', event.target.files[0]);
+
+        this.apiService.create('/student/document', formData).subscribe( files => {
+          console.log('----file updated---' , files )
+          
+          /* this.validationform.controls.certificateColumns['controls'][indx].patchValue({
+            certificatehiddenFile: files.filename
+          }) */
+
+          this.listOfFiles.push( {indx: files.filename} )
+
+          this.commonService.loaderShowHide(false);
+          this.loader             = false;
+
+        });
+        console.log('----listOfFiles----', this.listOfFiles )
+       }, 100);
+      
+      /* for (var i = 0; i <= event.target.files.length - 1; i++) {
+        var selectedFile = event.target.files[i];
+        this.fileList.push(selectedFile);
+        this.listOfFiles.push(selectedFile.name)
+    }  */
+  }
+
+
   FieldsChange(event:any)
   {
     if(event.target.checked == true)
@@ -497,6 +550,7 @@ dropdownCommunityArray: any = [
       certificateDate: [null],
       certificateNo: [null],
       certificateAttach: [null]
+      //certificatehiddenFile: [null]
     })
   }
 
@@ -515,14 +569,42 @@ dropdownCommunityArray: any = [
   validSubmit() {
     this.submit = true;
     this.submitted = true;
-  
+    console.log('-----form value---'); console.log( this.validationform.value )
+    console.log('-----form value form---'); console.log( this.form )
     if (this.validationform.invalid) {
      console.log(this.validationform);
      return;
     }
   
+    console.log('----test----')
     this.displayLoader = true;
     this.loading = true;
+
+    var certificateColumns = this.validationform.value.certificateColumns;
+
+    var cartificateDataArray = [];
+
+    if( certificateColumns.length > 0)
+    {
+      console.log('----certificateColumns-----', certificateColumns)
+
+      console.log('-----listOfFiles------', this.listOfFiles);
+      var i=0;
+      certificateColumns.forEach( cert =>{
+        cartificateDataArray.push(
+          {
+              "cert_code_fk": cert.certificateName,
+							"crt_cert_date" : cert.certificateDate,
+							"crt_cert_no" : cert.certificateNo,
+							"crt_returned" : 0,
+							"crt_collected" : 0,
+							"crt_attach" : this.listOfFiles[i].indx,			
+          }
+        )
+        i++;
+      })
+            
+    }
 
    // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.validationform.value));
     /*
@@ -660,7 +742,7 @@ dropdownCommunityArray: any = [
         "con_rel_info" : "info",
         "con_mode" : "mode",
         "con_rail_stn" : this.form.con_rail_stn.value,
-        "student_documents":[postCert]
+        "student_documents": cartificateDataArray
      }
  
 
@@ -684,13 +766,17 @@ dropdownCommunityArray: any = [
 
   makeRandom()  {
     let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-    const lengthOfCode = 10;  
+    const lengthOfCode = 6;  
     let text = "";
 
     for (let i = 0; i < lengthOfCode; i++) {
       text += possible.charAt(Math.floor(Math.random() * possible.length));
     }
-      return text;
+
+    var d = new Date();
+    var currentYear = d.getFullYear();
+
+      return currentYear+''+text;
   }
 
 }

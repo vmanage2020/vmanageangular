@@ -1404,8 +1404,13 @@
                                                         <label>Attachment </label>
                                                         <input formControlName="certificateAttach" id="crt_attach"
                                                             name="certificateAttach" type="file"
-                                                            class="form-control required" tabindex="4">
+                                                            accept="application/pdf, application/msword, image/jpeg,image/jpg,image/png,image/gif" 
+                                                            class="form-control required" value="" tabindex="4" (change)="onFileChanged($event, i)" >
                                                     </div>
+
+                                                    <!-- <input formControlName="certificatehiddenFile" id="certificatehiddenFile"
+                                                            name="certificatehiddenFile" autocomplete="off" type="hidden" readonly class="form-control "> -->
+
                                                 </div>
 
                                                 <div class="form-group col-12 text-right">
@@ -1435,6 +1440,12 @@
                     </form>
 
 
+                    <div id="nprogress" *ngIf="loader">
+                        <div class="spinner" role="spinner">
+                            <div class="spinner-icon"></div>
+                        </div>
+                    </div>
+                    
 
                 </div>
 
@@ -1444,3 +1455,6 @@
 
         </div>
     </div>
+
+
+    
