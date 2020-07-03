@@ -347,7 +347,7 @@
                                                 <input id="stu_prf_dob"  formControlName="stu_prf_dob" name="stu_prf_dob" type="date"
                                                     (input)="parseDate($event.target.value)"
                                                     [(ngModel)]="SViewitems.stu_prf_dob" class="form-control required"
-                                                    tabindex="19" autocomplete="off">
+                                                    tabindex="19" autocomplete="off" max="2020-07-03">
                                             </div>
 
                                         </div>
@@ -901,7 +901,7 @@
 
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Student Email ID *</label>
+                                            <label>Student Email ID </label>
                                             <input type="text" formControlName="stu_prf_stu_email"
                                                 [(ngModel)]="SViewitems.stu_prf_stu_email" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && form.stu_prf_stu_email.errors }" />
@@ -1053,7 +1053,8 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Language known</label>
-                                            <!--                                             <select formControlName="stu_prf_mother_tongue_fk"
+                                            <!--                                             
+                                                <select formControlName="stu_prf_mother_tongue_fk"
                                                 [(ngModel)]="SViewitems.stu_prf_mother_tongue_fk" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && form.stu_prf_mother_tongue_fk.errors }">
                                                 <option
@@ -1063,14 +1064,17 @@
                                                 </option>
 
                                             </select> -->
-                                            <ng-select [(ngModel)]="SViewitems.stu_prf_mother_tongue_fk"
-                                                [items]="dropdownLanguageArray" bindLabel="name" bindValue="id"
-                                                placeholder="Select School" formControlName="stu_prf_mother_tongue_fk"
-                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_mother_tongue_fk.errors!=null }">
+                                            <ng-select [(ngModel)]="SViewitems.stu_prf_third_lang"
+                                                [multiple]="true"
+                                                [items]="dropdownLanguageArray" 
+                                                bindLabel="name" 
+                                                bindValue="name"
+                                                placeholder="Select Language" formControlName="stu_prf_third_lang"
+                                                [ngClass]="{ 'is-invalid': submitted && form.stu_prf_third_lang.errors!=null }">
                                             </ng-select>
-                                            <div *ngIf="submitted && form.stu_prf_mother_tongue_fk.errors"
+                                            <div *ngIf="submitted && form.stu_prf_third_lang.errors"
                                                 class="invalid-feedback">
-                                                <div *ngIf="form.stu_prf_mother_tongue_fk.errors.required">Language
+                                                <div *ngIf="form.stu_prf_third_lang.errors.required">Language
                                                     known is required </div>
                                             </div>
                                         </div>
@@ -1108,9 +1112,15 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Remarks</label>
+                                            <textarea formControlName="stu_prf_remarks"
+                                            [(ngModel)]="SViewitems.stu_prf_remarks" class="form-control"
+                                            [ngClass]="{ 'is-invalid': submitted && form.stu_prf_remarks.errors }">
+                                            </textarea> 
+                                            <!--
                                             <input type="text" formControlName="stu_prf_remarks"
                                                 [(ngModel)]="SViewitems.stu_prf_remarks" class="form-control"
                                                 [ngClass]="{ 'is-invalid': submitted && form.stu_prf_remarks.errors }" />
+                                            -->
                                             <div *ngIf="submitted && form.stu_prf_remarks.errors"
                                                 class="invalid-feedback">
                                                 <div *ngIf="form.stu_prf_remarks.errors.required">Remarks is required
@@ -1122,8 +1132,8 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Student Image</label>
-                                            <input id="stu_adm_stu_image" name="stu_adm_stu_image" type="file"
-                                                class="form-control " tabindex="53">
+                                            <input id="stu_adm_stu_image" name="stu_adm_stu_image" type="file" (change)="onFileSelect($event)"
+                                                class="form-control " tabindex="53" accept="image/*">
                                         </div>
                                     </div>
 
