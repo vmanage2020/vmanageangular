@@ -1132,8 +1132,8 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Student Image</label>
-                                            <input id="stu_adm_stu_image" name="stu_adm_stu_image" type="file"
-                                                class="form-control " tabindex="53">
+                                            <input id="stu_adm_stu_image" name="stu_adm_stu_image" type="file" (change)="onFileSelect($event)"
+                                                class="form-control " tabindex="53" accept="image/*">
                                         </div>
                                     </div>
 

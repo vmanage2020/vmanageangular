@@ -24,6 +24,8 @@ export class StudenteditComponent implements OnInit {
   validationform: FormGroup; // bootstrap validation form
   // certificateInfo:FormArray;
   public duplicateCertifcateColumns: FormArray;
+  uploadProfileImageForm: FormGroup;
+  imagefilename:any;
 
   // Form submition
   submit: boolean;
@@ -253,6 +255,7 @@ dropdownCommunityArray: any = [
     
   ]
  
+  fileData: File = null;
   constructor(public formBuilder: FormBuilder, private http:HttpClient,private route: ActivatedRoute, private router: Router) {
     
     this.resourceID = this.route.snapshot.paramMap.get('id');
@@ -269,7 +272,7 @@ dropdownCommunityArray: any = [
          //this.SViewitems.stu_prf_third_lang =  ["Tamil","English"];
          this.SViewitems.stu_prf_third_lang =  this.SViewitems.stu_prf_third_lang.split(",");
          this.SViewitems.stu_prf_co_curr =  this.SViewitems.stu_prf_co_curr.split(",");
-
+         this.imagefilename = this.SViewitems.stu_adm_stu_image;
          console.log(this.SViewitems.stu_prf_app_No);
        }
     })
@@ -298,6 +301,10 @@ dropdownCommunityArray: any = [
 
   }
 
+  fileProgress(fileInput: any) {
+    this.fileData = <File>fileInput.target.files[0];
+}
+
   /* cinfo()
    {
      let vformarray = this.validationform.get('certificateInfo') as FormArray;
@@ -312,6 +319,10 @@ dropdownCommunityArray: any = [
   ngOnInit() {
     this.appRandomNumber = this.makeRandom();
     this.breadCrumbItems = [{ label: 'UBold', path: '/' }, { label: 'Forms', path: '/' }, { label: 'Form Validation', path: '/', active: true }];
+
+    this.uploadProfileImageForm = this.formBuilder.group({
+      stu_adm_stu_image: ['']
+    });
 
     this.validationform = this.formBuilder.group({
       col_code_fk: [null, [Validators.required]],
@@ -506,7 +517,7 @@ dropdownCommunityArray: any = [
       console.log(this.validationform);
      return;
     }
-    console.log( JSON.stringify(this.validationform.value));
+    //console.log( JSON.stringify(this.validationform.value));
     // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.validationform.value));
     /*
  console.log( JSON.stringify(this.validationform.value));
@@ -517,6 +528,7 @@ dropdownCommunityArray: any = [
     })
 
     */
+ 
 
     let postData = {
       "col_code_fk": this.form.col_code_fk.value,
@@ -585,7 +597,7 @@ dropdownCommunityArray: any = [
         "stu_adm_prev_colname": this.form.stu_adm_prev_colname.value,
         "stu_adm_app_no": "",
         "stu_adm_app_dt": "0000-00-00",
-        "stu_adm_stu_image": "",
+        "stu_adm_stu_image": this.imagefilename,
         "stu_adm_mode":  this.form.stu_adm_mode.value,
         "stu_adm_status": 6,
         "stu_detained": 0,
@@ -683,6 +695,32 @@ dropdownCommunityArray: any = [
       text += possible.charAt(Math.floor(Math.random() * possible.length));
     }
       return text;
+  }
+
+
+  onFileSelect(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.uploadProfileImageForm.get('stu_adm_stu_image').setValue(file);
+      this.validSubmitUpload();
+    }
+  }
+
+  validSubmitUpload() {
+    const formData = new FormData();
+    formData.append('file', this.uploadProfileImageForm.get('stu_adm_stu_image').value);
+    let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/student/upload';
+    this.http.post<any>(url, formData).subscribe(
+    data => {
+      console.log(data);
+      this.imagefilename = data['filename'];
+      console.log(this.imagefilename);
+    },
+    error => {
+      console.log(error);
+    }
+
+    );
   }
   
 
