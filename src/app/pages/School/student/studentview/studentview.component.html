@@ -26,9 +26,16 @@
                        <div class="form-group" >
                           <label>{{csh}} : </label>
                        
-                         <div id="dataview" *ngIf="checkdownarr[i][j]==j; else loggedOut">
-                          <input type="text" value= " {{ dropdownArray[i][j][SViewitems[ctrllabel[i][j]] ]}}" class="form-control" disabled />
-                          </div>
+                         <div id="dataview" *ngIf="checkdownarr[i][j]==j;  else loggedOut">
+                           <div *ngIf="i==0 && j==16;  else othersval ">
+                          <input type="text" value= " {{dobValue }}" class="form-control" disabled />
+                        </div> 
+                        </div>
+                        <ng-template #othersval>
+                          <div id="dataview">
+                            <input type="text" value= " {{ dropdownArray[i][j][SViewitems[ctrllabel[i][j]] ]}}" class="form-control" disabled />
+                          </div>                            
+                        </ng-template>
                           <ng-template #loggedOut>
                             <div id="dataview">
                               <input type="text" value= " {{ SViewitems[ctrllabel[i][j]] }}" class="form-control" disabled /> 
