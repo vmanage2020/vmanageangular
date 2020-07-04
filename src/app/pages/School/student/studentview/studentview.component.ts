@@ -18,6 +18,188 @@ export class StudentviewComponent implements OnInit {
   url:any;
   objectKeys = Object.keys;
 
+  dropdownSchoolArray: any = [
+    { id: 1, name: 'Vidyalakshmi Matric School' },
+    { id: 2, name: 'Vidyalakshmi CBSE School' },
+    { id: 3, name: 'Vidyalakshmi ICSE school' }
+  ];
+
+  dropdownAcademicYearArray: any = [
+    { id:"2020", name:"2020" }
+  ];
+
+  dropdownBoardArray: any = [
+    { id:1, name:"Matric " },
+    { id:2, name:"CBSE" },
+    { id:3, name:"State" },
+    { id:4, name:"ICSE" },
+    { id:5, name:"Other" }
+  ];
+
+  dropdownMediumArray: any = [
+    { id:1, name:"English" },
+    { id:2, name:"Tamil" },
+    { id:3, name:"Sanskrit" },
+    { id:4, name:"Hindi" },
+    { id:5, name:"Telugu" },
+    { id:6, name:"Kannada" },
+    { id:7, name:"Malayalam" }
+  ];
+
+  dropdownStandardArray: any = [
+    { id:1, name:"Pre-KG" },
+    { id:2, name:"LKG" },
+    { id:3, name:"UKG" },
+    { id:4, name:"I" },
+    { id:5, name:"II" },
+    { id:6, name:"III" },
+    { id:7, name:"IV" },
+    { id:8, name:"V" },
+    { id:9, name:"VI" },
+    { id:10, name:"VII" },
+    { id:11, name:"VIII" },
+    { id:12, name:"IX" },
+    { id:13, name:"X" },
+    { id:14, name:"XI" },
+    { id:15, name:"XII" }
+  ];
+
+  
+  dropdownGroupArray: any = [
+    { id:1, name:"General" },
+    { id:2, name:"Science" },
+    { id:3, name:"Maths" },
+    { id:4, name:"Social" },
+    { id:5, name:"Computer" },
+    { id:6, name:"Agri" },
+    { id:7, name:"Account" }
+  ];
+
+  dropdownSecondLanguageArray: any = [
+    { id:1, name:"English" },
+    { id:2, name:"Tamil" },
+    { id:3, name:"Sanskrit" },
+    { id:4, name:"Hindi" },
+    { id:5, name:"Telugu" },
+    { id:6, name:"Kannada" },
+    { id:7, name:"Malayalam" }
+  ];
+
+  dropdownMotherLanguageArray: any = [
+    { id:1, name:"English" },
+    { id:2, name:"Tamil" },
+    { id:3, name:"Sanskrit" },
+    { id:4, name:"Hindi" },
+    { id:5, name:"Telugu" },
+    { id:6, name:"Kannada" },
+    { id:7, name:"Malayalam" }
+  ];
+
+  dropdownPrevBoardArray: any =[
+    { id:1, name:"Matric " },
+    { id:2, name:"CBSE" },
+    { id:3, name:"State" },
+    { id:4, name:"ICSE" },
+    { id:5, name:"Other" }
+  ];
+
+  dropdownPrevMediumArray: any =[
+    { id:1, name:"English" },
+    { id:2, name:"Tamil" },
+    { id:3, name:"Sanskrit" },
+    { id:4, name:"Hindi" },
+    { id:5, name:"Telugu" },
+    { id:6, name:"Kannada" },
+    { id:7, name:"Malayalam" }
+  ];
+
+  
+  dropdownPrevStandardArray: any = [
+    { id:1, name:"Pre-KG" },
+    { id:2, name:"LKG" },
+    { id:3, name:"UKG" },
+    { id:4, name:"I" },
+    { id:5, name:"II" },
+    { id:6, name:"III" },
+    { id:7, name:"IV" },
+    { id:8, name:"V" },
+    { id:9, name:"VI" },
+    { id:10, name:"VII" },
+    { id:11, name:"VIII" },
+    { id:12, name:"IX" },
+    { id:13, name:"X" },
+    { id:14, name:"XI" },
+    { id:15, name:"XII" }
+  ];
+
+  dropdownActivityArray: any =[
+    { id:1, name:"Sport" },
+    { id:2, name:"Music" },
+    { id:3, name:"Drawing" },
+    { id:4, name:"Cricket" },
+    { id:5, name:"Game" },
+    { id:6, name:"Playing" },
+    { id:7, name:"Singing" }
+  ];
+
+  dropdownLanguageArray: any =[
+    { id:1, name:"English" },
+    { id:2, name:"Tamil" },
+    { id:3, name:"Sanskrit" },
+    { id:4, name:"Hindi" },
+    { id:5, name:"Telugu" },
+    { id:6, name:"Kannada" },
+    { id:7, name:"Malayalam" }
+  ];
+  
+ dropdownCitizenArray: any = [
+  { id: 1, name: 'INDIAN' },
+  { id: 2, name: 'FOREIGNER' },
+  { id: 3, name: 'OTHER' }
+];
+
+dropdownBloodArray: any = [
+  { id: 1, name: 'A+' },
+  { id: 2, name: 'A-' },
+  { id: 3, name: 'B+' },
+  { id: 4, name: 'B-' },
+  { id: 5, name: 'AB+' },
+  { id: 6, name: 'AB-' },
+  { id: 7, name: 'O+' },
+  { id: 8, name: 'O-' },
+  { id: 9, name: 'Other' }
+];
+
+dropdownReligionArray: any = [
+  { id: 1, name: 'Hinduism (Hindu)' },
+  { id: 2, name: 'Christianity (Christian)' },
+  { id: 3, name: 'Islam (Muslim)' },
+  { id: 4, name: 'Jainism' },
+  { id: 5, name: 'Buddhism' },
+  { id: 6, name: 'Sikhism' },
+  { id: 7, name: 'Others' },
+];
+
+dropdownCommunityArray: any = [
+  { id: 1, name: 'FC' },
+  { id: 2, name: 'BC' },
+  { id: 3, name: 'OBC' },
+  { id: 4, name: 'MBC' },
+  { id: 5, name: 'SC' },
+  { id: 6, name: 'ST' },
+  { id: 7, name: 'Other' }
+];
+
+dropdownCertificateArray: any = [
+  { id: 1, name: 'TRANSFER CERTIFICATE' },
+  { id: 2, name: 'BIRTH CERTIFICATE' },
+  { id: 3, name: 'COMMUNITY CERTIFICATE' },
+  { id: 4, name: 'MARK SHEET' },
+  { id: 5, name: 'NATIVE CERTIFICATE' },
+  { id: 6, name: 'CONTACT CERTIFICATE' },
+  { id: 7, name: 'OTHER' }
+];
+
   dropdownArrayxx = [
     [ "Vidyalakshmi school", "Vidyalakshmi school2", "Vidyalakshmi school3", "Vidyalakshmi school4", "Vidyalakshmi school5"],
     ["5dfdfldsfl24d55"],
@@ -143,7 +325,13 @@ busfacval:any;
         // console.log(this.SViewitems.student_documents);
         console.log(this.SViewDoc);
         this.parseDate(this.SViewitems.stu_prf_dob);
-        this.daimag="http://sms.akst.in/writable/uploads/"+this.SViewitems.stu_adm_stu_image;
+        if(this.SViewitems.stu_adm_stu_image==null)
+        {
+          this.daimag="http://sms.akst.in/writable/uploads/student.png";
+        } else {
+          this.daimag="http://sms.akst.in/writable/uploads/"+this.SViewitems.stu_adm_stu_image; 
+        }
+        
        // String(this.parseDate(this.SViewitems.stu_prf_dob));
         //this.dropdownArray[0][16].push(this.parseDate(this.SViewitems.stu_prf_dob));
       // this.agevalue=String(this.parseDate(this.SViewitems.stu_prf_dob));
@@ -189,4 +377,27 @@ busfacval:any;
     return age;
   }
 
+    downloadFile(filename)
+  {
+    
+    const link = document.createElement('a');
+    link.setAttribute('target', '_blank');
+    link.setAttribute('href', 'http://sms.akst.in/writable/uploads/'+filename);
+    link.setAttribute('download', 'http://sms.akst.in/writable/uploads/'+filename);
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  }
+
+
+  getArrayNameById(VarArray,id){
+    if(id>0){
+      let ArrayName = VarArray.filter(x => x.id === id);
+      return ArrayName[0]['name'];
+    } else {
+      return 'None';
+    }
+    //return VarArray.filter(x => x.id === id);
+  }
+   
 }

@@ -414,7 +414,7 @@ dropdownCommunityArray: any = [
     this.duplicateCertifcateColumns = this.validationform.get('certificateColumns') as FormArray;
     this.submit = false;
     this.formsubmit = false;
-    this.addCertificateColumn();
+    //this.addCertificateColumn();
   }
 
 
