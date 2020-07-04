@@ -3,21 +3,31 @@ import { FormBuilder, Validators, FormGroup, FormArray } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 
+
+import { RestApiService } from '../../../../shared/rest-api.services';
+import { CommonService } from '../../../../shared/common.service'
+
 @Component({
   selector: 'app-studentedit',
   templateUrl: './studentedit.component.html',
   styleUrls: ['./studentedit.component.scss']
 })
 export class StudenteditComponent implements OnInit {
+
+  public loader: boolean = false;
+
   submitted = false;
   appRandomNumber:any;
 
   mygrou=[1,2,3,4,5];
   SViewitems:any=[];
+
+  studentdocument: any[] = [];
   resourceID:any;
   url:any;
   dobValue:any;
   objectKeys = Object.keys;
+  listOfFiles: any[] = [];
 
 
   //userForm:FormGroup;
@@ -27,6 +37,8 @@ export class StudenteditComponent implements OnInit {
   public duplicateCertifcateColumns: FormArray;
   uploadProfileImageForm: FormGroup;
   imagefilename:any;
+
+  createCertificateOpt: boolean = false;
 
   // Form submition
   submit: boolean;
@@ -257,13 +269,22 @@ dropdownCommunityArray: any = [
   ]
  
   fileData: File = null;
-  constructor(public formBuilder: FormBuilder, private http:HttpClient,private route: ActivatedRoute, private router: Router) {
+  constructor(
+    private apiService: RestApiService, 
+    private commonService: CommonService,
+    public formBuilder: FormBuilder, 
+    private http:HttpClient,
+    private route: ActivatedRoute, 
+    private router: Router) {
     
     this.resourceID = this.route.snapshot.paramMap.get('id');
     this.url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/student/'+this.resourceID;
     console.log(this.url);
     this.http.get<any>(this.url).toPromise().then(data => {
+
+     
       const dt = data;
+      console.log('-----data-----', data)
        if(dt['student']){
          console.log(dt['student']);
          this.SViewitems=dt['student'];
@@ -278,6 +299,32 @@ dropdownCommunityArray: any = [
          this.parseDate(this.SViewitems.stu_prf_dob);
          this.SViewitems.stu_prf_age=this.dobValue;
        }
+
+
+       if(data.studentdocument.length>0)
+       {
+         this.studentdocument = data.studentdocument;
+         console.log( '-------studentdocument------', this.studentdocument)
+         /* var i=0
+               studentdocument.forEach( cols => {
+                   console.log('----i-----',i)
+                   this.addCertificateColumn()
+                   i++;
+                 });
+ 
+         var j=0
+         studentdocument.forEach( cols => {
+ 
+               this.validationform.controls.certificateColumns['controls'][j].patchValue({
+                 certificateDate       : cols.create_date,
+                 certificateAttach     : cols.crt_attach,
+                 certificateNo         : cols.crt_cert_no
+               })
+               j++;
+             })  */
+       }
+
+       
     })
 
 
@@ -419,7 +466,7 @@ dropdownCommunityArray: any = [
     this.duplicateCertifcateColumns = this.validationform.get('certificateColumns') as FormArray;
     this.submit = false;
     this.formsubmit = false;
-    this.addCertificateColumn();
+    //this.addCertificateColumn();
   }
 
 
@@ -501,6 +548,7 @@ dropdownCommunityArray: any = [
   }
 
   addCertificateColumn() {
+    //this.createCertificateOpt = true;
     this.duplicateCertifcateColumns.push(this.createCertificateColumnForm());
   }
 
@@ -508,6 +556,47 @@ dropdownCommunityArray: any = [
     this.duplicateCertifcateColumns.removeAt(index);
   }
 
+  downloadFile(filename)
+  {
+    
+    const link = document.createElement('a');
+    link.setAttribute('target', '_blank');
+    link.setAttribute('href', 'http://sms.akst.in/writable/uploads/'+filename);
+    link.setAttribute('download', 'http://sms.akst.in/writable/uploads/'+filename);
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  }
+
+
+  onFileChanged(event, indx) {
+
+      
+    setTimeout(() => {
+
+     this.commonService.loaderShowHide(true);
+     this.loader             = true;
+
+     const formData = new FormData();      
+     formData.append('certificate', event.target.files[0]);
+
+     this.apiService.create('/student/document', formData).subscribe( files => {
+       console.log('----file updated---' , files )
+       
+       /* this.validationform.controls.certificateColumns['controls'][indx].patchValue({
+         certificatehiddenFile: files.filename
+       }) */
+
+       this.listOfFiles.push( {indx: files.filename} )
+
+       this.commonService.loaderShowHide(false);
+       this.loader             = false;
+
+     });
+     console.log('----listOfFiles----', this.listOfFiles )
+    }, 100);
+   
+}
 
   /**
    * Bootsrap validation form submit method
@@ -531,7 +620,34 @@ dropdownCommunityArray: any = [
     })
 
     */
- 
+    
+
+   var certificateColumns = this.validationform.value.certificateColumns;
+
+   var cartificateDataArray = [];
+
+   console.log("certificateColumns.length::"+certificateColumns.length);
+   if( certificateColumns.length > 0)
+   {
+     console.log('----certificateColumns-----', certificateColumns)
+
+     console.log('-----listOfFiles------', this.listOfFiles);
+     var i=0;
+     certificateColumns.forEach( cert =>{
+       cartificateDataArray.push(
+         {
+             "cert_code_fk": cert.certificateName,
+             "crt_cert_date" : cert.certificateDate,
+             "crt_cert_no" : cert.certificateNo,
+             "crt_returned" : 0,
+             "crt_collected" : 0,
+             "crt_attach" : this.listOfFiles[i].indx,			
+         }
+       )
+       i++;
+     })
+           
+   }
 
     let postData = {
       "col_code_fk": this.form.col_code_fk.value,
@@ -642,38 +758,7 @@ dropdownCommunityArray: any = [
         "con_rel_info" : "info",
         "con_mode" : "mode",
         "con_rail_stn" : this.form.con_rail_stn.value,
-        "student_documents":[
-          {
-          "col_code_fk": 1,
-          "stu_prf_code_fk": 1,
-          "cert_code_fk": this.form.cert_code_fk.value,
-          "crt_cert_date": this.form.crt_cert_date.value,
-          "crt_cert_no": this.form.crt_cert_no.value,
-          "crt_returned": 0,
-          "crt_collected": 0,
-          "crt_attach": "1591502613_C:fakepathmisic 1.jpg",
-          "status": 0,
-          "create_date": "2020-06-07 00:03:33",
-          "create_by": 6,
-          "edit_date": "0000-00-00 00:00:00",
-          "edit_by": 0
-          },
-          {
-          "col_code_fk": 1,
-          "stu_prf_code_fk": 1,
-          "cert_code_fk": this.form.cert_code_fk.value,
-          "crt_cert_date": this.form.crt_cert_date.value,
-          "crt_cert_no": this.form.crt_cert_no.value,
-          "crt_returned": 0,
-          "crt_collected": 0,
-          "crt_attach": "1591502613_C:fakepathmisic 1.jpg",
-          "status": 0,
-          "create_date": "2020-06-07 00:03:33",
-          "create_by": 6,
-          "edit_date": "0000-00-00 00:00:00",
-          "edit_by": 0
-          }
-          ]
+        "student_documents": cartificateDataArray
               }
 
 

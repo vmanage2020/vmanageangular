@@ -20,10 +20,14 @@ import { AdminUIModule } from './adminUI/adminUI.module';
 import { ErrorModule } from './error/error.module';
 
 import { PagesRoutingModule } from './pages-routing.module';
+/* import { StudentsComponent } from './School/students/students.component';
+import { ListComponent } from './School/students/list/list.component';
+import { AddComponent } from './School/students/add/add.component';
+import { ViewComponent } from './School/students/view/view.component'; */
 
 
 @NgModule({
-  declarations: [],
+  //declarations: [StudentsComponent, ListComponent, AddComponent, ViewComponent],
   imports: [
     CommonModule,
     NgbDropdownModule,
