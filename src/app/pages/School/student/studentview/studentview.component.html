@@ -25,12 +25,12 @@
                   <div class="card-box text-center">
                       <img src="../assets/images/users/user-1.jpg" class="rounded-circle avatar-lg img-thumbnail" alt="profile-image">
       
-                      <h4 class="mb-0">ARTHIN ALAGIRIVIMAL</h4>
-                      <p class="text-muted">EMSID</p>
+                      <h4 class="mb-0">{{SViewitems.stu_prf_stud_name+" "+SViewitems.stu_stud_mname+" "+SViewitems.stu_stud_lname}}</h4>
+                      <p class="text-muted">{{SViewitems.stu_prf_stu_emis}}</p>
       
-                      <button type="button" class="btn btn-success btn-xs waves-effect mb-2 waves-light">MALE</button>
+                      <button type="button" class="btn btn-success btn-xs waves-effect mb-2 waves-light">{{SViewitems.stu_prf_sex}}</button>
                       &nbsp;
-                      <button type="button" class="btn btn-danger btn-xs waves-effect mb-2 waves-light">10 Years</button>
+                      <button type="button" class="btn btn-danger btn-xs waves-effect mb-2 waves-light">{{dobValue+" years" }}</button>
 
                   </div>
                 </div>
@@ -40,23 +40,23 @@
                   <div class="text-left mt-3">
                       <h4 class="font-13 text-uppercase">Student Information :</h4>
                     
-                      <p class="text-muted mb-2 font-13"><strong>Gender :</strong><span class="ml-2">MALE</span></p>
+                      <p class="text-muted mb-2 font-13"><strong>Gender :</strong><span class="ml-2">{{sexval}}</span></p>
   
-                      <p class="text-muted mb-1 font-13"><strong>Place of Birth :</strong> <span class="ml-2">Chennai</span></p>
+                      <p class="text-muted mb-1 font-13"><strong>Place of Birth :</strong> <span class="ml-2">{{SViewitems.stu_prf_plc_of_birth}}</span></p>
 
-                      <p class="text-muted mb-1 font-13"><strong>Blood Group :</strong> <span class="ml-2">Chennai</span></p>
+                      <p class="text-muted mb-1 font-13"><strong>Blood Group :</strong> <span class="ml-2">{{dropdownArray[3][2][SViewitems[ctrllabel[3][2]]]}}</span></p>
 
-                      <p class="text-muted mb-1 font-13"><strong>Religion :</strong> <span class="ml-2">Chennai</span></p>
+                      <p class="text-muted mb-1 font-13"><strong>Religion :</strong> <span class="ml-2">{{dropdownArray[3][3][SViewitems[ctrllabel[3][2]]]}}</span></p>
 
-                      <p class="text-muted mb-1 font-13"><strong>Community :</strong> <span class="ml-2">Chennai</span></p>
+                      <p class="text-muted mb-1 font-13"><strong>Community :</strong> <span class="ml-2">{{dropdownArray[3][4][SViewitems[ctrllabel[3][2]]]}}</span></p>
 
-                      <p class="text-muted mb-2 font-13"><strong>Email :</strong> <span class="ml-2 ">user@email.domain</span></p>
+                      <p class="text-muted mb-2 font-13"><strong>Email :</strong> <span class="ml-2 ">{{SViewitems.stu_prf_stu_email}}</span></p>
   
-                      <p class="text-muted mb-2 font-13"><strong>Aadhar Number :</strong> <span class="ml-2 ">user@email.domain</span></p>
+                      <p class="text-muted mb-2 font-13"><strong>Aadhar Number :</strong> <span class="ml-2 ">{{SViewitems.stu_prf_stu_aadhar}}</span></p>
                       
-                      <p class="text-muted mb-2 font-13"><strong>EMIS Number :</strong> <span class="ml-2 ">user@email.domain</span></p>
+                      <p class="text-muted mb-2 font-13"><strong>EMIS Number :</strong> <span class="ml-2 ">{{SViewitems.stu_prf_stu_emis}}</span></p>
 
-                      <p class="text-muted mb-2 font-13"><strong>Bank Details :</strong> <span class="ml-2 ">user@email.domain</span></p>
+                      <p class="text-muted mb-2 font-13"><strong>Bank Details :</strong> <span class="ml-2 ">{{SViewitems.stu_prf_stu_bank}}</span></p>
 
 
                   </div>
@@ -66,21 +66,21 @@
               <div class="text-left mt-3">
                   <h4 class="font-13 text-uppercase">Other Information :</h4>
                 
-                  <p class="text-muted mb-2 font-13"><strong> Physically challenged :</strong><span class="ml-2">MALE</span></p>
+                  <p class="text-muted mb-2 font-13"><strong> Physically challenged :</strong><span class="ml-2">{{phychan}}</span></p>
 
-                  <p class="text-muted mb-2 font-13"><strong>Visual Defect :</strong> <span class="ml-2 ">user@email.domain</span></p>
+                  <p class="text-muted mb-2 font-13"><strong>Visual Defect :</strong> <span class="ml-2 ">{{visdef}}</span></p>
 
-                  <p class="text-muted mb-2 font-13"><strong>Any Medical Issues :</strong> <span class="ml-2 ">user@email.domain</span></p>
+                  <p class="text-muted mb-2 font-13"><strong>Any Medical Issues :</strong> <span class="ml-2 ">{{SViewitems.stu_prf_medical}}</span></p>
                   
-                  <p class="text-muted mb-2 font-13"><strong>Co-Curriculum Activity :</strong> <span class="ml-2 ">user@email.domain</span></p>
+                  <p class="text-muted mb-2 font-13"><strong>Co-Curriculum Activity :</strong> <span class="ml-2 ">{{SViewitems.stu_prf_co_curr}}</span></p>
 
-                  <p class="text-muted mb-1 font-13"><strong>Language known :</strong> <span class="ml-2">Chennai</span></p>
+                  <p class="text-muted mb-1 font-13"><strong>Language known :</strong> <span class="ml-2">{{SViewitems.stu_prf_third_lang}}</span></p>
 
-                  <p class="text-muted mb-1 font-13"><strong>Citizen :</strong> <span class="ml-2">India</span></p>
+                  <p class="text-muted mb-1 font-13"><strong>Citizen :</strong> <span class="ml-2">{{dropdownArray[4][5][SViewitems[ctrllabel[3][2]]]}}</span></p>
 
-                  <p class="text-muted mb-1 font-13"><strong>Remarks :</strong> <span class="ml-2">No Remark</span></p>
+                  <p class="text-muted mb-1 font-13"><strong>Remarks :</strong> <span class="ml-2">{{SViewitems.stu_prf_remarks}}</span></p>
 
-                  <p class="text-muted mb-1 font-13"><strong>Bus Facility Requirement :</strong> <span class="ml-2">No</span></p>
+                  <p class="text-muted mb-1 font-13"><strong>Bus Facility Requirement :</strong> <span class="ml-2">{{busfacval}}</span></p>
                    
               </div>
         </div> 

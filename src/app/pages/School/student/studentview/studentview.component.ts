@@ -52,7 +52,7 @@ ctrllabel:any=[["col_code_fk","stu_prf_app_No","stu_prf_app_date","stu_prf_stud_
 ["stu_prf_parents_handicap","stu_prf_visualhandy","stu_prf_medical","stu_prf_co_curr","stu_prf_third_lang","stu_prf_citizen_fk","stu_prf_remarks","stu_adm_stu_image","stu_prf_bus"],["con_per_add","con_per_state","con_per_cntry","con_per_pincode","con_per_phone","con_rail_stn"],["con_per_add","con_per_state","con_per_cntry","con_per_pincode","con_per_phone"]]
 checkdownarr=[[0,0,0,0,0,0,0,0,8,9,10,11,12,0,14,0,16],[0,1,25,3],[25,25,25,25,25,25,25,25,25,25,25,25,25,25],[25,25,2,3,4,25,25,25,25],[25,25,25,25,25,5,25,25,25],[25,25,25,25,25,25],[25,25,25,25,25],[]]
 dropdownArray:any = [[["", "Vidyalakshmi school", "Vidyalakshmi school2", "Vidyalakshmi school3", "Vidyalakshmi school4", "Vidyalakshmi school5"],[],[],[],[],[],[],["", "2020", "2021", "2019", "2023", "2024"],["", "METRIC ", "CBSE", "STATE", "ICSE", "OTHERS"],["", "English", "Tamil", "Sanskrit", "Hindi", "Telugu"],[ "","PRE-KG","LKG", "UKG", "I", "II","III","IV","V","VI","VII","VIII","IX","X", "XI", "XII"],["","GENERAL","SCIENCE","MATHS","SOCIAL","COMPUTER","AGRI"],["","English", "Tamil", "Sanskrit", "Hindi", "Telugu"],[],[ "","English", "Tamil", "Sanskrit", "Hindi", "Telugu"],[],[]],
-[[ "","metric ", "cbse", "state", "icse", "others10"],["", "English", "Tamil", "Sanskrit", "Hindi", "Telugu11"],[],  ["", "X", "XI", "XII", "XIII", "XIV12"]],[[],[],[],[],[],[],[],[],[],[],[],[],[],[]],[[],[],["", "A1positive", "A positive", "OPositive", "AB+", "AB-13"],["", "HINDU", "MUSLIM", "CHRISTIAN", "SIKKIM", "OTHERS14"],["", "BC", "MBC", "SC", "ST", "OTHERS15"],[],[],[],[]],[[],[],[],[], [ "","English", "Tamil", "Sanskrit", "Hindi", "Telugu16"],[ "","INDIAN", "FOREIGNERS",  "OTHERS17"],[],[],[]],[[],[],[],[],[],[]],[[],[],[],[],[]],[[],[],[],[]]]
+[[ "","metric ", "cbse", "state", "icse", "others10"],["", "English", "Tamil", "Sanskrit", "Hindi", "Telugu11"],[],  ["", "X", "XI", "XII", "XIII", "XIV12"]],[[],[],[],[],[],[],[],[],[],[],[],[],[],[]],[[],[],["", "A1positive", "A positive", "OPositive", "AB+", "AB-13"],["", "HINDU", "MUSLIM", "CHRISTIAN", "SIKKIM", "OTHERS14"],["", "BC", "MBC", "SC", "ST", "OTHERS15"],[],[],[],[]],[[],[],[],[], [ "","English", "Tamil", "Sanskrit", "Hindi", "Telugu","Kannada","Malayalam"],[ "","INDIAN", "FOREIGNER",  "OTHERS"],[],[],[]],[[],[],[],[],[],[]],[[],[],[],[],[]],[[],[],[],[]]]
 
 certhead=["Certificate Information"];
 cersubhead=["Certificate Name","Date ","Certificate No","Attachment "];
@@ -60,6 +60,10 @@ cerlabel=[["cert_code_fk","crt_cert_date","crt_cert_no","crt_attach"],["cert_cod
 cerdownarr=[0,25,25,25];
 cerdroparr=[["TRANSFER CERTIFICATE","BIRTH CERTIFICATE","COMMUNITY CERTIFICATE","MARK SHEET","AADHAR CARD","RATION CARD","PAN CARD","PHOTOS"],["TRANSFER CERTIFICATE","BIRTH CERTIFICATE","COMMUNITY CERTIFICATE","MARK SHEET","AADHAR CARD","RATION CARD","PAN CARD","PHOTOS"],[],[]]
 agevalue:any;
+sexval:any;
+phychan:any;
+visdef:any;
+busfacval:any;
   constructor(private http:HttpClient,private route: ActivatedRoute) {
     this.resourceID = this.route.snapshot.paramMap.get('id');
 
@@ -100,28 +104,38 @@ agevalue:any;
 
          if(this.SViewitems.stu_prf_sex==1) {
           this.SViewitems.stu_prf_sex="Male";
+          this.sexval="Male";
          } else if(this.SViewitems.stu_prf_sex==2) {
           this.SViewitems.stu_prf_sex="Female";
+          this.sexval="Female";
         } else {
           this.SViewitems.stu_prf_sex="---";
+          this.sexval="---";
          }
 
          if(this.SViewitems.stu_prf_parents_handicap==1) {
+          
           this.SViewitems.stu_prf_parents_handicap="Yes";
+          this.phychan="Yes"
           } else {
           this.SViewitems.stu_prf_parents_handicap="No";
+          this.phychan="No"
          }
          
          if(this.SViewitems.stu_prf_visualhandy==1) {
           this.SViewitems.stu_prf_visualhandy="Yes";
+          this.visdef="Yes"
          } else {
           this.SViewitems.stu_prf_visualhandy="No";
+          this.visdef="No"
          }
          
          if(this.SViewitems.stu_prf_bus==1) {
           this.SViewitems.stu_prf_bus="Yes";
+          this.busfacval="Yes";
          } else {
           this.SViewitems.stu_prf_bus="No";
+          this.busfacval="No";
          }
          
 
