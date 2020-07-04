@@ -314,11 +314,10 @@
                                             <label>Reading Ability *</label>
                                             <div style="height: 34px;">
                                                 <input id="stu_read_mode" name="stu_read_mode" type="radio" value="1"
-                                                    class="form-controlX required" style="float:left;" tabindex="7">
+                                                    checked class="form-controlX required" style="float:left;" tabindex="7">
                                                 <span style="float:left;">&nbsp;Yes &nbsp;&nbsp;</span>
                                                 <input id="stu_read_mode" name="stu_read_mode" type="radio" value="2"
-                                                    checked class="form-controlX required" style="float:left;"
-                                                    tabindex="8">
+                                                    class="form-controlX required" style="float:left;" tabindex="8">
                                                 <span style="float:left;">&nbsp;No&nbsp;&nbsp;</span>
                                             </div>
                                         </div>
@@ -359,7 +358,7 @@
 
 
 
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <div class="form-group" id="data_1">
                                             <label class="font-normal">Date of Birth *</label>
                                             <div class="input-group date">
@@ -373,11 +372,11 @@
 
 
 
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-2">
                                         <div class="form-group">
                                             <label>Age *</label>
-                                            <input id="stu_prf_age" autocomplete="off" formControlName="stu_prf_age"  name="stu_prf_age" type="text"
-                                                class="form-control required"  disabled tabindex="19">
+                                            <input id="stu_prf_age" autocomplete="off" formControlName="stu_prf_age" name="stu_prf_age" type="text"
+                                                class="form-control required" readonly="true" tabindex="19" >
                                         </div>
 
                                     </div>
@@ -1165,7 +1164,7 @@
                                         <div class="form-group">
                                             <label>Student Image</label>
                                             <input id="stu_adm_stu_image" name="stu_adm_stu_image" type="file" (change)="onFileSelect($event)"
-                                            class="form-control " tabindex="53" accept="image/*">
+                                            class="form-control " tabindex="53" accept="image/*" capture="camera" >
                                         </div>
                                     </div>
 
@@ -1363,9 +1362,9 @@
 
 
 
-                                <div class="card-body" formArrayName="certificateColumns">
+                                <div class="card-body" style="padding: 0px;" formArrayName="certificateColumns">
                                     <div class="row col-12 m-0 p-0">
-                                        <div
+                                        <div style="width: 100%;"
                                             *ngFor="let contact of duplicateCertifcateColumns.controls; let i = index;">
                                             <div [formGroupName]="i" class="row">
 
@@ -1442,7 +1441,7 @@
 
 
  
-                        <button type="submit" class="btn btn-info" > Save and Continue </button>
+                        <button type="submit" class="btn btn-info" > Save and Complete </button>
 
                     </form>
 
