@@ -14,6 +14,8 @@ export class StudenteditComponent implements OnInit {
 
   mygrou=[1,2,3,4,5];
   SViewitems:any=[];
+
+  studentdocument: any[] = [];
   resourceID:any;
   url:any;
   dobValue:any;
@@ -263,7 +265,10 @@ dropdownCommunityArray: any = [
     this.url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/student/'+this.resourceID;
     console.log(this.url);
     this.http.get<any>(this.url).toPromise().then(data => {
+
+     
       const dt = data;
+      console.log('-----data-----', data)
        if(dt['student']){
          console.log(dt['student']);
          this.SViewitems=dt['student'];
@@ -278,6 +283,32 @@ dropdownCommunityArray: any = [
          this.parseDate(this.SViewitems.stu_prf_dob);
          this.SViewitems.stu_prf_age=this.dobValue;
        }
+
+
+       if(data.studentdocument.length>0)
+       {
+         this.studentdocument = data.studentdocument;
+         console.log( '-------studentdocument------', this.studentdocument)
+         /* var i=0
+               studentdocument.forEach( cols => {
+                   console.log('----i-----',i)
+                   this.addCertificateColumn()
+                   i++;
+                 });
+ 
+         var j=0
+         studentdocument.forEach( cols => {
+ 
+               this.validationform.controls.certificateColumns['controls'][j].patchValue({
+                 certificateDate       : cols.create_date,
+                 certificateAttach     : cols.crt_attach,
+                 certificateNo         : cols.crt_cert_no
+               })
+               j++;
+             })  */
+       }
+
+       
     })
 
 
