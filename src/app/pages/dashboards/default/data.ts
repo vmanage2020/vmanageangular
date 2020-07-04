@@ -3,28 +3,28 @@ import { ChartType } from './default.model';
 // dummy data
 const widgetData = [
     {
-        icon: 'fe-heart',
+        icon: 'fe-user',
         color: 'primary',
-        value: '58947',
-        text: 'Total Revenue'
+        value: '1000',
+        text: 'Total Student'
     },
     {
-        icon: 'fe-shopping-cart',
+        icon: 'fe-user',
         color: 'success',
         value: '127',
-        text: 'Today\'s Sales'
+        text: 'Total Teacher'
     },
     {
-        icon: 'fe-bar-chart-line',
+        icon: 'fe-user',
         color: 'info',
-        value: '0.58',
-        text: 'Conversion'
+        value: '580',
+        text: 'Total Parent'
     },
     {
-        icon: 'fe-eye',
+        icon: 'fe-user',
         color: 'warning',
-        value: '78.41',
-        text: 'Today\'s Visits'
+        value: '10',
+        text: 'Today Staff'
     }
 ];
 

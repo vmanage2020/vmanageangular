@@ -347,7 +347,7 @@
                                                 <input id="stu_prf_dob"  formControlName="stu_prf_dob" name="stu_prf_dob" type="date"
                                                     (input)="parseDate($event.target.value)"
                                                     [(ngModel)]="SViewitems.stu_prf_dob" class="form-control required"
-                                                    tabindex="19" autocomplete="off" max="2020-07-03">
+                                                    tabindex="19" autocomplete="off" max="{{SViewitems.stu_prf_app_date}}">
                                             </div>
 
                                         </div>
@@ -1064,7 +1064,7 @@
                                                 </option>
 
                                             </select> -->
-                                            
+
                                             <ng-select [(ngModel)]="SViewitems.stu_prf_third_lang"
                                                 [multiple]="true"
                                                 [items]="dropdownLanguageArray" 
