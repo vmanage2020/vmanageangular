@@ -10,6 +10,7 @@
                 <img src="assets/images/schoolmanage.png" alt="" height="66">
               </a>
               <p class="text-muted mb-4 mt-3">Enter your username and password to access admin panel.</p>
+              
             </div>
 
             <form class="needs-validation" name="loginForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
@@ -54,10 +55,9 @@
 
         <div class="row mt-3">
           <div class="col-12 text-center">
-            <div class="form-group mb-0 text-center">
-              <a  [routerLink]="'/studentinform'"  routerLinkActive="active"><button class="btn btn-success pull-right" >Student Information</button></a>
-             </div>
-            
+           
+            <button (click)="oncall()">Student Information</button>
+             
           </div> <!-- end col -->
         </div>
         <!-- end row -->

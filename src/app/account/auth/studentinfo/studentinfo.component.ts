@@ -10,6 +10,7 @@ export class StudentinfoComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    //alert("loadded");
   }
-
+  
 }

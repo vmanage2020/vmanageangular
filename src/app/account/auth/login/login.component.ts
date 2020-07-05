@@ -124,4 +124,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
     */
 
   }
+  oncall(){    
+   // alert("click");
+    this.router.navigate(['/account/studentapplicaiton']); 
+  }
 }

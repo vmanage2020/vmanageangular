@@ -12,9 +12,10 @@ import {HttpClientModule} from '@angular/common/http';
 import { DataTablesModule } from 'angular-datatables';
 
 import { NgSelectModule } from '@ng-select/ng-select';
+import { StudentappComponent } from './studentapp/studentapp.component';
 
 @NgModule({
-  declarations: [StudentComponent, StuentlistComponent, StudentviewComponent, StudenteditComponent],
+  declarations: [StudentComponent, StuentlistComponent, StudentviewComponent, StudenteditComponent, StudentappComponent],
   imports: [
     CommonModule,
     StudentRoutingModule,
