@@ -1119,6 +1119,7 @@
                                             bindLabel="name"
                                             bindValue="id"
                                             placeholder="Select Citizen"
+                                            (change)="citizenEvent($event)"
                                             formControlName="stu_prf_citizen_fk"  
                                             [ngClass]="{ 'is-invalid': submitted && form.stu_prf_citizen_fk.errors!=null }"
                                             >
@@ -1186,6 +1187,87 @@
                             </div>
                         </div>
                         <br>
+
+
+                        <div class="card" *ngIf="foreigndetailOpt">
+                            <div class="card-body" >
+                                <h2>Foreign Detail Information</h2>
+                                <div class="row">
+
+
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label>Country<Span>*</Span></label>
+                                                    <input id="stu_foreign_country_name" formControlName="stu_foreign_country_name" name="stu_foreign_country_name" type="text"
+                                                    class="form-control" autocomplete="off" [ngClass]="{ 'is-invalid': submitted && form.stu_foreign_country_name.errors }">
+
+                                                    <div *ngIf="submitted && form.stu_foreign_country_name.errors" class="invalid-feedback">
+                                                        <div *ngIf="form.stu_foreign_country_name.errors.required">Country is required. </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label>Passport No<Span>*</Span></label>
+                                                    <input id="stu_foreign_passport_no" formControlName="stu_foreign_passport_no" name="stu_foreign_passport_no" type="text"
+                                                    class="form-control" autocomplete="off" [ngClass]="{ 'is-invalid': submitted && form.stu_foreign_passport_no.errors }">
+                                                        
+                                                        <div *ngIf="submitted && form.stu_foreign_passport_no.errors" class="invalid-feedback">
+                                                            <div *ngIf="form.stu_foreign_passport_no.errors.required">Passport No is required. </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-4">
+                                                <div class="form-group" id="data_1">
+                                                    <label class="font-normal">Passport Validate Date <Span>*</Span></label>
+                                                    <div class="input-group date">
+                                                        <input id="stu_foreign_passport_valid_date" formControlName="stu_foreign_passport_valid_date" name="stu_foreign_passport_valid_date" type="date" 
+                                                            class="form-control required" autocomplete="off" [ngClass]="{ 'is-invalid': submitted && form.stu_foreign_passport_valid_date.errors }">
+
+                                                                <div *ngIf="submitted && form.stu_foreign_passport_valid_date.errors" class="invalid-feedback">
+                                                                    <div *ngIf="form.stu_foreign_passport_valid_date.errors.required">Passport Validate Date is required. </div>
+                                                                </div>
+                                                    </div>
+        
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label>Visa No<Span>*</Span></label>
+                                                    <input id="stu_foreign_visa_no" formControlName="stu_foreign_visa_no" name="stu_foreign_visa_no" type="text"
+                                                    class="form-control" autocomplete="off" [ngClass]="{ 'is-invalid': submitted && form.stu_foreign_visa_no.errors }">
+
+                                                        <div *ngIf="submitted && form.stu_foreign_visa_no.errors" class="invalid-feedback">
+                                                            <div *ngIf="form.stu_foreign_visa_no.errors.required">Passport Visa No is required. </div>
+                                                        </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-4">
+                                                <div class="form-group" id="data_1">
+                                                    <label class="font-normal">Visa Validate Date <Span>*</Span></label>
+                                                    <div class="input-group date">
+                                                        <input id="stu_foreign_visa_valid_date" formControlName="stu_foreign_visa_valid_date" name="stu_foreign_visa_valid_date" type="date" 
+                                                            class="form-control required" autocomplete="off" [ngClass]="{ 'is-invalid': submitted && form.stu_foreign_visa_valid_date.errors }">
+
+                                                                <div *ngIf="submitted && form.stu_foreign_visa_valid_date.errors" class="invalid-feedback">
+                                                                    <div *ngIf="form.stu_foreign_visa_valid_date.errors.required">Passport Visa Validate Date is required. </div>
+                                                                </div>
+
+                                                    </div>
+        
+                                                </div>
+                                            </div>
+                                </div>
+                            </div>
+                        </div>
+
+
 
                         <div class="card">
                             <div class="card-body">

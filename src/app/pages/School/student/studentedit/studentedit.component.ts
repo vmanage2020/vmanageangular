@@ -48,6 +48,9 @@ export class StudenteditComponent implements OnInit {
   typesubmit: boolean;
   rangesubmit: boolean;
   horizontalsubmit: boolean;
+
+  previousSchoolOpt: boolean = false;
+  foreigndetailOpt: boolean = false;
   
   
   // Select2 Dropdown
@@ -441,6 +444,15 @@ dropdownCertificateArray: any = [
       stu_prf_mother_tongue_fk: [null],
       stu_prf_citizen_fk: [null],
       stu_prf_bus: ['2', [Validators.required]],
+
+
+      stu_foreign_country_name: ['',[Validators.required]],
+      stu_foreign_passport_no: ['',[Validators.required]],
+      stu_foreign_passport_valid_date: ['',[Validators.required]],
+      stu_foreign_visa_no: ['',[Validators.required]],
+      stu_foreign_visa_valid_date: ['',[Validators.required]],
+
+
       con_per_add: ['', [Validators.required]],
       con_per_state: ['', [Validators.required]],
       con_per_cntry: [''],
@@ -474,6 +486,18 @@ dropdownCertificateArray: any = [
 
 
     });
+
+
+    this.validationform.controls['stu_prev_degree_code'].disable();
+    this.validationform.controls['stu_prev_medium_ins_fk'].disable();
+    //this.validationform.controls['stu_adm_prev_colname'].disable();
+    //this.validationform.controls['stu_adm_prev_class'].disable();
+
+    this.validationform.controls['stu_foreign_country_name'].disable();
+    this.validationform.controls['stu_foreign_passport_no'].disable();
+    this.validationform.controls['stu_foreign_passport_valid_date'].disable();
+    this.validationform.controls['stu_foreign_visa_no'].disable();
+    this.validationform.controls['stu_foreign_visa_valid_date'].disable();
 
     this.duplicateCertifcateColumns = this.validationform.get('certificateColumns') as FormArray;
     this.submit = false;
@@ -516,6 +540,79 @@ dropdownCertificateArray: any = [
     
   }
   
+
+  parseGroup(event:any)
+  {
+    
+    this.groupSelect = true;
+    console.log(event);
+    let eventValue = event.id;
+    //console.log('----event----', eventDate)
+
+    if(event.name =='Pre-KG' || event.name =='LKG' || event.name =='UKG')
+    {
+      this.validationform.controls['stu_prev_degree_code'].disable();
+    this.validationform.controls['stu_prev_medium_ins_fk'].disable();
+    //this.validationform.controls['stu_adm_prev_colname'].disable();
+    //this.validationform.controls['stu_adm_prev_class'].disable();
+
+      this.previousSchoolOpt = false;
+    }else if(event.name !='Pre-KG' || event.name !='LKG' || event.name !='UKG')
+    {
+      this.validationform.controls['stu_prev_degree_code'].enable();
+    this.validationform.controls['stu_prev_medium_ins_fk'].enable();
+    //this.validationform.controls['stu_adm_prev_colname'].enable();
+    //this.validationform.controls['stu_adm_prev_class'].enable();
+      this.previousSchoolOpt = true;
+    }
+    if( eventValue == '14' || eventValue == '15' )
+    { 
+      
+      this.dropdownGroupArray = [
+        { id:1, name:"General" },
+        { id:2, name:"Science" },
+        { id:3, name:"Maths" },
+        { id:4, name:"Social" },
+        { id:5, name:"Computer" },
+        { id:6, name:"Agri" },
+        { id:7, name:"Account" }
+      ];
+      this.groupSelect = false;
+    }
+    else
+    {
+      this.dropdownGroupArray = [
+        { id:1, name:"General" }
+      ];
+      this.groupSelect = false;
+    }
+  }
+
+  citizenEvent(event:any)
+  {
+    console.log('----event---', event)
+    if( event.name =='FOREIGNER')
+    {
+      this.foreigndetailOpt = true;
+
+      this.validationform.controls['stu_foreign_country_name'].enable();
+      this.validationform.controls['stu_foreign_passport_no'].enable();
+      this.validationform.controls['stu_foreign_passport_valid_date'].enable();
+      this.validationform.controls['stu_foreign_visa_no'].enable();
+      this.validationform.controls['stu_foreign_visa_valid_date'].enable();
+
+    }else{
+      this.foreigndetailOpt = false;
+
+        this.validationform.controls['stu_foreign_country_name'].disable();
+        this.validationform.controls['stu_foreign_passport_no'].disable();
+        this.validationform.controls['stu_foreign_passport_valid_date'].disable();
+        this.validationform.controls['stu_foreign_visa_no'].disable();
+        this.validationform.controls['stu_foreign_visa_valid_date'].disable();
+    }
+
+  }
+
   parseDate(eventDate:any)
   {
     //console.log('----event----', eventDate)
@@ -801,6 +898,8 @@ dropdownCertificateArray: any = [
       return text;
   }
 
+
+  
 
   onFileSelect(event) {
     if (event.target.files.length > 0) {

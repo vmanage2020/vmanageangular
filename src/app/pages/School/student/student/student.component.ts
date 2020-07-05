@@ -45,6 +45,7 @@ export class StudentComponent implements OnInit {
   rangesubmit: boolean;
   horizontalsubmit: boolean;
   previousSchoolOpt: boolean = false;
+  foreigndetailOpt: boolean = false;
 
   
   // Select2 Dropdown
@@ -380,6 +381,13 @@ dropdownCommunityArray: any = [
       stu_prf_mother_tongue_fk: [null],
       stu_prf_citizen_fk: [null],
       stu_prf_bus: ['2', [Validators.required]],
+
+      stu_foreign_country_name: ['',[Validators.required]],
+      stu_foreign_passport_no: ['',[Validators.required]],
+      stu_foreign_passport_valid_date: ['',[Validators.required]],
+      stu_foreign_visa_no: ['',[Validators.required]],
+      stu_foreign_visa_valid_date: ['',[Validators.required]],
+
       con_per_add: ['', [Validators.required]],
       con_per_state: ['', [Validators.required]],
       con_per_cntry: [''],
@@ -415,8 +423,14 @@ dropdownCommunityArray: any = [
 
     this.validationform.controls['stu_prev_degree_code'].disable();
     this.validationform.controls['stu_prev_medium_ins_fk'].disable();
-    this.validationform.controls['stu_adm_prev_colname'].disable();
-    this.validationform.controls['stu_adm_prev_class'].disable();
+    //this.validationform.controls['stu_adm_prev_colname'].disable();
+    //this.validationform.controls['stu_adm_prev_class'].disable();
+
+    this.validationform.controls['stu_foreign_country_name'].disable();
+    this.validationform.controls['stu_foreign_passport_no'].disable();
+    this.validationform.controls['stu_foreign_passport_valid_date'].disable();
+    this.validationform.controls['stu_foreign_visa_no'].disable();
+    this.validationform.controls['stu_foreign_visa_valid_date'].disable();
 
     this.duplicateCertifcateColumns = this.validationform.get('certificateColumns') as FormArray;
     this.submit = false;
@@ -511,6 +525,31 @@ dropdownCommunityArray: any = [
     }
   }
 
+  citizenEvent(event:any)
+  {
+    console.log('----event---', event)
+    if( event.name =='FOREIGNER')
+    {
+      this.foreigndetailOpt = true;
+
+      this.validationform.controls['stu_foreign_country_name'].enable();
+      this.validationform.controls['stu_foreign_passport_no'].enable();
+      this.validationform.controls['stu_foreign_passport_valid_date'].enable();
+      this.validationform.controls['stu_foreign_visa_no'].enable();
+      this.validationform.controls['stu_foreign_visa_valid_date'].enable();
+
+    }else{
+      this.foreigndetailOpt = false;
+
+        this.validationform.controls['stu_foreign_country_name'].disable();
+        this.validationform.controls['stu_foreign_passport_no'].disable();
+        this.validationform.controls['stu_foreign_passport_valid_date'].disable();
+        this.validationform.controls['stu_foreign_visa_no'].disable();
+        this.validationform.controls['stu_foreign_visa_valid_date'].disable();
+    }
+
+  }
+
   ageCalculation(dateString)
   {
     var today = new Date();
@@ -535,16 +574,16 @@ dropdownCommunityArray: any = [
     {
       this.validationform.controls['stu_prev_degree_code'].disable();
     this.validationform.controls['stu_prev_medium_ins_fk'].disable();
-    this.validationform.controls['stu_adm_prev_colname'].disable();
-    this.validationform.controls['stu_adm_prev_class'].disable();
+    //this.validationform.controls['stu_adm_prev_colname'].disable();
+    //this.validationform.controls['stu_adm_prev_class'].disable();
 
       this.previousSchoolOpt = false;
     }else if(event.name !='Pre-KG' || event.name !='LKG' || event.name !='UKG')
     {
       this.validationform.controls['stu_prev_degree_code'].enable();
     this.validationform.controls['stu_prev_medium_ins_fk'].enable();
-    this.validationform.controls['stu_adm_prev_colname'].enable();
-    this.validationform.controls['stu_adm_prev_class'].enable();
+    //this.validationform.controls['stu_adm_prev_colname'].enable();
+    //this.validationform.controls['stu_adm_prev_class'].enable();
       this.previousSchoolOpt = true;
     }
     if( eventValue == '14' || eventValue == '15' )
