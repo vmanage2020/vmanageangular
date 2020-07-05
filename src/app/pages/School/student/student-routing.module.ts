@@ -3,13 +3,18 @@ import { Routes, RouterModule } from '@angular/router';
 import {StudentComponent} from './student/student.component';
 import {StuentlistComponent} from './stuentlist/stuentlist.component';
 import { StudentviewComponent } from './studentview/studentview.component';
-import { StudenteditComponent } from './studentedit/studentedit.component'
+import { StudenteditComponent } from './studentedit/studentedit.component';
+import {StudentappComponent} from './studentapp/studentapp.component'
 
 
 const routes: Routes = [
   {
     path: 'studentform',
     component: StudentComponent
+  },
+  {
+    path: 'studentapplicaiton',
+    component: StudentappComponent
   },
    {
     path: 'studentlist',

@@ -340,7 +340,7 @@
 
 
 
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <div class="form-group" id="data_1">
                                             <label class="font-normal">Date of Birth *</label>
                                             <div class="input-group date">
@@ -356,7 +356,7 @@
 
 
 
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-2">
                                         <div class="form-group">
                                             <label>Age *</label>
                                             <input id="stu_prf_age"  formControlName="stu_prf_age" name="stu_prf_age" type="text"
@@ -1325,61 +1325,138 @@
                         <!--<div class="card" formArrayName="certificateInfo" *ngFor="let certinfo of validationform.get('certificateInfo').controls; let i=index;">-->
 
 
+                            <style>
+                                #certificatelist label { width:100%; }
+                                #certificatelist p { width:100%; font-weight: bold; }
+                              </style>
                            
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body" id="certificatelist">
                                 <h2>Certificate Information</h2>
 
-                                <div *ngIf="studentdocument.length > 0" >
+                                <div *ngIf="SViewDoc.length > 0">
+                                    <div class="row" *ngFor="let doc of SViewDoc; let k = index;">
+                                         
+                                         <div class="col-lg-3">
+                                            <div class="form-group">
+                                                <label *ngIf="k==0">Certificate Name </label>
+                                                <p>{{getArrayNameById(dropdownCertificateArray,doc.cert_code_fk)}}</p>     
+                                            </div>
+                                        </div>
+                    
+                                        <div class="col-lg-3">
+                                            <div class="form-group">
+                                                <label *ngIf="k==0">Date </label>
+                                                <p>{{doc.crt_cert_date}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <div class="form-group">
+                                                <label *ngIf="k==0">Certificate No </label>
+                                                <p>{{doc.crt_cert_no}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <div class="form-group">
+                                                <label *ngIf="k==0">Attachment </label>
+                                                <p>
+                                                    <span style="cursor: pointer;" (click)="downloadFile(doc.crt_attach)">
+                                                        <i class="fa fa-file"></i> View
+                                                    </span>
+                                                </p>
+                                            </div>
+                    
+                                        </div>
+                                        <hr/>
+                                    </div>
+                                </div>
+
+                                <!--
+                                <div *ngIf="studentdocument.length > 0">
+                                    <div class="row" *ngFor="let doc of studentdocument; let k = index;">
+                                         
+                                         <div class="col-lg-3">
+                                            <div class="form-group">
+                                                <label>Certificate Name </label>
+                                                <p>{{doc.crt_cert_date}}</p>     
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-3">
+                                            <div class="form-group">
+                                                <label>Date </label>
+                                                <p>{{doc.crt_cert_date}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <div class="form-group">
+                                                <label>Certificate No </label>
+                                                <p>{{doc.crt_cert_no}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <div class="form-group">
+                                                <label>Attachment </label>
+                                                <p>
+                                                    <span style="cursor: pointer;" (click)="downloadFile(doc.crt_attach)">
+                                                        <i class="fa fa-file"></i> View
+                                                    </span>
+                                                </p>
+                                            </div>
+ 
+                                        </div>
+                                        <hr/>
+                                    </div>
+                                </div>
+                                -->
+
+                                <!--
+                                    <div *ngIf="studentdocument.length > 0" >
                                         <ul *ngFor="let doc of studentdocument; let i = index;">
                                             
                                             <li>{{doc.crt_cert_date}}</li>
                                             <li>
-                                                    <span (click)="downloadFile(doc.crt_attach)">
-                                                        {{doc.crt_cert_no}}
+                                                    <span style="cursor: pointer;" (click)="downloadFile(doc.crt_attach)">
+                                                        {{doc.crt_cert_no}} 
                                                     </span>
                                             </li>
                                         </ul> 
                                     </div>
+                                -->
 
-                                    <div >  
-                                            <a class="btn btn-sm btn-outline-primary mr-0 ml-2 mt-auto mb-auto" title="Add Certificate" alt="Add Certificate" (click)="addCertificateColumn()" type="Add Certificate"><i class="fe fe-plus"></i>ADD Certificate Column</a>
+                                    <div style="float: right;" >  
+                                        <button _ngcontent-ywx-c6="" class="btn btn-info" type="button" (click)="addCertificateColumn()" ><i class="fa fa-plus"></i> Add Certificate</button>
                                     </div>
 
 
                                     <div class="card-body" style="padding: 0px;" formArrayName="certificateColumns">
                                             <div class="row col-12 m-0 p-0">
-                                                <div style="width: 100%;"
-                                                    *ngFor="let contact of duplicateCertifcateColumns.controls; let i = index;">
-                                                    <div [formGroupName]="i" class="row">
-        
-        
+
+                                                <div style="width: 100%;" *ngFor="let contact of duplicateCertifcateColumns.controls; let i = index;">
+                                                    <div [formGroupName]="i" class="row">       
                                                         <div class="col-lg-6">
                                                             <div class="form-group">
                                                                 <label>Certificate Name </label>
-                                                                <select formControlName="certificateName" name="certificateName" class="form-control"
-                                                                [ngClass]="{ 'is-invalid': submitted && form.certificateName.errors }" >
-                                                                <option value="" disabled selected>-SELECT-</option>
-                                                                <option [value]="certificateName"
-                                                                    *ngFor="let certificateName of dropdownArray[18], index as i">
-                                                                    {{certificateName}}
-                                                                </option>
-                
-                                                            </select>
-                                                            <div *ngIf="submitted && form.certificateName.errors"
-                                                                class="invalid-feedback">
+                                                                <ng-select
+                                                                    [items]="dropdownCertificateArray" 
+                                                                    bindLabel="name"
+                                                                    bindValue="id" 
+                                                                    placeholder="Select Certificate"
+                                                                    formControlName="certificateName"
+                                                                    [ngClass]="{ 'is-invalid': submitted && form.certificateName.errors!=null }" tabindex="301">
+                                                                </ng-select> 
+                                                            <div *ngIf="submitted && form.certificateName.errors!=null" class="invalid-feedback">
                                                                 <div *ngIf="form.certificateName.errors.required">Certificate Name is required
                                                                 </div>
                                                             </div>
                                                             </div>
-                                                        </div>
-        
+                                                        </div>        
                                                         <div class="col-lg-6">
                                                             <div class="form-group">
                                                                 <label>Date </label>
                                                                 <input formControlName="certificateDate" id="crt_cert_date"
                                                                     name="certificateDate" autocomplete="off" type="date"
-                                                                    class="form-control required" tabindex="2">
+                                                                    class="form-control required" tabindex="302">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6">
@@ -1387,7 +1464,7 @@
                                                                 <label>Certificate No </label>
                                                                 <input formControlName="certificateNo" id="crt_cert_no"
                                                                     name="certificateNo" autocomplete="off" type="text" class="form-control "
-                                                                    tabindex="3">
+                                                                    tabindex="303">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6">
@@ -1396,21 +1473,12 @@
                                                                 <input formControlName="certificateAttach" id="crt_attach"
                                                                     name="certificateAttach" type="file"
                                                                     accept="application/pdf, application/msword, image/jpeg,image/jpg,image/png,image/gif" 
-                                                                    class="form-control required" value="" tabindex="4" (change)="onFileChanged($event, i)" >
+                                                                    class="form-control required" value="" tabindex="304" (change)="onFileChanged($event, i)" >
                                                             </div>
-        
-                                                            <!-- <input formControlName="certificatehiddenFile" id="certificatehiddenFile"
-                                                                    name="certificatehiddenFile" autocomplete="off" type="hidden" readonly class="form-control "> -->
-        
                                                         </div>
         
                                                         <div class="form-group col-12 text-right">
-                                                            <button *ngIf="i==0"  type="button" (click)="addCertificateColumn()"
-                                                                class="btn btn-info"><i class="fe fe-plus mr-1"></i>Add
-                                                                Certificate </button>
-                                                            <button class="btn btn-info" type="button"
-                                                                (click)="removeCertificateColumn(i)"> <i
-                                                                    class="fe fe-trash mr-1"></i>Remove </button>
+                                                            <button class="btn btn-danger" type="button" (click)="removeCertificateColumn(i)"> <i class="fa fa-trash mr-1"></i> Remove </button>
                                                         </div>
         
                                                     </div>
@@ -1490,7 +1558,7 @@
 
                        
 
-                        <button type="submit" class="btn btn-info" tabindex="54"> Save and Continue </button>
+                        <button type="submit" class="btn btn-info" tabindex="54"> Save and Complete </button>
 
                     </form>
 

@@ -23,7 +23,7 @@
 
                 <div class="col-lg-4 col-xl-4 col-sm-4">
                   <div class="card-box text-center">
-                      <img src="../assets/images/users/user-1.jpg" class="rounded-circle avatar-lg img-thumbnail" alt="profile-image">
+                      <img src="{{daimag}}" class="rounded-circle avatar-lg img-thumbnail" alt="profile-image">
       
                       <h4 class="mb-0">{{SViewitems.stu_prf_stud_name+" "+SViewitems.stu_stud_mname+" "+SViewitems.stu_stud_lname}}</h4>
                       <p class="text-muted">{{SViewitems.stu_prf_stu_emis}}</p>
@@ -34,7 +34,7 @@
 
                   </div>
                 </div>
- 
+                <a routerLink="/studentapplicaiton" routerLinkActive="active" class="side-nav-link-ref">Student Informations</a>
                 
                 <div class="col-lg-4 col-xl-4 col-sm-4">
                   <div class="text-left mt-3">
@@ -61,7 +61,7 @@
 
                   </div>
             </div> 
-            
+           
             <div class="col-lg-4 col-xl-4 col-sm-4">
               <div class="text-left mt-3">
                   <h4 class="font-13 text-uppercase">Other Information :</h4>
@@ -111,7 +111,7 @@
                         </ng-template>
                           <ng-template #loggedOut>
                             <div id="dataview" *ngIf="i==4 && j==7;  else othernonimg ">
-                              <img src="{{daimag}}" alt="Girl in a jacket" width="100" height="100">
+                              <img src="{{daimag}}" class="rounded-circle avatar-lg img-thumbnail" alt="profile-image">
                             </div>                            
                           </ng-template>
                           <ng-template #othernonimg>
@@ -129,8 +129,55 @@
         </div>
 
 
+        <style>
+          #certificatelist label { width:100%; }
+          #certificatelist p { width:100%; font-weight: bold; }
+        </style>
         <div class="card" *ngIf="SViewDoc">
-          <div class="card-body">
+          <div class="card-body" id="certificatelist">
+            <h2>Certificate Information</h2>
+            <div *ngIf="SViewDoc.length > 0">
+                <div class="row" *ngFor="let doc of SViewDoc; let k = index;">
+                     
+                     <div class="col-lg-3">
+                        <div class="form-group">
+                            <label *ngIf="k==0">Certificate Name </label>
+                            <p>{{getArrayNameById(dropdownCertificateArray,doc.cert_code_fk)}}</p>     
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label *ngIf="k==0">Date </label>
+                            <p>{{doc.crt_cert_date}}</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label *ngIf="k==0">Certificate No </label>
+                            <p>{{doc.crt_cert_no}}</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label *ngIf="k==0">Attachment </label>
+                            <p>
+                                <span style="cursor: pointer;" (click)="downloadFile(doc.crt_attach)">
+                                    <i class="fa fa-file"></i> View
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <hr/>
+                </div>
+            </div>
+          </div>
+        </div>
+        
+            <!--
+
+        <div class="card" *ngIf="SViewDoc">
+          <div class="card-body" id="certificatelist">              
               <h2>{{certhead}}</h2>
               <div class="row" *ngFor="let ceh of SViewDoc; let k = index;">
                   <div class="col-sm-6" *ngFor="let cesh of cersubhead;let l = index;">
@@ -149,8 +196,10 @@
                   </div>
                   <hr/>
               </div>
+
           </div>
       </div>
+            -->
         
 
 

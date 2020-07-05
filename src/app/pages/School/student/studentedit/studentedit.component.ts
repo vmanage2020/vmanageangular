@@ -21,6 +21,7 @@ export class StudenteditComponent implements OnInit {
 
   mygrou=[1,2,3,4,5];
   SViewitems:any=[];
+  SViewDoc:any=[];
 
   studentdocument: any[] = [];
   resourceID:any;
@@ -242,6 +243,16 @@ dropdownCommunityArray: any = [
   { id: 7, name: 'Other' }
 ];
 
+dropdownCertificateArray: any = [
+  { id: 1, name: 'TRANSFER CERTIFICATE' },
+  { id: 2, name: 'BIRTH CERTIFICATE' },
+  { id: 3, name: 'COMMUNITY CERTIFICATE' },
+  { id: 4, name: 'MARK SHEET' },
+  { id: 5, name: 'NATIVE CERTIFICATE' },
+  { id: 6, name: 'CONTACT CERTIFICATE' },
+  { id: 7, name: 'OTHER' }
+];
+
 
 
   dropdownArray = [
@@ -290,6 +301,7 @@ dropdownCommunityArray: any = [
          this.SViewitems=dt['student'];
          this.SViewitems.stu_read_mode=1;
          
+         this.SViewDoc=dt['studentdocument'];
          
          //this.SViewitems.stu_prf_third_lang =  ["Tamil","English"];
          this.SViewitems.stu_prf_third_lang =  this.SViewitems.stu_prf_third_lang.split(",");
@@ -765,6 +777,7 @@ dropdownCommunityArray: any = [
 
      console.log( postData);
      console.log( JSON.stringify(postData));
+
      
     let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/student/update/'+this.resourceID;
    this.http.post<any>(url, postData  ).subscribe(data => {
@@ -812,6 +825,17 @@ dropdownCommunityArray: any = [
     }
 
     );
+  }
+
+  
+  getArrayNameById(VarArray,id){
+    if(id>0){
+      let ArrayName = VarArray.filter(x => x.id === id);
+      return ArrayName[0]['name'];
+    } else {
+      return 'None';
+    }
+    //return VarArray.filter(x => x.id === id);
   }
 
   
