@@ -44,6 +44,7 @@ export class StudentComponent implements OnInit {
   typesubmit: boolean;
   rangesubmit: boolean;
   horizontalsubmit: boolean;
+  previousSchoolOpt: boolean = false;
 
   
   // Select2 Dropdown
@@ -411,6 +412,12 @@ dropdownCommunityArray: any = [
 
     });
 
+
+    this.validationform.controls['stu_prev_degree_code'].disable();
+    this.validationform.controls['stu_prev_medium_ins_fk'].disable();
+    this.validationform.controls['stu_adm_prev_colname'].disable();
+    this.validationform.controls['stu_adm_prev_class'].disable();
+
     this.duplicateCertifcateColumns = this.validationform.get('certificateColumns') as FormArray;
     this.submit = false;
     this.formsubmit = false;
@@ -518,11 +525,28 @@ dropdownCommunityArray: any = [
   
   parseGroup(event:any)
   {
-
+    
     this.groupSelect = true;
     console.log(event);
     let eventValue = event.id;
     //console.log('----event----', eventDate)
+
+    if(event.name =='Pre-KG' || event.name =='LKG' || event.name =='UKG')
+    {
+      this.validationform.controls['stu_prev_degree_code'].disable();
+    this.validationform.controls['stu_prev_medium_ins_fk'].disable();
+    this.validationform.controls['stu_adm_prev_colname'].disable();
+    this.validationform.controls['stu_adm_prev_class'].disable();
+
+      this.previousSchoolOpt = false;
+    }else if(event.name !='Pre-KG' || event.name !='LKG' || event.name !='UKG')
+    {
+      this.validationform.controls['stu_prev_degree_code'].enable();
+    this.validationform.controls['stu_prev_medium_ins_fk'].enable();
+    this.validationform.controls['stu_adm_prev_colname'].enable();
+    this.validationform.controls['stu_adm_prev_class'].enable();
+      this.previousSchoolOpt = true;
+    }
     if( eventValue == '14' || eventValue == '15' )
     { 
       
