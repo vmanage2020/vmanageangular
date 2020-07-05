@@ -11,10 +11,9 @@
         <div class="col-lg-12">
             <div class="ibox">
                 <div class="ibox-title">
-                  
-
-                </div>
-                <div class="ibox-content ">
+                    <a routerLink="/studentlist" routerLinkActive="active" class="btn btn-info" style="float:right;">Back to Students</a>
+                  </div>
+                  <div class="ibox-content " style="padding-top: 50px;">
                     <form class="needs-validation" (ngSubmit)="validSubmit()" [formGroup]="validationform">
                         <br>
                         <div class="card form-row">
@@ -372,7 +371,7 @@
                         </div>
                         <br>
 
-                        <div class="card">
+                        <div class="card" *ngIf="previousSchoolOpt">
                             <div class="card-body">
                                 <h2>Previous School Information</h2>
                                 <div class="row">
@@ -1170,7 +1169,8 @@
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
                                                         <label>Country<Span>*</Span></label>
-                                                        <input id="stu_foreign_country_name" formControlName="stu_foreign_country_name" name="stu_foreign_country_name" type="text"
+                                                        <input [(ngModel)]="SViewitems.stu_foreign_country_name" 
+                                                        id="stu_foreign_country_name" formControlName="stu_foreign_country_name" name="stu_foreign_country_name" type="text"
                                                         class="form-control" autocomplete="off" [ngClass]="{ 'is-invalid': submitted && form.stu_foreign_country_name.errors }">
     
                                                         <div *ngIf="submitted && form.stu_foreign_country_name.errors" class="invalid-feedback">
@@ -1179,11 +1179,18 @@
     
                                                     </div>
                                                 </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                       <br/><br/> 
+                                                    </div>
+                                                </div>
+    
     
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
                                                         <label>Passport No<Span>*</Span></label>
-                                                        <input id="stu_foreign_passport_no" formControlName="stu_foreign_passport_no" name="stu_foreign_passport_no" type="text"
+                                                        <input  [(ngModel)]="SViewitems.stu_foreign_passport_no"  
+                                                        id="stu_foreign_passport_no" formControlName="stu_foreign_passport_no" name="stu_foreign_passport_no" type="text"
                                                         class="form-control" autocomplete="off" [ngClass]="{ 'is-invalid': submitted && form.stu_foreign_passport_no.errors }">
                                                             
                                                             <div *ngIf="submitted && form.stu_foreign_passport_no.errors" class="invalid-feedback">
@@ -1192,11 +1199,12 @@
                                                     </div>
                                                 </div>
     
-                                                <div class="col-lg-4">
+                                                <div class="col-lg-6">
                                                     <div class="form-group" id="data_1">
                                                         <label class="font-normal">Passport Validate Date <Span>*</Span></label>
                                                         <div class="input-group date">
-                                                            <input id="stu_foreign_passport_valid_date" formControlName="stu_foreign_passport_valid_date" name="stu_foreign_passport_valid_date" type="date" 
+                                                            <input [(ngModel)]="SViewitems.stu_foreign_passport_valid_date" 
+                                                            id="stu_foreign_passport_valid_date" formControlName="stu_foreign_passport_valid_date" name="stu_foreign_passport_valid_date" type="date" 
                                                                 class="form-control required" autocomplete="off" [ngClass]="{ 'is-invalid': submitted && form.stu_foreign_passport_valid_date.errors }">
     
                                                                     <div *ngIf="submitted && form.stu_foreign_passport_valid_date.errors" class="invalid-feedback">
@@ -1210,7 +1218,8 @@
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
                                                         <label>Visa No<Span>*</Span></label>
-                                                        <input id="stu_foreign_visa_no" formControlName="stu_foreign_visa_no" name="stu_foreign_visa_no" type="text"
+                                                        <input [(ngModel)]="SViewitems.stu_foreign_visa_no" 
+                                                        id="stu_foreign_visa_no" formControlName="stu_foreign_visa_no" name="stu_foreign_visa_no" type="text"
                                                         class="form-control" autocomplete="off" [ngClass]="{ 'is-invalid': submitted && form.stu_foreign_visa_no.errors }">
     
                                                             <div *ngIf="submitted && form.stu_foreign_visa_no.errors" class="invalid-feedback">
@@ -1220,11 +1229,12 @@
                                                     </div>
                                                 </div>
     
-                                                <div class="col-lg-4">
+                                                <div class="col-lg-6">
                                                     <div class="form-group" id="data_1">
                                                         <label class="font-normal">Visa Validate Date <Span>*</Span></label>
                                                         <div class="input-group date">
-                                                            <input id="stu_foreign_visa_valid_date" formControlName="stu_foreign_visa_valid_date" name="stu_foreign_visa_valid_date" type="date" 
+                                                            <input [(ngModel)]="SViewitems.stu_foreign_visa_valid_date" 
+                                                            id="stu_foreign_visa_valid_date" formControlName="stu_foreign_visa_valid_date" name="stu_foreign_visa_valid_date" type="date" 
                                                                 class="form-control required" autocomplete="off" [ngClass]="{ 'is-invalid': submitted && form.stu_foreign_visa_valid_date.errors }">
     
                                                                     <div *ngIf="submitted && form.stu_foreign_visa_valid_date.errors" class="invalid-feedback">

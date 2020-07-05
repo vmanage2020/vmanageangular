@@ -244,6 +244,16 @@ dropdownCommunityArray: any = [
 ];
 
 
+dropdownCertificateArray: any = [
+  { id: 1, name: 'TRANSFER CERTIFICATE' },
+  { id: 2, name: 'BIRTH CERTIFICATE' },
+  { id: 3, name: 'COMMUNITY CERTIFICATE' },
+  { id: 4, name: 'MARK SHEET' },
+  { id: 5, name: 'NATIVE CERTIFICATE' },
+  { id: 6, name: 'CONTACT CERTIFICATE' },
+  { id: 7, name: 'OTHER' }
+];
+
 
   dropdownArray = [
     [ "Vidyalakshmi Matric School", "Vidyalakshmi CBSE School", "Vidyalakshmi ICSE school" ],
@@ -813,10 +823,14 @@ dropdownCommunityArray: any = [
         "con_rel_info" : "info",
         "con_mode" : "mode",
         "con_rail_stn" : this.form.con_rail_stn.value,
+        "stu_foreign_country_name" :this.form.stu_foreign_country_name.value,
+        "stu_foreign_passport_no" :this.form.stu_foreign_passport_no.value,
+        "stu_foreign_passport_valid_date" :this.form.stu_foreign_passport_valid_date.value,
+        "stu_foreign_visa_no" :this.form.stu_foreign_visa_no.value,
+        "stu_foreign_visa_valid_date" :this.form.stu_foreign_visa_valid_date.value,
         "student_documents": cartificateDataArray
      }
- 
-
+  
      console.log( postData);
      console.log( JSON.stringify(postData));
      //return;

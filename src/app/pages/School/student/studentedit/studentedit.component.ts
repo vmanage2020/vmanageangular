@@ -306,9 +306,28 @@ dropdownCertificateArray: any = [
          
          this.SViewDoc=dt['studentdocument'];
          
-         //this.SViewitems.stu_prf_third_lang =  ["Tamil","English"];
-         this.SViewitems.stu_prf_third_lang =  this.SViewitems.stu_prf_third_lang.split(",");
-         this.SViewitems.stu_prf_co_curr =  this.SViewitems.stu_prf_co_curr.split(",");
+         if(this.SViewitems.stu_prf_current_Semester>3){
+          this.validationform.controls['stu_prev_degree_code'].enable();
+          this.validationform.controls['stu_prev_medium_ins_fk'].enable();
+          this.previousSchoolOpt = true;
+         } else {
+          this.previousSchoolOpt = false; 
+         } 
+         
+         if(this.SViewitems.stu_prf_citizen_fk==2){
+          this.foreigndetailOpt = true;
+         } else {
+          this.foreigndetailOpt = false; 
+         } 
+
+         if(this.SViewitems.stu_prf_third_lang!="") {
+          this.SViewitems.stu_prf_third_lang =  this.SViewitems.stu_prf_third_lang.split(",");
+         }
+
+         if(this.SViewitems.stu_prf_co_curr!="") {
+          this.SViewitems.stu_prf_co_curr =  this.SViewitems.stu_prf_co_curr.split(",");
+         }         
+         
          this.imagefilename = this.SViewitems.stu_adm_stu_image;
          console.log(this.SViewitems.stu_prf_app_No);
          this.parseDate(this.SViewitems.stu_prf_dob);
@@ -866,8 +885,14 @@ dropdownCertificateArray: any = [
         "con_identify_marks" : "identify",
         "con_rel_info" : "info",
         "con_mode" : "mode",
-        "con_rail_stn" : this.form.con_rail_stn.value        
-              }
+        "con_rail_stn" : this.form.con_rail_stn.value,
+        "stu_foreign_country_name" :this.form.stu_foreign_country_name.value,
+        "stu_foreign_passport_no" :this.form.stu_foreign_passport_no.value,
+        "stu_foreign_passport_valid_date" :this.form.stu_foreign_passport_valid_date.value,
+        "stu_foreign_visa_no" :this.form.stu_foreign_visa_no.value,
+        "stu_foreign_visa_valid_date" :this.form.stu_foreign_visa_valid_date.value,
+        "student_documents": cartificateDataArray        
+        }
 
              
 
