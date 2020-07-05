@@ -757,9 +757,10 @@ dropdownCommunityArray: any = [
         "con_identify_marks" : "identify",
         "con_rel_info" : "info",
         "con_mode" : "mode",
-        "con_rail_stn" : this.form.con_rail_stn.value,
-        "student_documents": cartificateDataArray
+        "con_rail_stn" : this.form.con_rail_stn.value        
               }
+
+             
 
 
      console.log( postData);
@@ -767,6 +768,8 @@ dropdownCommunityArray: any = [
      
     let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/student/update/'+this.resourceID;
    this.http.post<any>(url, postData  ).subscribe(data => {
+
+        
      console.log(data);
      this.router.navigate(['/school/studentlist']);
    })
