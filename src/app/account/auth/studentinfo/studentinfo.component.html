@@ -1,1 +1,1566 @@
-<p>studentinfo works!</p>
+<br><br><div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-9">
+            <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-lg-10">
+                    <h2>Students Form</h2>
+            
+                </div>
+                <div class="col-lg-2">
+            
+                </div>
+            </div>
+            <div class="wrapper wrapper-content animated fadeInRight">
+            
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ibox">
+                            <div class="ibox-title">
+                            </div>
+                            <div class="ibox-content ">
+             
+                                <form class="needs-validation" (ngSubmit)="validSubmit(content)"  [formGroup]="validationform">
+                                    <br>
+                                    <div class="card form-row">
+                                        <div class="card-body">
+                                            <h2>Account Information</h2>
+                                            <div class="row ">
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>School Name *</label>
+                                                        <ng-select 
+                                                            [items]="dropdownSchoolArray" 
+                                                            bindLabel="name"
+                                                            bindValue="id"
+                                                            placeholder="Select School"
+                                                            formControlName="col_code_fk"  
+                                                            [ngClass]="{ 'is-invalid': submitted && form.col_code_fk.errors!=null }"
+                                                            >
+                                                        </ng-select>
+                                                        <!--
+                                                        <select formControlName="col_code_fk" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.col_code_fk.errors }">
+                                                            <option value="" disabled selected>-SELECT-</option>
+                                                            <option *ngFor="let col_code_fk of dropdownArray[0], index as i" [value]="i+1">
+                                                                {{col_code_fk}}
+                                                            </option>
+                                                        </select>
+                                                        -->
+                                                        <div *ngIf="submitted && form.col_code_fk.errors!=null" class="invalid-feedback">
+                                                            <div *ngIf="form.col_code_fk.errors.required">School name is required</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Application No *</label>
+                                                        <input type="text" autocomplete="off" formControlName="stu_prf_app_No"
+                                                            value="{{appRandomNumber}}" class="form-control" disabled="true" />
+            
+                                                    </div>
+                                                </div>
+            
+                                                <div class="col-lg-6">
+            
+                                                    <div class="form-group">
+                                                        <label>Date Applied *</label>
+                                                        <input type="text" autocomplete="off" formControlName="stu_prf_app_date"
+                                                            value="{{appDate}}" class="form-control" disabled="true" />
+                                                    </div>
+            
+                                                </div>
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label for="stu_prf_stud_name">Student First Name *</label>
+                                                        <input type="text" id="stu_prf_stud_name" name="stu_prf_stud_name" autocomplete="off" formControlName="stu_prf_stud_name" 
+                                                            placeholder="Student First Name" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.stu_prf_stud_name.errors }" />
+                                                        <div *ngIf="submitted && form.stu_prf_stud_name.errors"  class="invalid-feedback">
+                                                            <div *ngIf="form.stu_prf_stud_name.errors.required">First Name is required </div>
+                                                        </div> 
+                                                    </div>
+                                                </div>
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Student Middle Name</label>
+                                                        <input type="text" autocomplete="off" formControlName="stu_stud_mname"
+                                                        placeholder="Student Middle Name" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.stu_stud_mname.errors }" />
+                                                        <div *ngIf="submitted && form.stu_stud_mname.errors" class="invalid-feedback">
+                                                            <div *ngIf="form.stu_stud_mname.errors.required">Middle Name is required
+                                                            </div>
+                                                        </div>
+            
+                                                    </div>
+                                                </div>
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Student Last Name</label>
+                                                        <input type="text" autocomplete="off" formControlName="stu_stud_lname"
+                                                        placeholder="Student Last Name" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.stu_stud_lname.errors }" />
+                                                        <div *ngIf="submitted && form.stu_stud_lname.errors" class="invalid-feedback">
+                                                            <div *ngIf="form.stu_stud_lname.errors.required">Last Name is required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Entry Mode *</label>
+                                                        <div style="height: 34px;">
+                                                            <input formControlName="stu_adm_mode" id="stu_adm_mode"
+                                                                name="stu_adm_mode" type="radio" value="1"
+                                                                class="form-controlX required" style="float:left;" tabindex="7">
+                                                            <span style="float:left;">&nbsp;Regular &nbsp;&nbsp;</span>
+                                                            <input formControlName="stu_adm_mode" id="stu_adm_mode"
+                                                                name="stu_adm_mode" type="radio" value="2" checked
+                                                                class="form-controlX required" style="float:left;" tabindex="8">
+                                                            <span style="float:left;">&nbsp;Transfer&nbsp;&nbsp;</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Batch/Academic year *</label>
+                                                        <ng-select 
+                                                        [clearable]="false"
+                                                        [loading]="yearSelect"
+                                                        [items]="dropdownAcademicYearArray" 
+                                                        bindLabel="name"
+                                                        bindValue="id"
+                                                        placeholder="Select Year"
+                                                        formControlName="bayear"  
+                                                        [ngClass]="{ 'is-invalid': submitted && form.bayear.errors!=null }"
+                                                        >
+                                                        </ng-select>
+                                                    <!--
+                                                        <select formControlName="bayear" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.bayear.errors }">
+                                                            <option value="" disabled selected>-SELECT-</option>
+                                                            <option *ngFor="let bayear of dropdownArray[3], index as i" [value]="i+1">
+                                                                {{bayear}}
+                                                            </option>
+                                                        </select>
+                                                    -->  
+            
+                                                        <div *ngIf="submitted && form.bayear.errors!=null" class="invalid-feedback">
+                                                            <div *ngIf="form.bayear.errors.required">Batch / Academic year is required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Board Name *</label>
+                                                        <ng-select 
+                                                        [items]="dropdownBoardArray" 
+                                                        bindLabel="name"
+                                                        bindValue="id"
+                                                        placeholder="Select Board"
+                                                        formControlName="boardname"  
+                                                        [ngClass]="{ 'is-invalid': submitted && form.boardname.errors!=null }"
+                                                        >
+                                                        </ng-select>
+                                                        <!--
+                                                            <select formControlName="boardname" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.boardname.errors }">
+                                                            <option value="" disabled selected>-SELECT-</option>
+                                                            <option *ngFor="let boardname of dropdownArray[4], index as i" [value]="i+1">
+                                                                {{boardname}}
+                                                            </option>
+                                                        </select>
+                                                    -->
+                                                        <div *ngIf="submitted && form.boardname.errors!=null" class="invalid-feedback">
+                                                            <div *ngIf="form.boardname.errors.required">Board Name is required
+                                                            </div>
+                                                        </div>
+            
+                                                    </div>
+                                                </div>
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Medium Name *</label>
+                                                        <ng-select 
+                                                        [clearable]="false"
+                                                        [loading]="mediumSelect"
+                                                        [items]="dropdownMediumArray" 
+                                                        bindLabel="name"
+                                                        bindValue="id"
+                                                        placeholder="Select Medium"
+                                                        formControlName="medname"  
+                                                        [ngClass]="{ 'is-invalid': submitted && form.medname.errors!=null }"
+                                                        >
+                                                        </ng-select>
+                                                        <!--
+                                                        <select formControlName="medname" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.medname.errors }">
+                                                            <option value="" disabled selected>-SELECT-</option>
+                                                            <option *ngFor="let medname of dropdownArray[5], index as i" [value]="i+1">
+                                                                {{medname}}
+                                                            </option>
+                                                        </select>
+                                                        -->
+                                                        <div *ngIf="submitted && form.medname.errors!=null" class="invalid-feedback">
+                                                            <div *ngIf="form.medname.errors.required">Medium Name is required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+                                                <div class="col-lg-6">
+            
+                                                    <div class="form-group">
+                                                        <label>Standard *</label>
+                                                        <ng-select 
+                                                        [clearable]="false"
+                                                        [loading]="standardSelect"
+                                                        [items]="dropdownStandardArray" 
+                                                        bindLabel="name"
+                                                        bindValue="id"
+                                                        placeholder="Select Standard"
+                                                        formControlName="stand"  
+                                                        [ngClass]="{ 'is-invalid': submitted && form.stand.errors!=null }"
+                                                        (change)="parseGroup($event)"
+                                                        >
+                                                        </ng-select>
+                                                        <!--
+                                                        <select formControlName="stand" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.stand.errors }">
+                                                            <option value="" disabled selected>-SELECT-</option>
+                                                            <option *ngFor="let stand of dropdownArray[6], index as i" [value]="i+1">
+                                                                {{stand}}
+                                                            </option>
+                                                        </select>
+                                                        -->
+                                                        <div *ngIf="submitted && form.stand.errors!=null" class="invalid-feedback">
+                                                            <div *ngIf="form.stand.errors.required">Standard is required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Group Name *</label>
+                                                        <ng-select 
+                                                        [clearable]="false"
+                                                        [loading]="groupSelect"
+                                                        [items]="dropdownGroupArray" 
+                                                        bindLabel="name"
+                                                        bindValue="id"
+                                                        placeholder="Select Group"
+                                                        formControlName="groupn"  
+                                                        [ngClass]="{ 'is-invalid': submitted && form.groupn.errors!=null }"
+                                                        >
+                                                        </ng-select>
+                                                        <!--
+                                                        <select formControlName="groupn" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.groupn.errors }">
+                                                            <option value="" disabled selected>-SELECT-</option>
+                                                            <option *ngFor="let groupn of dropdownArray[7], index as i" [value]="i+1">
+                                                                {{groupn}}
+                                                            </option>
+                                                        </select>
+                                                        -->
+                                                        <div *ngIf="submitted && form.groupn.errors!=null" class="invalid-feedback">
+                                                            <div *ngIf="form.groupn.errors.required">Group Name is required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Second Language *</label>
+                                                        <ng-select 
+                                                        [clearable]="false"
+                                                        [loading]="secondlangSelect"
+                                                        [items]="dropdownSecondLanguageArray" 
+                                                        bindLabel="name"
+                                                        bindValue="id"
+                                                        placeholder="Select Language"
+                                                        formControlName="secondlang"  
+                                                        [ngClass]="{ 'is-invalid': submitted && form.secondlang.errors!=null }"
+                                                        >
+                                                        </ng-select>
+                                                        <!--
+                                                        <select formControlName="secondlang" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.secondlang.errors }">
+                                                            <option value="" disabled selected>-SELECT-</option>
+                                                            <option *ngFor="let secondlang of dropdownArray[8], index as i" [value]="i+1">
+                                                                {{secondlang}}
+                                                            </option>
+                                                        </select>
+                                                        -->
+                                                        <div *ngIf="submitted && form.secondlang.errors!=null" class="invalid-feedback">
+                                                            <div *ngIf="form.secondlang.errors.required">Second Language is required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+            
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Reading Ability *</label>
+                                                        <div style="height: 34px;">
+                                                            <input id="stu_read_mode" name="stu_read_mode" type="radio" value="1"
+                                                                checked class="form-controlX required" style="float:left;" tabindex="7">
+                                                            <span style="float:left;">&nbsp;Yes &nbsp;&nbsp;</span>
+                                                            <input id="stu_read_mode" name="stu_read_mode" type="radio" value="2"
+                                                                class="form-controlX required" style="float:left;" tabindex="8">
+                                                            <span style="float:left;">&nbsp;No&nbsp;&nbsp;</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+            
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Mother Tongue *</label>
+                                                        <ng-select 
+                                                        [clearable]="false"
+                                                        [loading]="motherlangSelect"
+                                                        [items]="dropdownMotherLanguageArray" 
+                                                        bindLabel="name"
+                                                        bindValue="id"
+                                                        placeholder="Select Language"
+                                                        formControlName="motherton"  
+                                                        [ngClass]="{ 'is-invalid': submitted && form.motherton.errors!=null }"
+                                                        >
+                                                        </ng-select>
+                                                        <!--
+                                                        <select formControlName="motherton" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.motherton.errors }">
+                                                            <option value="" disabled selected>-SELECT-</option>
+                                                            <option *ngFor="let motherton of dropdownArray[9], index as i" [value]="i+1">
+                                                                {{motherton}}
+                                                            </option>
+                                                        </select>
+                                                        -->
+                                                        <div *ngIf="submitted && form.motherton.errors!=null" class="invalid-feedback">
+                                                            <div *ngIf="form.motherton.errors.required">Second Language is required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+            
+            
+            
+                                                <div class="col-lg-4">
+                                                    <div class="form-group" id="data_1">
+                                                        <label class="font-normal">Date of Birth *</label>
+                                                        <div class="input-group date">
+                                                            <input id="stu_prf_dob" name="stu_prf_dob" type="date"  (input)="parseDate($event.target.value)"
+                                                                class="form-control required" tabindex="19" autocomplete="off" max="{{appDate}}" >
+                                                        </div>
+            
+                                                    </div>
+                                                </div>
+            
+            
+            
+            
+                                                <div class="col-lg-2">
+                                                    <div class="form-group">
+                                                        <label>Age *</label>
+                                                        <input id="stu_prf_age" autocomplete="off" formControlName="stu_prf_age" name="stu_prf_age" type="text"
+                                                            class="form-control required" readonly="true" tabindex="19" >
+                                                    </div>
+            
+                                                </div>
+            
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+            
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h2>Previous School Information</h2>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Previous School Board Name *</label>
+                                                        <ng-select 
+                                                        [clearable]="false"
+                                                        [loading]="prevboardSelect"
+                                                        [items]="dropdownPrevBoardArray" 
+                                                        bindLabel="name"
+                                                        bindValue="id"
+                                                        placeholder="Select Board"
+                                                        formControlName="stu_prev_degree_code"  
+                                                        [ngClass]="{ 'is-invalid': submitted && form.stu_prev_degree_code.errors!=null }"
+                                                        >
+                                                        </ng-select>
+                                                        <!--
+                                                        <select formControlName="stu_prev_degree_code" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.stu_prev_degree_code.errors }">
+                                                            <option *ngFor="let stu_prev_degree_code of dropdownArray[10], index as i" [value]="i+1">
+                                                                {{stu_prev_degree_code}}
+                                                            </option>
+                                                        </select>
+                                                        -->
+                                                        <div *ngIf="submitted && form.stu_prev_degree_code.errors!=null"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.stu_prev_degree_code.errors.required">Previous School is
+                                                                required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+            
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Medium Of Previous Study *</label>
+                                                        <ng-select 
+                                                        [clearable]="false"
+                                                        [loading]="prevmediumSelect"
+                                                        [items]="dropdownPrevMediumArray" 
+                                                        bindLabel="name"
+                                                        bindValue="id"
+                                                        placeholder="Select Medium"
+                                                        formControlName="stu_prev_medium_ins_fk"  
+                                                        [ngClass]="{ 'is-invalid': submitted && form.stu_prev_medium_ins_fk.errors!=null }"
+                                                        >
+                                                        </ng-select>
+                                                        <!--
+                                                        <select formControlName="stu_prev_medium_ins_fk" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.stu_prev_medium_ins_fk.errors }">
+                                                            <option value="" disabled selected>-SELECT-</option>
+                                                            <option *ngFor="let stu_prev_medium_ins_fk of dropdownArray[11], index as i" [value]="i+1">
+                                                                {{stu_prev_medium_ins_fk}}
+                                                            </option>
+                                                        </select>
+                                                        -->
+                                                        <div *ngIf="submitted && form.stu_prev_medium_ins_fk.errors!=null"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.stu_prev_medium_ins_fk.errors.required">Medium Of Previous
+                                                                Study is required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+            
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Previous School Name </label>
+                                                        <input type="text" autocomplete="off" formControlName="stu_adm_prev_colname"
+                                                        placeholder="Previous School Name" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.stu_adm_prev_colname.errors }" />
+                                                        <div *ngIf="submitted && form.stu_adm_prev_colname.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.stu_adm_prev_colname.errors.required">Previous School Name
+                                                                is required
+                                                            </div>
+                                                        </div>
+            
+                                                    </div>
+                                                </div>
+            
+                                                <br>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Previous Standard </label>
+                                                        <ng-select 
+                                                        [clearable]="false"
+                                                        [loading]="prevstandardSelect"
+                                                        [items]="dropdownPrevStandardArray" 
+                                                        bindLabel="name"
+                                                        bindValue="id"
+                                                        placeholder="Select Standard"
+                                                        formControlName="stu_adm_prev_class"  
+                                                        [ngClass]="{ 'is-invalid': submitted && form.stu_adm_prev_class.errors!=null }"
+                                                        >
+                                                        </ng-select>
+            
+                                                        <!--
+                                                        <select formControlName="stu_adm_prev_class" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.stu_adm_prev_class.errors }">
+                                                            <option value="" disabled selected>-SELECT-</option>
+                                                            <option *ngFor="let stu_adm_prev_class of dropdownArray[12], index as i" [value]="i+1">
+                                                                {{stu_adm_prev_class}}
+                                                            </option>
+                                                        </select>
+                                                        -->
+                                                        <div *ngIf="submitted && form.stu_adm_prev_class.errors!=null" class="invalid-feedback">
+                                                            <div *ngIf="form.stu_adm_prev_class.errors.required">Medium Of Previous
+                                                                Study is required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+            
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h2>Parent Information</h2>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Father/Guardian First Name *</label>
+                                                        <input type="text" autocomplete="off" formControlName="stu_prf_fathers_name"
+                                                        placeholder="Father/Guardian First Name" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.stu_prf_fathers_name.errors }" />
+                                                        <div *ngIf="submitted && form.stu_prf_fathers_name.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.stu_prf_fathers_name.errors.required">Father/Guardian
+                                                                First Name is required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+            
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Father/Guardian Last Name</label>
+                                                        <input type="text" autocomplete="off" formControlName="stu_prf_guardian_name"
+                                                        placeholder="Father/Guardian Last Name" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && stu_prf_guardian_name }" />
+                                                        <div *ngIf="submitted && form.stu_prf_guardian_name.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.stu_prf_guardian_name.errors.required">Father/Guardian
+                                                                Last Name is required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+            
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Father/Guardian Aadhar Number</label>
+                                                        <input type="number" formControlName="stu_prf_guardian_aadhar"
+                                                        placeholder="Father/Guardian Aadhar Number" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.stu_prf_guardian_aadhar.errors }" />
+                                                        <div *ngIf="submitted && form.stu_prf_guardian_aadhar.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.stu_prf_guardian_aadhar.errors.required">Father/Guardian
+                                                                Aadhar Number is required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+            
+            
+            
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Father Qualification</label>
+                                                        <input type="text" autocomplete="off" formControlName="stu_prf_fathers_qual"
+                                                        placeholder="Father Qualification" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.stu_prf_fathers_qual.errors }" />
+                                                        <div *ngIf="submitted && form.stu_prf_fathers_qual.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.stu_prf_fathers_qual.errors.required">Father Qualification
+                                                                is required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+            
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Father Occupation</label>
+                                                        <input type="text" autocomplete="off" formControlName="stu_prf_fathers_occup"
+                                                        placeholder="Father Occupation" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.stu_prf_fathers_occup.errors }" />
+                                                        <div *ngIf="submitted && form.stu_prf_fathers_occup.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.stu_prf_fathers_occup.errors.required">Father Occupation
+                                                                is required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Father Annual Income *</label>
+                                                        <input type="number" autocomplete="off" formControlName="stu_prf_fathers_anninc"
+                                                            value="Father Annual Income" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.stu_prf_fathers_anninc.errors }" />
+                                                        <div *ngIf="submitted && form.stu_prf_fathers_anninc.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.stu_prf_fathers_anninc.errors.required">Father Annual
+                                                                Income
+                                                                is required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+            
+            
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Mother Name</label>
+                                                        <input type="text" autocomplete="off" formControlName="stu_prf_mothers_name"
+                                                        placeholder="Mother Name" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.stu_prf_mothers_name.errors }" />
+                                                        <div *ngIf="submitted && form.stu_prf_mothers_name.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.stu_prf_mothers_name.errors.required">Mother Name is
+                                                                required </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Mother Occupation</label>
+                                                        <input type="text" autocomplete="off" formControlName="stu_prf_mothers_occup"
+                                                        placeholder="Father Occupation" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.stu_prf_mothers_occup.errors }" />
+                                                        <div *ngIf="submitted && form.stu_prf_mothers_occup.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.stu_prf_mothers_occup.errors.required">Father Occupation
+                                                                is required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+            
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Mother Annual Income</label>
+                                                        <input type="text" autocomplete="off" formControlName="stu_prf_mothers_anninc"
+                                                        placeholder="Mother Annual Income" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.stu_prf_mothers_anninc.errors }" />
+                                                        <div *ngIf="submitted && form.stu_prf_mothers_anninc.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.stu_prf_mothers_anninc.errors.required">Mother Annual
+                                                                Income is required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+            
+            
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Parent Email ID </label>
+                                                        <input type="text" autocomplete="off" formControlName="stu_prf_parent_email"
+                                                        placeholder="Parent Email ID" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.stu_prf_parent_email.errors }" />
+                                                        <div *ngIf="submitted && form.stu_prf_parent_email.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.stu_prf_parent_email.errors.required">Parent Email ID is
+                                                                required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+            
+            
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Parent Mobile No</label>
+                                                        <input type="number" autocomplete="off" formControlName="stu_prf_mobile_no"
+                                                        placeholder="Parent Mobile No" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.stu_prf_mobile_no.errors }" />
+                                                        <div *ngIf="submitted && form.stu_prf_mobile_no.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.stu_prf_mobile_no.errors.required">Parent Mobile No is
+                                                                required</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+            
+            
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Place of Living *</label>
+                                                        <input type="text" autocomplete="off" formControlName="stu_prf_plc_of_livng"
+                                                        placeholder="Place of Living" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.stu_prf_plc_of_livng.errors }" />
+                                                        <div *ngIf="submitted && form.stu_prf_plc_of_livng.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.stu_prf_plc_of_livng.errors.required">Place of Living is
+                                                                required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+            
+            
+                                                <div class="col-lg-6" style="display:none;">
+                                                    <div class="form-group">
+                                                        <label>Member of Service Organization</label>
+                                                        <input type="text" autocomplete="off" formControlName="stu_prf_mem_of_serv_org"
+                                                        placeholder="Member of Service Organization" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.stu_prf_mem_of_serv_org.errors }" />
+                                                        <div *ngIf="submitted && form.stu_prf_mem_of_serv_org.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.stu_prf_mem_of_serv_org.errors.required">Member of Service
+                                                                Organization is required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+            
+            
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Parents Old Student</label>
+                                                        <div style="height: 34px;">
+                                                            <input id="stu_prf_parents_old_stu" name="stu_prf_parents_old_stu"
+                                                                type="radio" value="1" class="form-controlX required"
+                                                                style="float:left;" tabindex="33">
+                                                            <span style="float:left;">&nbsp;Yes &nbsp;&nbsp;</span>
+                                                            <input id="stu_prf_parents_old_stu" name="stu_prf_parents_old_stu"
+                                                                type="radio" value="0" checked class="form-controlX required"
+                                                                style="float:left;" tabindex="34">
+                                                            <span style="float:left;">&nbsp;No&nbsp;&nbsp;</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+            
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Family Size *</label>
+                                                        <input type="text" autocomplete="off" formControlName="stu_prf_family_size" placeholder="Family Size"
+                                                            class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.stu_prf_family_size.errors }" />
+                                                        <div *ngIf="submitted && form.stu_prf_family_size.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.stu_prf_family_size.errors.required">Family Size is
+                                                                required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h2>Student Information</h2>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Gender *</label>
+                                                        <div style="height: 34px;">
+                                                            <input formControlName="stu_prf_sex" id="stu_prf_sex" name="stu_prf_sex"
+                                                                type="radio" value="1" class="form-controlX required"
+                                                                style="float:left;" tabindex="36">
+                                                            <span style="float:left;">&nbsp;Male &nbsp;&nbsp;</span>
+                                                            <input formControlName="stu_prf_sex" id="stu_prf_sex" name="stu_prf_sex"
+                                                                type="radio" value="2" checked class="form-controlX required"
+                                                                style="float:left;" tabindex="37">
+                                                            <span style="float:left;">&nbsp;Female&nbsp;&nbsp;</span>
+                                                            <div *ngIf="submitted && form.stu_prf_sex.errors"
+                                                                class="invalid-feedback">
+                                                                <div *ngIf="form.stu_prf_sex.errors.required">Gender is
+                                                                    required
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Place of Birth</label>
+                                                        <input type="text" autocomplete="off" formControlName="stu_prf_plc_of_birth"
+                                                        placeholder="Place of Birth" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.stu_prf_plc_of_birth.errors }" />
+                                                        <div *ngIf="submitted && form.stu_prf_plc_of_birth.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.stu_prf_plc_of_birth.errors.required">Family Size is
+                                                                required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Blood Group</label>
+                                                        <ng-select 
+                                                        [clearable]="false"
+                                                        [loading]="bloodSelect"
+                                                        [items]="dropdownBloodArray" 
+                                                        bindLabel="name"
+                                                        bindValue="id"
+                                                        placeholder="Select Blood"
+                                                        formControlName="stu_prf_bldgrp_fk"  
+                                                        [ngClass]="{ 'is-invalid': submitted && form.stu_prf_bldgrp_fk.errors!=null }"
+                                                        >
+                                                        </ng-select>
+                                                        <!--
+                                                        <select formControlName="stu_prf_bldgrp_fk" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.stu_prf_bldgrp_fk.errors }">
+                                                            <option value="" disabled selected>-SELECT-</option>
+                                                            <option *ngFor="let stu_prf_bldgrp_fk of dropdownArray[13], index as i" [value]="i+1">
+                                                                {{stu_prf_bldgrp_fk}}
+                                                            </option>
+                                                        </select>
+                                                        -->
+                                                        <div *ngIf="submitted && form.stu_prf_bldgrp_fk.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.stu_prf_bldgrp_fk.errors.required">Blood Group is
+                                                                required </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Religion</label>
+                                                        <ng-select 
+                                                        [clearable]="false"
+                                                        [loading]="religionSelect"
+                                                        [items]="dropdownReligionArray" 
+                                                        bindLabel="name"
+                                                        bindValue="id"
+                                                        placeholder="Select Religion"
+                                                        formControlName="stu_prf_religion_fk"  
+                                                        [ngClass]="{ 'is-invalid': submitted && form.stu_prf_religion_fk.errors!=null }"
+                                                        >
+                                                        </ng-select>
+                                                        <!--
+                                                            <select formControlName="stu_prf_religion_fk" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.stu_prf_religion_fk.errors }">
+                                                            <option value="" disabled selected>-SELECT-</option>
+                                                            <option *ngFor="let stu_prf_religion_fk of dropdownArray[14], index as i" [value]="i+1">
+                                                                {{stu_prf_religion_fk}}
+                                                            </option>
+                                                        </select>
+                                                        -->
+                                                        <div *ngIf="submitted && form.stu_prf_religion_fk.errors!=null" class="invalid-feedback">
+                                                            <div *ngIf="form.stu_prf_religion_fk.errors.required">Religion is required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+            
+            
+                                                <div class="col-lg-6" style="display:none;">
+                                                    <div class="form-group">
+                                                        <label>Class/Caste</label>
+                                                        <select formControlName="stu_prf_caste_fk" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.stu_prf_caste_fk.errors }">
+                                                            <option value="" disabled selected>-SELECT-</option>
+                                                            <option *ngFor="let stu_prf_caste_fk of dropdownArray[9], index as i" [value]="i+1">
+                                                                {{stu_prf_caste_fk}}
+                                                            </option>
+            
+                                                        </select>
+                                                        <div *ngIf="submitted && form.stu_prf_caste_fk.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.stu_prf_caste_fk.errors.required">Class/Caste is required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+            
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Community</label>
+                                                        <ng-select 
+                                                        [clearable]="false"
+                                                        [loading]="communitySelect"
+                                                        [items]="dropdownCommunityArray" 
+                                                        bindLabel="name"
+                                                        bindValue="id"
+                                                        placeholder="Select Community"
+                                                        formControlName="stu_prf_community_fk"  
+                                                        [ngClass]="{ 'is-invalid': submitted && form.stu_prf_community_fk.errors!=null }"
+                                                        >
+                                                        </ng-select>
+                                                        <!--
+                                                            <select formControlName="stu_prf_community_fk" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.stu_prf_community_fk.errors }">
+                                                            <option value="" disabled selected>-SELECT-</option>
+                                                            <option *ngFor="let stu_prf_community_fk of dropdownArray[15], index as i" [value]="i+1">
+                                                                {{stu_prf_community_fk}}
+                                                            </option>
+                                                        </select>
+                                                        -->
+                                                        <div *ngIf="submitted && form.stu_prf_community_fk.errors!=null" class="invalid-feedback">
+                                                            <div *ngIf="form.stu_prf_community_fk.errors.required">Community is
+                                                                required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Student Email ID </label>
+                                                        <input type="text" autocomplete="off" formControlName="stu_prf_stu_email"
+                                                        placeholder="Student Email ID" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.stu_prf_stu_email.errors }" />
+                                                        <div *ngIf="submitted && form.stu_prf_stu_email.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.stu_prf_stu_email.errors.required">Student Email ID is
+                                                                required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+            
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Student Aadhar Number</label>
+                                                        <input type="number" formControlName="stu_prf_stu_aadhar"
+                                                        placeholder="Student Aadhar Number" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.stu_prf_stu_aadhar.errors }" />
+                                                        <div *ngIf="submitted && form.stu_prf_stu_aadhar.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.stu_prf_stu_aadhar.errors.required">Student Aadhar Number
+                                                                is
+                                                                required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>EMIS Number </label>
+                                                        <input type="number" formControlName="stu_prf_stu_emis" placeholder="EMIS Number"
+                                                            class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.stu_prf_stu_emis.errors }" />
+                                                        <div *ngIf="submitted && form.stu_prf_stu_emis.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.stu_prf_stu_emis.errors.required">EMIS Number is
+                                                                required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Student Bank Details </label>
+                                                        <input type="text" autocomplete="off" formControlName="stu_prf_stu_bank"
+                                                        placeholder="Student Bank Details" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.stu_prf_stu_bank.errors }" />
+                                                        <div *ngIf="submitted && form.stu_prf_stu_bank.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.stu_prf_stu_bank.errors.required">Student Bank Details is
+                                                                required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+            
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h2>Other Information</h2>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Physically challenged *</label>
+                                                        <div style="height: 34px;">
+                                                            <input id="stu_prf_parents_handicap"
+                                                                formControlName="stu_prf_parents_handicap"
+                                                                name="stu_prf_parents_handicap" type="radio" value="1"
+                                                                class="form-controlX required" style="float:left;" tabindex="45">
+                                                            <span style="float:left;">&nbsp;Yes &nbsp;&nbsp;</span>
+                                                            <input id="stu_prf_parents_handicap"
+                                                                formControlName="stu_prf_parents_handicap"
+                                                                name="stu_prf_parents_handicap" type="radio" value="2" checked
+                                                                class="form-controlX required" style="float:left;" tabindex="46">
+                                                            <span style="float:left;">&nbsp;No &nbsp;&nbsp;</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Visual Defect * </label>
+                                                        <div style="height: 34px;">
+                                                            <input id="stu_prf_visualhandy" formControlName="stu_prf_visualhandy"
+                                                                name="stu_prf_visualhandy" type="radio" value="1"
+                                                                class="form-controlX required" style="float:left;" tabindex="47">
+                                                            <span style="float:left;">&nbsp;Yes &nbsp;&nbsp;</span>
+                                                            <input id="stu_prf_visualhandy" formControlName="stu_prf_visualhandy"
+                                                                name="stu_prf_visualhandy" type="radio" value="2" checked
+                                                                class="form-controlX required" style="float:left;" tabindex="48">
+                                                            <span style="float:left;">&nbsp;No &nbsp;&nbsp;</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Any Medical Issues </label>
+                                                        <input type="text" autocomplete="off" formControlName="stu_prf_medical"
+                                                        placeholder="Any Medical Issues" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.stu_prf_medical.errors }" />
+                                                        <div *ngIf="submitted && form.stu_prf_medical.errors" class="invalid-feedback">
+                                                            <div *ngIf="form.stu_prf_medical.errors.required">Any Medical Issues is
+                                                                required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Co-Curriculum Activity</label>
+                                                        <ng-select 
+                                                        [clearable]="false"
+                                                        [loading]="activitySelect"
+                                                        [items]="dropdownActivityArray" 
+                                                        [multiple]="true"
+                                                        bindLabel="name"
+                                                        bindValue="name"
+                                                        placeholder="Select Activities"
+                                                        formControlName="stu_prf_co_curr"  
+                                                        [ngClass]="{ 'is-invalid': submitted && form.stu_prf_co_curr.errors!=null }"
+                                                        >
+                                                        </ng-select>
+                                                        <!--
+                                                        <input type="text" autocomplete="off" formControlName="stu_prf_co_curr"
+                                                        placeholder="Co-Curriculum Activity" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.stu_prf_co_curr.errors }" />
+                                                        -->
+                                                        <div *ngIf="submitted && form.stu_prf_co_curr.errors!=null" class="invalid-feedback">
+                                                            <div *ngIf="form.stu_prf_co_curr.errors.required">Co-Curriculum Activity is
+                                                                required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Language known</label>
+                                                        <ng-select 
+                                                        [clearable]="false"
+                                                        [loading]="languageSelect"
+                                                        [items]="dropdownLanguageArray" 
+                                                        [multiple]="true"
+                                                        bindLabel="name"
+                                                        bindValue="name"
+                                                        placeholder="Select Language"
+                                                        formControlName="stu_prf_third_lang"  
+                                                        [ngClass]="{ 'is-invalid': submitted && form.stu_prf_third_lang.errors!=null }"
+                                                        >
+                                                        </ng-select>
+                                                        <!--
+                                                        <select formControlName="stu_prf_third_lang" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.stu_prf_third_lang.errors }">
+                                                            <option *ngFor="let stu_prf_third_lang of dropdownArray[16], index as i" [value]="i+1">
+                                                                {{stu_prf_third_lang}}
+                                                            </option>
+                                                        </select>
+                                                        -->
+                                                        <div *ngIf="submitted && form.stu_prf_third_lang.errors!=null"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.stu_prf_third_lang.errors.required">Language known required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+            
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Citizen</label>
+                                                        <ng-select 
+                                                        [clearable]="false"
+                                                        [loading]="citizenSelect"
+                                                        [items]="dropdownCitizenArray" 
+                                                        bindLabel="name"
+                                                        bindValue="id"
+                                                        placeholder="Select Citizen"
+                                                        formControlName="stu_prf_citizen_fk"  
+                                                        [ngClass]="{ 'is-invalid': submitted && form.stu_prf_citizen_fk.errors!=null }"
+                                                        >
+                                                        </ng-select>
+                                                        <!--
+                                                        <select formControlName="stu_prf_citizen_fk" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.stu_prf_citizen_fk.errors }">
+                                                            <option value="" disabled selected>-SELECT-</option>
+                                                            <option *ngFor="let stu_prf_citizen_fk of dropdownArray[17], index as i" [value]="i+1">
+                                                                {{stu_prf_citizen_fk}}
+                                                            </option>
+                                                        </select>
+                                                        -->
+                                                        <div *ngIf="submitted && form.stu_prf_citizen_fk.errors!=null" class="invalid-feedback">
+                                                            <div *ngIf="form.stu_prf_citizen_fk.errors.required">Citizen is required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+            
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Remarks</label>
+                                                        <textarea formControlName="stu_prf_remarks" 
+                                                        class="form-control"
+                                                        [ngClass]="{ 'is-invalid': submitted && form.stu_prf_remarks.errors }">
+                                                        </textarea> 
+                                                        <!--
+                                                        <input type="text" autocomplete="off" formControlName="stu_prf_remarks" placeholder="Remarks"
+                                                            class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.stu_prf_remarks.errors }" />
+                                                        -->
+                                                        <div *ngIf="submitted && form.stu_prf_remarks.errors" class="invalid-feedback">
+                                                            <div *ngIf="form.stu_prf_remarks.errors.required">Remarks is required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Student Image</label>
+                                                        <input id="stu_adm_stu_image" name="stu_adm_stu_image" type="file" (change)="onFileSelect($event)"
+                                                        class="form-control " tabindex="53" accept="image/*" capture="camera" >
+                                                    </div>
+                                                </div>
+            
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Bus Facility Requirement *</label>
+                                                        <div style="height: 34px;">
+                                                            <input id="stu_prf_bus"  formControlName="stu_prf_bus" name="stu_prf_bus" type="radio" value="1"
+                                                                class="form-controlX required" style="float:left;" tabindex="45">
+                                                            <span style="float:left;">&nbsp;Yes &nbsp;&nbsp;</span>
+                                                            <input id="stu_prf_bus" formControlName="stu_prf_bus" name="stu_prf_bus" type="radio" value="2"
+                                                                checked class="form-controlX required" style="float:left;"
+                                                                tabindex="46">
+                                                            <span style="float:left;">&nbsp;No &nbsp;&nbsp;</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+            
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h2>Permanent Address</h2>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Address *</label>
+                                                        <input type="text" autocomplete="off" formControlName="con_per_add"
+                                                        placeholder="Address" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.con_per_add.errors }" />
+                                                        <div *ngIf="submitted && form.con_per_add.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.con_per_add.errors.required">Address is required. </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>State *</label>
+                                                        <input type="text" autocomplete="off" formControlName="con_per_state"
+                                                        placeholder="State" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.con_per_state.errors }" />
+                                                        <div *ngIf="submitted && form.con_per_state.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.con_per_state.errors.required">State is required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Country </label>
+                                                        <input type="text" autocomplete="off" formControlName="con_per_cntry"
+                                                        placeholder="Country" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.con_per_cntry.errors }" />
+                                                        <div *ngIf="submitted && form.con_per_cntry.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.con_per_cntry.errors.required">Country is required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Pincode </label>
+                                                        <input type="number" autocomplete="off" formControlName="con_per_pincode"
+                                                        placeholder="Pincode" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.con_per_pincode.errors }" />
+                                                        <div *ngIf="submitted && form.con_per_pincode.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.con_per_pincode.errors.required">Pincodee is required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Phone Number *</label>
+                                                        <input type="number" autocomplete="off" formControlName="con_per_phone"
+                                                        placeholder="Phone Number" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.con_per_phone.errors }" />
+                                                        <div *ngIf="submitted && form.con_per_phone.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.con_per_phone.errors.required">Phone Number is required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Nearest Railway Station </label>
+                                                        <input type="text" autocomplete="off" formControlName="con_rail_stn"
+                                                        placeholder="Nearest Railway Station" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.con_rail_stn.errors }" />
+                                                        <div *ngIf="submitted && form.con_rail_stn.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.con_rail_stn.errors.required">Nearest Railway Station is required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br />
+                                                <div class="col-lg-12">
+                                                    <input type="checkbox" name="present" value="permanentAddressOpt" (change)="FieldsChange($event)"
+                                                        tabindex="7">
+                                                    If the check box selected contact address is same as permanent address
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h2>Contact Address</h2>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Address *</label>
+                                                        <input type="text" autocomplete="off" formControlName="con_cont_add"
+                                                        placeholder="Address" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.con_cont_add.errors }" />
+                                                        <div *ngIf="submitted && form.con_cont_add.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.con_cont_add.errors.required">Address is required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>State *</label>
+                                                        <input type="text" autocomplete="off" formControlName="con_cont_state"
+                                                        placeholder="State" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.con_cont_state.errors }" />
+                                                        <div *ngIf="submitted && form.con_cont_state.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.con_cont_state.errors.required">State is required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Country </label>
+                                                        <input type="text" autocomplete="off" formControlName="con_cont_cntry"
+                                                        placeholder="Country" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.con_cont_cntry.errors }" />
+                                                        <div *ngIf="submitted && form.con_cont_cntry.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.con_cont_cntry.errors.required">Country is required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Pincode </label>
+                                                        <input type="number" autocomplete="off" formControlName="con_cont_pincode"
+                                                        placeholder="Pincode" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.con_cont_pincode.errors }" />
+                                                        <div *ngIf="submitted && form.con_cont_pincode.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.con_cont_pincode.errors.required">Pincode is required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Phone Number *</label>
+                                                        <input type="number" autocomplete="off" formControlName="con_cont_phone"
+                                                        placeholder="Phone Number" class="form-control"
+                                                            [ngClass]="{ 'is-invalid': submitted && form.con_cont_phone.errors }" />
+                                                        <div *ngIf="submitted && form.con_cont_phone.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.con_cont_phone.errors.required">Phone Number is required
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <!--<div class="card" formArrayName="certificateInfo" *ngFor="let certinfo of validationform.get('certificateInfo').controls; let i=index;">-->
+            
+            
+            
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h2>Certificate Information</h2>
+            
+                                            <div style="float: right;" >  
+                                                <button _ngcontent-ywx-c6="" class="btn btn-info" type="button" (click)="addCertificateColumn()" ><i class="fa fa-plus"></i> Add Certificate</button>
+                                            </div>
+            
+            
+                                            <div class="card-body" style="padding: 0px;" formArrayName="certificateColumns">
+                                                    <div class="row col-12 m-0 p-0">
+            
+                                                        <div style="width: 100%;" *ngFor="let contact of duplicateCertifcateColumns.controls; let i = index;">
+                                                            <div [formGroupName]="i" class="row">       
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group">
+                                                                        <label>Certificate Name </label>
+                                                                        <ng-select
+                                                                            [items]="dropdownCertificateArray" 
+                                                                            bindLabel="name"
+                                                                            bindValue="id" 
+                                                                            placeholder="Select Certificate"
+                                                                            formControlName="certificateName"
+                                                                            [ngClass]="{ 'is-invalid': submitted && form.certificateName.errors!=null }" tabindex="301">
+                                                                        </ng-select> 
+                                                                    <div *ngIf="submitted && form.certificateName.errors!=null" class="invalid-feedback">
+                                                                        <div *ngIf="form.certificateName.errors.required">Certificate Name is required
+                                                                        </div>
+                                                                    </div>
+                                                                    </div>
+                                                                </div>        
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group">
+                                                                        <label>Date </label>
+                                                                        <input formControlName="certificateDate" id="crt_cert_date"
+                                                                            name="certificateDate" autocomplete="off" type="date"
+                                                                            class="form-control required" tabindex="302">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group">
+                                                                        <label>Certificate No </label>
+                                                                        <input formControlName="certificateNo" id="crt_cert_no"
+                                                                            name="certificateNo" autocomplete="off" type="text" class="form-control "
+                                                                            tabindex="303">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group">
+                                                                        <label>Attachment </label>
+                                                                        <input formControlName="certificateAttach" id="crt_attach"
+                                                                            name="certificateAttach" type="file"
+                                                                            accept="application/pdf, application/msword, image/jpeg,image/jpg,image/png,image/gif" 
+                                                                            class="form-control required" value="" tabindex="304" (change)="onFileChanged($event, i)" >
+                                                                    </div>
+                                                                </div>
+                
+                                                                <div class="form-group col-12 text-right">
+                                                                    <button class="btn btn-danger" type="button" (click)="removeCertificateColumn(i)"> <i class="fa fa-trash mr-1"></i> Remove </button>
+                                                                </div>
+                
+                                                            </div>
+                                                            <hr>
+                
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+                                        <!--    
+                                            <div class="card-body" style="padding: 0px;" formArrayName="certificateColumns">
+                                                <div class="row col-12 m-0 p-0">
+                                                    <div style="width: 100%;"
+                                                        *ngFor="let contact of duplicateCertifcateColumns.controls; let i = index;">
+                                                        <div [formGroupName]="i" class="row">
+            
+            
+                                                            <div class="col-lg-6">
+                                                                <div class="form-group">
+                                                                    <label>Certificate Name </label>
+                                                                    <select formControlName="certificateName" name="certificateName" class="form-control"
+                                                                    [ngClass]="{ 'is-invalid': submitted && form.certificateName.errors }" >
+                                                                    <option value="" disabled selected>-SELECT-</option>
+                                                                    <option [value]="certificateName"
+                                                                        *ngFor="let certificateName of dropdownArray[18], index as i">
+                                                                        {{certificateName}}
+                                                                    </option>
+                    
+                                                                </select>
+                                                                <div *ngIf="submitted && form.certificateName.errors"
+                                                                    class="invalid-feedback">
+                                                                    <div *ngIf="form.certificateName.errors.required">Certificate Name is required
+                                                                    </div>
+                                                                </div>
+                                                                </div>
+                                                            </div>
+            
+                                                            <div class="col-lg-6">
+                                                                <div class="form-group">
+                                                                    <label>Date </label>
+                                                                    <input formControlName="certificateDate" id="crt_cert_date"
+                                                                        name="certificateDate" autocomplete="off" type="date"
+                                                                        class="form-control required" tabindex="2">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <div class="form-group">
+                                                                    <label>Certificate No </label>
+                                                                    <input formControlName="certificateNo" id="crt_cert_no"
+                                                                        name="certificateNo" autocomplete="off" type="text" class="form-control "
+                                                                        tabindex="3">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <div class="form-group">
+                                                                    <label>Attachment </label>
+                                                                    <input formControlName="certificateAttach" id="crt_attach"
+                                                                        name="certificateAttach" type="file"
+                                                                        accept="application/pdf, application/msword, image/jpeg,image/jpg,image/png,image/gif" 
+                                                                        class="form-control required" value="" tabindex="4" (change)="onFileChanged($event, i)" >
+                                                                </div>
+            
+                                                            </div>
+            
+                                                            <div class="form-group col-12 text-right">
+                                                                <button *ngIf="i==0"  type="button" (click)="addCertificateColumn()"
+                                                                    class="btn btn-info"><i class="fe fe-plus mr-1"></i>Add
+                                                                    Certificate </button>
+                                                                <button *ngIf="i!=0" class="btn btn-info" type="button"
+                                                                    (click)="removeCertificateColumn(i)"> <i
+                                                                        class="fe fe-trash mr-1"></i>Remove </button>
+                                                            </div>
+            
+                                                        </div>
+                                                        <hr>
+            
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        -->
+            
+                                        </div>
+                                    </div>
+            
+            
+                                    <div *ngIf="loading;  else othernonimg" >
+                                        {{loading}}
+                                    <button type="submit" class="btn btn-info" data-toggle="modal"  data-target="#myModal"> Save and Complete </button>
+                                </div>
+                                <ng-template #othernonimg>
+
+                                    {{loading}}
+                                    <button type="submit" class="btn btn-info" data-dismiss="modal" > Submit </button>
+                                                            
+                                  </ng-template>
+                                </form>
+            
+            
+                                <div id="nprogress" *ngIf="loader">
+                                    <div class="spinner" role="spinner">
+                                        <div class="spinner-icon"></div>
+                                    </div>
+                                </div>
+                                
+            
+                            </div>
+            
+            
+            
+                        </div>
+            
+                    </div>
+                </div>
+        </div>
+        <div class="col-sm-1">
+        </div>
+
+    </div>
+    <!-- The Modal -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Student Information </h4>
+          <!-- <button type="button" class="close" (click)="hideModal()">&times;</button> -->
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+          DATA SAVED..........
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+         
+  
+          <!-- this button is hidden, used to close from typescript -->
+          <button type="button" id="close-modal" data-dismiss="modal" style="display: none">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
