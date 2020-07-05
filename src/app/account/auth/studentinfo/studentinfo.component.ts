@@ -48,6 +48,8 @@ export class StudentinfoComponent  implements OnInit {
   typesubmit: boolean;
   rangesubmit: boolean;
   horizontalsubmit: boolean;
+  previousSchoolOpt: boolean = false;
+  foreigndetailOpt: boolean = false;
 
   
   // Select2 Dropdown
@@ -245,6 +247,15 @@ dropdownCommunityArray: any = [
   { id: 7, name: 'Other' }
 ];
 
+dropdownCertificateArray: any = [
+  { id: 1, name: 'TRANSFER CERTIFICATE' },
+  { id: 2, name: 'BIRTH CERTIFICATE' },
+  { id: 3, name: 'COMMUNITY CERTIFICATE' },
+  { id: 4, name: 'MARK SHEET' },
+  { id: 5, name: 'NATIVE CERTIFICATE' },
+  { id: 6, name: 'CONTACT CERTIFICATE' },
+  { id: 7, name: 'OTHER' }
+];
 
 
   dropdownArray = [
@@ -385,6 +396,13 @@ dropdownCommunityArray: any = [
       stu_prf_mother_tongue_fk: [null],
       stu_prf_citizen_fk: [null],
       stu_prf_bus: ['2', [Validators.required]],
+
+      stu_foreign_country_name: ['',[Validators.required]],
+      stu_foreign_passport_no: ['',[Validators.required]],
+      stu_foreign_passport_valid_date: ['',[Validators.required]],
+      stu_foreign_visa_no: ['',[Validators.required]],
+      stu_foreign_visa_valid_date: ['',[Validators.required]],
+
       con_per_add: ['', [Validators.required]],
       con_per_state: ['', [Validators.required]],
       con_per_cntry: [''],
@@ -510,6 +528,32 @@ dropdownCommunityArray: any = [
     }
   }
 
+  
+  citizenEvent(event:any)
+  {
+    console.log('----event---', event)
+    if( event.name =='FOREIGNER')
+    {
+      this.foreigndetailOpt = true;
+
+      this.validationform.controls['stu_foreign_country_name'].enable();
+      this.validationform.controls['stu_foreign_passport_no'].enable();
+      this.validationform.controls['stu_foreign_passport_valid_date'].enable();
+      this.validationform.controls['stu_foreign_visa_no'].enable();
+      this.validationform.controls['stu_foreign_visa_valid_date'].enable();
+
+    }else{
+      this.foreigndetailOpt = false;
+
+        this.validationform.controls['stu_foreign_country_name'].disable();
+        this.validationform.controls['stu_foreign_passport_no'].disable();
+        this.validationform.controls['stu_foreign_passport_valid_date'].disable();
+        this.validationform.controls['stu_foreign_visa_no'].disable();
+        this.validationform.controls['stu_foreign_visa_valid_date'].disable();
+    }
+
+  }
+
   ageCalculation(dateString)
   {
     var today = new Date();
@@ -522,13 +566,31 @@ dropdownCommunityArray: any = [
     return age;
   }
   
+  
   parseGroup(event:any)
   {
-
+    
     this.groupSelect = true;
     console.log(event);
     let eventValue = event.id;
     //console.log('----event----', eventDate)
+
+    if(event.name =='Pre-KG' || event.name =='LKG' || event.name =='UKG')
+    {
+      this.validationform.controls['stu_prev_degree_code'].disable();
+    this.validationform.controls['stu_prev_medium_ins_fk'].disable();
+    //this.validationform.controls['stu_adm_prev_colname'].disable();
+    //this.validationform.controls['stu_adm_prev_class'].disable();
+
+      this.previousSchoolOpt = false;
+    }else if(event.name !='Pre-KG' || event.name !='LKG' || event.name !='UKG')
+    {
+      this.validationform.controls['stu_prev_degree_code'].enable();
+    this.validationform.controls['stu_prev_medium_ins_fk'].enable();
+    //this.validationform.controls['stu_adm_prev_colname'].enable();
+    //this.validationform.controls['stu_adm_prev_class'].enable();
+      this.previousSchoolOpt = true;
+    }
     if( eventValue == '14' || eventValue == '15' )
     { 
       
@@ -587,7 +649,8 @@ dropdownCommunityArray: any = [
    // console.log('-----form value---'); console.log( this.validationform.value )
    // console.log('-----form value form---'); console.log( this.form )
      if (this.validationform.invalid) {
-     console.log(this.validationform+"_____________all updated");
+      console.log(this.validationform);
+      console.log(this.validationform+"_____________all updated");
     
      return;
     } 
@@ -760,6 +823,11 @@ dropdownCommunityArray: any = [
         "con_rel_info" : "info",
         "con_mode" : "mode",
         "con_rail_stn" : this.form.con_rail_stn.value,
+        "stu_foreign_country_name" :this.form.stu_foreign_country_name.value,
+        "stu_foreign_passport_no" :this.form.stu_foreign_passport_no.value,
+        "stu_foreign_passport_valid_date" :this.form.stu_foreign_passport_valid_date.value,
+        "stu_foreign_visa_no" :this.form.stu_foreign_visa_no.value,
+        "stu_foreign_visa_valid_date" :this.form.stu_foreign_visa_valid_date.value,
         "student_documents": cartificateDataArray
      }
  
@@ -775,10 +843,10 @@ dropdownCommunityArray: any = [
       data => {
        // console.log(data);
         console.log("google");
-       // $("#myModal").modal('show');
+        //$("#myModal").modal('show');
         
        // this.modalService.open(content);
-        //this.router.navigate(['/school/studentlist']);
+        this.router.navigate(['/account/login']);
       },
       error => {
          console.log(error);    
