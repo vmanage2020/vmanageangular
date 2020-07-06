@@ -247,6 +247,25 @@ phychan:any;
 visdef:any;
 busfacval:any;
   constructor(private http:HttpClient,private route: ActivatedRoute) {
+
+    let Metaurl='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/master';
+    this.http.get<any>(Metaurl).toPromise().then(
+      data => {
+        console.log(data);
+        this.dropdownBoardArray = data.boards;
+        this.dropdownPrevBoardArray = data.boards;
+
+        this.dropdownActivityArray = data.activities;
+
+        this.dropdownMediumArray = data.languages;
+        this.dropdownPrevMediumArray = data.languages;
+        this.dropdownSecondLanguageArray = data.languages;
+        this.dropdownMotherLanguageArray = data.languages;
+        this.dropdownLanguageArray = data.languages;
+      }
+    ) 
+
+
     this.resourceID = this.route.snapshot.paramMap.get('id');
 
   this.url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/student/'+this.resourceID;

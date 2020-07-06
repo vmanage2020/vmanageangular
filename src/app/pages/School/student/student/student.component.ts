@@ -285,8 +285,23 @@ dropdownCertificateArray: any = [
     private router: Router, 
     private commonService: CommonService,
     public datepipe: DatePipe) {
-    this.selectValue = ['Alaska', 'Hawaii', 'California', 'Nevada', 'Oregon', 'Washington', 'Arizona', 'Colorado', 'Idaho', 'Montana', 'Nebraska', 'New Mexico', 'North Dakota', 'Utah', 'Wyoming', 'Alabama', 'Arkansas', 'Illinois', 'Iowa'];
-
+    
+      let Metaurl='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/master';
+      this.http.get<any>(Metaurl).toPromise().then(
+        data => {
+          console.log(data);
+          this.dropdownBoardArray = data.boards;
+          this.dropdownPrevBoardArray = data.boards;
+  
+          this.dropdownActivityArray = data.activities;
+  
+          this.dropdownMediumArray = data.languages;
+          this.dropdownPrevMediumArray = data.languages;
+          this.dropdownSecondLanguageArray = data.languages;
+          this.dropdownMotherLanguageArray = data.languages;
+          this.dropdownLanguageArray = data.languages;
+        }
+      )   
     
   this.schoolSelect = false;
   this.yearSelect = false;
