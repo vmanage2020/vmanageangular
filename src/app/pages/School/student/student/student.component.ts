@@ -580,7 +580,7 @@ dropdownCertificateArray: any = [
     let eventValue = event.id;
     //console.log('----event----', eventDate)
 
-    if(event.name =='Pre-KG' || event.name =='LKG' || event.name =='UKG')
+    if(event.name =='Pre-KG' || event.name =='LKG')
     {
       this.validationform.controls['stu_prev_degree_code'].disable();
     this.validationform.controls['stu_prev_medium_ins_fk'].disable();
@@ -588,7 +588,7 @@ dropdownCertificateArray: any = [
     //this.validationform.controls['stu_adm_prev_class'].disable();
 
       this.previousSchoolOpt = false;
-    }else if(event.name !='Pre-KG' || event.name !='LKG' || event.name !='UKG')
+    }else if(event.name !='Pre-KG' || event.name !='LKG')
     {
       this.validationform.controls['stu_prev_degree_code'].enable();
     this.validationform.controls['stu_prev_medium_ins_fk'].enable();
