@@ -56,12 +56,27 @@ export class ListComponent implements OnInit {
   deleteLanguage(id)
   {
     console.log('-----id----', id)
-    let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/language/delete/'+id;
-    this.apiurl.remove(url).subscribe( lists => {
-      console.log('---success delete-----')
-    },error => {
-      console.log('---errror---')
+    swal.fire({
+      title: "Are you sure?",
+      text: "Do you want to Remove Language?",
+      //type: 'warning',
+      showConfirmButton: true,
+      showCancelButton: true
     })
+    .then((willDelete) => {
+      if( willDelete.value )
+      {
+        console.log('-----accepted id----', id)
+          let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/language/delete/'+id;
+          this.apiurl.create(url, {}).subscribe( lists => {
+            console.log('---success delete-----')
+          },error => {
+            console.log('---errror---')
+          })
+      }
+    })
+    
+    
   }
 
   languageList()
