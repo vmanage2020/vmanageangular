@@ -20,10 +20,13 @@ import { AdminUIModule } from './adminUI/adminUI.module';
 import { ErrorModule } from './error/error.module';
 
 import { PagesRoutingModule } from './pages-routing.module';
-/* import { StudentsComponent } from './School/students/students.component';
-import { ListComponent } from './School/students/list/list.component';
-import { AddComponent } from './School/students/add/add.component';
-import { ViewComponent } from './School/students/view/view.component'; */
+//import { LanguagesComponent } from './globaldata/languages/languages.component';
+//import { AddComponent } from './globaldata/languages/add/add.component';
+//import { ListComponent } from './globaldata/languages/list/list.component';
+//import { StudentsComponent } from './School/students/students.component';
+//import { ListComponent } from './School/students/list/list.component';
+//import { AddComponent } from './School/students/add/add.component';
+//import { ViewComponent } from './School/students/view/view.component';
 
 
 @NgModule({
@@ -47,6 +50,7 @@ import { ViewComponent } from './School/students/view/view.component'; */
     AdminUIModule,
     ErrorModule,
     PagesRoutingModule,
-  ]
+  ],
+  //declarations: [LanguagesComponent, AddComponent, ListComponent]
 })
 export class PagesModule { }

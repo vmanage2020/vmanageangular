@@ -7,6 +7,8 @@ const routes: Routes = [
   { path: 'school', loadChildren: () => import('./School/student/student.module').then(m => m.StudentModule) },
   { path: 'schoolapp', loadChildren: () => import('./School/student/student.module').then(m => m.StudentModule) },
   { path: 'schools', loadChildren: () => import('./School/students/students.module').then(m => m.StudentsModule) },
+  { path: 'global', loadChildren: () => import('./globaldata/languages/languages.module').then(m => m.LanguagesModule) },
+
   { path: 'apps', loadChildren: () => import('./apps/apps.module').then(m => m.AppsModule) },
   { path: 'email', loadChildren: () => import('./email/email.module').then(m => m.EmailModule) },
   { path: 'extras', loadChildren: () => import('./extras/extras.module').then(m => m.ExtrasModule) },

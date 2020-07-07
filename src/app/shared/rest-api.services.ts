@@ -58,15 +58,15 @@ export class RestApiService {
 		if( httpOptions ) {
 			this.httpOptions = httpOptions;
 		}
-		return this.http.post<any>(this.baseAPIUrl + apiPath, formData, this.httpOptions)
+		return this.http.post<any>(apiPath, formData, this.httpOptions)
 			.pipe(
 				map(response => response),
 				catchError(this.handleError)
 			);
 	}
 
-	update(apiPath: string, formData: any) {
-		return this.http.put<any>(this.baseAPIUrl + apiPath, formData)
+	update(apiPath: string, formData: any) {//this.baseAPIUrl +
+		return this.http.put<any>( apiPath, formData) 
 		  .pipe(
 			map(response => response),
 			catchError(this.handleError)
@@ -75,7 +75,7 @@ export class RestApiService {
 
     // HttpClient API delete() method => Delete
   remove(apiPath: string ){
-    return this.http.delete<any>(this.baseAPIUrl + apiPath, this.httpOptions)
+    return this.http.delete<any>( apiPath, this.httpOptions)
     .pipe(
       map(response => response),
       catchError(this.handleError)
