@@ -91,10 +91,10 @@
             </div>
 
           <div class="card" *ngFor="let cmh of ctrlmainhead; let i = index;">
-            <div class="card-body">
+            <div class="card-body" id="set_{{i}}" >
                 <h2>{{cmh}}</h2>
                 <div class="row" >
-                    <div class="col-sm-6" *ngFor="let csh of ctrlsubhead[i];let j = index;">
+                    <div class="col-sm-6" *ngFor="let csh of ctrlsubhead[i];let j = index;" >
                        <div class="form-group" >
                           <label>{{csh}} : </label>
                        
