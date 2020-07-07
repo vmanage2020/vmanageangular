@@ -21,6 +21,9 @@ import { AdminUIModule } from './adminUI/adminUI.module';
 import { ErrorModule } from './error/error.module';
 
 import { PagesRoutingModule } from './pages-routing.module';
+//import { ActivitiesComponent } from './globaldata/activities/activities.component';
+//import { AddComponent } from './globaldata/activities/add/add.component';
+//import { ListComponent } from './globaldata/activities/list/list.component';
 //import { LanguagesComponent } from './globaldata/languages/languages.component';
 //import { AddComponent } from './globaldata/languages/add/add.component';
 //import { ListComponent } from './globaldata/languages/list/list.component';
@@ -53,6 +56,7 @@ import { PagesRoutingModule } from './pages-routing.module';
     ErrorModule,
     PagesRoutingModule,
   ],
+  //declarations: [ActivitiesComponent, AddComponent, ListComponent],
   //declarations: [LanguagesComponent, AddComponent, ListComponent]
 })
 export class PagesModule { }
