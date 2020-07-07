@@ -24,6 +24,9 @@ import { PagesRoutingModule } from './pages-routing.module';
 //import { ActivitiesComponent } from './globaldata/activities/activities.component';
 //import { AddComponent } from './globaldata/activities/add/add.component';
 //import { ListComponent } from './globaldata/activities/list/list.component';
+//import { BoardsComponent } from './globaldata/boards/boards.component';
+//import { AddComponent } from './globaldata/boards/add/add.component';
+//import { ListComponent } from './globaldata/boards/list/list.component';
 //import { LanguagesComponent } from './globaldata/languages/languages.component';
 //import { AddComponent } from './globaldata/languages/add/add.component';
 //import { ListComponent } from './globaldata/languages/list/list.component';
@@ -57,6 +60,7 @@ import { PagesRoutingModule } from './pages-routing.module';
     PagesRoutingModule,
   ],
   //declarations: [ActivitiesComponent, AddComponent, ListComponent],
+  //declarations: [BoardsComponent, AddComponent, ListComponent],
   //declarations: [LanguagesComponent, AddComponent, ListComponent]
 })
 export class PagesModule { }
