@@ -8,6 +8,8 @@ import { LanguagesService } from '../languages.service';
 import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
 
+import swal from 'sweetalert2';
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',

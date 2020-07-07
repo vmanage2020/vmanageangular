@@ -5,6 +5,7 @@ import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { DashboardsModule } from './dashboards/dashboards.module';
 import{ StudentModule} from './School/student/student.module';
+import {ActivityModule} from './School/activity/activity.module';
 import { AppsModule } from './apps/apps.module';
 import { EmailModule } from './email/email.module';
 import { ExtrasModule } from './extras/extras.module';
@@ -36,6 +37,7 @@ import { PagesRoutingModule } from './pages-routing.module';
     NgbDropdownModule,
     DashboardsModule,
     StudentModule,
+    ActivityModule,
     AppsModule,
     EmailModule,
     ExtrasModule,

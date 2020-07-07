@@ -2,7 +2,8 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 
 import { Widget, UserBalance, RevenueData, ChartType } from './default.model';
 import { widgetData, salesMixedChart, revenueRadialChart, userBalanceData, revenueData } from './data';
-
+import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-default-dashboard',
   templateUrl: './default.component.html',
@@ -23,9 +24,31 @@ export class DefaultDashboardComponent implements OnInit {
   salesMixedChart: ChartType;
   revenueRadialChart: ChartType;
   currentDate = new Date();
-  constructor(private eref: ElementRef) { }
+
+  studentCount:any;
+  parentCount:any;
+  teacherCount:any;
+  staffCount:any;
+
+  constructor(private eref: ElementRef,private http:HttpClient, private route: ActivatedRoute, private router: Router) { 
+}
 
   ngOnInit() {
+
+    
+    let Metaurl='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/dashboard';
+    this.http.get<any>(Metaurl).toPromise().then(
+      data => {
+        console.log(data);
+        this.studentCount = data.student;
+        this.parentCount = data.parent;
+        this.teacherCount = data.teacher;
+        this.staffCount = data.staff;
+      }
+    ); 
+
+  
+
     this.breadCrumbItems = [{ label: 'UBold', path: '/' }, { label: 'Dashboard', path: '/', active: true }];
 
     /**
