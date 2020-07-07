@@ -69,7 +69,8 @@ export class ListComponent implements OnInit {
         console.log('-----accepted id----', id)
           let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/language/delete/'+id;
           this.apiurl.create(url, {}).subscribe( lists => {
-            console.log('---success delete-----')
+            console.log('---success delete-----');
+            this.refreshPage();
           },error => {
             console.log('---errror---')
           })
@@ -96,5 +97,11 @@ export class ListComponent implements OnInit {
       })
     },100)
   }
+
+  refreshPage() {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(['/global/language/list']);
+}
 
 }
