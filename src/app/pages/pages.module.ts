@@ -5,6 +5,7 @@ import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { DashboardsModule } from './dashboards/dashboards.module';
 import{ StudentModule} from './School/student/student.module';
+import {ActivityModule} from './School/activity/activity.module';
 import { AppsModule } from './apps/apps.module';
 import { EmailModule } from './email/email.module';
 import { ExtrasModule } from './extras/extras.module';
@@ -20,6 +21,7 @@ import { AdminUIModule } from './adminUI/adminUI.module';
 import { ErrorModule } from './error/error.module';
 
 import { PagesRoutingModule } from './pages-routing.module';
+
 /* import { StudentsComponent } from './School/students/students.component';
 import { ListComponent } from './School/students/list/list.component';
 import { AddComponent } from './School/students/add/add.component';
@@ -33,6 +35,7 @@ import { ViewComponent } from './School/students/view/view.component'; */
     NgbDropdownModule,
     DashboardsModule,
     StudentModule,
+    ActivityModule,
     AppsModule,
     EmailModule,
     ExtrasModule,
@@ -47,6 +50,7 @@ import { ViewComponent } from './School/students/view/view.component'; */
     AdminUIModule,
     ErrorModule,
     PagesRoutingModule,
-  ]
+  ],
+  declarations: []
 })
 export class PagesModule { }
