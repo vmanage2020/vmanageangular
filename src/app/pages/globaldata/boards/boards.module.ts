@@ -5,6 +5,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { DataTablesModule } from 'angular-datatables';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 import { BoardsRoutingModule } from './boards-routing.module';
 import { BoardsComponent } from './boards.component';
 import { AddComponent } from './add/add.component';
@@ -17,6 +19,7 @@ import { ListComponent } from './list/list.component';
     BoardsRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    NgbModule,
     DataTablesModule
   ]
 })

@@ -20,6 +20,7 @@ import { CRMModule } from './crm/crm.module';
 import { AdminUIModule } from './adminUI/adminUI.module';
 import { ErrorModule } from './error/error.module';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PagesRoutingModule } from './pages-routing.module';
 //import { ActivitiesComponent } from './globaldata/activities/activities.component';
 //import { AddComponent } from './globaldata/activities/add/add.component';
@@ -58,6 +59,7 @@ import { PagesRoutingModule } from './pages-routing.module';
     AdminUIModule,
     ErrorModule,
     PagesRoutingModule,
+    NgbModule
   ],
   //declarations: [ActivitiesComponent, AddComponent, ListComponent],
   //declarations: [BoardsComponent, AddComponent, ListComponent],

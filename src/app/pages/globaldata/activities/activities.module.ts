@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ActivityRoutingModule } from './activities-routing.module';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 import {HttpClientModule} from '@angular/common/http';
 import { DataTablesModule } from 'angular-datatables';
 
@@ -20,6 +22,7 @@ import { ListComponent } from '../../globaldata/activities/list/list.component';
     ReactiveFormsModule,
     ActivityRoutingModule,
     DataTablesModule,
+    NgbModule,
     HttpClientModule
   ]
 })
