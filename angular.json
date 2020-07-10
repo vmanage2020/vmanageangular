@@ -31,6 +31,7 @@
               "src/assets/scss/app.scss",
               "src/assets/scss/icons.scss",
               "./node_modules/datatables.net-dt/css/jquery.dataTables.css"
+              
             ],
             "scripts": [
               "./node_modules/apexcharts/dist/apexcharts.min.js",
