@@ -5,13 +5,14 @@ import { GroupinformationsComponent } from './groupinformations/groupinformation
 import { GroupaddComponent } from './groupadd/groupadd.component';
 import { LogininformationsComponent } from './logininformations/logininformations.component';
 import { LoginaddComponent } from './loginadd/loginadd.component';
+import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [GroupinformationsComponent, GroupaddComponent, LogininformationsComponent, LoginaddComponent],
   imports: [
-    CommonModule,UsersRoutingModule
+    CommonModule,UsersRoutingModule,FormsModule,ReactiveFormsModule
   ]
 })
 export class UsersModule { }
