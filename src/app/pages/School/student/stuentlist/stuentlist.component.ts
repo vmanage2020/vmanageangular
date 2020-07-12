@@ -15,7 +15,7 @@ declare var $;
   styleUrls: ['./stuentlist.component.scss']
 })
 export class StuentlistComponent implements OnInit {
-  url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/students';
+  Surl='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/students';
  mygrou=[1,2,3,4,5];
 
   SListitems: any[] = [];
@@ -58,7 +58,8 @@ export class StuentlistComponent implements OnInit {
   {
     
     setTimeout(() => {
-      this.apiurl.lists('/students').subscribe( lists => {
+      var url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/students';
+      this.apiurl.lists(url).subscribe( lists => {
         //console.log('----lists----',lists)
         this.SListitems = lists.users;
 
