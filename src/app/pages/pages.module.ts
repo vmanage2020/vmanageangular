@@ -22,6 +22,9 @@ import { ErrorModule } from './error/error.module';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PagesRoutingModule } from './pages-routing.module';
+///import { GlobalComponent } from './globaldata/global/global.component';
+//import { AddComponent } from './globaldata/global/add/add.component';
+//import { ListComponent } from './globaldata/global/list/list.component';
 //import { ActivitiesComponent } from './globaldata/activities/activities.component';
 //import { AddComponent } from './globaldata/activities/add/add.component';
 //import { ListComponent } from './globaldata/activities/list/list.component';
@@ -61,6 +64,7 @@ import { PagesRoutingModule } from './pages-routing.module';
     PagesRoutingModule,
     NgbModule
   ],
+  //declarations: [GlobalComponent, AddComponent, ListComponent],
   //declarations: [ActivitiesComponent, AddComponent, ListComponent],
   //declarations: [BoardsComponent, AddComponent, ListComponent],
   //declarations: [LanguagesComponent, AddComponent, ListComponent]
