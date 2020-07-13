@@ -69,16 +69,23 @@ export class StudentComponent implements OnInit {
   religionSelect = true;
   communitySelect = true;
 
+  dropdownAcademicYearArray: any[] = [];
+  dropdownStandardArray: any[] = [];
+  dropdownSecondLanguageArray: any[] = [];
+  dropdownCitizenArray: any[] = [];
+  dropdownCertificateArray: any[] = [];
+  dropdownCommunityArray: any[] = [];
+  dropdownReligionArray: any[] = [];
+  dropdownBloodArray: any[] = [];
+
  dropdownSchoolArray: any = [
     { id: 1, name: 'Vidyalakshmi Matric School' },
     { id: 2, name: 'Vidyalakshmi CBSE School' },
     { id: 3, name: 'Vidyalakshmi ICSE school' }
   ];
 
-  dropdownAcademicYearArray: any = [
-    { id:"2020", name:"2020" }
-  ];
-
+  
+  
   dropdownBoardArray: any = [
     { id:1, name:"Matric " },
     { id:2, name:"CBSE" },
@@ -97,7 +104,8 @@ export class StudentComponent implements OnInit {
     { id:7, name:"Malayalam" }
   ];
 
-  dropdownStandardArray: any = [
+  
+  /* dropdownStandardArray: any = [
     { id:1, name:"Pre-KG" },
     { id:2, name:"LKG" },
     { id:3, name:"UKG" },
@@ -113,7 +121,7 @@ export class StudentComponent implements OnInit {
     { id:13, name:"X" },
     { id:14, name:"XI" },
     { id:15, name:"XII" }
-  ];
+  ]; */
 
   
   dropdownGroupArray: any = [
@@ -128,7 +136,7 @@ export class StudentComponent implements OnInit {
     */
   ];
 
-  dropdownSecondLanguageArray: any = [
+  /* dropdownSecondLanguageArray: any = [
     { id:1, name:"English" },
     { id:2, name:"Tamil" },
     { id:3, name:"Sanskrit" },
@@ -136,7 +144,7 @@ export class StudentComponent implements OnInit {
     { id:5, name:"Telugu" },
     { id:6, name:"Kannada" },
     { id:7, name:"Malayalam" }
-  ];
+  ]; */
 
   dropdownMotherLanguageArray: any = [
     { id:1, name:"English" },
@@ -205,13 +213,13 @@ export class StudentComponent implements OnInit {
     { id:7, name:"Malayalam" }
   ];
   
- dropdownCitizenArray: any = [
+/*  dropdownCitizenArray: any = [
   { id: 1, name: 'INDIAN' },
   { id: 2, name: 'FOREIGNER' },
   { id: 3, name: 'OTHER' }
-];
+]; */
 
-dropdownBloodArray: any = [
+/* dropdownBloodArray: any = [
   { id: 1, name: 'A+' },
   { id: 2, name: 'A-' },
   { id: 3, name: 'B+' },
@@ -221,9 +229,9 @@ dropdownBloodArray: any = [
   { id: 7, name: 'O+' },
   { id: 8, name: 'O-' },
   { id: 9, name: 'Other' }
-];
+]; */
 
-dropdownReligionArray: any = [
+/* dropdownReligionArray: any = [
   { id: 1, name: 'Hinduism (Hindu)' },
   { id: 2, name: 'Christianity (Christian)' },
   { id: 3, name: 'Islam (Muslim)' },
@@ -231,9 +239,9 @@ dropdownReligionArray: any = [
   { id: 5, name: 'Buddhism' },
   { id: 6, name: 'Sikhism' },
   { id: 7, name: 'Others' },
-];
+]; */
 
-dropdownCommunityArray: any = [
+/* dropdownCommunityArray: any = [
   { id: 1, name: 'FC' },
   { id: 2, name: 'BC' },
   { id: 3, name: 'OBC' },
@@ -241,10 +249,10 @@ dropdownCommunityArray: any = [
   { id: 5, name: 'SC' },
   { id: 6, name: 'ST' },
   { id: 7, name: 'Other' }
-];
+]; */
 
 
-dropdownCertificateArray: any = [
+/* dropdownCertificateArray: any = [
   { id: 1, name: 'TRANSFER CERTIFICATE' },
   { id: 2, name: 'BIRTH CERTIFICATE' },
   { id: 3, name: 'COMMUNITY CERTIFICATE' },
@@ -252,7 +260,7 @@ dropdownCertificateArray: any = [
   { id: 5, name: 'NATIVE CERTIFICATE' },
   { id: 6, name: 'CONTACT CERTIFICATE' },
   { id: 7, name: 'OTHER' }
-];
+]; */
 
 
   dropdownArray = [
@@ -300,6 +308,14 @@ dropdownCertificateArray: any = [
           this.dropdownSecondLanguageArray = data.languages;
           this.dropdownMotherLanguageArray = data.languages;
           this.dropdownLanguageArray = data.languages;
+          this.dropdownCertificateArray = data.certificates;
+          this.dropdownCitizenArray = data.citizens;
+          this.dropdownCommunityArray = data.communities;
+          this.dropdownReligionArray = data.religions;
+          this.dropdownBloodArray = data.bloodgroups;
+          this.dropdownStandardArray = data.standards;
+          //data.groups;
+          this.dropdownAcademicYearArray = data.years;
         }
       )   
     
@@ -553,7 +569,7 @@ dropdownCertificateArray: any = [
   citizenEvent(event:any)
   {
     console.log('----event---', event)
-    if( event.name =='FOREIGNER')
+    if( event.id ==2)
     {
       this.foreigndetailOpt = true;
 
