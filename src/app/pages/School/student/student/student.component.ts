@@ -314,7 +314,7 @@ export class StudentComponent implements OnInit {
           this.dropdownReligionArray = data.religions;
           this.dropdownBloodArray = data.bloodgroups;
           this.dropdownStandardArray = data.standards;
-          //data.groups;
+          this.dropdownGroupArray = data.groups;
           this.dropdownAcademicYearArray = data.years;
         }
       )   
@@ -630,7 +630,7 @@ export class StudentComponent implements OnInit {
     if( eventValue == '14' || eventValue == '15' )
     { 
       
-      this.dropdownGroupArray = [
+      /* this.dropdownGroupArray = [
         { id:1, name:"General" },
         { id:2, name:"Science" },
         { id:3, name:"Maths" },
@@ -638,7 +638,7 @@ export class StudentComponent implements OnInit {
         { id:5, name:"Computer" },
         { id:6, name:"Agri" },
         { id:7, name:"Account" }
-      ];
+      ]; */
       this.groupSelect = false;
     }
     else

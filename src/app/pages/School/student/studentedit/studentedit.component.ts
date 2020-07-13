@@ -74,15 +74,24 @@ export class StudenteditComponent implements OnInit {
   religionSelect = true;
   communitySelect = true;
 
+  dropdownAcademicYearArray: any[] = [];
+  dropdownStandardArray: any[] = [];
+  dropdownSecondLanguageArray: any[] = [];
+  dropdownCitizenArray: any[] = [];
+  dropdownCertificateArray: any[] = [];
+  dropdownCommunityArray: any[] = [];
+  dropdownReligionArray: any[] = [];
+  dropdownBloodArray: any[] = [];
+
  dropdownSchoolArray: any = [
     { id: 1, name: 'Vidyalakshmi Matric School' },
     { id: 2, name: 'Vidyalakshmi CBSE School' },
     { id: 3, name: 'Vidyalakshmi ICSE school' }
   ];
 
-  dropdownAcademicYearArray: any = [
+  /* dropdownAcademicYearArray: any = [
     { id:"2020", name:"2020" }
-  ];
+  ]; */
 
   dropdownBoardArray: any = [
     { id:1, name:"Matric " },
@@ -102,7 +111,7 @@ export class StudenteditComponent implements OnInit {
     { id:7, name:"Malayalam" }
   ];
 
-  dropdownStandardArray: any = [
+  /* dropdownStandardArray: any = [
     { id:1, name:"Pre-KG" },
     { id:2, name:"LKG" },
     { id:3, name:"UKG" },
@@ -118,7 +127,7 @@ export class StudenteditComponent implements OnInit {
     { id:13, name:"X" },
     { id:14, name:"XI" },
     { id:15, name:"XII" }
-  ];
+  ]; */
 
   
   dropdownGroupArray: any = [
@@ -131,7 +140,7 @@ export class StudenteditComponent implements OnInit {
     { id:7, name:"Account" }
   ];
 
-  dropdownSecondLanguageArray: any = [
+ /*  dropdownSecondLanguageArray: any = [
     { id:1, name:"English" },
     { id:2, name:"Tamil" },
     { id:3, name:"Sanskrit" },
@@ -140,7 +149,7 @@ export class StudenteditComponent implements OnInit {
     { id:6, name:"Kannada" },
     { id:7, name:"Malayalam" }
   ];
-
+ */
   dropdownMotherLanguageArray: any = [
     { id:1, name:"English" },
     { id:2, name:"Tamil" },
@@ -208,7 +217,7 @@ export class StudenteditComponent implements OnInit {
     { id:7, name:"Malayalam" }
   ];
   
- dropdownCitizenArray: any = [
+ /* dropdownCitizenArray: any = [
   { id: 1, name: 'INDIAN' },
   { id: 2, name: 'FOREIGNER' },
   { id: 3, name: 'OTHER' }
@@ -254,7 +263,7 @@ dropdownCertificateArray: any = [
   { id: 5, name: 'NATIVE CERTIFICATE' },
   { id: 6, name: 'CONTACT CERTIFICATE' },
   { id: 7, name: 'OTHER' }
-];
+]; */
 
 
 
@@ -305,6 +314,15 @@ dropdownCertificateArray: any = [
           this.dropdownSecondLanguageArray = data.languages;
           this.dropdownMotherLanguageArray = data.languages;
           this.dropdownLanguageArray = data.languages;
+
+          this.dropdownCertificateArray = data.certificates;
+          this.dropdownCitizenArray = data.citizens;
+          this.dropdownCommunityArray = data.communities;
+          this.dropdownReligionArray = data.religions;
+          this.dropdownBloodArray = data.bloodgroups;
+          this.dropdownStandardArray = data.standards;
+          this.dropdownGroupArray = data.groups;
+          this.dropdownAcademicYearArray = data.years;
         }
       )    
     
@@ -604,7 +622,7 @@ dropdownCertificateArray: any = [
     if( eventValue == '14' || eventValue == '15' )
     { 
       
-      this.dropdownGroupArray = [
+      /* this.dropdownGroupArray = [
         { id:1, name:"General" },
         { id:2, name:"Science" },
         { id:3, name:"Maths" },
@@ -612,7 +630,7 @@ dropdownCertificateArray: any = [
         { id:5, name:"Computer" },
         { id:6, name:"Agri" },
         { id:7, name:"Account" }
-      ];
+      ]; */
       this.groupSelect = false;
     }
     else
@@ -627,7 +645,7 @@ dropdownCertificateArray: any = [
   citizenEvent(event:any)
   {
     console.log('----event---', event)
-    if( event.name =='FOREIGNER')
+    if( event.id ==2)
     {
       this.foreigndetailOpt = true;
 
