@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-boards',
-  //templateUrl: './boards.component.html',
+  selector: 'app-global',
+  //templateUrl: './global.component.html',
   template:`
   <!-- Alert -->
   <div *ngFor="let alert of alertMessages">
@@ -10,9 +10,9 @@ import { Component, OnInit } from '@angular/core';
   </div>
   <!-- Alert -->
   <router-outlet></router-outlet>`,
-  styleUrls: ['./boards.component.scss']
+  styleUrls: ['./global.component.scss']
 })
-export class BoardsComponent implements OnInit {
+export class GlobalComponent implements OnInit {
 
   constructor() { }
 

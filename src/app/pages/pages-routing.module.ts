@@ -9,9 +9,11 @@ const routes: Routes = [
   { path: 'school', loadChildren: () => import('./School/student/student.module').then(m => m.StudentModule) },
   { path: 'schoolapp', loadChildren: () => import('./School/student/student.module').then(m => m.StudentModule) },
   { path: 'schools', loadChildren: () => import('./School/students/students.module').then(m => m.StudentsModule) },
-  { path: 'global', loadChildren: () => import('./globaldata/languages/languages.module').then(m => m.LanguagesModule) },
-  { path: 'global', loadChildren: () => import('./globaldata/activities/activities.module').then(m => m.ActivitiesModule) },
-  { path: 'global', loadChildren: () => import('./globaldata/boards/boards.module').then(m => m.BoardsModule) },
+  
+  { path: '', loadChildren: () => import('./globaldata/global/global.module').then(m => m.GlobalModule) },
+  //{ path: 'global', loadChildren: () => import('./globaldata/languages/languages.module').then(m => m.LanguagesModule) },
+  //{ path: 'global', loadChildren: () => import('./globaldata/activities/activities.module').then(m => m.ActivitiesModule) },
+  //{ path: 'global', loadChildren: () => import('./globaldata/boards/boards.module').then(m => m.BoardsModule) },
 
   { path: 'apps', loadChildren: () => import('./apps/apps.module').then(m => m.AppsModule) },
   { path: 'email', loadChildren: () => import('./email/email.module').then(m => m.EmailModule) },

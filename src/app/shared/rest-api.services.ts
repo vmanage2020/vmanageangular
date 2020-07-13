@@ -29,7 +29,7 @@ export class RestApiService {
 	}
 
 	lists(apiPath: string, isStore?: boolean, listKey?: string): Observable<any> {
-		return this.http.get<any>(this.baseAPIUrl + apiPath, this.httpOptions)
+		return this.http.get<any>( apiPath, this.httpOptions)
 			.pipe(
 				map(response => {
                     //console.log('----response---', response)

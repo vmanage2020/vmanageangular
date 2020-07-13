@@ -1,26 +1,29 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { GlobalRoutingModule } from './global-routing.module';
+
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
 import { DataTablesModule } from 'angular-datatables';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
-import { BoardsRoutingModule } from './boards-routing.module';
-import { BoardsComponent } from './boards.component';
+import { GlobalComponent } from './global.component';
 import { AddComponent } from './add/add.component';
 import { ListComponent } from './list/list.component';
 
+import { GlobalService } from './global.service';
+
 @NgModule({
-  declarations: [BoardsComponent, ListComponent, AddComponent],
+  declarations: [GlobalComponent, AddComponent, ListComponent ],
+  providers: [GlobalService],
   imports: [
     CommonModule,
-    BoardsRoutingModule,
+    GlobalRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
-    DataTablesModule
+    DataTablesModule.forRoot()
   ]
 })
-export class BoardsModule { }
+export class GlobalModule { }
