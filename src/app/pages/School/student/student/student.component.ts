@@ -77,6 +77,8 @@ export class StudentComponent implements OnInit {
   dropdownCommunityArray: any[] = [];
   dropdownReligionArray: any[] = [];
   dropdownBloodArray: any[] = [];
+  dropdownPrevStandardArray: any[] = [];
+  datagroup: any[] = [];
 
  dropdownSchoolArray: any = [
     { id: 1, name: 'Vidyalakshmi Matric School' },
@@ -175,7 +177,7 @@ export class StudentComponent implements OnInit {
   ];
 
   
-  dropdownPrevStandardArray: any = [
+/*   dropdownPrevStandardArray: any = [
     { id:1, name:"Pre-KG" },
     { id:2, name:"LKG" },
     { id:3, name:"UKG" },
@@ -191,7 +193,7 @@ export class StudentComponent implements OnInit {
     { id:13, name:"X" },
     { id:14, name:"XI" },
     { id:15, name:"XII" }
-  ];
+  ]; */
 
   dropdownActivityArray: any =[
     { id:1, name:"Sport" },
@@ -314,7 +316,10 @@ export class StudentComponent implements OnInit {
           this.dropdownReligionArray = data.religions;
           this.dropdownBloodArray = data.bloodgroups;
           this.dropdownStandardArray = data.standards;
-          this.dropdownGroupArray = data.groups;
+
+          this.dropdownPrevStandardArray = data.standards;
+
+          this.datagroup = data.groups;
           this.dropdownAcademicYearArray = data.years;
         }
       )   
@@ -627,9 +632,9 @@ export class StudentComponent implements OnInit {
     //this.validationform.controls['stu_adm_prev_class'].enable();
       this.previousSchoolOpt = true;
     }
-    if( eventValue == '14' || eventValue == '15' )
+    if( eventValue == '16' || eventValue == '17' )
     { 
-      
+      this.dropdownGroupArray =  this.datagroup;
       /* this.dropdownGroupArray = [
         { id:1, name:"General" },
         { id:2, name:"Science" },
