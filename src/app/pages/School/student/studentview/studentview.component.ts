@@ -246,6 +246,8 @@ sexval:any;
 phychan:any;
 visdef:any;
 busfacval:any;
+emode:any;
+readability:any;
 stuinf:any=25;
 stufore:any=25;
   constructor(private http:HttpClient,private route: ActivatedRoute) {
@@ -264,6 +266,18 @@ stufore:any=25;
         this.dropdownSecondLanguageArray = data.languages;
         this.dropdownMotherLanguageArray = data.languages;
         this.dropdownLanguageArray = data.languages;
+        this.dropdownCertificateArray = data.certificates;
+        this.dropdownCitizenArray = data.citizens;
+        this.dropdownCommunityArray = data.communities;
+        this.dropdownReligionArray = data.religions;
+        this.dropdownBloodArray = data.bloodgroups;
+        this.dropdownStandardArray = data.standards;
+
+        this.dropdownPrevStandardArray = data.standards;
+
+        //this.datagroup = data.groups;
+        this.dropdownAcademicYearArray = data.years;
+       // console.log( this.dropdownAcademicYearArray+"__________shhhhh");
       }
     ) 
 
@@ -271,7 +285,7 @@ stufore:any=25;
     this.resourceID = this.route.snapshot.paramMap.get('id');
 
   this.url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/student/'+this.resourceID;
-  console.log(this.url);
+ // console.log(this.url);
     this.http.get<any>(this.url).toPromise().then(data => {
    
      //for(let key in data)
@@ -279,24 +293,28 @@ stufore:any=25;
     //  this.SViewitems.push(data);
       
      //console.log( this.SListitems[1].users[0].stu_prf_stud_name+"_____________hi");
-     //console.log( this.SViewitems);
+     console.log( this.SViewitems);
      const dt = data;
 
        if(dt['student']){
-         console.log(dt['student']);
+        // console.log(dt['student']);
 
          this.SViewitems=dt['student'];
          
          if(this.SViewitems.stu_adm_mode==1) {
           this.SViewitems.stu_adm_mode="Regular";
+          this.emode="Regular";
          } else {
           this.SViewitems.stu_adm_mode="Transfer";
+          this.emode="Transfer";
          }
 
          if(this.SViewitems.stu_read_mode==1) {
           this.SViewitems.stu_read_mode="Yes";
+          this.readability="Yes";
          } else {
           this.SViewitems.stu_read_mode="No";
+          this.readability="No";
          }
 
          if(this.SViewitems.stu_prf_parents_old_stu==1) {
@@ -344,20 +362,20 @@ stufore:any=25;
 
          this.SViewDoc=dt['studentdocument'];
         // console.log(this.SViewitems.student_documents);
-        console.log(this.SViewDoc);
+      //  console.log(this.SViewDoc);
         this.parseDate(this.SViewitems.stu_prf_dob);
         //console.log(this.SViewitems.stu_prf_current_Semester+"=="+"Pre-KG" + "||" +this.SViewitems.stu_prf_current_Semester+"=="+"LKG"+"__________________Hi");
         if(this.SViewitems.stu_prf_current_Semester==1 || this.SViewitems.stu_prf_current_Semester==2)
         {
           this.stuinf=1;
-         $("#set_"+this.stuinf).hide();
+         $("#psi").hide();
         // this.ctrlmainhead.splice(this.stuinf, 1);
          
         }
         if(this.SViewitems.stu_prf_citizen_fk!=2)
         {
           this.stufore=5;
-          $("#set_"+this.stufore).hide();
+           $("#fi").hide();
         }
         if(this.SViewitems.stu_adm_stu_image==null)
         {
@@ -371,6 +389,7 @@ stufore:any=25;
       // this.agevalue=String(this.parseDate(this.SViewitems.stu_prf_dob));
       //  this.dropdownArray[0][16].push(this.agevalue);
       //console.log(this.daimag);
+     // console.log(this.dropdownMotherLanguageArray[this.SViewitems.stu_mother_medium_ins_fk-1].name+"__________hello");
        }
     })
     //console.log(this.ctrlmainhead[0])
