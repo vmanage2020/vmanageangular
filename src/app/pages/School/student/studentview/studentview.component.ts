@@ -277,7 +277,7 @@ stufore:any=25;
 
         //this.datagroup = data.groups;
         this.dropdownAcademicYearArray = data.years;
-       // console.log( this.dropdownAcademicYearArray+"__________shhhhh");
+      // console.log( this.data+"__________shhhhh");
       }
     ) 
 

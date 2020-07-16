@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { RestApiService } from '../../../../shared/rest-api.services';
 //import { GlobalService } from '../global.service';
 import { ActivatedRoute, Router,Params, NavigationEnd, RouterState } from '@angular/router';
 import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
+import { UserserviceService } from '../userservice.service'; 
 import swal from 'sweetalert2';
-
+/* import 'rxjs/add/operator/map'; */
 
 @Component({
   selector: 'app-loginadd',
@@ -25,7 +27,7 @@ export class LoginaddComponent implements OnInit {
   dropdownSchoolArray: any = ["","Vidyalakshmi Matric School","Vidyalakshmi CBSE School","Vidyalakshmi ICSE school"];
   dropdownGroupArray: any = ["","Group-1","Group-2","Group-3"];
 
-  constructor( private apiService: RestApiService,
+  constructor( private apiService: RestApiService, private http:HttpClient, private srvCart: UserserviceService, 
     // private modalService: NgbModal,
      //private globalService: GlobalService,
      private config: NgbModalConfig,
@@ -42,7 +44,7 @@ export class LoginaddComponent implements OnInit {
 
 
 
-var url = 'https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/usergroups';
+var url = 'https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/loginusers';
     this.apiService.lists(url).subscribe( lists => {
 
       this.Listitems =  lists.data ;   
@@ -61,7 +63,7 @@ var url = 'https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/use
   }
 
 
-  editData(id)
+ /*  editData(id)
   {
     console.log('---id----',id)
    
@@ -83,7 +85,7 @@ var url = 'https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/use
       {
         console.log('-----accepted id----', id)
 
-                let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/usergroups/delete/'+id;
+                let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/loginusers/delete/'+id;
           this.apiService.create(url, {}).subscribe( lists => {
             console.log('---success delete-----');
            // this.refreshPage();
@@ -92,9 +94,21 @@ var url = 'https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/use
           })
       }
     })
+  } */
+
+  navigateadd()
+  {
+    this.router.navigate(['/groupadd']);
   }
-
-
-
+ /*  logviewf()
+  {
+    this.router.navigate(['/loginviewform']);
+    //routerLink="/loginviewform/{{user.stu_prf_id_pk}}"
+  } */
+  navigateview($event:any)
+  {
+    console.log($event);
+    this.srvCart=$event;
+  }
 }
 

@@ -15,7 +15,7 @@
     <div class="col-lg-12">
       <div class="ibox float-e-margins">
         <div class="ibox-title">
-          <button style="float: right;"class="btn btn-info" (click)="openModal('custom-modal-1')">Add</button >
+          <button style="float: right;"class="btn btn-info" (click)="navigateadd()">Add</button >
         </div>
         <div class="ibox-content">
 
@@ -42,8 +42,9 @@
                   <td>{{list.users_appl_userid_fk}}</td>
                   <td>{{list.users_name}}</td>
                   <td class="center">
-                  <a (click)="editData(list.grps_id_pk)" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                  <a  (click)="deleteData(list.grps_id_pk)"class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                  
+                  <a (click)="navigateview(list.users_id_pk)"  class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                  <a href="#" class="action-icon"> <i class="mdi mdi-delete"></i></a> 
                   </td>
                 </tr>
                   

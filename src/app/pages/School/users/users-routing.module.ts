@@ -5,7 +5,7 @@ import { GroupinformationsComponent } from './groupinformations/groupinformation
 import { GroupaddComponent } from './groupadd/groupadd.component';
 import { LogininformationsComponent } from './logininformations/logininformations.component';
 import { LoginaddComponent } from './loginadd/loginadd.component';
-
+import { LoginviewComponent } from './loginview/loginview.component';
 
 const routes: Routes = [
   {
@@ -16,14 +16,18 @@ const routes: Routes = [
     path: 'groupadd',
     component: GroupaddComponent
   },
-   {
+  {
     path: 'logininform',
     component: LogininformationsComponent
   },
   {
-   path: 'loginadd',
-   component: LoginaddComponent
- }
+    path: 'loginadd',
+    component: LoginaddComponent
+  },
+  {
+    path: 'loginviewform/:id',
+    component: LoginviewComponent
+  }
 ];
 
 @NgModule({

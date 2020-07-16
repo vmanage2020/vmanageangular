@@ -161,13 +161,13 @@ export class AddComponent implements OnInit {
       this.PageLabel = ((this.paramName == 'academicboard') ? 'Academic Board':
       ((this.paramName == 'activity') ? 'Activity': 
       ((this.paramName == 'language') ? 'Language':
-      ((this.paramName == 'groupname') ? 'Group':
+      ((this.paramName == 'groupname') ? 'Elective Group':
       ((this.paramName == 'bloodgroup') ? 'Blood Group':
       ((this.paramName == 'religion') ? 'Religion':
-      ((this.paramName == 'community') ? 'Community':
+      ((this.paramName == 'community') ? 'Race/Community':
       ((this.paramName == 'certificatename') ? 'Certificate':
       ((this.paramName == 'citizen') ? 'Citizen':
-      ((this.paramName == 'standard') ? 'Standard':
+      ((this.paramName == 'standard') ? 'Grade/Standard':
       ((this.paramName == 'academicyear') ? 'Academic Year': '')))))))))));
     }
 

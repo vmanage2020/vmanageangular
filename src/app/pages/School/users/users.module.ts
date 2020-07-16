@@ -7,13 +7,15 @@ import { LogininformationsComponent } from './logininformations/logininformation
 import { LoginaddComponent } from './loginadd/loginadd.component';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { DataTablesModule } from 'angular-datatables';
-
-
+import { LoginviewComponent } from './loginview/loginview.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { UserserviceService } from './userservice.service'; 
 @NgModule({
-  declarations: [GroupinformationsComponent, GroupaddComponent, LogininformationsComponent, LoginaddComponent],
+  declarations: [GroupinformationsComponent, GroupaddComponent, LogininformationsComponent, LoginaddComponent, LoginviewComponent],
   imports: [
-    CommonModule,UsersRoutingModule,FormsModule,ReactiveFormsModule,DataTablesModule
-  ],
+    CommonModule,UsersRoutingModule,FormsModule,ReactiveFormsModule,DataTablesModule,NgSelectModule],
+    providers: [UserserviceService],
   bootstrap: [GroupaddComponent,LoginaddComponent]
+  
 })
 export class UsersModule { }

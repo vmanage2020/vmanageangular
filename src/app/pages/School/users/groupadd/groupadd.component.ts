@@ -95,6 +95,9 @@ export class GroupaddComponent implements OnInit {
     })
   }
 
-
+  navigateadd()
+{
+  this.router.navigate(['/groupinform']);
+}
 
 }
