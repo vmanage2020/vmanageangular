@@ -72,7 +72,7 @@ export class StudentinfoComponent  implements OnInit {
   bloodSelect = true;
   religionSelect = true;
   communitySelect = true;
-
+  datagroup: any[] = [];
  dropdownSchoolArray: any = [
     { id: 1, name: 'Vidyalakshmi Matric School' },
     { id: 2, name: 'Vidyalakshmi CBSE School' },
@@ -298,6 +298,17 @@ dropdownCertificateArray: any = [
         this.dropdownSecondLanguageArray = data.languages;
         this.dropdownMotherLanguageArray = data.languages;
         this.dropdownLanguageArray = data.languages;
+        this.dropdownCertificateArray = data.certificates;
+        this.dropdownCitizenArray = data.citizens;
+        this.dropdownCommunityArray = data.communities;
+        this.dropdownReligionArray = data.religions;
+        this.dropdownBloodArray = data.bloodgroups;
+        this.dropdownStandardArray = data.standards;
+
+        this.dropdownPrevStandardArray = data.standards;
+
+        this.datagroup = data.groups;
+        this.dropdownAcademicYearArray = data.years;
       }
     ) 
 
@@ -447,6 +458,17 @@ dropdownCertificateArray: any = [
 
 
     });
+    
+    this.validationform.controls['stu_prev_degree_code'].disable();
+    this.validationform.controls['stu_prev_medium_ins_fk'].disable();
+    //this.validationform.controls['stu_adm_prev_colname'].disable();
+    //this.validationform.controls['stu_adm_prev_class'].disable();
+
+    this.validationform.controls['stu_foreign_country_name'].disable();
+    this.validationform.controls['stu_foreign_passport_no'].disable();
+    this.validationform.controls['stu_foreign_passport_valid_date'].disable();
+    this.validationform.controls['stu_foreign_visa_no'].disable();
+    this.validationform.controls['stu_foreign_visa_valid_date'].disable();
 
     this.duplicateCertifcateColumns = this.validationform.get('certificateColumns') as FormArray;
     this.submit = false;

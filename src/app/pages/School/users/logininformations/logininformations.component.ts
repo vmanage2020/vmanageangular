@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild, Input, Output } from '@angular/core';
+import { FormBuilder, Validators, FormGroup, FormArray } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
+import { RestApiService } from '../../../../shared/rest-api.services';
+import swal from 'sweetalert2';
+/* import 'rxjs/add/operator/map'; */
 
 
 
@@ -10,60 +15,59 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./logininformations.component.scss']
 })
 export class LogininformationsComponent implements OnInit {
-  registerForm: FormGroup;
+  useraddForm: FormGroup;
   submitted = false;
-
-  constructor(private formBuilder: FormBuilder) { }
+  rollitemsget:any=[];
+  constructor( private apiService: RestApiService, private http: HttpClient,private formBuilder: FormBuilder, private route: ActivatedRoute,
+   private router: Router) { }
 
   ngOnInit(): void {
-    this.registerForm = this.formBuilder.group({
-      SchoolName: ['', Validators.required],
-      GroupName: ['', Validators.required],
-      Name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required],
-  }, {
-      validator: this.MustMatch('password', 'confirmPassword')
+    this.useraddForm = this.formBuilder.group({
+        col_code_fk: ['', Validators.required],
+        users_name: ['', Validators.required]
   });
+
+  var roleget =  'https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/usergroups';
+  this.apiService.lists(roleget).subscribe(lists => {
+    this.rollitemsget=lists.data;
+  });
+
   }
 
-   // convenience getter for easy access to form fields
-   get f() { return this.registerForm.controls; }
+  get form() {
+    return this.useraddForm.controls;
+  }
 
-   onSubmit() {
-       this.submitted = true;
-
-       // stop here if form is invalid
-       if (this.registerForm.invalid) {
-           return;
-       }
-
-       // display form values on success
-       alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
-   }
-
-   onReset() {
-       this.submitted = false;
-       this.registerForm.reset();
-   }
-
-   MustMatch(controlName: string, matchingControlName: string) {
-    return (formGroup: FormGroup) => {
-        const control = formGroup.controls[controlName];
-        const matchingControl = formGroup.controls[matchingControlName];
-
-        if (matchingControl.errors && !matchingControl.errors.mustMatch) {
-            // return if another validator has already found an error on the matchingControl
-            return;
-        }
-
-        // set error on matchingControl if validation fails
-        if (control.value !== matchingControl.value) {
-            matchingControl.setErrors({ mustMatch: true });
-        } else {
-            matchingControl.setErrors(null);
+  usersadd() {
+    let addRoll ={
+        "grps_desc": null,
+        "col_code_fk": 1,
+        "status": 0,
+        "create_by": 1,
+        "create_date": "2020-07-17 11:33:17",
+        "edit_by": 0,
+        "edit_date": "2020-07-17 11:33:17",
+        "return": {
+            "message": "Error on Insert"
         }
     }
+
+    let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/loginuser';
+    console.log(url);
+
+   this.http.post<any>(url, addRoll  ).subscribe(
+      data => {
+        console.log(data);
+       this.router.navigate(['/loginadd']);
+      },
+      error => {
+         console.log(error);    
+      }
+   )
+
+
   }
+
+
+
 }

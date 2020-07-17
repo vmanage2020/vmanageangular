@@ -25,8 +25,7 @@ export class GroupaddComponent implements OnInit {
   Listitems:any;
   paramName: any;
   data: any;
-  dropdownSchoolArray: any = ["","Vidyalakshmi Matric School","Vidyalakshmi CBSE School","Vidyalakshmi ICSE school"];
-
+  
   
   constructor( private apiService: RestApiService,
    // private modalService: NgbModal,

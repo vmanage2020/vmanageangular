@@ -34,14 +34,13 @@
                             </div>
                             <div class="col-lg-8">
                                 <div class="form-group">
-                                    <label>Group Name</label>
+                                    <label>Roll Name</label>
                                     <input type="text" autocomplete="off" formControlName="grps_desc"
-                                    placeholder="Group Name" class="form-control"
+                                    placeholder="Roll Name" class="form-control"
                                         [ngClass]="{ 'is-invalid': submitted && form.grps_desc.errors }" />
                                     <div *ngIf="submitted && form.grps_desc.errors"
                                         class="invalid-feedback">
-                                        <div *ngIf="form.grps_desc.errors.required">Previous School Name
-                                            is required
+                                        <div *ngIf="form.grps_desc.errors.required">Roll Name is required
                                         </div>
                                     </div>
                                     
