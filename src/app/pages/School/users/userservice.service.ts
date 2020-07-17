@@ -1,12 +1,23 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserserviceService {
-  valget:any;
+  private data:any;
+  
+  
+  /* setOption(value:any) {      
+    this.data = value;  
+  }  
+  
+  getOption() {  
+   // console.log(this.data+"___________________");
+    return this.data;  
+  }   */
   constructor() { 
-    console.log(this.valget+"__________goog");
+    
   }
   
 }

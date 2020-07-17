@@ -24,7 +24,7 @@
               <thead>
                 <tr>
                   <th>Sl.No</th>
-                  <th>School Name</th>
+                <!--   <th>School Name</th> -->
                   <th>Group Name</th>
                   <th>Name</th>
                   <th>E=mail</th>
@@ -37,13 +37,13 @@
                 
                 <tr class="gradeX" *ngFor="let list of data, index as i">
                   <td >{{i + 1}}</td>
-                  <td>{{dropdownSchoolArray[list.col_code_fk]}}</td>
+                 <!--  <td>{{dropdownSchoolArray[list.col_code_fk]}}</td> -->
                   <td>{{dropdownGroupArray[list.col_code_fk]}}</td>
                   <td>{{list.users_appl_userid_fk}}</td>
                   <td>{{list.users_name}}</td>
                   <td class="center">
                   
-                  <a (click)="navigateview(list.users_id_pk)"  class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                  <a routerLink="/loginviewform/1"  class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
                   <a href="#" class="action-icon"> <i class="mdi mdi-delete"></i></a> 
                   </td>
                 </tr>

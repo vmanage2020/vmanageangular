@@ -24,10 +24,12 @@ export class LoginaddComponent implements OnInit {
   Listitems:any;
   paramName: any;
   data: any;
+  eventdatas:any;
+  size:any;  
   dropdownSchoolArray: any = ["","Vidyalakshmi Matric School","Vidyalakshmi CBSE School","Vidyalakshmi ICSE school"];
   dropdownGroupArray: any = ["","Group-1","Group-2","Group-3"];
 
-  constructor( private apiService: RestApiService, private http:HttpClient, private srvCart: UserserviceService, 
+  constructor( private apiService: RestApiService,private http:HttpClient, private srvCart: UserserviceService, 
     // private modalService: NgbModal,
      //private globalService: GlobalService,
      private config: NgbModalConfig,
@@ -105,10 +107,13 @@ var url = 'https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/log
     this.router.navigate(['/loginviewform']);
     //routerLink="/loginviewform/{{user.stu_prf_id_pk}}"
   } */
-  navigateview($event:any)
+ /*  navigateview($event:any)
   {
-    console.log($event);
-    this.srvCart=$event;
-  }
+    console.log($event); */
+   // this.eventdatas=$event;
+    /* this.srvCart.setOption($event);   */
+    
+  /*   this.router.navigate(['/loginviewform']);
+  } */
 }
 

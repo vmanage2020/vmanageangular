@@ -3,7 +3,7 @@
     <div class="card-body">
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <div class="form-row">
-                <div class="form-group col">
+   <!--              <div class="form-group col">
                     <label>School Name</label>
                     <select formControlName="SchoolName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.SchoolName.errors }">
                         <option value=""></option>
@@ -15,7 +15,7 @@
                     <div *ngIf="submitted && f.SchoolName.errors" class="invalid-feedback">
                         <div *ngIf="f.SchoolName.errors.required">School Name is required</div>
                     </div>
-                </div>
+                </div> -->
                 <div class="form-group col">
                     <label>Group Name</label>
                     <select formControlName="GroupName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.GroupName.errors }">

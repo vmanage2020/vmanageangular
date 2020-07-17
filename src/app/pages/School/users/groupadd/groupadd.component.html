@@ -24,7 +24,7 @@
                 <thead>
                   <tr>
                     <th>Sl.No</th>
-                    <th>School Name</th>
+                   <!--  <th>School Name</th> -->
                     <th>Group Name</th>
                     <th>Actions</th>
                    
@@ -35,7 +35,7 @@
                   
                   <tr class="gradeX" *ngFor="let list of data, index as i">
                     <td >{{i + 1}}</td>
-                    <td>{{dropdownSchoolArray[list.col_code_fk]}}</td>
+                    <!-- <td>{{dropdownSchoolArray[list.col_code_fk]}}</td> -->
                     <td>{{list.grps_desc}}</td>
                     <td class="center">
                     <a (click)="editData(list.grps_id_pk)" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
