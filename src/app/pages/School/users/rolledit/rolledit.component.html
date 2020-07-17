@@ -2,33 +2,11 @@
     <div class="row">
         <div class="col-lg-12">
 
-            <form class="needs-validation" (ngSubmit)="validRoll()" [formGroup]="rollvalidationform">
+            <form class="needs-validation" (ngSubmit)="EditRoll()" [formGroup]="rollEditform">
                 <div class="card form-row">
                     <div class="card-body">
-                        <h2>Role Add</h2><br><br>
+                        <h2>Role Edit</h2><br><br>
                         <div class="row ">
-                           <!--  <div class="col-lg-2">
-
-                            </div>
-                            <div class="col-lg-8">
-                                <div class="form-group">
-                                    <label>School Name </label>
-                                    <select class="form-control">
-                                        <option value="" disabled selected>-SELECT-</option>
-                                        <option value="1"> School Name -1 </option>
-                                        <option value="2"> School Name -2 </option>
-                                        <option value="3"> School Name -3 </option>
-                                        <option value="4"> School Name -4 </option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-2">
-
-                            </div><br><br> -->
-
-
-
                             <div class="col-lg-2">
 
                             </div>
@@ -36,12 +14,11 @@
                                 <div class="form-group">
                                     <label>Group Name</label>
                                     <input type="text" autocomplete="off" formControlName="grps_desc"
-                                    placeholder="Group Name" class="form-control"
+                                    [(ngModel)]="rolledits[0].grps_desc" class="form-control"
                                         [ngClass]="{ 'is-invalid': submitted && form.grps_desc.errors }" />
                                     <div *ngIf="submitted && form.grps_desc.errors"
                                         class="invalid-feedback">
-                                        <div *ngIf="form.grps_desc.errors.required">Previous School Name
-                                            is required
+                                        <div *ngIf="form.grps_desc.errors.required">Group Name is required
                                         </div>
                                     </div>
                                     

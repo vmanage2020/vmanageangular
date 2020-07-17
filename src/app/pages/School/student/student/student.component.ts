@@ -723,16 +723,7 @@ export class StudentComponent implements OnInit {
             
     }
 
-   // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.validationform.value));
-    /*
- console.log( JSON.stringify(this.validationform.value));
-     
-     let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/student'
-    this.http.post<any>(url, this.validationform.value  ).subscribe(data => {
-      console.log(data);
-    })
 
-    */
 
     let postCert = {
       "col_code_fk": 1,

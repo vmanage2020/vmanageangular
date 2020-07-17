@@ -35,12 +35,12 @@
 
               <tbody>                
                 
-                <tr class="gradeX" *ngFor="let list of data, index as i">
+                <tr class="gradeX" *ngFor="let list2 of data, index as i">
                   <td >{{i + 1}}</td>
                  <!--  <td>{{dropdownSchoolArray[list.col_code_fk]}}</td> -->
-                  <td>{{dropdownGroupArray[list.col_code_fk]}}</td>
-                  <td>{{list.users_appl_userid_fk}}</td>
-                  <td>{{list.users_name}}</td>
+                  <td>{{dropdownGroupArray[list2.col_code_fk]}}</td>
+                  <td>{{list2.users_appl_userid_fk}}</td>
+                  <td>{{list2.users_name}}</td>
                   <td class="center">
                   
                   <a routerLink="/loginviewform/1"  class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>

@@ -332,6 +332,7 @@ dropdownCertificateArray: any = [
       )    
     
     this.resourceID = this.route.snapshot.paramMap.get('id');
+    console.log(this.resourceID+"___________________this.resourceID")
     this.url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/student/'+this.resourceID;
     console.log(this.url);
     this.http.get<any>(this.url).toPromise().then(data => {

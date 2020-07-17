@@ -2,9 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { RestApiService } from '../../../../shared/rest-api.services';
 //import { GlobalService } from '../global.service';
-import { ActivatedRoute, Router,Params, NavigationEnd, RouterState } from '@angular/router';
+import { ActivatedRoute, Router, Params, NavigationEnd, RouterState } from '@angular/router';
 import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
+
+import 'rxjs/add/operator/map';
 import swal from 'sweetalert2';
 
 @Component({
@@ -62,9 +64,10 @@ export class GroupaddComponent implements OnInit {
   }
 
 
-  editData(id)
+  editData(id:any)
   {
-    console.log('---id----',id)
+    console.log(id+"_______________id");
+    this.router.navigate(['/rolledit',id]);
    
   }
   deleteData(id)
@@ -84,10 +87,10 @@ export class GroupaddComponent implements OnInit {
       {
         console.log('-----accepted id----', id)
 
-                let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/usergroups/delete/'+id;
+                let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/usergroup/delete/'+id;
           this.apiService.create(url, {}).subscribe( lists => {
             console.log('---success delete-----');
-           // this.refreshPage();
+            this.router.navigate(['/groupadd']);
           },error => {
             console.log('---errror---')
           })

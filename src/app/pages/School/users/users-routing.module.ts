@@ -6,11 +6,17 @@ import { GroupaddComponent } from './groupadd/groupadd.component';
 import { LogininformationsComponent } from './logininformations/logininformations.component';
 import { LoginaddComponent } from './loginadd/loginadd.component';
 import { LoginviewComponent } from './loginview/loginview.component';
+import { RolleditComponent } from './rolledit/rolledit.component'; 
+
 
 const routes: Routes = [
   {
     path: 'groupinform',
     component: GroupinformationsComponent
+  },
+  {
+    path: 'rolledit/:id',
+    component: RolleditComponent
   },
   {
     path: 'groupadd',
