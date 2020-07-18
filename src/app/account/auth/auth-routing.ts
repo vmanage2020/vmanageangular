@@ -6,7 +6,7 @@ import { SignupComponent } from './signup/signup.component';
 import { ConfirmComponent } from './confirm/confirm.component';
 import { PasswordresetComponent } from './passwordreset/passwordreset.component';
 import { StudentinfoComponent } from './studentinfo/studentinfo.component';
-
+import { EndscreenComponent } from './endscreen/endscreen.component';
 const routes: Routes = [
     {
         path: 'login',
@@ -27,7 +27,12 @@ const routes: Routes = [
     {
         path: 'reset-password',
         component: PasswordresetComponent
-    }
+    },
+    {
+        path: 'endscreen',
+        component: EndscreenComponent
+    },
+
 ];
 
 @NgModule({

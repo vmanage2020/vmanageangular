@@ -567,7 +567,7 @@ dropdownCertificateArray: any = [
   citizenEvent(event:any)
   {
     console.log('----event---', event)
-    if( event.name =='FOREIGNER')
+    if( (event.name =='FOREIGNER') || (event.name =='Foreigner'))
     {
       this.foreigndetailOpt = true;
 
@@ -881,7 +881,7 @@ dropdownCertificateArray: any = [
         //$("#myModal").modal('show');
         
        // this.modalService.open(content);
-        this.router.navigate(['/account/login']);
+        this.router.navigate(['/account/endscreen']);
       },
       error => {
          console.log(error);    

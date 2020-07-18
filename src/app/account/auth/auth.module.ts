@@ -12,9 +12,9 @@ import { ConfirmComponent } from './confirm/confirm.component';
 import { PasswordresetComponent } from './passwordreset/passwordreset.component';
 import { StudentinfoComponent } from './studentinfo/studentinfo.component';
 import { NgSelectModule } from '@ng-select/ng-select';
-
+import { EndscreenComponent } from './endscreen/endscreen.component';
 @NgModule({
-  declarations: [LoginComponent, SignupComponent, ConfirmComponent, PasswordresetComponent, StudentinfoComponent],
+  declarations: [EndscreenComponent,LoginComponent, SignupComponent, ConfirmComponent, PasswordresetComponent, StudentinfoComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
