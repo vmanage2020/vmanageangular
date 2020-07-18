@@ -28,6 +28,7 @@ export class AddComponent implements OnInit {
   communityForm: FormGroup;
   certificateForm: FormGroup;
   citizenForm: FormGroup;
+  sectionForm: FormGroup;
 
   selectedId = '';
 
@@ -82,6 +83,9 @@ export class AddComponent implements OnInit {
     }else if( this.paramName == 'citizen')
     {
       this.createCitizenForm();
+    }else if( this.paramName == 'section')
+    {
+      this.createSectionForm();
     }
     
   }
@@ -153,6 +157,12 @@ export class AddComponent implements OnInit {
       Citizens: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(255)]]
     });
   }
+  createSectionForm()
+  {
+    this.sectionForm = this.formBuilder.group({
+      sec_des: [null, [Validators.required, Validators.minLength(1), Validators.maxLength(255)]]
+    });
+  }
 
   ngOnInit(): void {
 
@@ -167,8 +177,9 @@ export class AddComponent implements OnInit {
       ((this.paramName == 'community') ? 'Race/Community':
       ((this.paramName == 'certificatename') ? 'Certificate':
       ((this.paramName == 'citizen') ? 'Citizen':
+      ((this.paramName == 'section') ? 'section':
       ((this.paramName == 'standard') ? 'Grade/Standard':
-      ((this.paramName == 'academicyear') ? 'Academic Year': '')))))))))));
+      ((this.paramName == 'academicyear') ? 'Academic Year': ''))))))))))));
     }
 
     let con = this.globalService.selectedglobalId.getValue()
@@ -297,6 +308,17 @@ export class AddComponent implements OnInit {
         console.log('----selectedData----', selectedData);
         this.citizenForm.patchValue({
           Citizens        : selectedData.citizens[0].Citizens,
+        });
+      })
+    }else if( this.paramName == 'section')
+    {
+
+      let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/section/'+this.selectedId;
+
+      this.apiService.lists(url).subscribe((selectedData:any) => {
+        console.log('----selectedData----', selectedData.data);
+        this.sectionForm.patchValue({
+          sec_des        : selectedData.sections[0].sec_des,
         });
       })
     }
@@ -781,6 +803,49 @@ export class AddComponent implements OnInit {
           },error => {
             console.log('----create error---');console.log( error )
             this.commonService.changeMessage(['failure', 'Certificate failed. Please try again'])
+          })
+        }
+    }else if( this.paramName == 'section')
+    {
+      console.log('-----form value---'); console.log( this.sectionForm.value )
+
+        var sec_des = ((this.sectionForm.value.sec_des != null) ? this.sectionForm.value.sec_des : '')
+
+        if( sec_des != '' && this.selectedId == '')
+        {
+          var insertsectiondata = {sec_des: sec_des}
+
+          this.loader = true;
+          let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/section/add';
+
+          this.apiService.create(url, insertsectiondata).subscribe((data:any) => {
+
+            console.log('----data----', data)
+            this.commonService.changeMessage(['success', 'Section created successfully']);
+            this.router.navigate(['/global/section/list']);
+            this.activeModal.close(this.sectionForm.value);
+            this.loader = false;
+          },error => {
+            console.log('----create error---');console.log( error )
+            this.commonService.changeMessage(['failure', 'Section failed. Please try again'])
+          })
+        }else if( sec_des != '' && this.selectedId != '')
+        {
+          var updatesectiondata = {sec_des: sec_des}
+
+          this.loader = true;
+          let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/section/update/'+this.selectedId;
+
+          this.apiService.create(url, updatesectiondata).subscribe((data:any) => {
+
+            console.log('----data----', data)
+            this.commonService.changeMessage(['success', 'Section updated successfully']);
+            this.router.navigate(['/global/section/list']);
+            this.activeModal.close(this.sectionForm.value);
+            this.loader = false;
+          },error => {
+            console.log('----create error---');console.log( error )
+            this.commonService.changeMessage(['failure', 'Section failed. Please try again'])
           })
         }
     }

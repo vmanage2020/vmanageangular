@@ -91,8 +91,9 @@ export class ListComponent implements OnInit {
       ((this.paramName == 'community') ? 'Race/Community':
       ((this.paramName == 'certificatename') ? 'Certificate':
       ((this.paramName == 'citizen') ? 'Citizen':
+      ((this.paramName == 'section') ? 'section':
       ((this.paramName == 'standard') ? 'Grade/Standard':
-      ((this.paramName == 'academicyear') ? 'Academic Year': '')))))))))));
+      ((this.paramName == 'academicyear') ? 'Academic Year': ''))))))))))));
     }
    
   }
@@ -113,8 +114,9 @@ export class ListComponent implements OnInit {
             ((this.paramName == 'community') ? 'community':
             ((this.paramName == 'certificatename') ? 'certificatename':
             ((this.paramName == 'citizen') ? 'citizen':
+            ((this.paramName == 'section') ? 'section':
             ((this.paramName == 'standard') ? 'standard':
-            ((this.paramName == 'academicyear') ? 'academicyear': '')))))))))));                  
+            ((this.paramName == 'academicyear') ? 'academicyear': ''))))))))))));                  
 
             var url = 'https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/'+urlName;
             this.apiService.lists(url).subscribe( lists => {
@@ -129,8 +131,9 @@ export class ListComponent implements OnInit {
                     ((this.paramName == 'community') ? lists.communities :
                     ((this.paramName == 'certificatename') ? lists.certificatenames :
                     ((this.paramName == 'citizen') ? lists.citizens :
+                    ((this.paramName == 'section') ? lists.sections :
                     ((this.paramName == 'standard') ? lists.standards :
-                    ((this.paramName == 'academicyear') ? lists.academicyears : '')))))))))));    
+                    ((this.paramName == 'academicyear') ? lists.academicyears : ''))))))))))));    
 
             console.log( '-----lists------',lists )
 
@@ -209,8 +212,9 @@ export class ListComponent implements OnInit {
             ((this.paramName == 'community') ? 'community':
             ((this.paramName == 'certificatename') ? 'certificatename':
             ((this.paramName == 'citizen') ? 'citizen':
+            ((this.paramName == 'section') ? 'section':
             ((this.paramName == 'standard') ? 'standard':
-            ((this.paramName == 'academicyear') ? 'academicyear': ''))))))))))); 
+            ((this.paramName == 'academicyear') ? 'academicyear': '')))))))))))); 
 
           let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/'+urlName+'/delete/'+id;
           this.apiService.create(url, {}).subscribe( lists => {
@@ -237,8 +241,9 @@ export class ListComponent implements OnInit {
             ((this.paramName == 'community') ? 'community':
             ((this.paramName == 'certificatename') ? 'certificatename':
             ((this.paramName == 'citizen') ? 'citizen':
+            ((this.paramName == 'section') ? 'section':
             ((this.paramName == 'standard') ? 'standard':
-            ((this.paramName == 'academicyear') ? 'academicyear': ''))))))))))); 
+            ((this.paramName == 'academicyear') ? 'academicyear': '')))))))))))); 
 
       this.router.navigate(['/global/'+urlName+'/list']);
   }

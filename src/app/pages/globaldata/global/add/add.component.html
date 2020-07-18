@@ -47,6 +47,39 @@
                     </form>
                 </div>
 
+                <div class="ibox-content" *ngIf="paramName =='section'">
+ 
+                    <form class="needs-validation" (ngSubmit)="formSubmit()" [formGroup]="sectionForm">
+
+
+                            <div class="card form-row">
+                                <div class="card-body">
+                                        <div class="row ">
+
+                                                <div class="col-lg-6">
+
+                                                    <div class="form-group">
+                                                        <label>Section *</label>
+                                                        <input type="text" autocomplete="off" formControlName="sec_des"
+                                                            class="form-control" />
+                                                    </div>
+            
+                                                </div>
+
+                                                <div class="col-12 text-center mb-4">
+                                                        <input [disabled]="!sectionForm.valid" [ngClass]="{ 'disable-btn': !sectionForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
+                                                        <button class="btn btn-danger" (click)="closePopup()">Cancel</button>
+                                                </div>
+                                                
+                
+                                        </div>
+                                </div>
+                            </div>
+
+                    </form>
+                </div>
+
+
                 <div class="ibox-content" *ngIf="paramName =='activity'">
  
                     <form class="needs-validation" (ngSubmit)="formSubmit()" [formGroup]="activityForm">
