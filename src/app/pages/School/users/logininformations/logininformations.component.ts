@@ -24,7 +24,8 @@ export class LogininformationsComponent implements OnInit {
   ngOnInit(): void {
     this.useraddForm = this.formBuilder.group({
         col_code_fk: ['', Validators.required],
-        users_name: ['', Validators.required]
+        users_name: ['', Validators.required],
+        users_pwd: ['', Validators.required]
   });
 
   var roleget =  'https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/usergroups';
@@ -40,17 +41,10 @@ export class LogininformationsComponent implements OnInit {
 
   usersadd() {
     let addRoll ={
-        "grps_desc": null,
-        "col_code_fk": 1,
-        "status": 0,
-        "create_by": 1,
-        "create_date": "2020-07-17 11:33:17",
-        "edit_by": 0,
-        "edit_date": "2020-07-17 11:33:17",
-        "return": {
-            "message": "Error on Insert"
-        }
-    }
+      "grps_id_fk": this.form.col_code_fk.value,
+      "users_name":this.form.users_name.value,
+      "users_pwd":this.form.users_pwd.value
+      }
 
     let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/loginuser';
     console.log(url);

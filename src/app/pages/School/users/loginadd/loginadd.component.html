@@ -33,16 +33,17 @@
 
               <tbody>                
                 
-                <tr class="gradeX" *ngFor="let list2 of rollitems, index as i">
+                <tr class="gradeX" *ngFor="let list2 of data, index as i">
                   <td >{{i+1}}</td>
-                  <td>{{list2.grps_desc}}</td>
-                  <td>{{data[i].users_name}}</td>
+                  <td>{{rollitems[0]?.grps_desc}}</td>
+                  <td>{{list2.users_name}}</td>
                   <td class="center">
                   
-                    <a (click)="editusers(list.grps_id_pk)" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                    <a (click)="deleteusers(list.grps_id_pk)"class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                    <a (click)="editusers(list2.users_id_pk)" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                    <a (click)="deleteusers(list2.users_id_pk)"class="action-icon"> <i class="mdi mdi-delete"></i></a>
                   </td>
                 </tr>
+
                   
 
 

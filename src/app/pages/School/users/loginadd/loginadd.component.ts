@@ -22,12 +22,12 @@ export class LoginaddComponent implements OnInit {
   dtTrigger: Subject<any> = new Subject();
   dataTable: any;
   Listitems: any;
-  rollitems:any=[];
+  rollitems: any = [];
   paramName: any;
   data: any;
   eventdatas: any;
   size: any;
- checkdata:any=[];
+  checkdata: any = [];
 
   constructor(private apiService: RestApiService, private http: HttpClient, private srvCart: UserserviceService,
     // private modalService: NgbModal,
@@ -43,13 +43,13 @@ export class LoginaddComponent implements OnInit {
       pageLength: 10,
       processing: true
     }
-    var roleget =  'https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/usergroups';
+    var roleget = 'https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/usergroups';
     this.apiService.lists(roleget).subscribe(lists => {
-      this.rollitems=lists.data;
+      this.rollitems = lists.data;
       //this.checkdata=lists.data.grps_desc;
       //console.log(this.checkdata+"______________");
     });
-//grps_desc
+    //grps_desc
     var url = 'https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/loginusers';
     this.apiService.lists(url).subscribe(lists => {
       this.Listitems = lists.data;
@@ -62,10 +62,39 @@ export class LoginaddComponent implements OnInit {
 
   }
 
-  addusers()
-{
-  this.router.navigate(['/logininform']);
-}
+  addusers() {
+    this.router.navigate(['/logininform']);
+  }
+  editusers(id: any) {
+    console.log(id + "_______________id");
+    this.router.navigate(['/loginviewform', id]);
+
+  }
+  deleteusers(id) {
+    console.log('-----id-----', id)
+
+
+    swal.fire({
+      title: "Are you sure?",
+      text: "Do you want to Remove Service?",
+      //type: 'warning',
+      showConfirmButton: true,
+      showCancelButton: true
+    })
+      .then((willDelete) => {
+        if (willDelete.value) {
+          console.log('-----accepted id----', id)
+
+          let url = 'https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/loginuser/delete/' + id;
+          this.apiService.create(url, {}).subscribe(lists => {
+            console.log('---success delete-----');
+            this.router.navigate(['/loginadd']);
+          }, error => {
+            console.log('---errror---')
+          })
+        }
+      })
+  }
 
 
 
