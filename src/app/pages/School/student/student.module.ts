@@ -13,9 +13,11 @@ import { DataTablesModule } from 'angular-datatables';
 
 import { NgSelectModule } from '@ng-select/ng-select';
 import { StudentappComponent } from './studentapp/studentapp.component';
+import { StudentmanagementComponent } from './studentmanagement/studentmanagement.component';
+import { StudentselectionComponent } from './studentselection/studentselection.component';
 
 @NgModule({
-  declarations: [StudentComponent, StuentlistComponent, StudentviewComponent, StudenteditComponent, StudentappComponent],
+  declarations: [StudentComponent, StuentlistComponent, StudentviewComponent, StudenteditComponent, StudentappComponent, StudentmanagementComponent, StudentselectionComponent],
   imports: [
     CommonModule,
     StudentRoutingModule,

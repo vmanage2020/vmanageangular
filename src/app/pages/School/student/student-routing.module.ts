@@ -5,6 +5,8 @@ import {StuentlistComponent} from './stuentlist/stuentlist.component';
 import { StudentviewComponent } from './studentview/studentview.component';
 import { StudenteditComponent } from './studentedit/studentedit.component';
 import {StudentappComponent} from './studentapp/studentapp.component'
+import { StudentmanagementComponent } from './studentmanagement/studentmanagement.component'
+import { StudentselectionComponent } from './studentselection/studentselection.component';
 
 
 const routes: Routes = [
@@ -27,6 +29,14 @@ const routes: Routes = [
  {
   path: 'studentedit/:id',
   component: StudenteditComponent
+},
+{
+  path: 'studentmanagement',
+  component: StudentmanagementComponent
+},
+{
+  path: 'studentselection',
+  component: StudentselectionComponent
 }
 ];
 
