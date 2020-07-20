@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+
+
+import { RestApiService } from '../../../../shared/rest-api.services';
+import { CommonService } from '../../../../shared/common.service'
+
 declare var $: any;
 @Component({
   selector: 'app-studentview',
@@ -250,7 +255,11 @@ emode:any;
 readability:any;
 stuinf:any=25;
 stufore:any=25;
-  constructor(private http:HttpClient,private route: ActivatedRoute) {
+
+loader: boolean = false;
+statusMsg = '';
+
+  constructor(private http:HttpClient,private route: ActivatedRoute, private apiurl: RestApiService, private commonService: CommonService) {
 
     let Metaurl='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/master';
     this.http.get<any>(Metaurl).toPromise().then(
@@ -416,6 +425,39 @@ stufore:any=25;
       }
       
     }
+  }
+
+
+  changeStatus(studId, statusVal)
+  {
+    var x = confirm("Are you sure you want to Change Status?");
+    if (x)
+    {
+      console.log('-----studId----', studId,'----statusVal----', statusVal)
+
+      setTimeout(() => {
+
+        this.commonService.loaderShowHide(true);
+        this.loader             = true;
+
+        var url =  'https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/student/statusupdate/'+studId+'/'+statusVal;
+        this.apiurl.create(url,{}).subscribe( statusChange => {
+          console.log('---student status change----', statusChange )  
+          
+          this.statusMsg = 'Status Updated Successfully';
+
+          this.commonService.loaderShowHide(false);
+          this.loader             = false;
+
+        },error => {
+          console.log('---errror---')
+        })
+      },100);
+
+    }else{
+      
+    }
+    
   }
 
   ageCalculation(dateString:any)

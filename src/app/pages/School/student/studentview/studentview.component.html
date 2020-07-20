@@ -9,6 +9,15 @@
 </div>
 <div id="view" class="wrapper wrapper-content animated fadeInRight">
 
+
+  <div id="nprogress" *ngIf="loader">
+      <div class="spinner" role="spinner">
+          <div class="spinner-icon"></div>
+      </div>
+  </div>
+
+  <p *ngIf="statusMsg" class="btn btn-danger">{{statusMsg}}</p>
+
   <div class="row">
     <div class="col-lg-12">
       <div class="ibox">
@@ -38,6 +47,15 @@
 
                   </div>
                 </div>
+
+                <div class="col-lg-4 col-xl-4 col-sm-4">
+                  <div class="text-left mt-3">
+                    <h4 class="font-13 text-uppercase">Student Change Status :</h4>
+                      <button class="btn btn-primary" (click)="changeStatus(SViewitems.stu_prf_id_pk, 1)" >Accept</button> &nbsp;&nbsp;
+                      <button class="btn btn-info" (click)="changeStatus(SViewitems.stu_prf_id_pk, 2)">Decline</button> &nbsp;&nbsp;
+                      <button class="btn btn-warning" (click)="changeStatus(SViewitems.stu_prf_id_pk, 3)">Hold</button>
+                    </div>
+                  </div>
 
                 <div class="col-lg-4 col-xl-4 col-sm-4">
                   <div class="text-left mt-3">

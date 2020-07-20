@@ -8,7 +8,20 @@
         </div>
       </div>
       
-      
+      <div class="col-lg-3" *ngIf="studentStandard != undefined && studentStandard.length>0">  
+        <div class="form-group">
+            <label>School Standard </label>
+            <ng-select 
+                [items]="studentStandard" 
+                bindLabel="name"
+                bindValue="id"
+                placeholder="Select School"
+                (change)="schoolStandardFilter($event)"
+                >
+            </ng-select>
+        </div>
+      </div>
+
       <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
           <div class="col-lg-12">
@@ -19,6 +32,12 @@
                 <!--<button style="float: right;"class="btn btn-info" >Student Informations</button >-->
               </div>
               <div class="ibox-content">
+
+                <div id="nprogress" *ngIf="loader">
+                    <div class="spinner" role="spinner">
+                        <div class="spinner-icon"></div>
+                    </div>
+                </div>
       
                 <div class="table-responsive" *ngIf="SListitems.length>0" style="padding: 20px 10px 10px 10px; background: #fff;  margin: 10px; ">
                   <table id='table' class="table table-striped table-bordered table-hover dataTables-example" datatable [dtOptions]="dtOptions" >
@@ -28,6 +47,7 @@
                         <th>Application Date</th>
                         <th>Application No</th>
                         <th>Student Name</th>
+                        <th>Student Standard</th>
                         <th>Gender</th>
                         <th>Action</th>
                       </tr>
@@ -39,6 +59,7 @@
                         <td>{{user.stu_prf_app_date}}</td>
                         <td>{{user.stu_prf_app_No}}</td>
                         <td>{{user.stu_prf_stud_name}}</td>
+                        <td>{{ standardName(user.stu_prf_current_Semester) }}</td>
                         <td>
                             <div *ngIf="user.stu_prf_sex == 1">Male</div>
                             <div *ngIf="user.stu_prf_sex == 2">Female</div>

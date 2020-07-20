@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { RestApiService } from '../../../../shared/rest-api.services';
 import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
-
+import { CommonService } from '../../../../shared/common.service'
 import * as _ from 'lodash';
 
 import 'rxjs/add/operator/map';
@@ -24,6 +24,8 @@ export class StudentmanagementComponent implements OnInit {
    contentlist: any[] =[];
    objectKeys = Object.keys;
    studentStandard: any;
+   loader: boolean = false;
+
  
    @ViewChild(DataTableDirective, {static: false})
    private datatableElement: DataTableDirective;
@@ -34,7 +36,7 @@ export class StudentmanagementComponent implements OnInit {
    data: any;
    dtTrigger: Subject<any> = new Subject();
  
-   constructor(private http:HttpClient, private apiurl: RestApiService) {
+   constructor(private http:HttpClient, private apiurl: RestApiService, private commonService: CommonService) {
  
      
     }
@@ -56,19 +58,73 @@ export class StudentmanagementComponent implements OnInit {
        
    }
  
-   getStabdard()
-   {
-     setTimeout(() => {
-       var url =  'https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/master';
-       this.apiurl.lists(url).subscribe( list => {
-         //console.log('---standard list----', list.standards)
-         this.studentStandard = list.standards;
-       },error => {
-         console.log('---errror---')
-       })
-     },100);
-    
-   }
+   standardName(id)
+  {
+    var resStandard = '';
+    if( this.studentStandard != undefined && this.studentStandard.length >0)
+    {
+      this.studentStandard.forEach( std => {
+        if(std.id == id){
+          resStandard = std.name;
+        }
+      })
+    }
+    return resStandard
+  }
+
+  getStabdard()
+  {
+    setTimeout(() => {
+      var url =  'https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/master';
+      this.apiurl.lists(url).subscribe( list => {
+        //console.log('---standard list----', list.standards)
+        this.studentStandard = list.standards;
+      },error => {
+        console.log('---errror---')
+      })
+    },100);
+   
+  }
+
+  schoolStandardFilter( event: any)
+  {
+    console.log('---event----', event)
+    if( event != undefined)
+    {
+      console.log('---id----', event.id )
+
+      setTimeout(() => {
+
+        this.commonService.loaderShowHide(true);
+        this.loader             = true;
+        
+        var url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/students';
+        this.apiurl.lists(url).subscribe( lists => {
+          if( lists.users.length >0)
+          {
+            var studData = [];
+            lists.users.forEach( lis => {
+              if(lis.stu_prf_current_Semester == event.id)
+              {
+                studData.push(lis)
+              }
+            })
+
+            this.data = studData;
+            this.dtTrigger.next();
+
+            this.commonService.loaderShowHide(false);
+             this.loader             = false;
+
+          }
+        });
+      },100);       
+
+    }else{
+        this.data = this.SListitems;
+        this.dtTrigger.next();
+    }
+  }
  
  
    studentsList()
