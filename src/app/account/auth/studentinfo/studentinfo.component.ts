@@ -309,6 +309,7 @@ dropdownCertificateArray: any = [
 
         this.datagroup = data.groups;
         this.dropdownAcademicYearArray = data.years;
+        this.dropdownSchoolArray=data.schools;
       }
     ) 
 

@@ -321,6 +321,7 @@ export class StudentComponent implements OnInit {
 
           this.datagroup = data.groups;
           this.dropdownAcademicYearArray = data.years;
+          this.dropdownSchoolArray=data.schools;
         }
       )   
     
