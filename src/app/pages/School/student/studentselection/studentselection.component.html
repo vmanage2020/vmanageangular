@@ -8,20 +8,24 @@
         </div>
       </div>
       
-      <div class="col-lg-3" *ngIf="studentStandard != undefined && studentStandard.length>0">  
-        <div class="form-group">
-            <label>School Standard </label>
-            <ng-select 
-                [items]="studentStandard" 
-                bindLabel="name"
-                bindValue="id"
-                placeholder="Select School"
-                [(ngModel)]="selectedStdId"
-                (change)="schoolStandardFilter($event)"
-                >
-            </ng-select>
+      <form [formGroup]="filterForm">
+        <div class="col-lg-3" *ngIf="studentStandard != undefined && studentStandard.length>0">  
+          <div class="form-group">
+              <label>School Standard </label>
+              <ng-select 
+                  [items]="studentStandard" 
+                  bindLabel="name"
+                  bindValue="id"
+                  placeholder="Select School"
+                  [(ngModel)]="selectedStdId"
+                  formControlName="stdFilter"
+                  (change)="schoolStandardFilter($event)"
+                  >
+              </ng-select>
+          </div>
         </div>
-      </div>
+      </form>
+      
 
       <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
@@ -30,7 +34,7 @@
               <div class="ibox-title">
                 <!--<h5 style="display: block;"> Student List Informations </h5>-->
                 
-                <button style="float: right;"class="btn btn-info" (click)="assignedToSection()">Assigned To Standard Section</button >
+                <button *ngIf="btnVisible" style="float: right;"class="btn btn-info" (click)="assignedToSection(template)">Assigned To Standard Section</button >
               </div>
               <div class="ibox-content">
 
@@ -45,7 +49,7 @@
                     <thead>
                       <tr>
                         <!-- <th>Sl.No</th> -->
-                        <th><input type="checkbox" name="websitecheck" (click) = "checkuncheckall()"> select All</th>
+                        <th><!-- <input type="checkbox" name="websitecheck" (click) = "checkuncheckall()"> select All --></th>
                         <th>Application Date</th>
                         <th>Application No</th>
                         <th>Student Name</th>
@@ -86,3 +90,40 @@
           </div>
         </div>
       </div>
+
+      <ng-template #template>
+        <div class="modal-header pl-2 pr-2 pt-2 pb-0">
+            <h4 class="modal-title pull-left">Assigned to Section</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="closepopup()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body p-2">
+    
+          <form [formGroup]="sectionForm" (ngSubmit)="submitForm()">
+            <div class="col-lg-3" *ngIf="sectionList != undefined && sectionList.length>0">  
+              <div class="form-group">
+                  <label>Student Sections </label>
+                  <ng-select 
+                      [items]="sectionList" 
+                      bindLabel="name"
+                      bindValue="id"
+                      placeholder="Select Student Sections"
+                      formControlName="studsection"
+                      >
+                  </ng-select>
+              </div>
+            </div>
+
+            <div class="col-lg-3">
+
+              <input [disabled]="!sectionForm.valid" [ngClass]="{ 'disable-btn': !sectionForm.valid }" type="submit" class="btn btn-primary" value="Save">
+              
+          </div>
+
+          </form>
+    
+        </div>
+    
+    
+    </ng-template>

@@ -1,10 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+
+import { NgbModalConfig,  NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormGroup, FormBuilder, FormControl, Validators, NgForm, FormArray, AbstractControl } from '@angular/forms';
 import { RestApiService } from '../../../../shared/rest-api.services';
 import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
-
+import { ActivatedRoute, Router,NavigationEnd } from '@angular/router';
 import { CommonService } from '../../../../shared/common.service'
 
 import * as _ from 'lodash';
@@ -36,10 +39,24 @@ export class StudentselectionComponent implements OnInit {
   isChecked = false;
   data: any;
   dtTrigger: Subject<any> = new Subject();
+  btnVisible =  false;
+  selectedStudentList: any[] = [];
+  sectionList: any[] = []
 
-  constructor(private http:HttpClient, private apiurl: RestApiService, private commonService: CommonService) {
+  filterForm: FormGroup;
+  sectionForm: FormGroup;
 
-    
+  constructor(private http:HttpClient, 
+    private apiurl: RestApiService, 
+    private commonService: CommonService,
+    private modalService: NgbModal,
+    private config: NgbModalConfig,
+    private route: ActivatedRoute, 
+    private router: Router,
+    private formBuilder: FormBuilder) {
+
+    this.createForm();
+    this.createSectionForm();
    }
 
    displayToConsole(datatableElement: DataTableDirective): void {
@@ -54,15 +71,64 @@ export class StudentselectionComponent implements OnInit {
       this.dtOptions = {
         pagingType: 'full_numbers',
         pageLength: 10,
-        processing: true
+        processing: true,
       }; 
 
+  }
+
+  createForm()
+  {
+    this.filterForm = this.formBuilder.group({
+      stdFilter             : [null],
+    });
+  }
+
+  createSectionForm()
+  {
+    this.sectionForm = this.formBuilder.group({
+      studsection             : [null, Validators.required],
+    });
   }
 
   onCheckboxChangeFn( event: any)
   {
     console.log('----event----', event )
+    this.selectedStudentList.push(event)
   }
+
+  submitForm()
+  {
+    console.log( '----formvalue----', this.sectionForm)
+    var stdFilter = (this.filterForm.value.stdFilter != null ? this.filterForm.value.stdFilter : '');
+    var studsection = (this.sectionForm.value.studsection != null ? this.sectionForm.value.studsection : '');
+    if( studsection !='')
+    {
+      console.log( '----studsection----', studsection)
+      console.log( '----stdFilter----', stdFilter)
+      console.log( '----selectedStudentList------',this.selectedStudentList )
+      var jsonData = [];
+      this.selectedStudentList.forEach( list => {
+        jsonData.push({id: list})
+      })
+
+      console.log( '----jsonData------',jsonData )
+      this.loader = true;
+      var url =  'https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/student/assignupdate/'+stdFilter+'/'+studsection;
+      this.apiurl.create(url,jsonData).subscribe( list => {
+        console.log('-----successs-----')
+
+        this.commonService.changeMessage(['success', 'Assigned to section created successfully']);
+        this.router.navigate(['/school/studentselection']);
+        this.closepopup();        
+        this.loader = false;
+
+      },error => {
+        console.log('----error----')
+      });
+
+    }
+  }
+
 
   standardName(id)
   {
@@ -78,9 +144,22 @@ export class StudentselectionComponent implements OnInit {
     return resStandard
   }
 
-  assignedToSection()
+  assignedToSection(template)
   {
     console.log('------test-----')
+    console.log( '----formvalue----', this.filterForm)
+    console.log( '----selectedStudentList------',this.selectedStudentList )
+    var stdFilter = (this.filterForm.value.stdFilter != null ? this.filterForm.value.stdFilter : '');
+    if( stdFilter !='' && this.selectedStudentList.length > 0)
+    {
+      this.modalService.open( template , {ariaLabelledBy: 'modal-basic-title',size: 'xl'});
+    }
+    
+  }
+
+  closepopup()
+  {
+    this.modalService.dismissAll()
   }
 
   getStabdard()
@@ -88,13 +167,15 @@ export class StudentselectionComponent implements OnInit {
     setTimeout(() => {
       var url =  'https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/master';
       this.apiurl.lists(url).subscribe( list => {
-        //console.log('---standard list----', list.standards)
+        console.log('---standard list----', list)
         this.studentStandard = list.standards;
+        this.sectionList = list.sections;
 
         if( this.studentStandard.length > 0)
         {
           this.selectedStdId = 4;
           this.schoolStandardFilter({id:4})
+          this.btnVisible = true;
         }       
 
       },error => {
@@ -146,6 +227,7 @@ export class StudentselectionComponent implements OnInit {
 
   checkuncheckall()
   {
+    
     if(this.isChecked == true)
     {
     this.isChecked = false;
