@@ -7,6 +7,8 @@ import { StudenteditComponent } from './studentedit/studentedit.component';
 import {StudentappComponent} from './studentapp/studentapp.component'
 import { StudentmanagementComponent } from './studentmanagement/studentmanagement.component'
 import { StudentselectionComponent } from './studentselection/studentselection.component';
+import { StudentmanagementviewComponent } from './studentmanagementview/studentmanagementview.component';
+import { StudentselectionviewComponent } from './studentselectionview/studentselectionview.component';
 
 
 const routes: Routes = [
@@ -37,6 +39,14 @@ const routes: Routes = [
 {
   path: 'studentselection',
   component: StudentselectionComponent
+},
+{
+  path: 'studentmangeview/:id',
+  component: StudentmanagementviewComponent
+},
+{
+  path: 'studentselectionview/:id',
+  component: StudentselectionviewComponent
 }
 ];
 

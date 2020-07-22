@@ -875,7 +875,6 @@ export class StudentComponent implements OnInit {
          console.log(error);    
       }
    )
-
   }
 
   makeRandom()  {
