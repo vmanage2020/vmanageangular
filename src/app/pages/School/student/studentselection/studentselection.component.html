@@ -99,7 +99,13 @@
         </button>
         </div>
         <div class="modal-body p-2">
-    
+          
+          <div id="nprogress" *ngIf="loader">
+              <div class="spinner" role="spinner">
+                  <div class="spinner-icon"></div>
+              </div>
+          </div>
+
           <form [formGroup]="sectionForm" (ngSubmit)="submitForm()">
             <div class="col-lg-3" *ngIf="sectionList != undefined && sectionList.length>0">  
               <div class="form-group">
