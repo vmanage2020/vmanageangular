@@ -15,9 +15,11 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { StudentappComponent } from './studentapp/studentapp.component';
 import { StudentmanagementComponent } from './studentmanagement/studentmanagement.component';
 import { StudentselectionComponent } from './studentselection/studentselection.component';
+import { StudentmanagementviewComponent } from './studentmanagementview/studentmanagementview.component';
+import { StudentselectionviewComponent } from './studentselectionview/studentselectionview.component';
 
 @NgModule({
-  declarations: [StudentComponent, StuentlistComponent, StudentviewComponent, StudenteditComponent, StudentappComponent, StudentmanagementComponent, StudentselectionComponent],
+  declarations: [StudentComponent, StuentlistComponent, StudentviewComponent, StudenteditComponent, StudentappComponent, StudentmanagementComponent, StudentselectionComponent, StudentmanagementviewComponent, StudentselectionviewComponent],
   imports: [
     CommonModule,
     StudentRoutingModule,
