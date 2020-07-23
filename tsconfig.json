@@ -19,6 +19,12 @@
       "dom"
     ],
     "paths": {
+      "@app/*": [
+        "app/*"
+        ],
+        "@env/*": [
+        "environments/*"
+        ],
       "@angular/*": [
         "../node_modules/@angular/*"
       ]
