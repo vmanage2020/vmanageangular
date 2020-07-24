@@ -26,8 +26,9 @@ export class AddComponent implements OnInit {
   casteItem: any[]              = [];
   communityItem: any[]          = [];
   degreeItem: any[]             = [];
-  deptqualificationItem: any[] = [];
+  deptqualificationItem: any[]  = [];
   gradeItem: any[]              = [];
+
 
   constructor(private formBuilder: FormBuilder,
     private route: ActivatedRoute, 
@@ -144,7 +145,7 @@ export class AddComponent implements OnInit {
 
   formSubmit()
   {
-
+    console.log('-----form value---'); console.log( this.staffForm.value )
   }
 
 
