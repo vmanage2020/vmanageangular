@@ -129,6 +129,40 @@ export class AddComponent implements OnInit {
   ngOnInit(): void {
     this.addqualification();
     this.addexperience();
+    this.masterData();
+  }
+
+  masterData()
+  {
+    let Metaurl='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/master';
+    this.restApiService.lists(Metaurl).subscribe( lists => {
+      console.log('---lists----', lists)
+      this.categoryType = [
+        {id:1, name: 'category1'}
+      ];
+      this.designationType = [
+        {id:1, name: 'designation1'}
+      ];
+      this.staffType = [
+        {id:1, name:'staff1'}
+      ];
+      this.departmentItem = [
+        {id:1, name: 'department1'}
+      ];
+      this.degreeItem = [
+        {id:1, name: 'degree1'}
+      ];
+      this.deptqualificationItem = [
+        {id:1, name: 'qualification1'}
+      ];
+      this.gradeItem = [
+        {id:1, name: 'grade1'}
+      ];
+      this.bloodGroup = lists.bloodgroups;
+      this.nationalityItem = lists.languages;
+      this.religionItem = lists.religions;
+      this.communityItem = lists.communities;
+    })
   }
 
   onFileSelect(event:any)
