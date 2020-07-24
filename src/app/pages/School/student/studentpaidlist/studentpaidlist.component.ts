@@ -73,6 +73,7 @@ export class StudentpaidlistComponent implements OnInit {
         pagingType: 'full_numbers',
         pageLength: 10,
         processing: true,
+        ordering: false,
       }; 
 
   }
@@ -223,6 +224,9 @@ export class StudentpaidlistComponent implements OnInit {
             this.commonService.loaderShowHide(false);
              this.loader             = false;
 
+          }else{
+            this.commonService.loaderShowHide(false);
+            this.loader             = false;
           }
         });
       },100);       
@@ -238,17 +242,32 @@ export class StudentpaidlistComponent implements OnInit {
     }
   }
 
+  selectAll()
+  {
+    console.log('---dddd-----')
+    if ($('.main').hasClass('allChecked')) {
+      console.log('---aaaa----')
+      $('.main').removeClass('allChecked')
+        $('input[type="checkbox"]', '#table').prop('checked', false);
+    } else {
+      console.log('---bbbbb----')
+      $('.main').addClass('allChecked')
+        $('input[type="checkbox"]', '#table').prop('checked', true);
+    }
+    //$('.main').toggleClass('allChecked');
+
+  }
   checkuncheckall()
   {
     
-    if(this.isChecked == true)
+    /* if(this.isChecked == true)
     {
     this.isChecked = false;
     }
     else
     {
     this.isChecked = true;
-    }
+    } */
   
   }
 

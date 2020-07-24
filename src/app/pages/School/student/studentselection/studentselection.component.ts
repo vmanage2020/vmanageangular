@@ -75,6 +75,15 @@ export class StudentselectionComponent implements OnInit {
         pagingType: 'full_numbers',
         pageLength: 10,
         processing: true,
+        /* columnDefs: [ {
+
+          'targets': [1], 
+      
+          'orderable': false,
+      
+       }] */
+        ordering: false,
+        //order: [[0, 'desc']]
       }; 
 
   }
@@ -218,6 +227,9 @@ export class StudentselectionComponent implements OnInit {
             this.commonService.loaderShowHide(false);
              this.loader             = false;
 
+          }else{
+            this.commonService.loaderShowHide(false);
+             this.loader             = false;
           }
         });
       },100);       
@@ -234,12 +246,16 @@ export class StudentselectionComponent implements OnInit {
   selectAll()
   {
     console.log('---dddd-----')
-    if ($(this).hasClass('allChecked')) {
+    if ($('.main').hasClass('allChecked')) {
+      console.log('---aaaa----')
+      $('.main').removeClass('allChecked')
         $('input[type="checkbox"]', '#table').prop('checked', false);
     } else {
+      console.log('---bbbbb----')
+      $('.main').addClass('allChecked')
         $('input[type="checkbox"]', '#table').prop('checked', true);
     }
-    $(this).toggleClass('allChecked');
+    //$('.main').toggleClass('allChecked');
 
   }
   checkuncheckall()
