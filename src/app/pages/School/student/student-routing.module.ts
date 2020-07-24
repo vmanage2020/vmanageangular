@@ -10,6 +10,7 @@ import { StudentselectionComponent } from './studentselection/studentselection.c
 import { StudentmanagementviewComponent } from './studentmanagementview/studentmanagementview.component';
 import { StudentselectionviewComponent } from './studentselectionview/studentselectionview.component';
 
+import { StudentpaidlistComponent } from './studentpaidlist/studentpaidlist.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,10 @@ const routes: Routes = [
 {
   path: 'studentmangeview/:id',
   component: StudentmanagementviewComponent
+},
+{
+  path: 'studentpaidlist',
+  component: StudentpaidlistComponent
 },
 {
   path: 'studentselectionview/:id',

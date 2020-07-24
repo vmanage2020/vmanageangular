@@ -431,7 +431,7 @@ statusMsg = '';
 
   changeStatus(studId, statusVal)
   {
-    var x = confirm("Are you sure you want to Change Status?");
+    var x = confirm("Are you sure you want to Change Paid Status?");
     if (x)
     {
       console.log('-----studId----', studId,'----statusVal----', statusVal)

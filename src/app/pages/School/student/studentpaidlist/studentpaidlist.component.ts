@@ -10,19 +10,17 @@ import { Subject } from 'rxjs';
 import { ActivatedRoute, Router,NavigationEnd } from '@angular/router';
 import { CommonService } from '../../../../shared/common.service'
 
-import * as jQuery from 'jquery';
 import * as _ from 'lodash';
 
 import 'rxjs/add/operator/map';
-
-declare var $:JQueryStatic;
+import swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-studentselection',
-  templateUrl: './studentselection.component.html',
-  styleUrls: ['./studentselection.component.scss']
+  selector: 'app-studentpaidlist',
+  templateUrl: './studentpaidlist.component.html',
+  styleUrls: ['./studentpaidlist.component.scss']
 })
-export class StudentselectionComponent implements OnInit {
+export class StudentpaidlistComponent implements OnInit {
 
   Surl='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/students/selected';
  mygrou=[1,2,3,4,5];
@@ -99,40 +97,6 @@ export class StudentselectionComponent implements OnInit {
     this.selectedStudentList.push(event)
   }
 
-  submitForm()
-  {
-    console.log( '----formvalue----', this.sectionForm)
-    var stdFilter = (this.filterForm.value.stdFilter != null ? this.filterForm.value.stdFilter : '');
-    var studsection = (this.sectionForm.value.studsection != null ? this.sectionForm.value.studsection : '');
-    if( studsection !='')
-    {
-      console.log( '----studsection----', studsection)
-      console.log( '----stdFilter----', stdFilter)
-      console.log( '----selectedStudentList------',this.selectedStudentList )
-      var jsonData = [];
-      this.selectedStudentList.forEach( list => {
-        jsonData.push({id: list})
-      })
-
-      console.log( '----jsonData------',jsonData )
-      this.loader = true;
-      var url =  'https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/student/assignupdate/'+stdFilter+'/'+studsection;
-      this.apiurl.create(url,jsonData).subscribe( list => {
-        console.log('-----successs-----')
-
-        this.commonService.changeMessage(['success', 'Assigned to section created successfully']);
-        this.router.navigate(['/school/studentselection']);
-        this.closepopup();        
-        this.loader = false;
-
-      },error => {
-        console.log('----error----')
-      });
-
-    }
-  }
-
-
   standardName(id)
   {
     var resStandard = '';
@@ -147,16 +111,57 @@ export class StudentselectionComponent implements OnInit {
     return resStandard
   }
 
-  assignedToSection(template)
+  approvedApplication()
   {
-    console.log('------test-----')
+
+    if( this.selectedStudentList.length == 0)
+    {
+      return;
+    }else{
+      swal.fire({
+        title: "Are you sure?",
+        text: "Do you want to Approve selected Applications?",
+        //type: 'warning',
+        showConfirmButton: true,
+        showCancelButton: true
+      })
+      .then((willDelete) => {
+        if( willDelete.value )
+        {
+          console.log( '----selectedStudentList------',this.selectedStudentList )
+          var jsonData = [];
+          this.selectedStudentList.forEach( list => {
+            jsonData.push({id: list})
+          })
+  
+          console.log( '----jsonData------',jsonData )
+          this.loader = true;
+          var url =  'https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/student/approvedapplication';
+          this.apiurl.create(url,jsonData).subscribe( list => {
+            console.log('-----successs-----')
+  
+            this.commonService.changeMessage(['success', 'Assigned to section created successfully']);
+            this.router.navigate(['/school/studentpaidlist']);
+            this.closepopup();        
+            this.loader = false;
+  
+          },error => {
+            console.log('----error----')
+          });
+  
+        }
+      })
+    }
+    
+
+    /* console.log('------test-----')
     console.log( '----formvalue----', this.filterForm)
     console.log( '----selectedStudentList------',this.selectedStudentList )
     var stdFilter = (this.filterForm.value.stdFilter != null ? this.filterForm.value.stdFilter : '');
     if( stdFilter !='' && this.selectedStudentList.length > 0)
     {
       this.modalService.open( template , {ariaLabelledBy: 'modal-basic-title',size: 'xl'});
-    }
+    } */
     
   }
 
@@ -200,7 +205,7 @@ export class StudentselectionComponent implements OnInit {
         this.commonService.loaderShowHide(true);
         this.loader             = true;
         
-        var url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/students';
+        var url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/students/applicationpaid';
         this.apiurl.lists(url).subscribe( lists => {
           if( lists.users.length >0)
           {
@@ -223,36 +228,27 @@ export class StudentselectionComponent implements OnInit {
       },100);       
 
     }else{
-        var url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/students';
+
+      var url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/students/applicationpaid';
         this.apiurl.lists(url).subscribe( lists => {
           this.data = lists.users;
           this.dtTrigger.next();
         });
+        
     }
   }
 
-  selectAll()
-  {
-    console.log('---dddd-----')
-    if ($(this).hasClass('allChecked')) {
-        $('input[type="checkbox"]', '#table').prop('checked', false);
-    } else {
-        $('input[type="checkbox"]', '#table').prop('checked', true);
-    }
-    $(this).toggleClass('allChecked');
-
-  }
   checkuncheckall()
   {
     
-    /* if(this.isChecked == true)
+    if(this.isChecked == true)
     {
     this.isChecked = false;
     }
     else
     {
     this.isChecked = true;
-    } */
+    }
   
   }
 
@@ -260,7 +256,7 @@ export class StudentselectionComponent implements OnInit {
   {
     
     setTimeout(() => {
-      var url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/students/selected';
+      var url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/students/applicationpaid';
       this.apiurl.lists(url).subscribe( lists => {
         console.log('----lists----',lists)
         this.SListitems = lists.users;
@@ -270,22 +266,6 @@ export class StudentselectionComponent implements OnInit {
 
         if( this.SListitems.length > 0)
         {
-          /*
-          this.dtOptions = {
-            pagingType: 'full_numbers',
-            pageLength: 10,
-            processing: true,
-            columns: [
-              {title: 'Sl.No', data: 'col_code_fk'},
-              {title: 'Application Date', data: 'stu_prf_app_date'},
-              {title: 'Application ID', data: 'stu_prf_app_No'},
-              {title: 'Student Name', data: 'stu_stud_lname'},
-              {title: 'Gender', data: 'stu_prf_sex'}
-              //{title: 'Action', data: null },
-            ],
-            data: this.SListitems
-          };
-          */ 
 
         this.data = this.SListitems;
         this.dtTrigger.next();
