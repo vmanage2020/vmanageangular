@@ -414,15 +414,14 @@
                                             <div class="col-lg-6">
 
                                                 <div class="form-group">
-                                                    <label>Citizen *</label>
-                                                    <input type="text" autocomplete="off" formControlName="Citizens"
-                                                        class="form-control" />
+                                                    <label>Category Type *</label>
+                                                    <input type="text" autocomplete="off" formControlName="sct_desc" class="form-control" />
                                                 </div>
         
                                             </div>
 
                                             <div class="col-12 text-center mb-4">
-                                                    <input [disabled]="!citizenForm.valid" [ngClass]="{ 'disable-btn': !citizenForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
+                                                    <input [disabled]="!catagoryForm.valid" [ngClass]="{ 'disable-btn': !catagoryForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
                                                     <button class="btn btn-danger" (click)="closePopup()">Cancel</button>
                                             </div>
                                             
@@ -445,15 +444,15 @@
                                             <div class="col-lg-6">
 
                                                 <div class="form-group">
-                                                    <label>Citizen *</label>
-                                                    <input type="text" autocomplete="off" formControlName="Citizens"
+                                                    <label>Designation Type *</label>
+                                                    <input type="text" autocomplete="off" formControlName="dsg_desc"
                                                         class="form-control" />
                                                 </div>
         
                                             </div>
 
                                             <div class="col-12 text-center mb-4">
-                                                    <input [disabled]="!citizenForm.valid" [ngClass]="{ 'disable-btn': !citizenForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
+                                                    <input [disabled]="!designationForm.valid" [ngClass]="{ 'disable-btn': !designationForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
                                                     <button class="btn btn-danger" (click)="closePopup()">Cancel</button>
                                             </div>
                                             

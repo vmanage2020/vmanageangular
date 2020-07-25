@@ -205,13 +205,13 @@ export class AddComponent implements OnInit {
   createcatagoryForm()
   {
     this.catagoryForm = this.formBuilder.group({
-      sec_des: [null, [Validators.required, Validators.minLength(1), Validators.maxLength(255)]]
+      sct_desc: [null, [Validators.required, Validators.minLength(1), Validators.maxLength(255)]]
     });
   }
   createdesingationForm()
   {
     this.designationForm = this.formBuilder.group({
-      sec_des: [null, [Validators.required, Validators.minLength(1), Validators.maxLength(255)]]
+      dsg_desc: [null, [Validators.required, Validators.minLength(1), Validators.maxLength(255)]]
     });
   }
   createstafftypeForm()
@@ -263,8 +263,8 @@ export class AddComponent implements OnInit {
       ((this.paramName == 'section') ? 'section':
       ((this.paramName == 'standard') ? 'Grade/Standard':
       ((this.paramName == 'academicyear') ? 'Academic Year': 
-      ((this.paramName == 'catagorytype') ? 'academicyear':
-      ((this.paramName == 'designationtype') ? 'academicyear':
+      ((this.paramName == 'catagorytype') ? 'Category Type':
+      ((this.paramName == 'designationtype') ? 'Designation Type':
       ((this.paramName == 'stafftype') ? 'academicyear':
       ((this.paramName == 'department') ? 'academicyear':
       ((this.paramName == 'degree') ? 'academicyear':
@@ -416,24 +416,24 @@ export class AddComponent implements OnInit {
     else if( this.paramName == 'catagorytype')
     {
 
-      let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/catagory/'+this.selectedId;
+      let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/catagorytype/'+this.selectedId;
 
       this.apiService.lists(url).subscribe((selectedData:any) => {
         console.log('----selectedData----', selectedData.data);
-        this.sectionForm.patchValue({
-          sec_des        : selectedData.sections[0].sec_des,
+        this.catagoryForm.patchValue({
+          sct_desc        : selectedData.catagorytypes[0].sct_desc,
         });
       })
     }
     else if( this.paramName == 'designationtype')
     {
 
-      let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/designation/'+this.selectedId;
+      let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/designationtype/'+this.selectedId;
 
       this.apiService.lists(url).subscribe((selectedData:any) => {
         console.log('----selectedData----', selectedData.data);
-        this.sectionForm.patchValue({
-          sec_des        : selectedData.sections[0].sec_des,
+        this.designationForm.patchValue({
+          dsg_desc        : selectedData.designationtypes[0].dsg_desc,
         });
       })
     }
@@ -1016,6 +1016,92 @@ export class AddComponent implements OnInit {
             this.commonService.changeMessage(['success', 'Section updated successfully']);
             this.router.navigate(['/global/section/list']);
             this.activeModal.close(this.sectionForm.value);
+            this.loader = false;
+          },error => {
+            console.log('----create error---');console.log( error )
+            this.commonService.changeMessage(['failure', 'Section failed. Please try again'])
+          })
+        }
+    }else if( this.paramName == 'catagorytype')
+    {
+      console.log('-----form value---'); console.log( this.catagoryForm.value )
+
+        var sct_desc = ((this.catagoryForm.value.sct_desc != null) ? this.catagoryForm.value.sct_desc : '')
+
+        if( sct_desc != '' && this.selectedId == '')
+        {
+          var insertcatagorydata = {sct_desc: sct_desc}
+
+          this.loader = true;
+          let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/catagorytype/add';
+
+          this.apiService.create(url, insertcatagorydata).subscribe((data:any) => {
+
+            console.log('----data----', data)
+            this.commonService.changeMessage(['success', 'Section created successfully']);
+            this.router.navigate(['/global/catagorytype/list']);
+            this.activeModal.close(this.catagoryForm.value);
+            this.loader = false;
+          },error => {
+            console.log('----create error---');console.log( error )
+            this.commonService.changeMessage(['failure', 'Section failed. Please try again'])
+          })
+        }else if( sct_desc != '' && this.selectedId != '')
+        {
+          var updatecatagorydata = {sct_desc: sct_desc}
+
+          this.loader = true;
+          let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/catagorytype/update/'+this.selectedId;
+
+          this.apiService.create(url, updatecatagorydata).subscribe((data:any) => {
+
+            console.log('----data----', data)
+            this.commonService.changeMessage(['success', 'Section updated successfully']);
+            this.router.navigate(['/global/catagorytype/list']);
+            this.activeModal.close(this.catagoryForm.value);
+            this.loader = false;
+          },error => {
+            console.log('----create error---');console.log( error )
+            this.commonService.changeMessage(['failure', 'Section failed. Please try again'])
+          })
+        }
+    }else if( this.paramName == 'designationtype')
+    {
+      console.log('-----form value---'); console.log( this.designationForm.value )
+
+        var dsg_desc = ((this.designationForm.value.dsg_desc != null) ? this.designationForm.value.dsg_desc : '')
+
+        if( dsg_desc != '' && this.selectedId == '')
+        {
+          var insertdesignationdata = {dsg_desc: dsg_desc}
+
+          this.loader = true;
+          let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/designationtype/add';
+
+          this.apiService.create(url, insertdesignationdata).subscribe((data:any) => {
+
+            console.log('----data----', data)
+            this.commonService.changeMessage(['success', 'Section created successfully']);
+            this.router.navigate(['/global/designationtype/list']);
+            this.activeModal.close(this.designationForm.value);
+            this.loader = false;
+          },error => {
+            console.log('----create error---');console.log( error )
+            this.commonService.changeMessage(['failure', 'Section failed. Please try again'])
+          })
+        }else if( dsg_desc != '' && this.selectedId != '')
+        {
+          var updatedesingationdata = {dsg_desc: dsg_desc}
+
+          this.loader = true;
+          let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/designationtype/update/'+this.selectedId;
+
+          this.apiService.create(url, updatedesingationdata).subscribe((data:any) => {
+
+            console.log('----data----', data)
+            this.commonService.changeMessage(['success', 'Section updated successfully']);
+            this.router.navigate(['/global/designationtype/list']);
+            this.activeModal.close(this.designationForm.value);
             this.loader = false;
           },error => {
             console.log('----create error---');console.log( error )

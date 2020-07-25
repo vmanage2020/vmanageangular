@@ -124,8 +124,8 @@ export class ListComponent implements OnInit {
             ((this.paramName == 'section') ? 'section':
             ((this.paramName == 'standard') ? 'standard':
             ((this.paramName == 'academicyear') ? 'academicyear': 
-            ((this.paramName == 'catagorytype') ? 'academicyear':
-            ((this.paramName == 'designationtype') ? 'academicyear':
+            ((this.paramName == 'catagorytype') ? 'catagorytype':
+            ((this.paramName == 'designationtype') ? 'designationtype':
             ((this.paramName == 'stafftype') ? 'academicyear':
             ((this.paramName == 'department') ? 'academicyear':
             ((this.paramName == 'degree') ? 'academicyear':
@@ -148,8 +148,8 @@ export class ListComponent implements OnInit {
                     ((this.paramName == 'section') ? lists.sections :
                     ((this.paramName == 'standard') ? lists.standards :
                     ((this.paramName == 'academicyear') ? lists.academicyears :
-                    ((this.paramName == 'catagorytype') ? lists.academicyears:
-                    ((this.paramName == 'designationtype') ? lists.academicyears:
+                    ((this.paramName == 'catagorytype') ? lists.catagorytypes:
+                    ((this.paramName == 'designationtype') ? lists.designationtypes:
                     ((this.paramName == 'stafftype') ? lists.academicyears:
                     ((this.paramName == 'department') ? lists.academicyears:
                     ((this.paramName == 'degree') ? lists.academicyears:
@@ -235,8 +235,8 @@ export class ListComponent implements OnInit {
             ((this.paramName == 'section') ? 'section':
             ((this.paramName == 'standard') ? 'standard':
             ((this.paramName == 'academicyear') ? 'academicyear': 
-            ((this.paramName == 'catagorytype') ? 'academicyear':
-            ((this.paramName == 'designationtype') ? 'academicyear':
+            ((this.paramName == 'catagorytype') ? 'catagorytype':
+            ((this.paramName == 'designationtype') ? 'designationtype':
             ((this.paramName == 'stafftype') ? 'academicyear':
             ((this.paramName == 'department') ? 'academicyear':
             ((this.paramName == 'degree') ? 'academicyear':
@@ -271,8 +271,8 @@ export class ListComponent implements OnInit {
             ((this.paramName == 'section') ? 'section':
             ((this.paramName == 'standard') ? 'standard':
             ((this.paramName == 'academicyear') ? 'academicyear': 
-            ((this.paramName == 'catagorytype') ? 'academicyear':
-            ((this.paramName == 'designationtype') ? 'academicyear':
+            ((this.paramName == 'catagorytype') ? 'catagorytype':
+            ((this.paramName == 'designationtype') ? 'designationtype':
             ((this.paramName == 'stafftype') ? 'academicyear':
             ((this.paramName == 'department') ? 'academicyear':
             ((this.paramName == 'degree') ? 'academicyear':
