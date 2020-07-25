@@ -93,7 +93,14 @@ export class ListComponent implements OnInit {
       ((this.paramName == 'citizen') ? 'Citizen':
       ((this.paramName == 'section') ? 'section':
       ((this.paramName == 'standard') ? 'Grade/Standard':
-      ((this.paramName == 'academicyear') ? 'Academic Year': ''))))))))))));
+      ((this.paramName == 'academicyear') ? 'Academic Year':
+      ((this.paramName == 'catagorytype') ? 'Category Type':
+      ((this.paramName == 'designationtype') ? 'Designation Type':
+      ((this.paramName == 'stafftype') ? 'Staff Type':
+      ((this.paramName == 'department') ? 'Department':
+      ((this.paramName == 'degree') ? 'Degree':
+      ((this.paramName == 'grade') ? 'Grade':
+      ((this.paramName == 'status') ? 'Status': '')))))))))))))))))));
     }
    
   }
@@ -116,8 +123,15 @@ export class ListComponent implements OnInit {
             ((this.paramName == 'citizen') ? 'citizen':
             ((this.paramName == 'section') ? 'section':
             ((this.paramName == 'standard') ? 'standard':
-            ((this.paramName == 'academicyear') ? 'academicyear': ''))))))))))));                  
-
+            ((this.paramName == 'academicyear') ? 'academicyear': 
+            ((this.paramName == 'catagorytype') ? 'academicyear':
+            ((this.paramName == 'designationtype') ? 'academicyear':
+            ((this.paramName == 'stafftype') ? 'academicyear':
+            ((this.paramName == 'department') ? 'academicyear':
+            ((this.paramName == 'degree') ? 'academicyear':
+            ((this.paramName == 'degree') ? 'academicyear':
+            ((this.paramName == 'degree') ? 'academicyear': '')))))))))))))))))));                 
+          
             var url = 'https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/'+urlName;
             this.apiService.lists(url).subscribe( lists => {
             //this.Listitems = lists.academic_boards;  
@@ -133,7 +147,14 @@ export class ListComponent implements OnInit {
                     ((this.paramName == 'citizen') ? lists.citizens :
                     ((this.paramName == 'section') ? lists.sections :
                     ((this.paramName == 'standard') ? lists.standards :
-                    ((this.paramName == 'academicyear') ? lists.academicyears : ''))))))))))));    
+                    ((this.paramName == 'academicyear') ? lists.academicyears :
+                    ((this.paramName == 'catagorytype') ? lists.academicyears:
+                    ((this.paramName == 'designationtype') ? lists.academicyears:
+                    ((this.paramName == 'stafftype') ? lists.academicyears:
+                    ((this.paramName == 'department') ? lists.academicyears:
+                    ((this.paramName == 'degree') ? lists.academicyears:
+                    ((this.paramName == 'grade') ? lists.academicyears:
+                    ((this.paramName == 'academicyear') ? lists.standards: ''))))))))))))))))))); 
 
             console.log( '-----lists------',lists )
 
@@ -145,8 +166,7 @@ export class ListComponent implements OnInit {
 
             } 
             })
-
-            
+        
       }
   },100)
      /*  this.Listitems = ((this.paramName == 'academicboard') ? this.globalService.dataStore.globallist.academic_boards :
@@ -214,7 +234,14 @@ export class ListComponent implements OnInit {
             ((this.paramName == 'citizen') ? 'citizen':
             ((this.paramName == 'section') ? 'section':
             ((this.paramName == 'standard') ? 'standard':
-            ((this.paramName == 'academicyear') ? 'academicyear': '')))))))))))); 
+            ((this.paramName == 'academicyear') ? 'academicyear': 
+            ((this.paramName == 'catagorytype') ? 'academicyear':
+            ((this.paramName == 'designationtype') ? 'academicyear':
+            ((this.paramName == 'stafftype') ? 'academicyear':
+            ((this.paramName == 'department') ? 'academicyear':
+            ((this.paramName == 'degree') ? 'academicyear':
+            ((this.paramName == 'grade') ? 'academicyear':
+            ((this.paramName == 'status') ? 'academicyear': ''))))))))))))))))))); 
 
           let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/'+urlName+'/delete/'+id;
           this.apiService.create(url, {}).subscribe( lists => {
@@ -243,7 +270,14 @@ export class ListComponent implements OnInit {
             ((this.paramName == 'citizen') ? 'citizen':
             ((this.paramName == 'section') ? 'section':
             ((this.paramName == 'standard') ? 'standard':
-            ((this.paramName == 'academicyear') ? 'academicyear': '')))))))))))); 
+            ((this.paramName == 'academicyear') ? 'academicyear': 
+            ((this.paramName == 'catagorytype') ? 'academicyear':
+            ((this.paramName == 'designationtype') ? 'academicyear':
+            ((this.paramName == 'stafftype') ? 'academicyear':
+            ((this.paramName == 'department') ? 'academicyear':
+            ((this.paramName == 'degree') ? 'academicyear':
+            ((this.paramName == 'grade') ? 'academicyear':
+            ((this.paramName == 'status') ? 'academicyear': ''))))))))))))))))))); 
 
       this.router.navigate(['/global/'+urlName+'/list']);
   }
