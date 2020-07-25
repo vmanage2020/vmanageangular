@@ -506,15 +506,15 @@
                                             <div class="col-lg-6">
 
                                                 <div class="form-group">
-                                                    <label>Citizen *</label>
-                                                    <input type="text" autocomplete="off" formControlName="Citizens"
+                                                    <label>Department *</label>
+                                                    <input type="text" autocomplete="off" formControlName="dpt_name"
                                                         class="form-control" />
                                                 </div>
         
                                             </div>
 
                                             <div class="col-12 text-center mb-4">
-                                                    <input [disabled]="!citizenForm.valid" [ngClass]="{ 'disable-btn': !citizenForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
+                                                    <input [disabled]="!departmentForm.valid" [ngClass]="{ 'disable-btn': !departmentForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
                                                     <button class="btn btn-danger" (click)="closePopup()">Cancel</button>
                                             </div>
                                             

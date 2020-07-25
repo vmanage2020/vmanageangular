@@ -223,7 +223,7 @@ export class AddComponent implements OnInit {
   createdepartmentForm()
   {
     this.departmentForm = this.formBuilder.group({
-      sec_des: [null, [Validators.required, Validators.minLength(1), Validators.maxLength(255)]]
+      dpt_name: [null, [Validators.required, Validators.minLength(1), Validators.maxLength(255)]]
     });
   }
   createdegreeForm()
@@ -266,7 +266,7 @@ export class AddComponent implements OnInit {
       ((this.paramName == 'catagorytype') ? 'Category Type':
       ((this.paramName == 'designationtype') ? 'Designation Type':
       ((this.paramName == 'stafftype') ? 'Staff Type':
-      ((this.paramName == 'department') ? 'academicyear':
+      ((this.paramName == 'department') ? 'Department':
       ((this.paramName == 'degree') ? 'academicyear':
       ((this.paramName == 'grade') ? 'academicyear':
       ((this.paramName == 'status') ? 'academicyear': ''))))))))))))))))))); 
@@ -456,8 +456,8 @@ export class AddComponent implements OnInit {
 
       this.apiService.lists(url).subscribe((selectedData:any) => {
         console.log('----selectedData----', selectedData.data);
-        this.sectionForm.patchValue({
-          sec_des        : selectedData.sections[0].sec_des,
+        this.departmentForm.patchValue({
+          dpt_name        : selectedData.departments[0].dpt_name,
         });
       })
     }
@@ -1149,6 +1149,49 @@ export class AddComponent implements OnInit {
           },error => {
             console.log('----create error---');console.log( error )
             this.commonService.changeMessage(['failure', 'Staff failed. Please try again'])
+          })
+        }
+    }else if( this.paramName == 'department')
+    {
+      console.log('-----form value---'); console.log( this.departmentForm.value )
+
+        var dpt_name = ((this.departmentForm.value.dpt_name != null) ? this.departmentForm.value.dpt_name : '')
+
+        if( dpt_name != '' && this.selectedId == '')
+        {
+          var insertdepartmentdata = {dpt_name: dpt_name}
+
+          this.loader = true;
+          let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/department/add';
+
+          this.apiService.create(url, insertdepartmentdata).subscribe((data:any) => {
+
+            console.log('----data----', data)
+            this.commonService.changeMessage(['success', 'Department created successfully']);
+            this.router.navigate(['/global/department/list']);
+            this.activeModal.close(this.departmentForm.value);
+            this.loader = false;
+          },error => {
+            console.log('----create error---');console.log( error )
+            this.commonService.changeMessage(['failure', 'Department failed. Please try again'])
+          })
+        }else if( dpt_name != '' && this.selectedId != '')
+        {
+          var updatedepartmentdata = {dpt_name: dpt_name}
+
+          this.loader = true;
+          let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/department/update/'+this.selectedId;
+
+          this.apiService.create(url, updatedepartmentdata).subscribe((data:any) => {
+
+            console.log('----data----', data)
+            this.commonService.changeMessage(['success', 'Department updated successfully']);
+            this.router.navigate(['/global/department/list']);
+            this.activeModal.close(this.departmentForm.value);
+            this.loader = false;
+          },error => {
+            console.log('----create error---');console.log( error )
+            this.commonService.changeMessage(['failure', 'Department failed. Please try again'])
           })
         }
     }

@@ -127,10 +127,10 @@ export class ListComponent implements OnInit {
             ((this.paramName == 'catagorytype') ? 'catagorytype':
             ((this.paramName == 'designationtype') ? 'designationtype':
             ((this.paramName == 'stafftype') ? 'stafftype':
-            ((this.paramName == 'department') ? 'academicyear':
+            ((this.paramName == 'department') ? 'department':
             ((this.paramName == 'degree') ? 'academicyear':
-            ((this.paramName == 'degree') ? 'academicyear':
-            ((this.paramName == 'degree') ? 'academicyear': '')))))))))))))))))));                 
+            ((this.paramName == 'grade') ? 'academicyear':
+            ((this.paramName == 'status') ? 'academicyear': '')))))))))))))))))));                 
           
             var url = 'https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/'+urlName;
             this.apiService.lists(url).subscribe( lists => {
@@ -151,7 +151,7 @@ export class ListComponent implements OnInit {
                     ((this.paramName == 'catagorytype') ? lists.catagorytypes:
                     ((this.paramName == 'designationtype') ? lists.designationtypes:
                     ((this.paramName == 'stafftype') ? lists.stafftypes:
-                    ((this.paramName == 'department') ? lists.academicyears:
+                    ((this.paramName == 'department') ? lists.departments:
                     ((this.paramName == 'degree') ? lists.academicyears:
                     ((this.paramName == 'grade') ? lists.academicyears:
                     ((this.paramName == 'academicyear') ? lists.standards: ''))))))))))))))))))); 
@@ -238,7 +238,7 @@ export class ListComponent implements OnInit {
             ((this.paramName == 'catagorytype') ? 'catagorytype':
             ((this.paramName == 'designationtype') ? 'designationtype':
             ((this.paramName == 'stafftype') ? 'stafftype':
-            ((this.paramName == 'department') ? 'academicyear':
+            ((this.paramName == 'department') ? 'department':
             ((this.paramName == 'degree') ? 'academicyear':
             ((this.paramName == 'grade') ? 'academicyear':
             ((this.paramName == 'status') ? 'academicyear': ''))))))))))))))))))); 
@@ -274,7 +274,7 @@ export class ListComponent implements OnInit {
             ((this.paramName == 'catagorytype') ? 'catagorytype':
             ((this.paramName == 'designationtype') ? 'designationtype':
             ((this.paramName == 'stafftype') ? 'stafftype':
-            ((this.paramName == 'department') ? 'academicyear':
+            ((this.paramName == 'department') ? 'department':
             ((this.paramName == 'degree') ? 'academicyear':
             ((this.paramName == 'grade') ? 'academicyear':
             ((this.paramName == 'status') ? 'academicyear': ''))))))))))))))))))); 
