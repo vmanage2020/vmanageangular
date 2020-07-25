@@ -400,6 +400,227 @@
                     </form>
                 </div>
 
+               <!--  Staff Type -->
+
+               <div class="ibox-content" *ngIf="paramName =='catagorytype'">
+ 
+                <form class="needs-validation" (ngSubmit)="formSubmit()" [formGroup]="catagoryForm">
+
+
+                        <div class="card form-row">
+                            <div class="card-body">
+                                    <div class="row ">
+
+                                            <div class="col-lg-6">
+
+                                                <div class="form-group">
+                                                    <label>Citizen *</label>
+                                                    <input type="text" autocomplete="off" formControlName="Citizens"
+                                                        class="form-control" />
+                                                </div>
+        
+                                            </div>
+
+                                            <div class="col-12 text-center mb-4">
+                                                    <input [disabled]="!citizenForm.valid" [ngClass]="{ 'disable-btn': !citizenForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
+                                                    <button class="btn btn-danger" (click)="closePopup()">Cancel</button>
+                                            </div>
+                                            
+            
+                                    </div>
+                            </div>
+                        </div>
+
+                </form>
+            </div>
+            <div class="ibox-content" *ngIf="paramName =='designationtype'">
+ 
+                <form class="needs-validation" (ngSubmit)="formSubmit()" [formGroup]="designationForm">
+
+
+                        <div class="card form-row">
+                            <div class="card-body">
+                                    <div class="row ">
+
+                                            <div class="col-lg-6">
+
+                                                <div class="form-group">
+                                                    <label>Citizen *</label>
+                                                    <input type="text" autocomplete="off" formControlName="Citizens"
+                                                        class="form-control" />
+                                                </div>
+        
+                                            </div>
+
+                                            <div class="col-12 text-center mb-4">
+                                                    <input [disabled]="!citizenForm.valid" [ngClass]="{ 'disable-btn': !citizenForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
+                                                    <button class="btn btn-danger" (click)="closePopup()">Cancel</button>
+                                            </div>
+                                            
+            
+                                    </div>
+                            </div>
+                        </div>
+
+                </form>
+            </div>
+            <div class="ibox-content" *ngIf="paramName =='stafftype'">
+ 
+                <form class="needs-validation" (ngSubmit)="formSubmit()" [formGroup]="staffForm">
+
+
+                        <div class="card form-row">
+                            <div class="card-body">
+                                    <div class="row ">
+
+                                            <div class="col-lg-6">
+
+                                                <div class="form-group">
+                                                    <label>Citizen *</label>
+                                                    <input type="text" autocomplete="off" formControlName="Citizens"
+                                                        class="form-control" />
+                                                </div>
+        
+                                            </div>
+
+                                            <div class="col-12 text-center mb-4">
+                                                    <input [disabled]="!citizenForm.valid" [ngClass]="{ 'disable-btn': !citizenForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
+                                                    <button class="btn btn-danger" (click)="closePopup()">Cancel</button>
+                                            </div>
+                                            
+            
+                                    </div>
+                            </div>
+                        </div>
+
+                </form>
+            </div>
+            <div class="ibox-content" *ngIf="paramName =='department'">
+ 
+                <form class="needs-validation" (ngSubmit)="formSubmit()" [formGroup]="departmentForm">
+
+
+                        <div class="card form-row">
+                            <div class="card-body">
+                                    <div class="row ">
+
+                                            <div class="col-lg-6">
+
+                                                <div class="form-group">
+                                                    <label>Citizen *</label>
+                                                    <input type="text" autocomplete="off" formControlName="Citizens"
+                                                        class="form-control" />
+                                                </div>
+        
+                                            </div>
+
+                                            <div class="col-12 text-center mb-4">
+                                                    <input [disabled]="!citizenForm.valid" [ngClass]="{ 'disable-btn': !citizenForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
+                                                    <button class="btn btn-danger" (click)="closePopup()">Cancel</button>
+                                            </div>
+                                            
+            
+                                    </div>
+                            </div>
+                        </div>
+
+                </form>
+            </div>
+            <div class="ibox-content" *ngIf="paramName =='degree'">
+ 
+                <form class="needs-validation" (ngSubmit)="formSubmit()" [formGroup]="degreeForm">
+
+
+                        <div class="card form-row">
+                            <div class="card-body">
+                                    <div class="row ">
+
+                                            <div class="col-lg-6">
+
+                                                <div class="form-group">
+                                                    <label>Citizen *</label>
+                                                    <input type="text" autocomplete="off" formControlName="Citizens"
+                                                        class="form-control" />
+                                                </div>
+        
+                                            </div>
+
+                                            <div class="col-12 text-center mb-4">
+                                                    <input [disabled]="!citizenForm.valid" [ngClass]="{ 'disable-btn': !citizenForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
+                                                    <button class="btn btn-danger" (click)="closePopup()">Cancel</button>
+                                            </div>
+                                            
+            
+                                    </div>
+                            </div>
+                        </div>
+
+                </form>
+            </div>
+            <div class="ibox-content" *ngIf="paramName =='grade'">
+ 
+                <form class="needs-validation" (ngSubmit)="formSubmit()" [formGroup]="gradeForm">
+
+
+                        <div class="card form-row">
+                            <div class="card-body">
+                                    <div class="row ">
+
+                                            <div class="col-lg-6">
+
+                                                <div class="form-group">
+                                                    <label>Citizen *</label>
+                                                    <input type="text" autocomplete="off" formControlName="Citizens"
+                                                        class="form-control" />
+                                                </div>
+        
+                                            </div>
+
+                                            <div class="col-12 text-center mb-4">
+                                                    <input [disabled]="!citizenForm.valid" [ngClass]="{ 'disable-btn': !citizenForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
+                                                    <button class="btn btn-danger" (click)="closePopup()">Cancel</button>
+                                            </div>
+                                            
+            
+                                    </div>
+                            </div>
+                        </div>
+
+                </form>
+            </div>
+            <div class="ibox-content" *ngIf="paramName =='status'">
+ 
+                <form class="needs-validation" (ngSubmit)="formSubmit()" [formGroup]="statusForm">
+
+
+                        <div class="card form-row">
+                            <div class="card-body">
+                                    <div class="row ">
+
+                                            <div class="col-lg-6">
+
+                                                <div class="form-group">
+                                                    <label>Citizen *</label>
+                                                    <input type="text" autocomplete="off" formControlName="Citizens"
+                                                        class="form-control" />
+                                                </div>
+        
+                                            </div>
+
+                                            <div class="col-12 text-center mb-4">
+                                                    <input [disabled]="!citizenForm.valid" [ngClass]="{ 'disable-btn': !citizenForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
+                                                    <button class="btn btn-danger" (click)="closePopup()">Cancel</button>
+                                            </div>
+                                            
+            
+                                    </div>
+                            </div>
+                        </div>
+
+                </form>
+            </div>
+
+
 
             </div>
         </div>

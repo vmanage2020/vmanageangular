@@ -29,6 +29,13 @@ export class AddComponent implements OnInit {
   certificateForm: FormGroup;
   citizenForm: FormGroup;
   sectionForm: FormGroup;
+  catagoryForm: FormGroup;
+  designationForm: FormGroup;
+  staffForm: FormGroup;
+  departmentForm: FormGroup;
+  degreeForm: FormGroup;
+  gradeForm: FormGroup;
+  statusForm: FormGroup;
 
   selectedId = '';
 
@@ -86,6 +93,35 @@ export class AddComponent implements OnInit {
     }else if( this.paramName == 'section')
     {
       this.createSectionForm();
+    }
+    /* staff details */
+    else if( this.paramName == 'catagorytype')
+    {
+      this.createcatagoryForm();
+    }
+    else if( this.paramName == 'designationtype')
+    {
+      this.createdesingationForm();
+    }
+    else if( this.paramName == 'stafftype')
+    {
+      this.createstafftypeForm();
+    }
+    else if( this.paramName == 'department')
+    {
+      this.createdepartmentForm();
+    }
+    else if( this.paramName == 'degree')
+    {
+      this.createdegreeForm();
+    }
+    else if( this.paramName == 'grade')
+    {
+      this.creategradeForm();
+    }
+    else if( this.paramName == 'status')
+    {
+      this.createstatusForm();
     }
     
   }
@@ -163,6 +199,53 @@ export class AddComponent implements OnInit {
       sec_des: [null, [Validators.required, Validators.minLength(1), Validators.maxLength(255)]]
     });
   }
+  
+  /* staff details */
+
+  createcatagoryForm()
+  {
+    this.catagoryForm = this.formBuilder.group({
+      sec_des: [null, [Validators.required, Validators.minLength(1), Validators.maxLength(255)]]
+    });
+  }
+  createdesingationForm()
+  {
+    this.designationForm = this.formBuilder.group({
+      sec_des: [null, [Validators.required, Validators.minLength(1), Validators.maxLength(255)]]
+    });
+  }
+  createstafftypeForm()
+  {
+    this.staffForm = this.formBuilder.group({
+      sec_des: [null, [Validators.required, Validators.minLength(1), Validators.maxLength(255)]]
+    });
+  }
+  createdepartmentForm()
+  {
+    this.departmentForm = this.formBuilder.group({
+      sec_des: [null, [Validators.required, Validators.minLength(1), Validators.maxLength(255)]]
+    });
+  }
+  createdegreeForm()
+  {
+    this.degreeForm = this.formBuilder.group({
+      sec_des: [null, [Validators.required, Validators.minLength(1), Validators.maxLength(255)]]
+    });
+  }
+  creategradeForm()
+  {
+    this.gradeForm = this.formBuilder.group({
+      sec_des: [null, [Validators.required, Validators.minLength(1), Validators.maxLength(255)]]
+    });
+  }
+  createstatusForm()
+  {
+    this.statusForm = this.formBuilder.group({
+      sec_des: [null, [Validators.required, Validators.minLength(1), Validators.maxLength(255)]]
+    });
+  }
+
+
 
   ngOnInit(): void {
 
@@ -179,7 +262,14 @@ export class AddComponent implements OnInit {
       ((this.paramName == 'citizen') ? 'Citizen':
       ((this.paramName == 'section') ? 'section':
       ((this.paramName == 'standard') ? 'Grade/Standard':
-      ((this.paramName == 'academicyear') ? 'Academic Year': ''))))))))))));
+      ((this.paramName == 'academicyear') ? 'Academic Year': 
+      ((this.paramName == 'catagorytype') ? 'academicyear':
+      ((this.paramName == 'designationtype') ? 'academicyear':
+      ((this.paramName == 'stafftype') ? 'academicyear':
+      ((this.paramName == 'department') ? 'academicyear':
+      ((this.paramName == 'degree') ? 'academicyear':
+      ((this.paramName == 'grade') ? 'academicyear':
+      ((this.paramName == 'status') ? 'academicyear': ''))))))))))))))))))); 
     }
 
     let con = this.globalService.selectedglobalId.getValue()
@@ -322,7 +412,91 @@ export class AddComponent implements OnInit {
         });
       })
     }
-    
+    /* Staff Details */
+    else if( this.paramName == 'catagorytype')
+    {
+
+      let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/catagory/'+this.selectedId;
+
+      this.apiService.lists(url).subscribe((selectedData:any) => {
+        console.log('----selectedData----', selectedData.data);
+        this.sectionForm.patchValue({
+          sec_des        : selectedData.sections[0].sec_des,
+        });
+      })
+    }
+    else if( this.paramName == 'designationtype')
+    {
+
+      let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/designation/'+this.selectedId;
+
+      this.apiService.lists(url).subscribe((selectedData:any) => {
+        console.log('----selectedData----', selectedData.data);
+        this.sectionForm.patchValue({
+          sec_des        : selectedData.sections[0].sec_des,
+        });
+      })
+    }
+    else if( this.paramName == 'stafftype')
+    {
+
+      let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/staff/'+this.selectedId;
+
+      this.apiService.lists(url).subscribe((selectedData:any) => {
+        console.log('----selectedData----', selectedData.data);
+        this.sectionForm.patchValue({
+          sec_des        : selectedData.sections[0].sec_des,
+        });
+      })
+    }
+    else if( this.paramName == 'department')
+    {
+
+      let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/department/'+this.selectedId;
+
+      this.apiService.lists(url).subscribe((selectedData:any) => {
+        console.log('----selectedData----', selectedData.data);
+        this.sectionForm.patchValue({
+          sec_des        : selectedData.sections[0].sec_des,
+        });
+      })
+    }
+    else if( this.paramName == 'degree')
+    {
+
+      let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/degree/'+this.selectedId;
+
+      this.apiService.lists(url).subscribe((selectedData:any) => {
+        console.log('----selectedData----', selectedData.data);
+        this.sectionForm.patchValue({
+          sec_des        : selectedData.sections[0].sec_des,
+        });
+      })
+    }
+    else if( this.paramName == 'grade')
+    {
+
+      let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/grade/'+this.selectedId;
+
+      this.apiService.lists(url).subscribe((selectedData:any) => {
+        console.log('----selectedData----', selectedData.data);
+        this.sectionForm.patchValue({
+          sec_des        : selectedData.sections[0].sec_des,
+        });
+      })
+    }
+    else if( this.paramName == 'status')
+    {
+
+      let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/status/'+this.selectedId;
+
+      this.apiService.lists(url).subscribe((selectedData:any) => {
+        console.log('----selectedData----', selectedData.data);
+        this.sectionForm.patchValue({
+          sec_des        : selectedData.sections[0].sec_des,
+        });
+      })
+    }
   }
 
   closePopup()

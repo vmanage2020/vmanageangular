@@ -28,7 +28,7 @@ export class GlobalService {
     ) { 
 
       this.paramName = this.router.url.split('/')[2]; 
-      console.log('-----service param----', this.paramName )
+      console.log('-----service param here----', this.paramName )
 
       var urlName = ((this.paramName == 'academicboard') ? 'academicboard':
       ((this.paramName == 'activity') ? 'activity': 
