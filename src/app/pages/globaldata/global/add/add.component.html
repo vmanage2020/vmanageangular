@@ -475,15 +475,15 @@
                                             <div class="col-lg-6">
 
                                                 <div class="form-group">
-                                                    <label>Citizen *</label>
-                                                    <input type="text" autocomplete="off" formControlName="Citizens"
+                                                    <label>Staff Type *</label>
+                                                    <input type="text" autocomplete="off" formControlName="stf_tye_des"
                                                         class="form-control" />
                                                 </div>
         
                                             </div>
 
                                             <div class="col-12 text-center mb-4">
-                                                    <input [disabled]="!citizenForm.valid" [ngClass]="{ 'disable-btn': !citizenForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
+                                                    <input [disabled]="!staffForm.valid" [ngClass]="{ 'disable-btn': !staffForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
                                                     <button class="btn btn-danger" (click)="closePopup()">Cancel</button>
                                             </div>
                                             

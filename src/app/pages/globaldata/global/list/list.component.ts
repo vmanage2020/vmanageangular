@@ -126,7 +126,7 @@ export class ListComponent implements OnInit {
             ((this.paramName == 'academicyear') ? 'academicyear': 
             ((this.paramName == 'catagorytype') ? 'catagorytype':
             ((this.paramName == 'designationtype') ? 'designationtype':
-            ((this.paramName == 'stafftype') ? 'academicyear':
+            ((this.paramName == 'stafftype') ? 'stafftype':
             ((this.paramName == 'department') ? 'academicyear':
             ((this.paramName == 'degree') ? 'academicyear':
             ((this.paramName == 'degree') ? 'academicyear':
@@ -150,7 +150,7 @@ export class ListComponent implements OnInit {
                     ((this.paramName == 'academicyear') ? lists.academicyears :
                     ((this.paramName == 'catagorytype') ? lists.catagorytypes:
                     ((this.paramName == 'designationtype') ? lists.designationtypes:
-                    ((this.paramName == 'stafftype') ? lists.academicyears:
+                    ((this.paramName == 'stafftype') ? lists.stafftypes:
                     ((this.paramName == 'department') ? lists.academicyears:
                     ((this.paramName == 'degree') ? lists.academicyears:
                     ((this.paramName == 'grade') ? lists.academicyears:
@@ -237,7 +237,7 @@ export class ListComponent implements OnInit {
             ((this.paramName == 'academicyear') ? 'academicyear': 
             ((this.paramName == 'catagorytype') ? 'catagorytype':
             ((this.paramName == 'designationtype') ? 'designationtype':
-            ((this.paramName == 'stafftype') ? 'academicyear':
+            ((this.paramName == 'stafftype') ? 'stafftype':
             ((this.paramName == 'department') ? 'academicyear':
             ((this.paramName == 'degree') ? 'academicyear':
             ((this.paramName == 'grade') ? 'academicyear':
@@ -273,7 +273,7 @@ export class ListComponent implements OnInit {
             ((this.paramName == 'academicyear') ? 'academicyear': 
             ((this.paramName == 'catagorytype') ? 'catagorytype':
             ((this.paramName == 'designationtype') ? 'designationtype':
-            ((this.paramName == 'stafftype') ? 'academicyear':
+            ((this.paramName == 'stafftype') ? 'stafftype':
             ((this.paramName == 'department') ? 'academicyear':
             ((this.paramName == 'degree') ? 'academicyear':
             ((this.paramName == 'grade') ? 'academicyear':

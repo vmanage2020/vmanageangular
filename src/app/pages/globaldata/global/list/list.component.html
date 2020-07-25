@@ -384,13 +384,13 @@
             </table> 
       
         </div>
-<!--         <div class="table-responsive" *ngIf="Listitems != undefined && Listitems.length>0 && paramName=='stafftype'" style="padding: 20px 10px 10px 10px; background: #fff;  margin: 10px; ">
+        <div class="table-responsive" *ngIf="Listitems != undefined && Listitems.length>0 && paramName=='stafftype'" style="padding: 20px 10px 10px 10px; background: #fff;  margin: 10px; ">
                 
             <table id="table" class="table table-striped table-bordered table-hover dataTables-example"  datatable [dtOptions]="dtOptions" >
                 <thead>
                 <tr>
                     <th>Sl.No</th>
-                    <th>Certificate Name</th>
+                    <th>Staff Type</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -398,17 +398,17 @@
                 
                 <tr class="gradeX" *ngFor="let list of data, index as i">
                     <td >{{i + 1}}</td>
-                    <td>{{list.crt_ms_name}}</td>
+                    <td>{{list.stf_tye_des}}</td>
                     <td class="center">
-                    <a (click)="editData(list.crt_ms_id_pk)" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                    <a  (click)="deleteData(list.crt_ms_id_pk)"class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                    <a (click)="editData(list.stf_tye_id_pk)" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                    <a  (click)="deleteData(list.stf_tye_id_pk)"class="action-icon"> <i class="mdi mdi-delete"></i></a>
                     </td>
                 </tr> 
                 
                 </tbody> 
             </table> 
       
-        </div> -->
+        </div>
 <!--         <div class="table-responsive" *ngIf="Listitems != undefined && Listitems.length>0 && paramName=='department'" style="padding: 20px 10px 10px 10px; background: #fff;  margin: 10px; ">
                 
             <table id="table" class="table table-striped table-bordered table-hover dataTables-example"  datatable [dtOptions]="dtOptions" >

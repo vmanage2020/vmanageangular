@@ -217,7 +217,7 @@ export class AddComponent implements OnInit {
   createstafftypeForm()
   {
     this.staffForm = this.formBuilder.group({
-      sec_des: [null, [Validators.required, Validators.minLength(1), Validators.maxLength(255)]]
+      stf_tye_des: [null, [Validators.required, Validators.minLength(1), Validators.maxLength(255)]]
     });
   }
   createdepartmentForm()
@@ -265,7 +265,7 @@ export class AddComponent implements OnInit {
       ((this.paramName == 'academicyear') ? 'Academic Year': 
       ((this.paramName == 'catagorytype') ? 'Category Type':
       ((this.paramName == 'designationtype') ? 'Designation Type':
-      ((this.paramName == 'stafftype') ? 'academicyear':
+      ((this.paramName == 'stafftype') ? 'Staff Type':
       ((this.paramName == 'department') ? 'academicyear':
       ((this.paramName == 'degree') ? 'academicyear':
       ((this.paramName == 'grade') ? 'academicyear':
@@ -440,12 +440,12 @@ export class AddComponent implements OnInit {
     else if( this.paramName == 'stafftype')
     {
 
-      let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/staff/'+this.selectedId;
+      let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/stafftype/'+this.selectedId;
 
       this.apiService.lists(url).subscribe((selectedData:any) => {
         console.log('----selectedData----', selectedData.data);
-        this.sectionForm.patchValue({
-          sec_des        : selectedData.sections[0].sec_des,
+        this.staffForm.patchValue({
+          stf_tye_des        : selectedData.stafftypes[0].stf_tye_des,
         });
       })
     }
@@ -1038,13 +1038,13 @@ export class AddComponent implements OnInit {
           this.apiService.create(url, insertcatagorydata).subscribe((data:any) => {
 
             console.log('----data----', data)
-            this.commonService.changeMessage(['success', 'Section created successfully']);
+            this.commonService.changeMessage(['success', 'Catagorytype created successfully']);
             this.router.navigate(['/global/catagorytype/list']);
             this.activeModal.close(this.catagoryForm.value);
             this.loader = false;
           },error => {
             console.log('----create error---');console.log( error )
-            this.commonService.changeMessage(['failure', 'Section failed. Please try again'])
+            this.commonService.changeMessage(['failure', 'Catagorytype failed. Please try again'])
           })
         }else if( sct_desc != '' && this.selectedId != '')
         {
@@ -1056,13 +1056,13 @@ export class AddComponent implements OnInit {
           this.apiService.create(url, updatecatagorydata).subscribe((data:any) => {
 
             console.log('----data----', data)
-            this.commonService.changeMessage(['success', 'Section updated successfully']);
+            this.commonService.changeMessage(['success', 'Catagorytype updated successfully']);
             this.router.navigate(['/global/catagorytype/list']);
             this.activeModal.close(this.catagoryForm.value);
             this.loader = false;
           },error => {
             console.log('----create error---');console.log( error )
-            this.commonService.changeMessage(['failure', 'Section failed. Please try again'])
+            this.commonService.changeMessage(['failure', 'Catagorytype failed. Please try again'])
           })
         }
     }else if( this.paramName == 'designationtype')
@@ -1081,13 +1081,13 @@ export class AddComponent implements OnInit {
           this.apiService.create(url, insertdesignationdata).subscribe((data:any) => {
 
             console.log('----data----', data)
-            this.commonService.changeMessage(['success', 'Section created successfully']);
+            this.commonService.changeMessage(['success', 'Designationtype created successfully']);
             this.router.navigate(['/global/designationtype/list']);
             this.activeModal.close(this.designationForm.value);
             this.loader = false;
           },error => {
             console.log('----create error---');console.log( error )
-            this.commonService.changeMessage(['failure', 'Section failed. Please try again'])
+            this.commonService.changeMessage(['failure', 'Designationtype failed. Please try again'])
           })
         }else if( dsg_desc != '' && this.selectedId != '')
         {
@@ -1099,13 +1099,56 @@ export class AddComponent implements OnInit {
           this.apiService.create(url, updatedesingationdata).subscribe((data:any) => {
 
             console.log('----data----', data)
-            this.commonService.changeMessage(['success', 'Section updated successfully']);
+            this.commonService.changeMessage(['success', 'Designationtype updated successfully']);
             this.router.navigate(['/global/designationtype/list']);
             this.activeModal.close(this.designationForm.value);
             this.loader = false;
           },error => {
             console.log('----create error---');console.log( error )
-            this.commonService.changeMessage(['failure', 'Section failed. Please try again'])
+            this.commonService.changeMessage(['failure', 'Designationtype failed. Please try again'])
+          })
+        }
+    }else if( this.paramName == 'stafftype')
+    {
+      console.log('-----form value---'); console.log( this.staffForm.value )
+
+        var stf_tye_des = ((this.staffForm.value.stf_tye_des != null) ? this.staffForm.value.stf_tye_des : '')
+
+        if( stf_tye_des != '' && this.selectedId == '')
+        {
+          var insertstaffdata = {stf_tye_des: stf_tye_des}
+
+          this.loader = true;
+          let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/stafftype/add';
+
+          this.apiService.create(url, insertstaffdata).subscribe((data:any) => {
+
+            console.log('----data----', data)
+            this.commonService.changeMessage(['success', 'Staff created successfully']);
+            this.router.navigate(['/global/stafftype/list']);
+            this.activeModal.close(this.staffForm.value);
+            this.loader = false;
+          },error => {
+            console.log('----create error---');console.log( error )
+            this.commonService.changeMessage(['failure', 'Staff failed. Please try again'])
+          })
+        }else if( stf_tye_des != '' && this.selectedId != '')
+        {
+          var updatestaffdata = {stf_tye_des: stf_tye_des}
+
+          this.loader = true;
+          let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/stafftype/update/'+this.selectedId;
+
+          this.apiService.create(url, updatestaffdata).subscribe((data:any) => {
+
+            console.log('----data----', data)
+            this.commonService.changeMessage(['success', 'Staff updated successfully']);
+            this.router.navigate(['/global/stafftype/list']);
+            this.activeModal.close(this.staffForm.value);
+            this.loader = false;
+          },error => {
+            console.log('----create error---');console.log( error )
+            this.commonService.changeMessage(['failure', 'Staff failed. Please try again'])
           })
         }
     }
