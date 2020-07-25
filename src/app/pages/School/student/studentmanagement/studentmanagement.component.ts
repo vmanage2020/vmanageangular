@@ -79,6 +79,7 @@ export class StudentmanagementComponent implements OnInit {
       this.apiurl.lists(url).subscribe( list => {
         //console.log('---standard list----', list.standards)
         this.studentStandard = list.standards;
+        
       },error => {
         console.log('---errror---')
       })
@@ -98,7 +99,7 @@ export class StudentmanagementComponent implements OnInit {
         this.commonService.loaderShowHide(true);
         this.loader             = true;
         
-        var url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/students';
+        var url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/students/management';
         this.apiurl.lists(url).subscribe( lists => {
           if( lists.users.length >0)
           {
@@ -121,8 +122,13 @@ export class StudentmanagementComponent implements OnInit {
       },100);       
 
     }else{
-        this.data = this.SListitems;
+
+      var url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/students/management';
+      this.apiurl.lists(url).subscribe( lists => {
+        this.data = lists.users;
         this.dtTrigger.next();
+      });
+        
     }
   }
  
