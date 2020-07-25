@@ -71,6 +71,7 @@
                   <td class="center">
                     <a routerLink="/studentview/{{user.stu_prf_id_pk}}" class="action-icon"> <i class="mdi mdi-eye"></i></a>
                     <a routerLink="/studentedit/{{user.stu_prf_id_pk}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                    <a (click)="makePaid(user.stu_prf_id_pk,5)" class="action-icon"> <i alt="Paid" title="Paid" class="mdi mdi-wallet-membership"></i></a>
                    <!-- <a routerLink="/studentedit/{{user.stu_prf_id_pk}}" class="action-icon"> <i class="mdi mdi-delete"></i></a> -->
                   </td>
                 </tr>

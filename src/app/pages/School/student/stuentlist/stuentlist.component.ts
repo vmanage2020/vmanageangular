@@ -5,11 +5,11 @@ import { RestApiService } from '../../../../shared/rest-api.services';
 import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
 import { CommonService } from '../../../../shared/common.service'
-
+import { ActivatedRoute, Router,Params, NavigationEnd, RouterState } from '@angular/router';
 import * as _ from 'lodash';
 
 import 'rxjs/add/operator/map';
-
+import swal from 'sweetalert2';
 declare var $;
 
 @Component({
@@ -37,7 +37,11 @@ export class StuentlistComponent implements OnInit {
   data: any;
   dtTrigger: Subject<any> = new Subject();
 
-  constructor(private http:HttpClient, private apiurl: RestApiService,  private commonService: CommonService) {
+  constructor(private http:HttpClient, 
+    private apiurl: RestApiService,  
+    private commonService: CommonService,
+    private route: ActivatedRoute,
+    private router: Router) {
 
     
    }
@@ -59,6 +63,47 @@ export class StuentlistComponent implements OnInit {
         processing: true
       }; 
       
+  }
+
+  makePaid(studId, statusVal)
+  {
+    swal.fire({
+      title: "Are you sure?",
+      text: "Do you want to amount Pay?",
+      //type: 'warning',
+      showConfirmButton: true,
+      showCancelButton: true
+    })
+    .then((willDelete) => {
+      if( willDelete.value )
+      {
+        setTimeout(() => {
+
+          this.commonService.loaderShowHide(true);
+          this.loader             = true;
+  
+          var url =  'https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/student/statusupdate/'+studId+'/'+statusVal;
+          this.apiurl.create(url,{}).subscribe( statusChange => {
+            console.log('---student status change----', statusChange )  
+            
+            //this.statusMsg = 'Status Updated Successfully';
+  
+            this.commonService.loaderShowHide(false);
+            this.loader             = false;
+            this.refreshPage();
+          },error => {
+            console.log('---errror---')
+          })
+        },100);
+      }
+    })
+  }
+
+  refreshPage() {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(['/school/studentlist']);
+
   }
 
   standardName(id)

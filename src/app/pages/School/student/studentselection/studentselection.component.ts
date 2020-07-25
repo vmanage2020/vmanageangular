@@ -75,13 +75,9 @@ export class StudentselectionComponent implements OnInit {
         pagingType: 'full_numbers',
         pageLength: 10,
         processing: true,
-        /* columnDefs: [ {
-
-          'targets': [1], 
-      
-          'orderable': false,
-      
-       }] */
+       /*  columnDefs:[
+          {orderable: false, targets: [0]}
+        ], */
         ordering: false,
         //order: [[0, 'desc']]
       }; 
