@@ -35,7 +35,7 @@ export class AddComponent implements OnInit {
   departmentForm: FormGroup;
   degreeForm: FormGroup;
   gradeForm: FormGroup;
-  statusForm: FormGroup;
+
 
   selectedId = '';
 
@@ -119,10 +119,7 @@ export class AddComponent implements OnInit {
     {
       this.creategradeForm();
     }
-    else if( this.paramName == 'status')
-    {
-      this.createstatusForm();
-    }
+
     
   }
 
@@ -229,21 +226,16 @@ export class AddComponent implements OnInit {
   createdegreeForm()
   {
     this.degreeForm = this.formBuilder.group({
-      sec_des: [null, [Validators.required, Validators.minLength(1), Validators.maxLength(255)]]
+      cor_name: [null, [Validators.required, Validators.minLength(1), Validators.maxLength(255)]]
     });
   }
   creategradeForm()
   {
     this.gradeForm = this.formBuilder.group({
-      sec_des: [null, [Validators.required, Validators.minLength(1), Validators.maxLength(255)]]
+      grd_des: [null, [Validators.required, Validators.minLength(1), Validators.maxLength(255)]]
     });
   }
-  createstatusForm()
-  {
-    this.statusForm = this.formBuilder.group({
-      sec_des: [null, [Validators.required, Validators.minLength(1), Validators.maxLength(255)]]
-    });
-  }
+
 
 
 
@@ -267,9 +259,8 @@ export class AddComponent implements OnInit {
       ((this.paramName == 'designationtype') ? 'Designation Type':
       ((this.paramName == 'stafftype') ? 'Staff Type':
       ((this.paramName == 'department') ? 'Department':
-      ((this.paramName == 'degree') ? 'academicyear':
-      ((this.paramName == 'grade') ? 'academicyear':
-      ((this.paramName == 'status') ? 'academicyear': ''))))))))))))))))))); 
+      ((this.paramName == 'degree') ? 'Degree':
+      ((this.paramName == 'grade') ? 'Grade': ''))))))))))))))))));
     }
 
     let con = this.globalService.selectedglobalId.getValue()
@@ -468,8 +459,8 @@ export class AddComponent implements OnInit {
 
       this.apiService.lists(url).subscribe((selectedData:any) => {
         console.log('----selectedData----', selectedData.data);
-        this.sectionForm.patchValue({
-          sec_des        : selectedData.sections[0].sec_des,
+        this.degreeForm.patchValue({
+          cor_name        : selectedData.degrees[0].cor_name,
         });
       })
     }
@@ -480,20 +471,8 @@ export class AddComponent implements OnInit {
 
       this.apiService.lists(url).subscribe((selectedData:any) => {
         console.log('----selectedData----', selectedData.data);
-        this.sectionForm.patchValue({
-          sec_des        : selectedData.sections[0].sec_des,
-        });
-      })
-    }
-    else if( this.paramName == 'status')
-    {
-
-      let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/status/'+this.selectedId;
-
-      this.apiService.lists(url).subscribe((selectedData:any) => {
-        console.log('----selectedData----', selectedData.data);
-        this.sectionForm.patchValue({
-          sec_des        : selectedData.sections[0].sec_des,
+        this.gradeForm.patchValue({
+          grd_des        : selectedData.grades[0].grd_des,
         });
       })
     }
@@ -1192,6 +1171,92 @@ export class AddComponent implements OnInit {
           },error => {
             console.log('----create error---');console.log( error )
             this.commonService.changeMessage(['failure', 'Department failed. Please try again'])
+          })
+        }
+    }else if( this.paramName == 'degree')
+    {
+      console.log('-----form value---'); console.log( this.degreeForm.value )
+
+        var cor_name = ((this.degreeForm.value.cor_name != null) ? this.degreeForm.value.cor_name : '')
+
+        if( cor_name != '' && this.selectedId == '')
+        {
+          var insertdegreedata = {cor_name: cor_name}
+
+          this.loader = true;
+          let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/degree/add';
+
+          this.apiService.create(url, insertdegreedata).subscribe((data:any) => {
+
+            console.log('----data----', data)
+            this.commonService.changeMessage(['success', 'Degree created successfully']);
+            this.router.navigate(['/global/degree/list']);
+            this.activeModal.close(this.degreeForm.value);
+            this.loader = false;
+          },error => {
+            console.log('----create error---');console.log( error )
+            this.commonService.changeMessage(['failure', 'Degree failed. Please try again'])
+          })
+        }else if( dpt_name != '' && this.selectedId != '')
+        {
+          var updatedegreetdata = {cor_name: cor_name}
+
+          this.loader = true;
+          let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/degree/update/'+this.selectedId;
+
+          this.apiService.create(url, updatedegreetdata).subscribe((data:any) => {
+
+            console.log('----data----', data)
+            this.commonService.changeMessage(['success', 'Degree updated successfully']);
+            this.router.navigate(['/global/degree/list']);
+            this.activeModal.close(this.degreeForm.value);
+            this.loader = false;
+          },error => {
+            console.log('----create error---');console.log( error )
+            this.commonService.changeMessage(['failure', 'Degree failed. Please try again'])
+          })
+        }
+    }else if( this.paramName == 'grade')
+    {
+      console.log('-----form value---'); console.log( this.gradeForm.value )
+
+        var grd_des = ((this.gradeForm.value.grd_des != null) ? this.gradeForm.value.grd_des : '')
+
+        if( grd_des != '' && this.selectedId == '')
+        {
+          var insertgradedata = {grd_des: grd_des}
+
+          this.loader = true;
+          let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/grade/add';
+
+          this.apiService.create(url, insertgradedata).subscribe((data:any) => {
+
+            console.log('----data----', data)
+            this.commonService.changeMessage(['success', 'Grade created successfully']);
+            this.router.navigate(['/global/grade/list']);
+            this.activeModal.close(this.gradeForm.value);
+            this.loader = false;
+          },error => {
+            console.log('----create error---');console.log( error )
+            this.commonService.changeMessage(['failure', 'Grade failed. Please try again'])
+          })
+        }else if( grd_des != '' && this.selectedId != '')
+        {
+          var updategradedata = {grd_des: grd_des}
+
+          this.loader = true;
+          let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/grade/update/'+this.selectedId;
+
+          this.apiService.create(url, updategradedata).subscribe((data:any) => {
+
+            console.log('----data----', data)
+            this.commonService.changeMessage(['success', 'Grade updated successfully']);
+            this.router.navigate(['/global/grade/list']);
+            this.activeModal.close(this.gradeForm.value);
+            this.loader = false;
+          },error => {
+            console.log('----create error---');console.log( error )
+            this.commonService.changeMessage(['failure', 'Grade failed. Please try again'])
           })
         }
     }

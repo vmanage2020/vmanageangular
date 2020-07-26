@@ -35,7 +35,7 @@
                                                 </div>
 
                                                 <div class="col-12 text-center mb-4">
-                                                        <input [disabled]="!boardForm.valid" [ngClass]="{ 'disable-btn': !boardForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
+                                                        <input [disabled]="!boardForm.valid" [ngStyle]="{'opacity':(boardForm.valid)?1:''}" [ngClass]="{ 'disable-btn': !boardForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
                                                         <button class="btn btn-danger" (click)="closePopup()">Cancel</button>
                                                 </div>
                                                 
@@ -67,7 +67,7 @@
                                                 </div>
 
                                                 <div class="col-12 text-center mb-4">
-                                                        <input [disabled]="!sectionForm.valid" [ngClass]="{ 'disable-btn': !sectionForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
+                                                        <input [disabled]="!sectionForm.valid" [ngStyle]="{'opacity':(sectionForm.valid)?1:''}" [ngClass]="{ 'disable-btn': !sectionForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
                                                         <button class="btn btn-danger" (click)="closePopup()">Cancel</button>
                                                 </div>
                                                 
@@ -100,7 +100,7 @@
                                                 </div>
 
                                                 <div class="col-12 text-center mb-4">
-                                                        <input [disabled]="!activityForm.valid" [ngClass]="{ 'disable-btn': !activityForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
+                                                        <input [disabled]="!activityForm.valid" [ngStyle]="{'opacity':(activityForm.valid)?1:''}" [ngClass]="{ 'disable-btn': !activityForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
                                                         <button class="btn btn-danger" (click)="closePopup()">Cancel</button>
                                                 </div>
                                                 
@@ -132,7 +132,7 @@
                                                 </div>
 
                                                 <div class="col-12 text-center mb-4">
-                                                        <input [disabled]="!languageForm.valid" [ngClass]="{ 'disable-btn': !languageForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
+                                                        <input [disabled]="!languageForm.valid" [ngStyle]="{'opacity':(languageForm.valid)?1:''}"  [ngClass]="{ 'disable-btn': !languageForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
                                                         <button class="btn btn-danger" (click)="closePopup()">Cancel</button>
                                                 </div>
                                                 
@@ -164,7 +164,7 @@
                                                 </div>
 
                                                 <div class="col-12 text-center mb-4">
-                                                        <input [disabled]="!academicYearForm.valid" [ngClass]="{ 'disable-btn': !academicYearForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
+                                                        <input [disabled]="!academicYearForm.valid" [ngStyle]="{'opacity':(academicYearForm.valid)?1:''}" [ngClass]="{ 'disable-btn': !academicYearForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
                                                         <button class="btn btn-danger" (click)="closePopup()">Cancel</button>
                                                 </div>
                                                 
@@ -196,7 +196,7 @@
                                                 </div>
 
                                                 <div class="col-12 text-center mb-4">
-                                                        <input [disabled]="!groupnameForm.valid" [ngClass]="{ 'disable-btn': !groupnameForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
+                                                        <input [disabled]="!groupnameForm.valid" [ngStyle]="{'opacity':(groupnameForm.valid)?1:''}"  [ngClass]="{ 'disable-btn': !groupnameForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
                                                         <button class="btn btn-danger" (click)="closePopup()">Cancel</button>
                                                 </div>
                                                 
@@ -228,7 +228,7 @@
                                                 </div>
 
                                                 <div class="col-12 text-center mb-4">
-                                                        <input [disabled]="!bloodgroupForm.valid" [ngClass]="{ 'disable-btn': !bloodgroupForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
+                                                        <input [disabled]="!bloodgroupForm.valid" [ngStyle]="{'opacity':(bloodgroupForm.valid)?1:''}" [ngClass]="{ 'disable-btn': !bloodgroupForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
                                                         <button class="btn btn-danger" (click)="closePopup()">Cancel</button>
                                                 </div>
                                                 
@@ -260,7 +260,7 @@
                                                 </div>
 
                                                 <div class="col-12 text-center mb-4">
-                                                        <input [disabled]="!standardForm.valid" [ngClass]="{ 'disable-btn': !standardForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
+                                                        <input [disabled]="!standardForm.valid" [ngStyle]="{'opacity':(standardForm.valid)?1:''}"  [ngClass]="{ 'disable-btn': !standardForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
                                                         <button class="btn btn-danger" (click)="closePopup()">Cancel</button>
                                                 </div>
                                                 
@@ -292,7 +292,7 @@
                                                 </div>
 
                                                 <div class="col-12 text-center mb-4">
-                                                        <input [disabled]="!religionForm.valid" [ngClass]="{ 'disable-btn': !religionForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
+                                                        <input [disabled]="!religionForm.valid" [ngStyle]="{'opacity':(religionForm.valid)?1:''}"  [ngClass]="{ 'disable-btn': !religionForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
                                                         <button class="btn btn-danger" (click)="closePopup()">Cancel</button>
                                                 </div>
                                                 
@@ -324,7 +324,7 @@
                                                 </div>
 
                                                 <div class="col-12 text-center mb-4">
-                                                        <input [disabled]="!communityForm.valid" [ngClass]="{ 'disable-btn': !communityForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
+                                                        <input [disabled]="!communityForm.valid" [ngStyle]="{'opacity':(communityForm.valid)?1:''}"  [ngClass]="{ 'disable-btn': !communityForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
                                                         <button class="btn btn-danger" (click)="closePopup()">Cancel</button>
                                                 </div>
                                                 
@@ -356,7 +356,7 @@
                                                 </div>
 
                                                 <div class="col-12 text-center mb-4">
-                                                        <input [disabled]="!certificateForm.valid" [ngClass]="{ 'disable-btn': !certificateForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
+                                                        <input [disabled]="!certificateForm.valid" [ngStyle]="{'opacity':(certificateForm.valid)?1:''}" [ngClass]="{ 'disable-btn': !certificateForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
                                                         <button class="btn btn-danger" (click)="closePopup()">Cancel</button>
                                                 </div>
                                                 
@@ -388,7 +388,7 @@
                                                 </div>
 
                                                 <div class="col-12 text-center mb-4">
-                                                        <input [disabled]="!citizenForm.valid" [ngClass]="{ 'disable-btn': !citizenForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
+                                                        <input [disabled]="!citizenForm.valid" [ngStyle]="{'opacity':(citizenForm.valid)?1:''}" [ngClass]="{ 'disable-btn': !citizenForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
                                                         <button class="btn btn-danger" (click)="closePopup()">Cancel</button>
                                                 </div>
                                                 
@@ -421,7 +421,7 @@
                                             </div>
 
                                             <div class="col-12 text-center mb-4">
-                                                    <input [disabled]="!catagoryForm.valid" [ngClass]="{ 'disable-btn': !catagoryForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
+                                                    <input [disabled]="!catagoryForm.valid" [ngStyle]="{'opacity':(catagoryForm.valid)?1:''}"  [ngClass]="{ 'disable-btn': !catagoryForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
                                                     <button class="btn btn-danger" (click)="closePopup()">Cancel</button>
                                             </div>
                                             
@@ -452,7 +452,7 @@
                                             </div>
 
                                             <div class="col-12 text-center mb-4">
-                                                    <input [disabled]="!designationForm.valid" [ngClass]="{ 'disable-btn': !designationForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
+                                                    <input [disabled]="!designationForm.valid" [ngStyle]="{'opacity':(designationForm.valid)?1:''}" [ngClass]="{ 'disable-btn': !designationForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
                                                     <button class="btn btn-danger" (click)="closePopup()">Cancel</button>
                                             </div>
                                             
@@ -483,7 +483,7 @@
                                             </div>
 
                                             <div class="col-12 text-center mb-4">
-                                                    <input [disabled]="!staffForm.valid" [ngClass]="{ 'disable-btn': !staffForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
+                                                    <input [disabled]="!staffForm.valid" [ngStyle]="{'opacity':(staffForm.valid)?1:''}" [ngClass]="{ 'disable-btn': !staffForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
                                                     <button class="btn btn-danger" (click)="closePopup()">Cancel</button>
                                             </div>
                                             
@@ -514,7 +514,7 @@
                                             </div>
 
                                             <div class="col-12 text-center mb-4">
-                                                    <input [disabled]="!departmentForm.valid" [ngClass]="{ 'disable-btn': !departmentForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
+                                                    <input [disabled]="!departmentForm.valid" [ngStyle]="{'opacity':(departmentForm.valid)?1:''}" [ngClass]="{ 'disable-btn': !departmentForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
                                                     <button class="btn btn-danger" (click)="closePopup()">Cancel</button>
                                             </div>
                                             
@@ -537,15 +537,15 @@
                                             <div class="col-lg-6">
 
                                                 <div class="form-group">
-                                                    <label>Citizen *</label>
-                                                    <input type="text" autocomplete="off" formControlName="Citizens"
+                                                    <label>Degree *</label>
+                                                    <input type="text" autocomplete="off" formControlName="cor_name"
                                                         class="form-control" />
                                                 </div>
         
                                             </div>
 
                                             <div class="col-12 text-center mb-4">
-                                                    <input [disabled]="!citizenForm.valid" [ngClass]="{ 'disable-btn': !citizenForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
+                                                    <input [disabled]="!degreeForm.valid" [ngStyle]="{'opacity':(degreeForm.valid)?1:''}" [ngClass]="{ 'disable-btn': !degreeForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
                                                     <button class="btn btn-danger" (click)="closePopup()">Cancel</button>
                                             </div>
                                             
@@ -568,15 +568,15 @@
                                             <div class="col-lg-6">
 
                                                 <div class="form-group">
-                                                    <label>Citizen *</label>
-                                                    <input type="text" autocomplete="off" formControlName="Citizens"
+                                                    <label>Grade*</label>
+                                                    <input type="text" autocomplete="off" formControlName="grd_des"
                                                         class="form-control" />
                                                 </div>
         
                                             </div>
 
                                             <div class="col-12 text-center mb-4">
-                                                    <input [disabled]="!citizenForm.valid" [ngClass]="{ 'disable-btn': !citizenForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
+                                                    <input [disabled]="!gradeForm.valid" [ngStyle]="{'opacity':(gradeForm.valid)?1:''}" [ngClass]="{ 'disable-btn': !gradeForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
                                                     <button class="btn btn-danger" (click)="closePopup()">Cancel</button>
                                             </div>
                                             
@@ -587,38 +587,6 @@
 
                 </form>
             </div>
-            <div class="ibox-content" *ngIf="paramName =='status'">
- 
-                <form class="needs-validation" (ngSubmit)="formSubmit()" [formGroup]="statusForm">
-
-
-                        <div class="card form-row">
-                            <div class="card-body">
-                                    <div class="row ">
-
-                                            <div class="col-lg-6">
-
-                                                <div class="form-group">
-                                                    <label>Citizen *</label>
-                                                    <input type="text" autocomplete="off" formControlName="Citizens"
-                                                        class="form-control" />
-                                                </div>
-        
-                                            </div>
-
-                                            <div class="col-12 text-center mb-4">
-                                                    <input [disabled]="!citizenForm.valid" [ngClass]="{ 'disable-btn': !citizenForm.valid }" type="submit" class="btn btn-info" value="{{submitbtnLabel}}">
-                                                    <button class="btn btn-danger" (click)="closePopup()">Cancel</button>
-                                            </div>
-                                            
-            
-                                    </div>
-                            </div>
-                        </div>
-
-                </form>
-            </div>
-
 
 
             </div>

@@ -99,8 +99,7 @@ export class ListComponent implements OnInit {
       ((this.paramName == 'stafftype') ? 'Staff Type':
       ((this.paramName == 'department') ? 'Department':
       ((this.paramName == 'degree') ? 'Degree':
-      ((this.paramName == 'grade') ? 'Grade':
-      ((this.paramName == 'status') ? 'Status': '')))))))))))))))))));
+      ((this.paramName == 'grade') ? 'Grade': ''))))))))))))))))));
     }
    
   }
@@ -128,9 +127,8 @@ export class ListComponent implements OnInit {
             ((this.paramName == 'designationtype') ? 'designationtype':
             ((this.paramName == 'stafftype') ? 'stafftype':
             ((this.paramName == 'department') ? 'department':
-            ((this.paramName == 'degree') ? 'academicyear':
-            ((this.paramName == 'grade') ? 'academicyear':
-            ((this.paramName == 'status') ? 'academicyear': '')))))))))))))))))));                 
+            ((this.paramName == 'degree') ? 'degree':
+            ((this.paramName == 'grade') ? 'grade': ''))))))))))))))))));                 
           
             var url = 'https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/'+urlName;
             this.apiService.lists(url).subscribe( lists => {
@@ -152,9 +150,8 @@ export class ListComponent implements OnInit {
                     ((this.paramName == 'designationtype') ? lists.designationtypes:
                     ((this.paramName == 'stafftype') ? lists.stafftypes:
                     ((this.paramName == 'department') ? lists.departments:
-                    ((this.paramName == 'degree') ? lists.academicyears:
-                    ((this.paramName == 'grade') ? lists.academicyears:
-                    ((this.paramName == 'academicyear') ? lists.standards: ''))))))))))))))))))); 
+                    ((this.paramName == 'degree') ? lists.degrees:
+                    ((this.paramName == 'grade') ? lists.grades: '')))))))))))))))))); 
 
             console.log( '-----lists------',lists )
 
@@ -239,9 +236,8 @@ export class ListComponent implements OnInit {
             ((this.paramName == 'designationtype') ? 'designationtype':
             ((this.paramName == 'stafftype') ? 'stafftype':
             ((this.paramName == 'department') ? 'department':
-            ((this.paramName == 'degree') ? 'academicyear':
-            ((this.paramName == 'grade') ? 'academicyear':
-            ((this.paramName == 'status') ? 'academicyear': ''))))))))))))))))))); 
+            ((this.paramName == 'degree') ? 'degree':
+            ((this.paramName == 'grade') ? 'grade': ''))))))))))))))))));   
 
           let url='https://cors-anywhere.herokuapp.com/http://sms.akst.in/public/api/'+urlName+'/delete/'+id;
           this.apiService.create(url, {}).subscribe( lists => {
@@ -275,9 +271,8 @@ export class ListComponent implements OnInit {
             ((this.paramName == 'designationtype') ? 'designationtype':
             ((this.paramName == 'stafftype') ? 'stafftype':
             ((this.paramName == 'department') ? 'department':
-            ((this.paramName == 'degree') ? 'academicyear':
-            ((this.paramName == 'grade') ? 'academicyear':
-            ((this.paramName == 'status') ? 'academicyear': ''))))))))))))))))))); 
+            ((this.paramName == 'degree') ? 'degree':
+            ((this.paramName == 'grade') ? 'grade': ''))))))))))))))))));   
 
       this.router.navigate(['/global/'+urlName+'/list']);
   }
