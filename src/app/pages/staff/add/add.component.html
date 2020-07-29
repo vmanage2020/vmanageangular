@@ -17,6 +17,12 @@
                         <div class="ibox-title">
                         </div>
 
+                        <div id="nprogress" *ngIf="loader">
+                            <div class="spinner" role="spinner">
+                                <div class="spinner-icon"></div>
+                            </div>
+                        </div>
+                        
                         <div class="ibox-content ">
 
                             <form class="needs-validation" (ngSubmit)="formSubmit()" [formGroup]="staffForm">
@@ -653,6 +659,8 @@
                                 </div>
 
                             </form>
+
+                            
 
                         </div>
 

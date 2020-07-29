@@ -4,6 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators, NgForm, FormArray, AbstractControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RestApiService } from '../../../shared/rest-api.services';
+import { StaffService } from '../staff.service';
+import { CommonService } from '../../../shared/common.service'
 
 @Component({
   selector: 'app-add',
@@ -15,6 +17,8 @@ export class AddComponent implements OnInit {
   staffForm: FormGroup;
   duplicate_qualification: FormArray;
   duplicate_experience: FormArray;
+
+  loader: boolean = false;
 
   categoryType: any[]           = [];
   designationType: any[]        = [];
@@ -32,6 +36,8 @@ export class AddComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private route: ActivatedRoute, 
+    private staffService: StaffService,
+    private commonService: CommonService,
     private router: Router,
      private restApiService: RestApiService) {
         this.createForm();
@@ -127,9 +133,89 @@ export class AddComponent implements OnInit {
 
 
   ngOnInit(): void {
+
+    let con = this.staffService.selectedstaffId.getValue()
+    //console.log('----con-----'+ this.staffService.selectedstaffId.getValue() )
+    if (con != '')
+    {
+      this.editStaff(con)
+      this.staffService.selectedstaffId.next('')
+    }
+
     this.addqualification();
     this.addexperience();
     this.masterData();
+
+  }
+
+  editStaff( id)
+  {
+    console.log('-----edit staff id-----', id)
+    if( id != '')
+    {
+
+      this.commonService.loaderShowHide(true);
+      this.loader = true;
+
+      setTimeout(() => {
+        
+        let url='http://sms.akst.in/public/api/staff/'+id;
+        this.restApiService.lists(url).subscribe( edit => {
+          console.log('---edit data----', edit )
+
+          if(edit.staff.stf_id_pk != '')
+          {
+            this.staffForm.patchValue({
+              application_number      : edit.staff.stf_appl_no,
+              application_date        : edit.staff.stf_dateofapply,
+              staff_first_name        : edit.staff.stf_fname,
+              staff_middle_name       : edit.staff.stf_mname,
+              staff_last_name         : edit.staff.stf_lname,
+              communication_address   : edit.staff.stf_comm_address,
+              permanent_address       : edit.staff.stf_per_address,
+              category_type           : edit.staff.stf_catg_code_fk,
+              designation_type        : edit.staff.stf_desig_code,
+              gender                  : edit.staff.stf_sex,
+              marital_status          : edit.staff.staf_martial_status,
+              mobile_number           : edit.staff.stf_com_phone,
+              father_name             : edit.staff.stf_father_name,
+              email                   : edit.staff.stf_email,
+              phone                   : edit.staff.stf_per_phone,
+              dateofbirth             : edit.staff.stf_date_of_birth,
+              nativity                : edit.staff.stf_nativity,
+              staff_type              : edit.staff.stf_staff_type,
+              familiar_area           : edit.staff.stf_familiar_areas,
+              staff_code              : edit.staff.stf_staff_code,
+              passport_number         : edit.staff.stf_passportno,
+              department              : edit.staff.stf_dept_code,
+              blood_group             : edit.staff.stf_blood_grp,
+              height                  : edit.staff.stf_height,
+              weight                  : edit.staff.stf_weight,
+              nationality             : edit.staff.stf_nationality_fk,
+              religion                : edit.staff.stf_religion_fk,
+              caste                   : edit.staff.stf_caste_fk,
+              powerofsight            : edit.staff.stf_appl_no,
+              community               : edit.staff.stf_Community_fk,
+              driving_number          : edit.staff.stf_drivingno,
+              speak                   : edit.staff.stf_speak,
+              read                    : edit.staff.stf_read1,
+              remarks                 : edit.staff.stf_remarks,
+              write                   : edit.staff.stf_write,
+              //staff_image             : edit.staff.stu_adm_stu_image,
+              account_number          : edit.staff.stf_acc_no
+            }); 
+
+            this.commonService.loaderShowHide(false);
+            this.loader = false;
+          }
+          
+
+         
+
+        });
+      }, 100);
+      
+    }
   }
 
   masterData()

@@ -20,7 +20,7 @@ import { ViewComponent } from './view/view.component';
     FormsModule,
     ReactiveFormsModule,
     NgSelectModule,
-    DataTablesModule
+    DataTablesModule.forRoot()
   ]
 })
 export class StaffModule { }

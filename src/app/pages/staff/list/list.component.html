@@ -18,14 +18,22 @@
             
             <button style="float: right;"class="btn btn-info" [routerLink]="['/staff/add']"  >Add</button >
           </div>
-          <div class="ibox-content">
+
+          <div id="nprogress" *ngIf="loader">
+              <div class="spinner" role="spinner">
+                  <div class="spinner-icon"></div>
+              </div>
+          </div>
+
+          <div class="ibox-content" *ngIf="Listitems != undefined && Listitems.length>0">
             
             
                     <table id="table" class="table table-striped table-bordered table-hover dataTables-example"  datatable [dtOptions]="dtOptions" >
-                       <!--  <thead>
+                        <thead>
                         <tr>
                             <th>Sl.No</th>
-                            <th>Academic Board</th>
+                            <th>Staff Application No</th>
+                            <th>Staff Full name</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -33,14 +41,15 @@
                         
                         <tr class="gradeX" *ngFor="let list of data, index as i">
                             <td >{{i + 1}}</td>
-                            <td>{{list.board_cor_name}}</td>
+                            <td>{{list.stf_appl_no}}</td>
+                            <td>{{list.stf_fname+' '+list.stf_lname}}</td>
                             <td class="center">
-                            <a (click)="editData(list.board_cor_id_pk)" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                            <a  (click)="deleteData(list.board_cor_id_pk)"class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                            <a (click)="editData(list.stf_id_pk)" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                            <a  (click)="deleteData(list.stf_id_pk)"class="action-icon"> <i class="mdi mdi-delete"></i></a>
                             </td>
                         </tr> 
                         
-                        </tbody>  -->
+                        </tbody> 
                     </table> 
               
             </div>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { StaffService } from './staff.service';
+
 @Component({
   selector: 'app-staff',
   //templateUrl: './staff.component.html',
@@ -14,7 +16,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StaffComponent implements OnInit {
 
-  constructor() { }
+  constructor( private staffService: StaffService) { }
 
   ngOnInit(): void {
   }
