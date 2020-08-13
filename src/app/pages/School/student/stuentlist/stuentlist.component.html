@@ -11,12 +11,12 @@
 
 <div class="col-lg-3" *ngIf="studentStandard != undefined && studentStandard.length>0">  
   <div class="form-group">
-      <label>School Standard </label>
+      <!-- <label>School Standard </label> -->
       <ng-select 
           [items]="studentStandard" 
           bindLabel="name"
           bindValue="id"
-          placeholder="Select School"
+          placeholder="Select Class"
           (change)="schoolStandardFilter($event)"
           >
       </ng-select>
