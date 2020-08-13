@@ -1,4 +1,5 @@
-updated on 13-08 by venkatesan
+updated on 13-08 by venkatesan.v
+
 
 # Ubold Angular - Vertical Layout
 
