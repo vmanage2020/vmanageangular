@@ -7,7 +7,7 @@
       
         </div>
       </div>
-      
+     <!--  [(ngModel)]="selectedStdId" -->
       <form [formGroup]="filterForm">
         <div class="col-lg-3" *ngIf="studentStandard != undefined && studentStandard.length>0">  
           <div class="form-group">
@@ -17,7 +17,7 @@
                   bindLabel="name"
                   bindValue="id"
                   placeholder="Select School"
-                  [(ngModel)]="selectedStdId"
+                 
                   formControlName="stdFilter"
                   (change)="schoolStandardFilter($event)"
                   >

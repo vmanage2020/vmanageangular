@@ -219,6 +219,7 @@ export class StudentpaidlistComponent implements OnInit {
             })
 
             this.data = studData;
+            console.log(this.data+"______________this.data");
             this.dtTrigger.next();
 
             this.commonService.loaderShowHide(false);
@@ -288,9 +289,6 @@ export class StudentpaidlistComponent implements OnInit {
 
         this.data = this.SListitems;
         this.dtTrigger.next();
-
-        
-
         }
        
       });

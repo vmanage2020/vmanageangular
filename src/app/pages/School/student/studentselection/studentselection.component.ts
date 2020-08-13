@@ -298,7 +298,7 @@ export class StudentselectionComponent implements OnInit {
             data: this.SListitems
           };
           */ 
-
+          
         this.data = this.SListitems;
         this.dtTrigger.next();
 
